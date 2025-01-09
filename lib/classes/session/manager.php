@@ -634,7 +634,7 @@ class manager {
         // CORE HACK DANOU : This Security functions runs into many problems with our version.
         // already from moodle 4.3 and before.
         // Therefore I had to deactivate it to further progess with my coding.
-        
+
         /*
         $sid = session_id();
         session_regenerate_id(true);
