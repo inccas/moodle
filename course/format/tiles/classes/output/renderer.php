@@ -34,7 +34,7 @@ class renderer extends section_renderer {
     public function render_content() {
         $format = course_get_format($this->page->course->id);
         $course = $format->get_course();
-        $sectionnumber = $format->get_section_number();
+        $sectionnumber = $format->get_sectionnum();
         if ($this->page->user_is_editing()) {
             // If user is editing, we render the page the new way.
             // We will use this for non editing as well in a later version, but not yet.
@@ -151,5 +151,35 @@ class renderer extends section_renderer {
             }
         }
         return false;
+    }
+
+    /**
+     * In Moodle 4.5 we may have sub-sections.
+     * We override this here and use existing local code for subtiles pending full refactoring.
+     * @param \renderable $widget
+     * @return bool|string
+     * @throws \coding_exception
+     * @throws \dml_exception
+     * @throws \moodle_exception
+     */
+    public function render_delegatedsection($widget) {
+        $parentdata = $widget->export_for_template($this);
+        $sectionnum = $parentdata->num;
+        $templateable = new \format_tiles\output\course_output(
+            $this->page->course, true, $sectionnum
+        );
+        $data = $templateable->export_for_template($this);
+        $template = 'format_tiles/course_modules_subsection';
+
+        // If subtiles are not being used we can use core widget data and template.
+        $usecore = !$data['useSubtiles'] || $this->page->user_is_editing();
+        if ($usecore) {
+            $data = $parentdata;
+            $data->contentcollapsed = true;
+            $data->isdelegatedsection = true;
+            $template = 'format_tiles/local/content/delegatedsection';
+        }
+
+        return $this->render_from_template($template, $data);
     }
 }

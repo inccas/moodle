@@ -15,8 +15,8 @@
     transition: border-top-color 0s;
 }
 .format-tiles .tile-bg,
-.format-tiles li.section:not(#section-0).tilestyle-1 .course-section-header,
-.format-tiles li.section:not(#section-0).tilestyle-2 .course-section-header {
+.format-tiles li.section:not(#section-0).tilestyle-1 .course-section-header.tile-bar-heading,
+.format-tiles li.section:not(#section-0).tilestyle-2 .course-section-header.tile-bar-heading {
     background-color: var(--format-tiles-colour-05);
 }
 .format-tiles ul.tiles .tile-clickable.tilestyle-1:hover,
@@ -44,7 +44,7 @@
 .format-tiles .embed_cm_modal .modal-header h4 {
     color: #fff;
 }
-.format-tiles .embed_cm_modal .modal-header .close {
+.format-tiles .embed_cm_modal .modal-header .btn-close {
     color: #fff;
     opacity: 0.8;
 }
@@ -290,7 +290,7 @@
 .format-tiles #section-0 .addresourcemodchooser {
     position: relative;
 }
-.format-tiles .course-content ul li.section.main {
+.format-tiles .course-content ul li.section.main:not(.delegated-section) {
     width: calc(100% - 15px);
     background-color: white;
     /* stop 'dot' background image in essential theme*/
@@ -298,7 +298,7 @@
     margin-top: 10px;
     padding-top: 12px;
 }
-.format-tiles .course-content ul li.section.main:target {
+.format-tiles .course-content ul li.section.main:not(.delegated-section):target {
     padding-top: 0;
     margin-top: 30px;
 }
@@ -478,9 +478,11 @@
     color: #fff;
     width: 65px;
     height: 65px;
-    padding-top: 11px;
-    padding-left: 2px;
     margin: 0;
+}
+.format-tiles li.tile .tile-icon .icon {
+    max-width: unset;
+    max-height: unset;
 }
 .format-tiles li.activity .tileiconcontainer .tile-icon .icon.fa {
     font-size: 60px;
@@ -570,7 +572,7 @@
     top: 3px;
     height: 24px;
 }
-.format-tiles li.section.current:not(#section-0) .course-section-header {
+.format-tiles li.section.current:not(#section-0) .course-section-header.tile-bar-heading {
     border-top-color: red;
 }
 .format-tiles.path-course-view li.activity > div:not(.activity-item).completioncheckbox {
@@ -1009,7 +1011,7 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     margin-bottom: 10px;
 }
 
-.format-tiles .tiles .section.main {
+.format-tiles .tiles .section.main:not(.delegated-section) {
     /* stylelint-disable-next-line declaration-no-important */
     border: 0 !important;
     /* We use important here as core-course-dragdrop is not replacing this.originalstyle correctly. */
@@ -1083,20 +1085,30 @@ body.jsenabled.format-tiles #collapsiblesec0 {
 .format-tiles .cursorpointer {
     cursor: pointer;
 }
-#page-course-editsection .format-tiles .icon_picker_modal button.close {
+#page-course-editsection .format-tiles .icon_picker_modal button.btn-close {
     color: #333;
     opacity: 0.9;
 }
 
-.format-tiles .iconpickericons button.pickericondiv,
-.format-site .iconpickericons button.pickericondiv {
+.format-tiles #icon_picker_modal .iconpickericons button.pickericondiv,
+.format-site #icon_picker_modal .iconpickericons button.pickericondiv {
     padding: 10px;
     cursor: pointer;
     display: inline-block;
     background-color: #fff;
     border: none;
+    width: 81px;
+    height: 81px;
 }
-
+.format-tiles #icon_picker_modal .iconpickericons .pickericondiv img.icon {
+    max-width: 65px;
+    max-height: 65px;
+}
+.format-tiles .tiles-editor-image img.icon,
+.format-tiles li.section:not(#section-0) .course-section-header img.icon {
+    max-width: 45px;
+    max-height: 45px;
+}
 #page-course-editsection .format-tiles .icon_picker_modal .modal-header,
 #page-course-edit .format-tiles .icon_picker_modal .modal-header {
     color: #333;
@@ -1120,6 +1132,8 @@ body.jsenabled.format-tiles #collapsiblesec0 {
 #page-course-edit.format-site .pickericon .icon {
     width: 55px;
     height: 55px;
+    max-width: 55px;
+    max-height: 55px;
     font-size: 55px;
     vertical-align: top;
     margin: 3px;
@@ -1398,7 +1412,7 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     width: 30px;
 }
 .format-tiles .embed_cm_modal .embed_file_button,
-.format-tiles .modal-container .modal .modal-header button.close {
+.format-tiles .modal-container .modal .modal-header button.btn-close {
     display: inline-block;
     width: 28px;
     height: 28px;
@@ -1412,13 +1426,13 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     text-align: center;
     box-shadow: none;
 }
-.format-tiles .modal-container .modal .modal-header button.close {
+.format-tiles .modal-container .modal .modal-header button.btn-close {
     font-size: 1.8em;
     background-repeat: no-repeat;
     background-image: url([[pix:format_tiles|close-white]]);
     background-size: 17px 17px;
 }
-.format-tiles .modal-container .modal .modal-header .embed-module-buttons .close {
+.format-tiles .modal-container .modal .modal-header .embed-module-buttons .btn-close {
     /*Clean theme.*/
     position: relative;
     top: unset;
@@ -1430,7 +1444,7 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     display: flex;
     justify-content: flex-end;
 }
-.format-tiles .embed-module-buttons button.close {
+.format-tiles .embed-module-buttons button.btn-close {
     width: 28px;
     height: 28px;
     float: none;
@@ -1482,18 +1496,6 @@ body.jsenabled.format-tiles #collapsiblesec0 {
 .format-tiles .subtile .dropdown-menu .dropdown-item {
     padding-top: 3px;
     padding-bottom: 3px;
-}
-.format-tiles .above-tiles-buttons a.dropdown-item .custom-switch.checked .custom-control-label::before {
-    color: #fff;
-    border-color: #0f6cbf;
-    background-color: #0f6cbf;
-}
-.format-tiles .above-tiles-buttons a.dropdown-item .custom-switch.checked .custom-control-label::after {
-    background-color: #fff;
-    left: -1.75rem;
-}
-.format-tiles .above-tiles-buttons a.dropdown-item:hover .custom-switch.checked .custom-control-label::before {
-    border-color: #fff;
 }
 .format-tiles.editing .section .activity.subtile .cm-inner {
     margin-top: 25px;
@@ -1869,27 +1871,25 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     opacity: 1;
 }
 
-.format-tiles li.section:not(#section-0) .course-section-header {
+.format-tiles li.section:not(#section-0) .course-section-header.tile-bar-heading {
     margin-right: 5px;
     background-color: #3584c917;
     border-top: 3px solid rgba(53, 132, 201, 0.37);
     width: 100%;
     padding: 10px;
 }
-.format-tiles li.section:not(#section-0).hidden .course-section-header,
-.format-tiles li.section:not(#section-0).restricted .course-section-header {
+.format-tiles li.section:not(#section-0) .course-section-header.tile-bar-heading .course-section-header {
+    width: 100%;
+}
+.format-tiles li.section:not(#section-0).hidden .course-section-header.tile-bar-heading,
+.format-tiles li.section:not(#section-0).restricted .course-section-header.tile-bar-heading {
     background-color: #efefef;
     border-top-color: #cdcdcd;
 }
-.format-tiles li.section:not(#section-0).hidden .course-section-header  .tilebarphoto,
-.format-tiles li.section:not(#section-0).restricted .course-section-header .tilebarphoto {
+.format-tiles li.section:not(#section-0).hidden .course-section-header.tile-bar-heading .tilebarphoto,
+.format-tiles li.section:not(#section-0).restricted .course-section-header.tile-bar-heading .tilebarphoto {
     filter: grayscale(1);
 }
-.format-tiles li.section:not(#section-0) .course-section-header img.icon {
-    width: 32px;
-    height: 32px;
-}
-
 .format-tiles .tiles-editor-image {
     width: 77px;
     height: 45px;
@@ -1991,14 +1991,85 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     width: 45px;
     height: 45px;
 }
+.format-tiles li.subtile .tileiconcontainer.administration {
+    border: 1px dashed #da58ef30;
+}
+.format-tiles li.subtile .tileiconcontainer.assessment {
+    border: 1px dashed #f9008630;
+    background-color: #f9008606;
+}
+.format-tiles li.subtile .tileiconcontainer.content {
+    border: 1px dashed #0099ad30;
+    background-color: #0099ad06;
+}
+.format-tiles li.subtile .tileiconcontainer.collaboration {
+    border: 1px dashed #6f46f730;
+    background-color: #6f46f706;
+}
+.format-tiles li.subtile .tileiconcontainer.communication {
+    border: 1px dashed #eb620030;
+    background-color: #eb620006;
+}
+.format-tiles li.subtile .tileiconcontainer.interactivecontent {
+    border: 1px dashed #8d3d1b30;
+    background-color: #8d3d1b06;
+}
 .format-tiles li.subtile .tileiconcontainer.other {
+    background-color: #767d8406;
+}
+/*Default*/
+.format-tiles li.subtile .tileiconcontainer {
+    border: 1px dashed #21252930;
+    background-color: #21252906;
+}
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .tileiconcontainer.administration {
+    background-color: #da58ef;
+    border: none;
+}
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .tileiconcontainer.assessment {
+    background-color: #f90086;
+}
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .tileiconcontainer.content {
+    background-color: #0099ad;
+    border: none;
+}
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .tileiconcontainer.collaboration {
+    background-color: #6f46f7;
+    border: none;
+}
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .tileiconcontainer.communication {
+    background-color: #eb6200;
+    border: none;
+}
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .tileiconcontainer.interactivecontent {
+    background-color: #8d3d1b;
+    border: none;
+}
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .tileiconcontainer.other {
     background-color: #767d84;
+    border: none;
 }
 .format-tiles li.subtile.bigbluebuttonbn .tileiconcontainer.other {
     background-color: #0f4d9d;
 }
-.format-tiles li.subtile .activityiconcontainer.other .icon:not(.nofilter) {
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .activityiconcontainer:not(.isbranded) .activityicon:not(.nofilter),
+.format-tiles .format-tiles-colour-subtile-icon-bg li.subtile .activityiconcontainer:not(.isbranded) .icon:not(.nofilter) {
     filter: brightness(0) invert(1);
+}
+.format-tiles li.subtile .tile-icon {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Moodle 4.4+ specific styles*/
+.format-tiles li.activity.subtile .tileiconcontainer .tile-icon .icon {
+    max-width: 70px;
+    max-height: 70px;
+    width: 70px;
+    height: 70px;
+    padding: 0;
 }
 
 @media (min-width: 768px) {

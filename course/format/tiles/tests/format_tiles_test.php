@@ -224,13 +224,10 @@ final class format_tiles_test extends \advanced_testcase {
 
         // Try updating using callback from mismatching course format.
         try {
-            $tmpl = component_callback('format_weeks', 'inplace_editable', ['sectionname', $section->id, 'New name']);
+            component_callback('format_weeks', 'inplace_editable', ['sectionname', $section->id, 'New name']);
             $this->fail('Exception expected');
         } catch (\moodle_exception $e) {
-            $this->assertTrue(
-                preg_match('/^Can not find data record in database/', $e->getMessage()) === 1
-                || preg_match('/^Can\'t find data record in database/', $e->getMessage()) === 1
-            );
+            $this->assertEquals(1, preg_match('/^Can\'t find data record in database/', $e->getMessage()));
         }
     }
 

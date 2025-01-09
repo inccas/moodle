@@ -187,34 +187,6 @@ final class format_tiles_courselib_test extends \advanced_testcase {
     }
 
     /**
-     * Test_update_course_section_time_modified.
-     * @throws \dml_exception
-     * @throws \moodle_exception
-     */
-    public function test_update_course_section_time_modified() {
-        global $DB;
-
-        $this->resetAfterTest();
-
-        // Create the course with sections.
-        $course = $this->getDataGenerator()->create_course(['numsections' => 10, 'format' => 'tiles'], ['createsections' => true]);
-        $sections = $DB->get_records('course_sections', ['course' => $course->id]);
-
-        // Get the last section's time modified value.
-        $section = array_pop($sections);
-        $oldtimemodified = $section->timemodified;
-
-        // Update the section.
-        $this->waitForSecond(); // Ensuring that the section update occurs at a different timestamp.
-        course_update_section($course, $section, []);
-
-        // Check that the time has changed.
-        $section = $DB->get_record('course_sections', ['id' => $section->id]);
-        $newtimemodified = $section->timemodified;
-        $this->assertGreaterThan($oldtimemodified, $newtimemodified);
-    }
-
-    /**
      * Test_course_add_cm_to_section.
      * @throws \coding_exception
      * @throws \dml_exception

@@ -141,48 +141,6 @@ class format_tiles extends core_courseformat\base {
     }
 
     /**
-     * The URL to use for the specified course (with section)
-     *
-     * @param int|stdClass $section Section object from database or just field course_sections.section
-     *     if omitted the course view page is returned
-     * @param array $options options for view URL. At the moment core uses:
-     *     'navigation' (bool) if true and section has no separate page, the function returns null
-     *     'sr' (int) used by multipage formats to specify to which section to return
-     * @return null|moodle_url
-     * @throws moodle_exception
-     */
-    public function get_view_url($section, $options = []) {
-        $course = $this->get_course();
-        $url = new moodle_url('/course/view.php', ['id' => $course->id]);
-
-        $sr = null;
-        if (array_key_exists('sr', $options)) {
-            $sr = $options['sr'];
-        }
-        if (is_object($section)) {
-            $sectionno = $section->section;
-        } else {
-            $sectionno = $section;
-        }
-
-        if ($sectionno !== null) {
-            if ($sr !== null) {
-                $url->set_anchor('section-' . $sectionno);
-                $sectionno = $sr;
-            }
-            if ($sectionno != 0) {
-                $url->param('section', $sectionno);
-            } else if ($sr === null) {
-                if (!empty($options['navigation'])) {
-                    return null;
-                }
-                $url->set_anchor('section-' . $sectionno);
-            }
-        }
-        return $url;
-    }
-
-    /**
      * Returns the information about the ajax support in the given source format
      *
      * The returned object's property (boolean)capable indicates that
@@ -302,6 +260,53 @@ class format_tiles extends core_courseformat\base {
             }
         }
         return ['sectiontitles' => $titles, 'action' => 'move'];
+    }
+
+    /**
+     * The URL to use for the specified course (with section)
+     *
+     * Please note that course view page /course/view.php?id=COURSEID is hardcoded in many
+     * places in core and contributed modules. If course format wants to change the location
+     * of the view script, it is not enough to change just this function. Do not forget
+     * to add proper redirection.
+     *
+     * @param int|stdClass $section Section object from database or just field course_sections.section
+     *     if null the course view page is returned
+     * @param array $options options for view URL. At the moment core uses:
+     *     'navigation' (bool) if true and section not empty, the function returns section page; otherwise, it returns course page.
+     *     'sr' (int) used by course formats to specify to which section to return
+     *     'expanded' (bool) if true the section will be shown expanded, true by default
+     * @return null|moodle_url
+     */
+    public function get_view_url($section, $options = []) {
+        global $PAGE;
+        if (array_key_exists('sr', $options)) {
+            $sectionno = $options['sr'];
+        } else if (is_object($section)) {
+            $sectionno = $section->section;
+        } else {
+            $sectionno = $section;
+        }
+
+        // MDL-79986 introduced new /course/section.php page.
+        // We want to avoid this in breadcrumb if using JS nav (e.g. on activity page breadcrumb when viewing Quiz).
+        // However if we are already on section page (e.g. editing) we return core URL, otherwise we get no breadcrumb at all.
+        $alreadyonsectionpage = $PAGE->pagelayout == 'course'
+            && in_array($PAGE->pagetype, ['section-view-tiles', 'course-view-section-tiles'])
+            && $PAGE->url->compare(new moodle_url('/course/section.php'), URL_MATCH_BASE);
+        if ($alreadyonsectionpage) {
+            return \core_courseformat\base::get_view_url($section, $options);
+        } else if (\format_tiles\local\util::using_js_nav()) {
+            if ((!empty($options['navigation']) || array_key_exists('sr', $options)) && $sectionno !== null) {
+                // Display section on course view page, not separate section.php page.
+                $sectioninfo = $this->get_section($sectionno);
+                return new moodle_url(
+                    '/course/view.php',
+                    ['id' => $sectioninfo->course, 'section' => $sectioninfo->sectionnum]
+                );
+            }
+        }
+        return \core_courseformat\base::get_view_url($section, $options);
     }
 
     /**
@@ -1005,21 +1010,11 @@ function format_tiles_pluginfile($course, $cm, $context, $filearea, $args, $forc
  */
 function format_tiles_output_fragment_get_cm_list(array $args): string {
     global $PAGE, $DB;
-    $sectionid = $args['sectionid'];
-    $section = $DB->get_record('course_sections', ['id' => $sectionid]);
+    $section = $DB->get_record('course_sections', ['id' => $args['sectionid']]);
     if (!$section) {
-        throw new moodle_exception(
-            'invalidsectionid', 'format_tiles', '', $sectionid, "Section ID '$sectionid' not found"
-        );
+        throw new \Exception("Section not found with ID " . $args['sectionid']);
     }
     $course = get_course($section->course);
-
-    if ($course->format != 'tiles') {
-        throw new moodle_exception(
-            'invalidsectionid', 'format_tiles', '',
-            $sectionid, "Course '$course->id' is not a tiles course"
-        );
-    }
 
     // We don't need to check course context permission as fragment API does that.
     // But we should check that the user can see this specific section as may be hidden.
@@ -1091,100 +1086,4 @@ function format_tiles_output_fragment_get_cm_content(array $args): string {
         throw new invalid_parameter_exception('Only page modules or label like activities are allowed through this service');
     }
     throw new invalid_parameter_exception('Module not found with context ID ' . $args['contextid']);
-}
-
-/**
- * Callback to add head elements.  Used to add dynamic CSS used by Tiles format.
- * @see \core_renderer::standard_head_html()
- * @return string the HTML to inject.
- */
-function format_tiles_before_standard_html_head(): string {
-    $html = '';
-    $debug = "Could not prepare format_tiles head data";
-    try {
-        // We have to be careful in this function as it's called on every page (not just tiles course pages).
-        // The method get_tiles_dynamic_css() will check that we are on a page that really needs it.
-        if (method_exists('format_tiles\local\dynamic_styles', 'get_tiles_dynamic_css')) {
-            $dynamiccss = \format_tiles\local\dynamic_styles::get_tiles_dynamic_css();
-            if ($dynamiccss) {
-                $html .= "<style id=\"format-tiles-dynamic-css\">$dynamiccss</style>";
-            }
-        }
-    } catch (\Exception $e) {
-        debugging("$debug: " . $e->getMessage(), DEBUG_DEVELOPER);
-    }
-    return $html;
-}
-
-/**
- * Callback to add head elements.  Used to add dynamic CSS used by Tiles format.
- * @return string HTML to inject.
- *
- * @see \core_renderer::footer()
- */
-function format_tiles_before_footer() {
-    global $PAGE;
-    if (($PAGE->course->format ?? null) !== 'tiles') {
-        // This is called on every page so check that we are in a tiles course first.
-        return '';
-    }
-
-    try {
-        $html = '';
-
-        $editing = $PAGE->user_is_editing();
-
-        $allowedpagetypes = ['course-view-tiles', 'section-view-tiles'];
-        $oncourseviewpage = in_array($PAGE->pagetype, $allowedpagetypes);
-
-        // On a mod/view.php page we may need JS to ensure that any clicks on course index menu launch modals where appropriate.
-        $modviewpageneedsjs = false;
-        $allowedmodals = format_tiles\local\modal_helper::allowed_modal_modules();
-
-        if (get_config('format_tiles', 'usecourseindex')) {
-            if (!empty($allowedmodals['resources'] || !empty($allowedmodals['modules']))) {
-                // On /mod/xxx/view.php or course/view.php page passing in cmid, may need to launch modal JS.
-                // This is because the course index needs the JS.  So get details.
-                $matches = [];
-                preg_match('/^mod-([a-z]+)-view$/', $PAGE->pagetype, $matches);
-                $modviewpageneedsjs = (bool)($matches[1] ?? null);
-            }
-        }
-
-        if (($oncourseviewpage && !$editing) || $modviewpageneedsjs) {
-            // Course module modals.
-            $launchmodalcmid = null;
-
-            // If we are on course/view.php, get details.
-            if ($oncourseviewpage && !$editing) {
-                $launchmodalcmid = optional_param('cmid', null, PARAM_INT);
-                if ($launchmodalcmid) {
-                    // Need to check if this cm allowed a modal.
-                    $modalallowed =
-                        \format_tiles\local\modal_helper::cm_has_modal($PAGE->course->id, $launchmodalcmid);
-                    if (!$modalallowed) {
-                        // Modal not allowed so unset.
-                        $launchmodalcmid = null;
-                    }
-                }
-            }
-
-            $PAGE->requires->js_call_amd(
-                'format_tiles/course_mod_modal', 'init',
-                [$PAGE->course->id, false, $PAGE->pagetype, $launchmodalcmid, \format_tiles\local\util::using_js_nav()]
-            );
-        }
-
-        // Add our JS config HTML.
-        // Avoid doing so if the header has not been printed.
-        // (The caveat is because some plugins e.g. mod/customcert/view.php when sending a PDF file may trigger this function).
-        if ($PAGE->state === moodle_page::STATE_IN_BODY) {
-            $jsconfig = format_tiles\local\util::get_js_config_data($PAGE->course->id);
-            $renderer = $PAGE->get_renderer('format_tiles');
-            $html .= $renderer->render_from_template('format_tiles/js-config', ['tiles_js_config' => $jsconfig]);
-        }
-    } catch (\Exception $e) {
-        debugging("Could not prepare format_tiles footer data: " . $e->getMessage(), DEBUG_DEVELOPER);
-    }
-    return $html;
 }

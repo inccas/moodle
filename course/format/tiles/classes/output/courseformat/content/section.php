@@ -77,7 +77,7 @@ class section extends section_base {
             }
         }
 
-        if (!$this->format->get_section_number()) {
+        if (!$this->format->get_sectionnum()) {
             $addsectionclass = $this->format->get_output_classname('content\\addsection');
             $addsection = new $addsectionclass($this->format);
             $data->numsections = $addsection->export_for_template($output);

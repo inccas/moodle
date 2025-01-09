@@ -33,7 +33,8 @@
         "phototileediturl": "https://url.com"
     }
     }}
-<span class="tiles-editor-image text-center" {{#editing}} data-section="{{num}}" data-true-sectionid="{{id}}" data-tiles-action="launch-tiles-icon-picker"{{/editing}} id="tileicon_{{num}}">
+{{^isdelegatedsection}}
+    <span class="tiles-editor-image text-center" {{#editing}} data-section="{{num}}" data-true-sectionid="{{id}}" data-tiles-action="launch-tiles-icon-picker"{{/editing}} id="tileicon_{{num}}">
     {{^hasphoto}}
         {{#tilenumber}}{{>format_tiles/tilenumber}}{{/tilenumber}}
         {{^tilenumber}}
@@ -44,8 +45,9 @@
             </span>
         {{/tilenumber}}
     {{/hasphoto}}
-    {{#hasphoto}}
-        <a class="tilebarphoto" data-imagetype="{{#isdraftfile}}draftfile{{/isdraftfile}}{{^isdraftfile}}tilephoto{{/isdraftfile}}"
-           href="{{{phototileediturl}}}" style="background-image: url({{{phototileurl}}});"></a>
-    {{/hasphoto}}
-</span>
+        {{#hasphoto}}
+            <a class="tilebarphoto" data-imagetype="{{#isdraftfile}}draftfile{{/isdraftfile}}{{^isdraftfile}}tilephoto{{/isdraftfile}}"
+               href="{{{phototileediturl}}}" style="background-image: url({{{phototileurl}}});"></a>
+        {{/hasphoto}}
+    </span>
+{{/isdelegatedsection}}

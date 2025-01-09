@@ -407,9 +407,21 @@ Other
 - Fix issue 189: show more
 - Fix issue 192: Beta issue with duplicated section 0 content on the top of individual weeks
 
-4.3.0.25 - 4.3.0.27 (2024051600)
-=====================
-- Fix issue 204 upgrade path error
+4.4.0.1 RC (2024042200)
+===========================
+- Moodle 4.4. compatibility
+- Sort strings file alphabetically
+
+4.4.0.2 (2024050300)
+===========================
+- Sub-tile style improvement with setting
+- Set get_view_url to avoid /course/section.php page
+- PHP docs improvements
+- Correct test namespace
+- Fix issue #204 upgrade path
+
+4.4.0.3 (2024051700)
+====================
 - Fix issue 205 Embedded URL activity video stop
 - Fix issue 206 overall progress missing if JS nav disabled
 - Improve overall progress indicator
@@ -417,7 +429,11 @@ Other
 - YouTube embedded in label max width fix
 - Simplify function to get modal allowed CM IDs
 
-4.3.0.28 (2024060400)
+4.4.0.4 (2024051800)
+====================
+- Edge case behat fix
+
+4.4.0.5 (2024060500)
 =====================
 - Fix issue #208 overlap on tile when using style 2
 - Registration bug and other minor bug fixes
@@ -430,39 +446,32 @@ Other
 - Refactor dynamic styles to use CSS vars and less inline CSS
 - Other minor changes: tile fitter JS, registration, book icon & Adaptable theme CSS
 
-4.3.0.30 (2024061200)
+4.4.0.7 (2024061303)
 =====================
 - Respect section permalinks https://docs.moodle.org/403/en/Course_homepage#Get_a_permalink_to_a_course_section
 - Remove CSS error
-
-4.3.0.31 (2024061300)
-=====================
 - Dynamic styles improve
 - Non JS mode - fix Moodle 4.4 section.php page incl colours, fix dimmed nav arrow colour.
-
-4.3.0.32 (2024061302)
-=====================
 - Refactor JS init and remove some redundant editor JS
 - Avoid imprecision warning on image upload
+- Course index modals work on section.php page
 
-4.3.0.33 & 4.3.0.34 (2024061400 & 2024061401)
-=============================================
+4.4.0.8 (2024061402)
+=====================
 - Support for section.php on Moodle 4.4
 - Move some helper methods and minor refactor
 - Fix modals non JS navigation mode
 
-4.3.0.35 (2024062000)
-=====================
+
+4.4.0.9 (2024062100)
+====================
 - Course index admin setting defaults to on for Tiles
 - After save an activity, return to course main page, with # scroll to section edited
 - Remove set icon menu control for section zero
 - Avoid footer cache issue when course is restored deleting existing content.
-
-4.3.0.36 (2024062002)
-=====================
 - Fix URL activity modal when launched from course index.
 
-4.3.0.37 (2024070803)
+4.4.0.10 (2024070904)
 =====================
 - Fix issue #131 image overwrite
 - Fix issue #207 course modules indent (non-subtiles only)
@@ -473,16 +482,14 @@ Other
 - Remove duplicate lock icon
 - Add test to check course/edit.php works when tiles is on
 - Debugging messages set to DEBUG_DEVELOPER
-
-4.3.0.38 (2024070903)
-=====================
 - Remove photo options from icon picker modal when user is on course edit form (avoid course_sections error)
 
-4.3.0.40 (2024071106)
+4.4.0.11 (2024071107)
 =====================
 - Add tip to section edit form for how to edit tile icon/photo
+- Remove section view menu item (for editors) which (points to /course/section.php)
 
-4.3.0.43 (2024072503)
+4.4.0.12 (2024072510)
 =====================
 - Delete unused tile photos files when they are unset
 - Fix issue #211 icon fallbacks (previous fix incomplete)
@@ -490,17 +497,14 @@ Other
 - Fix issue #214 Tile misalignment after 4.3 update
 - Simplify tile fitter JS to speed up tile re-org when course index opened/closed
 
-4.3.0.44 (2024073130)
+4.4.0.14 (2024073140)
 =====================
 - Accessibility improvements
 - Code simplification (modals incl pluginfile URLs)
 - Allow tile fitter to work without JS nav being on
+- Improve sub-tile icon border/background
 
-4.3.0.45 (2024073131)
-=====================
-- Fix issue #215 hidden mod titles
-
-4.3.0.46 (2024080931)
+4.4.0.15 (2024080940)
 =====================
 - Minor style adjustments including chrome long tile title padding
 - Course index - click on label opens section
@@ -508,44 +512,53 @@ Other
 - Dismiss dialogues (e.g. glossary entries) when tile is closed or changed
 - Avoid double glossary dialogue when autolink in page modal is clicked
 
-4.3.0.47 (2024081630)
+4.4.0.16 (2024081640)
 =====================
 - Fix modal bug where resource activity has multiple files
 - Icon background colour is course colour for activities which don't support "purpose"
 - Add branch description to readme
 
-4.3.0.48 (2024081633)
+4.4.0.17 (2024081641)
+=====================
+- Icon background colour correction for purpose "other" activities
+
+4.4.0.18 (2024081642)
 =====================
 - Refactor modal handling for reliability
 - Show description in PDF modal if set to display in course
 - When JS navigation is deactivated by user, alert no longer persists
 - Fix issue #217 cm list padding
 
-4.3.0.49 (2024081634)
+4.4.0.19 (2024082440)
 =====================
 - Modal cache efficiency improvement
 
-4.3.0.50 (2024081635)
+4.4.0.20 (2024082441)
 =====================
-- Modal cache clear bug fix
+- Correct mustache template example typos
 
-4.3.0.51 (2024082430)
-=====================
-- Test return type
-
-4.3.0.52 (2024090532)
+4.4.0.21 (2024090540)
 =====================
 - Fix issue #219 filters not applying to non-subtile headings
 - Fix issue #221 unit test provider bug
 - Fix issue #222 safari PDF modal not displaying
 - Add behat test for filtering for tile names, activity names and content
 
-4.3.0.53 (2024091132)
+4.4.0.22 (2024090741)
+=====================
+- Fix previous merge error causing sub-tile spacing issue
+- Preparatory work for upcoming Moodle 4.5 around delegated sections / activity chooser button refactor (MDL-81765)
+
+4.4.0.23 (2024090840)
+=====================
+- Further preparatory work for upcoming Moodle 4.5 around delegated sections (implement for sub-tiles courses)
+
+4.4.0.24 (2024091140)
 =====================
 - Fix issue with ampersand display on sub-tile title
 - Change format name to "Tiles" not "Tiles format" (consistent with core)
 
-4.3.0.54 (2024100930)
+4.4.0.25 (2024100940)
 =====================
 - Improve tile number icons
     - add new tab to icon picker for tile numbers with numbers up to 20
@@ -560,44 +573,45 @@ Other
 - Fix issue 223 custom certificate monologo
 - Fix issue 226 stop page modal when pop up set
 
-4.3.0.56 (2024100937)
-=====================
+4.5.0.0 (2024101150)
+====================
+- Previous prep work for Moodle 4.5 (e.g. on subsections / delegated sections in 4.4.0.22 & 23) can now be used
+- Bootstrap 5 change class names e.g. ml-1 => ms-1 - see https://moodledev.io/docs/4.5/guides/bs5migration
 - Reserve space for right scroll bar on tiles main screen
     (avoid layout change in Chrome when tiles open/close and scrollbar appears/disappears)
 - Mobile sub-tile layout adjustment
+
+4.5.0.1 (2024101250)
+====================
+- Improve sub-sections expanded state handling (e.g. when persist when content is reloaded)
+- Add behat test for sub-sections
+
+4.5.0.2 (2024102550)
+====================
 - Fix missing section link in breadcrumb in activity
 - Fix new number picker button titles
 - Remove jquery from behat tests
 - Remove redundant local icons for resource subtiles in Moodle 4.3+
 - Improve appearance of bigbluebutton and Turnitin icons on sub-tiles
 
-4.3.0.57 (2024111530)
+4.5.0.3 (2024120950)
 =====================
 - High contrast mode available (shown if activated by user preference)
-
-4.3.0.59 (2024120500)
-=====================
 - Simplify $displaysection
 - Improve scroll bar access when tile open (overlay in centre section only, exposing left and right drawers to user)
 - Include "General" heading (for section zero) at top of course index
 - In course index, clicks on section headings can open sections using JS nav (if enabled)
-
-4.3.0.60 (2024120930)
-=====================
 - Remove debug message
-
-4.3.0.61 (2024120931)
-=====================
 - Allow null displaysection on js init
 
-4.3.0.62 (2024121230)
-=====================
+4.5.0.4 (2024121250)
+====================
 - Adjust tests
 
-4.3.0.63 (2024121231)
-=====================
-- Make user pref controls more obvious if on/off (use same switch as edit mode)
+4.5.0.5 (2024121251)
+====================
+- Fix JS build file course.min.js
 
-4.3.0.64 (2024121233)
-=====================
-- Improve JS section load content error report notification
+4.5.0.6 (2024121252)
+====================
+- Add missing change to version.php

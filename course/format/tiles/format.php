@@ -42,7 +42,7 @@ $context = context_course::instance($course->id);
 // Variable $displaysection should already be set from course/view.php but we override anyway.
 $displaysection = optional_param('section', 0, PARAM_INT);
 if (!empty($displaysection)) {
-    $format->set_section_number($displaysection);
+    $format->set_sectionnum($displaysection);
 }
 
 if (($marker >= 0) && has_capability('moodle/course:setcurrentsection', $context) && confirm_sesskey()) {

@@ -142,7 +142,7 @@ class course_output implements \renderable, \templatable {
      * @param int|null $sectionnum the id of the current section.
      * @param \renderer_base|null $courserenderer the course renderer.
      */
-    public function __construct($course, $fromajax = false, $sectionnum = null, \renderer_base $courserenderer = null) {
+    public function __construct($course, $fromajax = false, $sectionnum = null, \renderer_base|null $courserenderer = null) {
         $this->course = $course;
         $this->fromajax = $fromajax;
         $this->sectionnum = $sectionnum;
@@ -194,7 +194,10 @@ class course_output implements \renderable, \templatable {
             }
         }
         $data = $this->get_basic_data();
-        $data = $this->append_section_zero_data($data, $output);
+        if (!$this->sectionnum) {
+            $data = $this->append_section_zero_data($data, $output);
+        }
+
         // We have assembled the "common data" needed for both single and multiple section pages.
         // Now we can go off and get the specific data for the single or multiple page as required.
         if ($this->sectionnum !== null) {
@@ -241,6 +244,8 @@ class course_output implements \renderable, \templatable {
 
         $data['useSubtiles'] = get_config('format_tiles', 'allowsubtilesview') && $this->courseformatoptions['courseusesubtiles'];
         $data['usetooltips'] = get_config('format_tiles', 'usetooltips');
+        $data['outerextraclasses'] = get_config('format_tiles', 'subtileiconcolourbackground')
+            ? 'format-tiles-colour-subtile-icon-bg' : '';
 
         foreach ($this->courseformatoptions as $k => $v) {
             $data[$k] = $v;
@@ -252,14 +257,15 @@ class course_output implements \renderable, \templatable {
             $message = get_string('coursephotomigrationincomplete', 'format_tiles');
             $message .= \html_writer::link(
                 new \moodle_url('/course/format/tiles/editor/migratecoursedata.php', ['courseid' => $this->course->id]),
-                '<i class="icon fa fa-cog mr-1"></i>' . get_string('fixproblems', 'format_tiles'),
-                ['class' => 'ml-1']
+                '<i class="icon fa fa-cog me-1"></i>' . get_string('fixproblems', 'format_tiles'),
+                ['class' => 'ms-1']
             );
             $data['editorwarnings'][] = [
                 'text' => $message,
                 'icon' => 'exclamation-triangle', 'class' => 'warning',
             ];
         }
+        $data['singlesectionnum'] = $this->sectionnum;
         return $data;
     }
 
@@ -482,6 +488,10 @@ class course_output implements \renderable, \templatable {
         if ($this->canviewhidden) {
             $data['availabilitymessage'] = self::temp_section_availability_message($thissection);
         }
+        if ($this->moodlerelease >= 4.5 && ($thissection->is_delegated() ?? false)) {
+            $data['isdelegatedsection'] = true;
+            $data['contentcollapsed'] = true;
+        }
         return $data;
     }
 
@@ -571,7 +581,8 @@ class course_output implements \renderable, \templatable {
             $isphototile = $allowedphototiles && in_array($section->id, $phototileids);
             $showsection = $section->uservisible ||
                 ($section->visible && !$section->available && !empty($section->availableinfo));
-            if ($sectionnum != 0 && $showsection) {
+            $isdelegated = $this->moodlerelease >= 4.5 && ($section->is_delegated() ?? false);
+            if ($sectionnum != 0 && $showsection && !$isdelegated) {
                 $rawtitle = $this->truncate_title(get_section_name($this->course, $sectionnum));
                 if ($uselinebreakfilter) {
                     $title = $this->apply_linebreak_filter($rawtitle);
@@ -606,6 +617,7 @@ class course_output implements \renderable, \templatable {
                     'progress' => false,
                     'isactive' => $this->course->marker == $section->section,
                     'extraclasses' => "tilestyle-$tilestyle ",
+                    'isdelegated' => $isdelegated,
                 ];
 
                 $newtile['tilenumber'] = $newtile['tileicon'] ? util::get_tile_number_from_icon_name($newtile['tileicon']) : null;
@@ -782,7 +794,7 @@ class course_output implements \renderable, \templatable {
 
     /**
      * Gets the data (context) to be used with the activityinstance template
-     * @param object $section the section object we want content for
+     * @param \section_info $section the section object we want content for
      * @param \renderer_base $output
      * @see \cm_info for full detail of $mod instance variables
      * @see \core_completion\manager::get_activities() which covers similar ground
@@ -832,7 +844,7 @@ class course_output implements \renderable, \templatable {
     /**
      * Assemble and return the data to render a single course module.
      * @param \cm_info $mod
-     * @param object $section
+     * @param \section_info $section
      * @param bool $previouswaslabel
      * @param bool $isfirst
      * @param \renderer_base $output
@@ -999,8 +1011,7 @@ class course_output implements \renderable, \templatable {
                     rebuild_course_cache($mod->course, true);
                 }
             }
-        }
-        if ($mod->modname == 'url') {
+        } else if ($mod->modname == 'url') {
             $externalurl = $DB->get_field('url', 'externalurl', ['id' => $mod->instance]);
             $modifiedvideourl = self::check_modify_embedded_url($externalurl);
 
@@ -1018,6 +1029,8 @@ class course_output implements \renderable, \templatable {
             }
         }
 
+        $moduleobject['issubsection'] = $mod->modname == 'subsection';
+
         if (
             ($mod->modname === 'url' || $mod->modname === 'resource')
             && $this->devicetype != \core_useragent::DEVICETYPE_TABLET
@@ -1028,7 +1041,8 @@ class course_output implements \renderable, \templatable {
         }
 
         // Now completion information for the individual course module.
-        $completion = $mod->completion && $this->completioninfo && $this->completioninfo->is_enabled($mod) && $mod->available;
+        $completion = $mod->completion && $this->completioninfo && $this->completioninfo->is_enabled($mod)
+            && $mod->available && $mod->modname !== 'subsection';
         if ($completion) {
             // Add completion icon to the course module if appropriate.
             $moduleobject['hascompletion'] = true;
@@ -1081,7 +1095,7 @@ class course_output implements \renderable, \templatable {
         $visiblesectionnums = [];
         $currentsectionarrayindex = -1;
         foreach ($this->modinfo->get_section_info_all() as $section) {
-            if ($section->section == 0) {
+            if ($section->section == 0 || ($this->moodlerelease >= 4.5 && $section->is_delegated())) {
                 continue;
             }
             if ($section->uservisible) {
@@ -1217,16 +1231,19 @@ class course_output implements \renderable, \templatable {
             $controls[] = [
                 'url' => new \moodle_url($courseurl, array_merge($courseurlparams, ['format-tiles-action' => 'toggleanimatednav'])),
                 'label' => get_string('jsactivate', 'format_tiles'),
-                'checked' => $usingjsnav,
+                'iconname' => $usingjsnav ? 'toggle-on' : 'toggle-off',
+                'icontitle' => get_string($usingjsnav ? 'on' : 'off', 'format_tiles'),
             ];
         }
         if (get_config('format_tiles', 'highcontrastmodeallow')) {
+            $usehighcontrast = \format_tiles\local\util::using_high_contrast();
             $controls[] = [
                 'url' => new \moodle_url(
                     $courseurl, array_merge($courseurlparams, ['format-tiles-action' => 'togglehighcontrast'])
                 ),
                 'label' => get_string('highcontrastmode', 'format_tiles'),
-                'checked' => \format_tiles\local\util::using_high_contrast(),
+                'iconname' => $usehighcontrast ? 'toggle-on' : 'toggle-off',
+                'icontitle' => get_string($usehighcontrast ? 'on' : 'off', 'format_tiles'),
             ];
         }
         return $controls;

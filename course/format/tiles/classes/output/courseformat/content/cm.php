@@ -55,9 +55,10 @@ class cm extends core_cm {
         $moodlerelease = \format_tiles\local\util::get_moodle_release();
         $data->ismoodle42minus = $moodlerelease <= 4.2;
         $data->ismoodle41minus = $moodlerelease <= 4.1;
+        $data->ismoodle44 = $moodlerelease === 4.4;
         $data->ismoodle40 = $moodlerelease === 4.0;
         $data->modcontextid = $this->mod->context->id;
-
+        $data->cmtitle = $this->mod->get_formatted_name();
         $childadded = true; // We did add some data above.
         return $parentadded || $childadded;
     }

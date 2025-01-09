@@ -69,6 +69,17 @@ class util {
         $modaltype = \format_tiles\local\modal_helper::cm_modal_type($courseid, $cmrecord->id);
         $description = $cm->showdescription ? $cm->get_formatted_content() : '';
         $description = $description && trim(strip_tags($description)) ? $description : '';
+
+        // In Moodle 4.5+ the section may be a subsection, in which case we want the real (parent) section.
+        $section = $modinfo->get_section_info($cm->sectionnum);
+        if (self::get_moodle_release() >= 4.5 && ($section->is_delegated() ?? false)) {
+            $sectiondelegate = $section->get_component_instance();
+            if ($sectiondelegate) {
+                // This would give an error in Moodle 4.4 (but not 4.5) that get_parent_section() is not a function.
+                $section = $sectiondelegate->get_parent_section();
+            };
+        }
+
         return (object)[
             'id' => $cm->id,
             'courseid' => $courseid,
@@ -76,8 +87,8 @@ class util {
             'coursecontextid' => $coursecontext->id,
             'name' => $cm->get_formatted_name(),
             'modname' => $cm->modname,
-            'sectionnumber' => $cm->sectionnum,
-            'sectionid' => $cm->section,
+            'sectionnumber' => $section->section,
+            'sectionid' => $section->id,
             'completionenabled' => (bool)$completiondata,
             'completionstate' => $completiondata ? $completiondata->completionstate : null,
             'iscomplete' => in_array($completiondata->completionstate ?? null, [COMPLETION_COMPLETE, COMPLETION_COMPLETE_PASS])
