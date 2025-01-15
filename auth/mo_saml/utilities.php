@@ -527,17 +527,10 @@ class utilities {
 
     public static function decrypt_element(DOMElement $encrypteddata,
                                             XMLSecurityKey $inputkey,
-                                            array $blacklist = array(),
-                                            XMLSecurityKey $alternatekey = null) {
+                                            array $blacklist = array()) {
         try {
             return self::do_decrypt_element($encrypteddata, $inputkey, $blacklist);
         } catch (Exception $e) {
-            // Try with alternate key.
-            try {
-                return self::do_decrypt_element($encrypteddata, $alternatekey, $blacklist);
-            } catch (Exception $t) {
-                echo sprintf('Failed to decrypt XML element.');
-            }
             /*
              * Something went wrong during decryption, but for security
              * reasons we cannot tell the user what failed.

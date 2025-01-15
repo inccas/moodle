@@ -132,8 +132,11 @@ class auth_plugin_mo_saml extends auth_plugin_base {
         $custom_attributes = $DB->get_records( 'user_info_field' );
         $custom_attribute_values = array();
 		foreach ( $custom_attributes as $attribute ) {
-			$shortname = $attribute->shortname;
-            $shortname_value=get_config('auth_mo_saml',$shortname.'map');
+            $shortname = $attribute->shortname;
+            $shortname_value = get_config('auth_mo_saml',$shortname.'map');
+            if( empty( $samlattributes[$shortname_value] ) ) {
+                continue;
+            }
             $custom_attribute_values[$shortname] = $samlattributes[$shortname_value][0];
         }
         $user["custom_attribute_values"] = $custom_attribute_values;

@@ -1,4 +1,0 @@
-totop,theme_boost_vorsprung
-privacy:drawernavclosed,theme_boost_vorsprung
-privacy:drawernavopen,theme_boost_vorsprung
-currentinparentheses,theme_boost_vorsprung

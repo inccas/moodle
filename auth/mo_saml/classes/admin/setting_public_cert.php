@@ -21,15 +21,37 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL v3 or later, see license.txt
  */
 
-defined( 'MOODLE_INTERNAL' ) || die();
+namespace auth_mo_saml\admin;
 
-$plugin->requires  = 2016052300;   // Requires Moodle 3.1 or later.
-$plugin->release   = '10.8';
-$plugin->component = 'auth_mo_saml';
-$plugin->version   = 20241203001;    // YYYYMMDDXXX.
-$plugin->cron      = 0;     // Time in sec.
-$plugin->maturity  = MATURITY_STABLE;
+use admin_setting_configtextarea;
 
-$plugin->dependencies = [
-    'mod_forum' => ANY_VERSION
-];
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+
+class setting_public_cert extends admin_setting_configtextarea {
+
+    /**
+     * Constructor
+     */
+    public function __construct() { 
+        parent::__construct(
+            'auth_mo_saml/public_certificate',
+            get_string('mo_saml_public_certificate', 'auth_mo_saml'),
+            get_string('mo_saml_public_certificate_desc', 'auth_mo_saml'),
+            '',
+            PARAM_RAW_TRIMMED,
+        );
+    }
+
+    public function write_setting( $value ) {
+        $value = trim($value);
+        return parent::write_setting($value);
+    }
+
+    public function validate($value) {
+        $error_message = get_string( 'mo_saml_public_cert_invalid_msg', 'auth_mo_saml');
+        return empty( @openssl_x509_read( $value ) ) ? $error_message : true;
+    }    
+
+}

@@ -48,22 +48,41 @@ $string['mo_saml_spmetadata_download'] = 'Download SP Metadata';
 $string['mo_saml_spmetadata_download_help'] = '<a href=\'{$a}?download=1\'>Download Service Provider Metadata</a>
 <p>You can download the plugin XML metadata and upload it on your Identity Provider.</p><p>----------------------------------------------- OR -----------------------------------------------</p>';
 
-$string['mo_saml_sp_entityid'] = 'SP Entity-ID'; 
+$string['mo_saml_sp_entityid'] = 'SP Entity-ID / Audience URI'; 
 $string['mo_saml_sp_entityid_desc'] = '<p style="margin-top:-15px;margin-bottom:25px;">{$a}</p>';
 $string['mo_saml_acs_url'] = 'ACS URL';
 $string['mo_saml_acs_url_desc'] = '<p style="margin-top:-15px;margin-bottom:25px;">{$a}</p>';
-$string['mo_saml_audience_uri'] = 'Audience URI';
-$string['mo_saml_audience_uri_desc'] = '<p style="margin-top:-15px;margin-bottom:25px;">{$a}</p>';
 $string['mo_saml_nameid_format'] = 'NameID Format';
 $string['mo_saml_nameid_format_desc'] = '<p style="margin-top:-15px;margin-bottom:25px;">urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</p>';
-$string['mo_saml_sp_certificate_download'] = 'Certificate(Optional)';
-$mo_saml_cert_location = $CFG->dirroot."/auth/mo_saml/resources/sp-certificate.crt";
-$mo_saml_cert_file = file_get_contents( $mo_saml_cert_location );
-$mo_saml_valid_until_date = utilities::getValidDateFromCert($mo_saml_cert_file);
 
+$string['mo_saml_sp_certificate_download'] = 'Certificate (Optional)';
+$public_cert = get_config('auth_mo_saml', 'public_certificate');
+if( empty( $public_cert ) ) {
+    $public_cert_file_location = $CFG->dirroot."/auth/mo_saml/resources/sp-certificate.crt";
+    $public_cert = file_get_contents( $public_cert_file_location );
+}
+$mo_saml_valid_until_date = utilities::getValidDateFromCert( $public_cert );
 $string['mo_saml_sp_certificate_download_help'] = '<a href=\'{$a}?download=1\'>Download</a> <br/> <p> Certificate Expiry Date :  ' . $mo_saml_valid_until_date . '  </p> ';
+
 $string['mo_saml_sp_logout_url'] = 'Single Logout URL';
 $string['mo_saml_sp_logout_url_desc'] = '<p style="margin-top:-15px;margin-bottom:25px;">{$a}</p>';
+
+$string['mo_saml_add_custom_certificates'] = 'Add Custom Certificates';
+$string['mo_saml_add_custom_certificates_desc'] = "You can set up your own pair of public and private certificates to ensure secure Single Sign-On (SSO). [ <a href='https://faq.miniorange.com/knowledgebase/can-generate-certificate-saml-app/' target='_blank'>How to generate certificates?</a> ]<br> 
+<b>Note:</b> Public certificate should be exchanged with the configured Identity Provider.";
+
+$string['mo_saml_public_certificate'] = 'Public Certificate';
+$string['mo_saml_public_certificate_desc'] = '<tr>
+<td></td>
+<td><b>NOTE:</b> Format of the certificate:<br/>-----BEGIN CERTIFICATE-----<br/>XXXXXXXXXXXXXXXXXXXXXXXXXXX<br/>-----END CERTIFICATE-----<br/></td>
+</tr>';
+
+$string['mo_saml_private_key'] = 'Private Key';
+$string['mo_saml_private_key_desc'] = '<tr>
+<td></td>
+<td><b>NOTE:</b> Format of the certificate:<br/>-----BEGIN PRIVATE KEY-----<br/>XXXXXXXXXXXXXXXXXXXXXXXXXXX<br/>-----END PRIVATE KEY-----<br/></td>
+</tr>';
+
 
 $string['mo_saml_service_provider_setup'] = 'Service Provider Setup';
 $string['mo_saml_service_provider_setup_desc'] = "To configure IDP metadata, you have two options: you can either fetch the metadata URL or XML directly in the IDP Metadata textbox, or manually configure the values.";
@@ -165,3 +184,7 @@ $string['pluginauthfailed'] = 'The miniOrange SAML authentication plugin failed 
 $string['pluginauthfailedusername'] = 'The miniOrange SAML authentication plugin failed - user $a disallowed due to invalid username format.';
 $string['auth_mo_saml_username_email_error'] = 'The identity provider returned a set of data that does not contain the SAML username/email mapping field. Once of this field is required to login. <br />Please check your Username/Email Address Attribute Mapping configuration.';
 $string['pluginname'] = 'miniOrange SAML 2.0 SSO';
+
+// Settings input error messages.
+$string['mo_saml_public_cert_invalid_msg'] = 'Kindly provide a valid public certificate.';
+$string['mo_saml_private_key_invalid_msg'] = 'Please provide a valid private key that corresponds to the public certificate you have submitted.';

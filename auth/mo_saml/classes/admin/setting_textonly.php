@@ -49,11 +49,8 @@ class setting_textonly extends admin_setting_heading {
         $idp_config_option = get_config('auth_mo_saml','idpconfigoption');
         $value = get_config('auth_mo_saml', 'idpmetadata');
 
-        $idp_name = get_config('auth_mo_saml', 'identityname'); 
-        $loginurl = get_config('auth_mo_saml', 'login_url_temp');
-        $entityid = get_config('auth_mo_saml', 'entityid_temp');
-        $certificate = get_config('auth_mo_saml', 'certificate_temp');
-        $logouturl = get_config('auth_mo_saml', 'logout_url_temp');
+        $idp_name = get_config('auth_mo_saml', 'identityname');
+        
         // if($idp_name == ""){
         //     redirect($actuallink, 'Please input a valid IDP Name.', null, \core\output\notification::NOTIFY_ERROR);
         //     return;

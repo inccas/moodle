@@ -16,17 +16,16 @@
 
 /**
  * @package   auth_mo_saml
- * @copyright   2020  miniOrange
- * @category    document
- * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL v3 or later, see license.txt
+ * @copyright 2020  miniOrange
+ * @category  document
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU/GPL v3 or later, see license.txt
  */
 
  function xmldb_auth_mo_saml_upgrade($oldversion) {
+    
     global $CFG, $DB;
 
     $dbman = $DB->get_manager();
-
-
 
     if ($oldversion < 20230912110) {
        
@@ -129,6 +128,23 @@
         upgrade_plugin_savepoint(true, 20230912110, 'auth', 'mo_saml');
     }
 
+    if ($oldversion < 2024101072) {
+        if( ! isset( $config->public_certificate ) ) {
+            $public_cert_location  = $CFG->dirroot."/auth/mo_saml/resources/sp-certificate.crt";
+            $public_cert_from_file = file_get_contents( $public_cert_location );
 
+            set_config('public_certificate', $public_cert_from_file, 'auth_mo_saml');
+        }
+
+        if( ! isset( $config->private_key ) ) {
+            $private_key_location  = $CFG->dirroot."/auth/mo_saml/resources/sp-key.key";
+            $private_key_from_file = file_get_contents( $private_key_location );
+
+            set_config( 'private_key', $private_key_from_file, 'auth_mo_saml' );
+        }
+
+        upgrade_plugin_savepoint(true, 2024101072, 'auth', 'mo_saml');
+    }
+    
     return true;
  }

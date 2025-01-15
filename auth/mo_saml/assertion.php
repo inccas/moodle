@@ -92,13 +92,10 @@ class saml_assertion_class {
                 throw new Exception('More than one encrypted data element in <saml:EncryptedAssertion>.');
             }
             $key = new XMLSecurityKey($algo, array('type' => 'private'));
-            $url = $CFG->dirroot . '/auth/mo_saml/resources/sp-key.key';
-            $key->loadKey($url, true);
-            $alternatekey = new XMLSecurityKey($algo, array('type' => 'private'));
-            $alternatekeyurl = $CFG->dirroot . "/auth/mo_saml/resources/sp-key0.key";
-            $alternatekey->loadKey($alternatekeyurl, true);
+            $private_key = get_config('auth_mo_saml', 'private_key');
+            $key->loadKey($private_key);
             $blacklist = array();
-            $xml = utilities::decrypt_element($data[0], $key, $blacklist, $alternatekey);
+            $xml = utilities::decrypt_element($data[0], $key, $blacklist);
         }
 
         if (!$xml->hasAttribute('ID')) {

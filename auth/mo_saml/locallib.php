@@ -28,23 +28,20 @@
     global $CFG;
     $config = get_config('auth_mo_saml');
     if(isset($config->spentityid) && !empty($config->spentityid)){
-    $entity_id = $config->spentityid;
-  }
-  else{
+      $entity_id = $config->spentityid;
+    }
+    else{
       $entity_id = $CFG->wwwroot;
-  }
-    $acs_url     = $CFG->wwwroot."/auth/mo_saml/index.php";
-    $slo_url     = $CFG->wwwroot."/auth/mo_saml/logout.php";
+    }
+    $acs_url = $CFG->wwwroot."/auth/mo_saml/index.php";
+    $slo_url = $CFG->wwwroot."/auth/mo_saml/logout.php";
     if (!isset($config->saml_request_signed)) {
       $config->saml_request_signed = '';
     }
 
-    $cert_location = $CFG->dirroot."/auth/mo_saml/resources/sp-certificate.crt";
-
-    $cert_file = file_get_contents( $cert_location );
-
-    $validUntilDate = utilities::getValidUntilDateFromCert($cert_file);
-    $certificate = utilities::desanitize_certificate($cert_file);
+    $public_certificate = get_config('auth_mo_saml', 'public_certificate');
+    $validUntilDate     = utilities::getValidUntilDateFromCert($public_certificate);
+    $certificate        = utilities::desanitize_certificate($public_certificate);
 
     if (!(isset($config->nameidformat))) {
       $nameidformat="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress";

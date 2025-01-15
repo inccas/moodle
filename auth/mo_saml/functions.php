@@ -518,8 +518,8 @@ function mo_saml_create_logout_request($nameId, $sessionIndex, $logout_url, $log
     $samlRequest = "SAMLRequest=" . $samlRequest . "&RelayState=" . urlencode($sendRelayState) . '&SigAlg='. urlencode(XMLSecurityKey::RSA_SHA256);
     $param =array( 'type' => 'private');
     $key = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, $param);
-    $url = $CFG->dirroot.'/auth/mo_saml/resources/sp-key.key';
-    $key->loadKey($url, true);
+    $private_key = get_config('auth_mo_saml', 'private_key');
+    $key->loadKey($private_key);
     
     $objXmlSecDSig = new XMLSecurityDSig();
     $signature = $key->signData($samlRequest);

@@ -26,6 +26,8 @@
  use auth_mo_saml\admin\setting_idp_metadata;
  use auth_mo_saml\admin\setting_fetch_values;
  use auth_mo_saml\admin\setting_role_mapping;
+ use auth_mo_saml\admin\setting_public_cert;
+ use auth_mo_saml\admin\setting_private_key;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -221,53 +223,41 @@ if($hassiteconfig) {
             )
         );
 
-    $settings->add(new setting_textonly(
-        'auth_mo_saml/spm_url',
-        get_string('mo_saml_spmetadata_url', 'auth_mo_saml'),
-        get_string('mo_saml_spmetadata_url_help', 'auth_mo_saml', $CFG->wwwroot . '/auth/mo_saml/serviceprovider/spmetadata.php')
-        ));
-
-    $settings->add(new setting_textonly(
-        'auth_mo_saml/spm_xml',
-        get_string('mo_saml_spmetadata_download', 'auth_mo_saml'),
-        get_string('mo_saml_spmetadata_download_help', 'auth_mo_saml', $CFG->wwwroot . '/auth/mo_saml/serviceprovider/spmetadata.php')
-    ));
-
-    if(isset($config->spentityid) && !empty($config->spentityid)){
-        $spentityid = $config->spentityid;
-    }
-    else{
-        $spentityid = $CFG->wwwroot;
-    }
-
-    $settings->add(new setting_textonly(
-        'auth_mo_saml/spm_entityid',
-        get_string('mo_saml_sp_entityid', 'auth_mo_saml'),
-        get_string('mo_saml_sp_entityid_desc', 'auth_mo_saml', $spentityid)
-    ));
- 
-    $settings->add(new setting_textonly(
-        'auth_mo_saml/spm_acsurl',
-        get_string('mo_saml_acs_url', 'auth_mo_saml'),
-        get_string('mo_saml_acs_url_desc', 'auth_mo_saml', $CFG->wwwroot . '/auth/mo_saml/index.php')
-    ));
-
-    $settings->add(new setting_textonly(
-        'auth_mo_saml/spm_audienceuri',
-        get_string('mo_saml_audience_uri', 'auth_mo_saml'),
-        get_string('mo_saml_audience_uri_desc', 'auth_mo_saml', $CFG->wwwroot)
-    ));
-
-    $settings->add(new setting_textonly(
-        'auth_mo_saml/spm_nameidformat',
-        get_string('mo_saml_nameid_format', 'auth_mo_saml'),
-        get_string('mo_saml_nameid_format_desc', 'auth_mo_saml', $CFG->wwwroot)
-    ));
+        $settings->add(new setting_textonly(
+            'auth_mo_saml/spm_url',
+            get_string('mo_saml_spmetadata_url', 'auth_mo_saml'),
+            get_string('mo_saml_spmetadata_url_help', 'auth_mo_saml', $CFG->wwwroot . '/auth/mo_saml/serviceprovider/spmetadata.php')
+            ));
 
         $settings->add(new setting_textonly(
-            'auth_mo_saml/spm_certificatedownload',
-            get_string('mo_saml_sp_certificate_download', 'auth_mo_saml'),
-            get_string('mo_saml_sp_certificate_download_help', 'auth_mo_saml', $CFG->wwwroot."/auth/mo_saml/resources/sp-certificate.crt")
+            'auth_mo_saml/spm_xml',
+            get_string('mo_saml_spmetadata_download', 'auth_mo_saml'),
+            get_string('mo_saml_spmetadata_download_help', 'auth_mo_saml', $CFG->wwwroot . '/auth/mo_saml/serviceprovider/spmetadata.php')
+        ));
+
+        if(isset($config->spentityid) && !empty($config->spentityid)){
+            $spentityid = $config->spentityid;
+        }
+        else{
+            $spentityid = $CFG->wwwroot;
+        }
+
+        $settings->add(new setting_textonly(
+            'auth_mo_saml/spm_entityid',
+            get_string('mo_saml_sp_entityid', 'auth_mo_saml'),
+            get_string('mo_saml_sp_entityid_desc', 'auth_mo_saml', $spentityid)
+        ));
+    
+        $settings->add(new setting_textonly(
+            'auth_mo_saml/spm_acsurl',
+            get_string('mo_saml_acs_url', 'auth_mo_saml'),
+            get_string('mo_saml_acs_url_desc', 'auth_mo_saml', $CFG->wwwroot . '/auth/mo_saml/index.php')
+        ));
+
+        $settings->add(new setting_textonly(
+            'auth_mo_saml/spm_nameidformat',
+            get_string('mo_saml_nameid_format', 'auth_mo_saml'),
+            get_string('mo_saml_nameid_format_desc', 'auth_mo_saml', $CFG->wwwroot)
         ));
 
         $settings->add(new setting_textonly(
@@ -276,8 +266,38 @@ if($hassiteconfig) {
             get_string('mo_saml_sp_logout_url_desc', 'auth_mo_saml', $CFG->wwwroot . '/auth/mo_saml/logout.php')
         ));
 
+        $settings->add(new setting_textonly(
+            'auth_mo_saml/spm_certificatedownload',
+            get_string('mo_saml_sp_certificate_download', 'auth_mo_saml'),
+            get_string('mo_saml_sp_certificate_download_help', 'auth_mo_saml', $CFG->wwwroot."/auth/mo_saml/resources/sp-certificate.crt")
+        ));
 
-        // Service Provider Setup Tab
+        $settings->add(
+            new admin_setting_heading(
+                'auth_mo_saml/add_custom_certificates',
+                new lang_string('mo_saml_add_custom_certificates', 'auth_mo_saml'), 
+                new lang_string('mo_saml_add_custom_certificates_desc', 'auth_mo_saml')
+            )
+        );
+
+        if( empty( $config->public_certificate ) ) {
+            $public_cert_location  = $CFG->dirroot."/auth/mo_saml/resources/sp-certificate.crt";
+            $public_cert_from_file = file_get_contents( $public_cert_location );
+
+            set_config('public_certificate', $public_cert_from_file, 'auth_mo_saml');
+        }
+
+        if( empty( $config->private_key ) ) {
+            $private_key_location  = $CFG->dirroot."/auth/mo_saml/resources/sp-key.key";
+            $private_key_from_file = file_get_contents( $private_key_location );
+
+            set_config( 'private_key', $private_key_from_file, 'auth_mo_saml' );
+        }
+
+        $settings->add( new setting_public_cert() );
+        $settings->add( new setting_private_key() );
+
+        // Service Provider Setup Tab.
 
         $settings->add(
             new admin_setting_heading(
@@ -307,11 +327,7 @@ if($hassiteconfig) {
         ));
 
         $settings->add(
-            new setting_idp_metadata(
-                'auth_mo_saml/idpmetadata',
-                get_string('mo_saml_idp_metadata', 'auth_mo_saml'),
-                get_string('mo_saml_idp_metadata_desc', 'auth_mo_saml'), '', PARAM_RAW,80,5
-            )
+            new setting_idp_metadata()
         );
 
         $settings->add(
