@@ -75,7 +75,7 @@ class edition implements renderable, templatable {
 
         $msgs = [];
 
-        $displaysection = \format_menutopic::$displaysection;
+        $displaysection = $format->get_sectionnum();
 
         if (!($formatdata = $DB->get_record('format_menutopic', ['course' => $this->course->id]))) {
             $formatdata = new \stdClass();

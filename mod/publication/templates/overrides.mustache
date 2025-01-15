@@ -1,0 +1,27 @@
+<div class="">
+    <a href="{{newoverrideurl}}" class="btn btn-primary">{{addoverridetitle}}</a>
+    <table class="table w-100 mt-2">
+        <thead>
+            <tr>
+                <th>{{usergroupcoltitle}}</th>
+                <th>{{#str}}overrides,assign{{/str}}</th>
+                <th>{{#str}}action{{/str}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#overridesempty}}
+                <tr>
+                    <td colspan="99">{{#str}}overrides:empty,publication{{/str}}</td>
+                </tr>
+            {{/overridesempty}}
+            {{^overridesempty}}
+                {{#overrides}}
+                    <tr>
+                        <td>{{#userurl}}<a href="{{.}}" title="{{fullname}}">{{/userurl}}{{fullname}}{{#userurl}}</a>{{/userurl}}</td>
+                        <td><div class="">{{submissionoverride}}</div><div class="">{{approvaloverride}}</div></td>
+                        <td><a href="{{editurl}}">{{#pix}}t/edit{{/pix}}</a><a href="{{deleteurl}}">{{#pix}}t/delete{{/pix}}</a></td>
+                {{/overrides}}
+            {{/overridesempty}}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,164 @@
+.path-mod-mindmap .mindmap_hint {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.path-mod-mindmap .mindmap_locked {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.path-mod-mindmap #flashcontent {
+    margin: 0 auto;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.path-mod-mindmap #mindmap-content {
+    border: 1px solid #ddd;
+    width: 100% !important;
+    height: 500px;
+}
+
+.path-mod-mindmap #intro {
+    padding: 0 !important;
+}
+
+.path-mod-mindmap #mindmap_view {
+    position: relative;
+    padding-top: 0 !important;
+}
+
+.path-mod-mindmap .network {
+    display: block;
+    width: 100%;
+    height: 600px;
+    border: solid;
+    background-color: white;
+    position: relative;
+    border-color: #ddd;
+    border-width: 1px;
+    margin-top: 10px;
+}
+
+.path-mod-mindmap table.legend_table {
+    font-size: 11px;
+    border-width: 1px;
+    border-color: #d3d3d3;
+    border-style: solid;
+}
+
+.path-mod-mindmap table.legend_table,
+.path-mod-mindmap td {
+    border-width: 1px;
+    border-color: #d3d3d3;
+    border-style: solid;
+    padding: 2px;
+}
+
+.path-mod-mindmap #operation {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.path-mod-mindmap #network-popup {
+    display: none;
+    position: absolute;
+    width: 310px;
+    top: 25%;
+    left: calc(50% - 155px);
+    z-index: 299;
+    background-color: #f9f9f9;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ddd;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 5px #777;
+}
+
+.path-mod-mindmap #network-popup table {
+    margin: 5px 0px 10px 0px;
+}
+
+.path-mod-mindmap #network-popup table td {
+    border-width: 0px;
+    text-align: left;
+}
+
+.path-mod-mindmap .convert-save {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+/* VisJS css overrides */
+.path-mod-mindmap div.vis-network div.vis-manipulation {
+    border-bottom: 1px solid #ddd !important;
+    background: none !important;
+    background-color: #f9f9f9 !important;
+    padding-top: 0px !important;
+    height: auto !important;
+}
+
+.path-mod-mindmap div.vis-network div.vis-manipulation div.vis-separator-line {
+    display: none !important;
+}
+
+.path-mod-mindmap div.vis-network div.vis-manipulation div.vis-button:hover {
+    box-shadow: none !important;
+    text-decoration: underline;
+}
+
+.path-mod-mindmap div.vis-network div.vis-close {
+    display: none !important;
+}
+
+.path-mod-mindmap div.vis-network:focus {
+    outline: none;
+}
+
+.path-mod-mindmap div.vis-network div.vis-manipulation div.vis-button {
+    margin: 10px;
+}
+
+.path-mod-mindmap div.network-container {
+    position: relative;
+}
+
+.path-mod-mindmap div.resetzoom {
+    position: absolute;
+    bottom: 5px;
+    z-index: 1;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='mysvg' class='data-svg' width='30' height='30' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='square' stroke-linejoin='arcs'%3E%3Cpath d='M7.027 7.027l9.946 9.946m0-9.946l-9.946 9.946m6.792-10.43h3.64v3.64m-7.278-3.64h-3.64v3.64m7.278 7.278h3.64v-3.64m-7.278 3.64h-3.64v-3.64' stroke-width='1.6'/%3E%3Ccircle cx='12.102' cy='12.102' r='10'/%3E%3C/svg%3E");
+    cursor: pointer;
+}
+
+.path-mod-mindmap .mindmap_actions {
+    display: flex;
+}
+.path-mod-mindmap .mindmap_action_select {
+    margin-left: auto;
+}
+.path-mod-mindmap #mindmap_select {
+    padding: 3px;
+}
+.path-mod-mindmap .activity-header {
+    display: none !important;
+}
+/* JSColor css overrides */
+.path-mod-mindmap input.jscolor {
+    background-color: #fff !important;
+    color: #000 !important;
+}

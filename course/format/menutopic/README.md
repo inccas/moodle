@@ -1,6 +1,6 @@
 # COURSE FORMAT menutopic
 
-Package tested in: moodle 4.2+, 4.3+.
+Package tested in: moodle 4.4+, 4.5+.
 
 ## QUICK INSTALL
 Download zip package, extract the menutopic folder and upload this folder into course/format/.
@@ -32,6 +32,13 @@ A simple UI to edit menu structure.
 * Task: change the course index according the course menu.
 
 ## IN VERSION
+
+### 2025010201
+* Compatibility with moodle 4.4 and 4.5.
+* Implementation: "Not link in parent items".
+
+### 2024052003:
+* Inline help icons when using the summary as a template
 
 ### 2024052001:
 * Support bulk edit tools and the section permalink.
