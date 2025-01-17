@@ -14,12 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace theme_boost_union_dhoch3\output;
+namespace theme_boost_union\output;
 
 /**
- * Theme Boost Union Dhoch3 - tool_policy renderer
+ * Theme Boost Union - tool_policy renderer
  *
- * @package    theme_boost_union_dhoch3
+ * @package    theme_boost_union
  * @copyright  2024 Christian Wolters <info@christianwolters.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -34,11 +34,11 @@ class tool_policy_renderer extends \tool_policy\output\renderer {
      */
     public function header() {
         // Check that only the /admin/tool/policy/viewall.php page is affected.
-        $pageurl = new \moodle_url('/admin/tool/policy/viewall.php');
+        $pageurl = new \core\url('/admin/tool/policy/viewall.php');
         if ($pageurl->compare($this->page->url, URL_MATCH_BASE) == true) {
 
             // If the admin wants to show navigation on the policy page.
-            $config = get_config('theme_boost_union_dhoch3', 'policyoverviewnavigation');
+            $config = get_config('theme_boost_union', 'policyoverviewnavigation');
             if (isset($config) && $config == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES) {
                 // Set the page layout to standard.
                 $this->page->set_pagelayout('standard');

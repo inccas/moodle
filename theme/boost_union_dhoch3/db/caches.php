@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - Cache definitions.
+ * Theme Boost Union - Cache definitions.
  *
- * @package    theme_boost_union_dhoch3
+ * @package    theme_boost_union
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -38,49 +38,57 @@ $definitions = [
         //
         // Beyond that, the cache has to invalidated based on several events:
         // 1. When a flavour is created / edited / deleted
-        // -- (this is realized in flavours/edit.php where cache_helper::purge_by_event is called with an invalidationevent
-        // -- which purges the cache for all users).
+        // -- (this is realized in flavours/edit.php where \core_cache\helper::purge_by_event
+        // -- is called with an invalidationevent which purges the cache for all users).
         // 2. When the flavours are re-sorted
-        // -- (this is realized in flavours/overview.php where cache_helper::purge_by_event is called with an invalidationevent
-        // -- which purges the cache for all users).
+        // -- (this is realized in flavours/overview.php where \core_cache\helper::purge_by_event
+        // -- is called with an invalidationevent which purges the cache for all users).
         // 3. When a cohort is deleted
-        // -- (this is realized with an event observer where cache_helper::purge_by_event is called with an invalidationevent
-        // -- which purges the cache for all users).
+        // -- (this is realized with an event observer where \core_cache\helper::purge_by_event
+        // -- is called with an invalidationevent which purges the cache for all users).
         // 4. When a user is added to / removed from a category
         // -- (this is realized with an event observer which sets a user preference flag, followed by a check in
-        // -- theme_boost_union_dhoch3_get_flavour_which_applies() which purges the cache for the affected user).
+        // -- theme_boost_union_get_flavour_which_applies() which purges the cache for the affected user).
         'flavours' => [
-                'mode' => cache_store::MODE_SESSION,
+                'mode' => \core_cache\store::MODE_SESSION,
                 'simplekeys' => true,
                 'simpledata' => false,
                 'invalidationevents' => [
-                    'theme_boost_union_dhoch3_flavours_resorted',
-                    'theme_boost_union_dhoch3_flavours_created',
-                    'theme_boost_union_dhoch3_flavours_edited',
-                    'theme_boost_union_dhoch3_flavours_deleted',
-                    'theme_boost_union_dhoch3_cohort_deleted',
+                    'theme_boost_union_flavours_resorted',
+                    'theme_boost_union_flavours_created',
+                    'theme_boost_union_flavours_edited',
+                    'theme_boost_union_flavours_deleted',
+                    'theme_boost_union_cohort_deleted',
                 ],
         ],
-        // This cache stores the touch icon files for iOS (which are uploaded in the Boost Union Dhoch3 settings)
+        // This cache stores the touch icon files for iOS (which are uploaded in the Boost Union settings)
         // to avoid that the files have to be read from the filearea on every page load.
         'touchiconsios' => [
-            'mode' => cache_store::MODE_APPLICATION,
+            'mode' => \core_cache\store::MODE_APPLICATION,
             'simplekeys' => true,
             'simpledata' => true,
             'staticacceleration' => true,
         ],
         // This cache stores the smart menus.
         'smartmenus' => [
-                'mode' => cache_store::MODE_APPLICATION,
+                'mode' => \core_cache\store::MODE_APPLICATION,
                 'simplekeys' => true,
                 'simpledata' => false,
-                'overrideclass' => '\theme_boost_union_dhoch3\cache\loader',
+                'overrideclass' => '\theme_boost_union\cache\loader',
         ],
         // This cache stores the smart menus' menu items.
         'smartmenu_items' => [
-                'mode' => cache_store::MODE_APPLICATION,
+                'mode' => \core_cache\store::MODE_APPLICATION,
                 'simplekeys' => true,
                 'simpledata' => false,
-                'overrideclass' => '\theme_boost_union_dhoch3\cache\loader',
+                'overrideclass' => '\theme_boost_union\cache\loader',
+        ],
+        // This cache stores the hook overrides.
+        'hookoverrides' => [
+                'mode' => \core_cache\store::MODE_APPLICATION,
+                'simplekeys' => true,
+                'simpledata' => false,
+                'canuselocalstore' => true,
+                'staticacceleration' => false,
         ],
 ];

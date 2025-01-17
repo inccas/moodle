@@ -14,9 +14,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - JS code off-canvas
+ * Theme Boost Union - JS code off-canvas
  *
- * @module     theme_boost_union_dhoch3/offcanvas
+ * @module     theme_boost_union/offcanvas
  * @copyright  2022 bdecent gmbh <https://bdecent.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -38,7 +38,7 @@ define(['jquery', 'theme_boost/drawers', 'core/modal', 'core/notification'], fun
                 backdrop.getAttachmentPoint().get(0).addEventListener('click', e => {
                     e.preventDefault();
                     var currentDrawer = Drawers.getDrawerInstanceForNode(
-                        document.getElementById('theme_boost_union_dhoch3-drawers-offcanvas')
+                        document.getElementById('theme_boost_union-drawers-offcanvas')
                     );
                     currentDrawer.closeDrawer(false);
                     backdrop.hide();
@@ -57,7 +57,7 @@ define(['jquery', 'theme_boost/drawers', 'core/modal', 'core/notification'], fun
         // Add EventListener for showing a drawer.
         document.addEventListener(Drawers.eventTypes.drawerShown, function(e) {
             // If the drawer which is shown is _not_ the offcanvas drawer, return.
-            if (e.target.id != 'theme_boost_union_dhoch3-drawers-offcanvas') {
+            if (e.target.id != 'theme_boost_union-drawers-offcanvas') {
                 return null;
             }
 
@@ -74,7 +74,7 @@ define(['jquery', 'theme_boost/drawers', 'core/modal', 'core/notification'], fun
         // Add EventListener for hiding a drawer.
         document.addEventListener(Drawers.eventTypes.drawerHide, function(e) {
             // If the drawer which is hidden is _not_ the offcanvas drawer, return.
-            if (e.target.id != 'theme_boost_union_dhoch3-drawers-offcanvas') {
+            if (e.target.id != 'theme_boost_union-drawers-offcanvas') {
                 return null;
             }
 

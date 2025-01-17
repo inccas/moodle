@@ -49,7 +49,7 @@ $PAGE->add_body_class('theme_boost_union_flb-imprint');
 $config = get_config('theme_boost_union_flb');
 
 // If the imprint is disabled, we just show a short friendly warning page and are done.
-if ($config->enableimprint != THEME_boost_union_flb_SETTING_SELECT_YES) {
+if ($config->enableimprint != THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
     echo $OUTPUT->header();
     $notification = new \core\output\notification(get_string('imprintdisabled', 'theme_boost_union_flb'),
             \core\output\notification::NOTIFY_INFO);

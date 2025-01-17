@@ -27,12 +27,12 @@ namespace theme_boost_union_dhoch3;
 defined('MOODLE_INTERNAL') || die();
 
 use context_system;
-use html_writer;
 use stdClass;
 use cache;
+use core\output\html_writer;
 use core_course\external\course_summary_exporter;
 
-require_once($CFG->dirroot.'/theme/boost_union_dhoch3/smartmenus/menulib.php');
+require_once($CFG->dirroot.'/theme/boost_union/smartmenus/menulib.php');
 
 /**
  * The item controller handles actions related to managing items.
@@ -270,7 +270,7 @@ class smartmenu_item {
      * @param stdclass|null $menu Data of the menu the item belongs to.
      * @return smartmenu_item A new instance of this class.
      */
-    public static function instance($item, $menu=null) {
+    public static function instance($item, $menu = null) {
         return new self($item, $menu);
     }
 
@@ -281,7 +281,7 @@ class smartmenu_item {
      * @param int|stdclass $item Record or id of the menu.
      * @param stdclass|null $menu Menu data belongs to this item, it fetch the menus data if empty.
      */
-    public function __construct($item, $menu=null) {
+    public function __construct($item, $menu = null) {
 
         if (is_scalar($item)) {
             $item = $this->get_item($item);
@@ -331,7 +331,7 @@ class smartmenu_item {
      * @return \stdclass Menu record if found or false.
      * @throws \moodle_exception When menu is not found.
      */
-    public function get_item($itemid=null) {
+    public function get_item($itemid = null) {
         global $DB;
 
         // Verfiy and Fetch menu record from DB.
@@ -576,7 +576,7 @@ class smartmenu_item {
             // Get the first file.
             $file = reset($files);
 
-            $url = \moodle_url::make_pluginfile_url(
+            $url = \core\url::make_pluginfile_url(
                 $file->get_contextid(),
                 $file->get_component(),
                 $file->get_filearea(),
@@ -625,13 +625,13 @@ class smartmenu_item {
     }
 
     /**
-     * Generate the item as static menu item, Send the custom URL to moodle_url to make this work with relative URL.
+     * Generate the item as static menu item, Send the custom URL to core\url to make this work with relative URL.
      *
      * @return string
      */
     protected function generate_static_item() {
 
-        $staticurl = new \moodle_url($this->item->url);
+        $staticurl = new \core\url($this->item->url);
 
         return $this->generate_node_data(
             $this->item->title, // Title.
@@ -704,7 +704,7 @@ class smartmenu_item {
         $items = [];
         // Build the items data into nodes.
         foreach ($records as $record) {
-            $url = new \moodle_url('/course/view.php', ['id' => $record->id]);
+            $url = new \core\url('/course/view.php', ['id' => $record->id]);
             $rkey = 'item-'.$this->item->id.'-dynamic-'.$record->id;
             // Get the course image from overview files.
             $itemimage = $this->get_course_image($record);
@@ -1042,8 +1042,12 @@ class smartmenu_item {
             return false;
         }
 
-        // Add custom css class.
+        // Add marker class to make clear that this is a Boost Union smart menu item.
+        $class[] = 'boost-union-smartmenuitem';
+
+        // Add custom CSS class.
         $class[] = $this->item->cssclass;
+
         // Add classes for hide items in specific viewport.
         $class[] = $this->item->desktop ? 'd-lg-none' : 'd-lg-inline-flex';
         $class[] = $this->item->tablet ? 'd-md-none' : 'd-md-inline-flex';
@@ -1051,11 +1055,14 @@ class smartmenu_item {
 
         // Add classes for item title placement on card.
         $class[] = $this->get_textposition_class();
-        // Menu item class.
+
+        // Add menu item class.
         $types = [self::TYPESTATIC => 'static', self::TYPEDYNAMIC => 'dynamic', self::TYPEHEADING => 'heading'];
         $class[] = 'menu-item-'.($types[$this->item->type] ?? '');
+
         // Add classes to item data.
         $this->item->classes = $class;
+
         // Load the location of menu, used to collect menus for locations in menu inline mode.
         $this->item->location = $this->menu->location;
 
@@ -1114,8 +1121,8 @@ class smartmenu_item {
      *
      * @return array An associative array of node data for the item.
      */
-    public function generate_node_data($title, $url, $key=null, $tooltip=null,
-        $itemtype='link', $haschildren=0, $children=[], $itemimage='', $sortstring='') {
+    public function generate_node_data($title, $url, $key = null, $tooltip = null,
+        $itemtype = 'link', $haschildren = 0, $children = [], $itemimage = '', $sortstring = '') {
 
         global $OUTPUT;
 
@@ -1318,7 +1325,7 @@ class smartmenu_item {
      * @param int|null $type Optional. The specific type to retrieve. Defaults to null.
      * @return array|string An array of types if $type is null, or a string with the name of the specific type.
      */
-    public static function get_types(int $type=null) {
+    public static function get_types(?int $type = null) {
         $types = [
                 self::TYPESTATIC => get_string('smartmenusmenuitemtypestatic', 'theme_boost_union_dhoch3'),
                 self::TYPEHEADING => get_string('smartmenusmenuitemtypeheading', 'theme_boost_union_dhoch3'),
@@ -1329,20 +1336,134 @@ class smartmenu_item {
     }
 
     /**
-     * Returns the display options for the menu items.
+     * Return the options for the display setting.
      *
-     * @param int|null $option The display option to retrieve. If null, returns all display options.
-     * @return array|string The array of display options if $option is null, or the display option string if $option is set.
-     * @throws coding_exception if $option is set but invalid.
+     * @return array
+     * @throws \coding_exception
      */
-    public static function get_display_options(int $option=null) {
-        $displayoptions = [
-                self::DISPLAY_SHOWTITLEICON => get_string('smartmenusmenuitemdisplayoptionsshowtitleicon', 'theme_boost_union_dhoch3'),
-                self::DISPLAY_HIDETITLE => get_string('smartmenushidetitle', 'theme_boost_union_dhoch3'),
-                self::DISPLAY_HIDETITLEMOBILE => get_string('smartmenushidetitlemobile', 'theme_boost_union_dhoch3'),
+    public static function get_display_options() {
+        return [
+            self::DISPLAY_SHOWTITLEICON => get_string('smartmenusmenuitemdisplayoptionsshowtitleicon', 'theme_boost_union_dhoch3'),
+            self::DISPLAY_HIDETITLE => get_string('smartmenusmenuitemdisplayoptionshidetitle', 'theme_boost_union_dhoch3'),
+            self::DISPLAY_HIDETITLEMOBILE => get_string('smartmenusmenuitemdisplayoptionshidetitlemobile', 'theme_boost_union_dhoch3'),
         ];
+    }
 
-        return ($option !== null && isset($displayoptions[$option])) ? $displayoptions[$option] : $displayoptions;
+    /**
+     * Return the options for the target setting.
+     *
+     * @return array
+     * @throws \coding_exception
+     */
+    public static function get_target_options(): array {
+        return [
+            self::TARGET_SAME => get_string('smartmenusmenuitemlinktargetsamewindow', 'theme_boost_union_dhoch3'),
+            self::TARGET_NEW => get_string('smartmenusmenuitemlinktargetnewtab', 'theme_boost_union_dhoch3'),
+        ];
+    }
+
+    /**
+     * Return the options for the completionstatus setting.
+     *
+     * @return array
+     * @throws \coding_exception
+     */
+    public static function get_completionstatus_options(): array {
+        return [
+            self::COMPLETION_ENROLLED =>
+                get_string('smartmenusdynamiccoursescompletionstatusenrolled', 'theme_boost_union_dhoch3'),
+            self::COMPLETION_INPROGRESS =>
+                get_string('smartmenusdynamiccoursescompletionstatusinprogress', 'theme_boost_union_dhoch3'),
+            self::COMPLETION_COMPLETED =>
+                get_string('smartmenusdynamiccoursescompletionstatuscompleted', 'theme_boost_union_dhoch3'),
+        ];
+    }
+
+    /**
+     * Return the options for the daterange setting.
+     *
+     * @return array
+     * @throws \coding_exception
+     */
+    public static function get_daterange_options(): array {
+        return [
+            self::RANGE_PAST =>
+                get_string('smartmenusdynamiccoursesdaterangepast', 'theme_boost_union_dhoch3'),
+            self::RANGE_PRESENT =>
+                get_string('smartmenusdynamiccoursesdaterangepresent', 'theme_boost_union_dhoch3'),
+            self::RANGE_FUTURE =>
+                get_string('smartmenusdynamiccoursesdaterangefuture', 'theme_boost_union_dhoch3'),
+        ];
+    }
+
+    /**
+     * Return the options for the listsort setting.
+     *
+     * @return array
+     * @throws \coding_exception
+     */
+    public static function get_listsort_options(): array {
+        return [
+            self::LISTSORT_FULLNAME_ASC =>
+                get_string('smartmenusmenuitemlistsortfullnameasc', 'theme_boost_union_dhoch3'),
+            self::LISTSORT_FULLNAME_DESC =>
+                get_string('smartmenusmenuitemlistsortfullnamedesc', 'theme_boost_union_dhoch3'),
+            self::LISTSORT_SHORTNAME_ASC =>
+                get_string('smartmenusmenuitemlistsortshortnameasc', 'theme_boost_union_dhoch3'),
+            self::LISTSORT_SHORTNAME_DESC =>
+                get_string('smartmenusmenuitemlistsortshortnamedesc', 'theme_boost_union_dhoch3'),
+            self::LISTSORT_COURSEID_ASC =>
+                get_string('smartmenusmenuitemlistsortcourseidasc', 'theme_boost_union_dhoch3'),
+            self::LISTSORT_COURSEID_DESC =>
+                get_string('smartmenusmenuitemlistsortcourseiddesc', 'theme_boost_union_dhoch3'),
+            self::LISTSORT_COURSEIDNUMBER_ASC =>
+                get_string('smartmenusmenuitemlistsortcourseidnumberasc', 'theme_boost_union_dhoch3'),
+            self::LISTSORT_COURSEIDNUMBER_DESC =>
+                get_string('smartmenusmenuitemlistsortcourseidnumberdesc', 'theme_boost_union_dhoch3'),
+        ];
+    }
+
+    /**
+     * Return the options for the displayfield setting.
+     *
+     * @return array
+     * @throws \coding_exception
+     */
+    public static function get_displayfield_options(): array {
+        return [
+            self::FIELD_FULLNAME => get_string('smartmenusmenuitemdisplayfieldcoursefullname', 'theme_boost_union_dhoch3'),
+            self::FIELD_SHORTNAME => get_string('smartmenusmenuitemdisplayfieldcourseshortname', 'theme_boost_union_dhoch3'),
+        ];
+    }
+
+    /**
+     * Return the options for the mode setting.
+     *
+     * @return array
+     * @throws \coding_exception
+     */
+    public static function get_mode_options(): array {
+        return [
+            self::MODE_INLINE => get_string('smartmenusmodeinline', 'theme_boost_union_dhoch3'),
+            self::MODE_SUBMENU => get_string('smartmenusmodesubmenu', 'theme_boost_union_dhoch3'),
+        ];
+    }
+
+    /**
+     * Return the options for the testposition setting.
+     *
+     * @return array
+     * @throws \coding_exception
+     */
+    public static function get_textposition_options(): array {
+        return [
+            self::POSITION_BELOW =>
+                get_string('smartmenusmenuitemtextpositionbelowimage', 'theme_boost_union_dhoch3'),
+            self::POSITION_OVERLAYTOP =>
+                get_string('smartmenusmenuitemtextpositionoverlaytop', 'theme_boost_union_dhoch3'),
+            self::POSITION_OVERLAYBOTTOM =>
+                get_string('smartmenusmenuitemtextpositionoverlaybottom', 'theme_boost_union_dhoch3'),
+        ];
     }
 
     /**

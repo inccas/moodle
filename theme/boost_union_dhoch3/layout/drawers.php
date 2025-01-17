@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - Drawers page layout.
+ * Theme Boost Union - Drawers page layout.
  *
  * This layoutfile is based on theme/boost/layout/drawers.php
  *
@@ -26,6 +26,7 @@
  * * Include scroll spy
  * * Include footnote
  * * Include static pages
+ * * Include accessibility pages
  * * Include Jvascript disabled hint
  * * Include advertisement tiles
  * * Include slider
@@ -35,7 +36,7 @@
  * * Include smart menus
  * * Include course index modification
  *
- * @package   theme_boost_union_dhoch3
+ * @package   theme_boost_union
  * @copyright 2022 Luca Bösch, BFH Bern University of Applied Sciences luca.boesch@bfh.ch
  * @copyright based on code from theme_boost by Bas Brands
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -47,10 +48,10 @@ require_once($CFG->libdir . '/behat/lib.php');
 require_once($CFG->dirroot . '/course/lib.php');
 
 // Require own locallib.php.
-require_once($CFG->dirroot . '/theme/boost_union_dhoch3/locallib.php');
+require_once($CFG->dirroot . '/theme/boost_union/locallib.php');
 
 // Add activity navigation if the feature is enabled.
-$activitynavigation = get_config('theme_boost_union_dhoch3', 'activitynavigation');
+$activitynavigation = get_config('theme_boost_union', 'activitynavigation');
 if ($activitynavigation == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES) {
     $PAGE->theme->usescourseindex = false;
 }
@@ -62,9 +63,9 @@ if (isloggedin()) {
     $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
 
     if (isguestuser()) {
-        $sitehomerighthandblockdrawerserverconfig = get_config('theme_boost_union_dhoch3', 'showsitehomerighthandblockdraweronguestlogin');
+        $sitehomerighthandblockdrawerserverconfig = get_config('theme_boost_union', 'showsitehomerighthandblockdraweronguestlogin');
     } else {
-        $sitehomerighthandblockdrawerserverconfig = get_config('theme_boost_union_dhoch3', 'showsitehomerighthandblockdraweronfirstlogin');
+        $sitehomerighthandblockdrawerserverconfig = get_config('theme_boost_union', 'showsitehomerighthandblockdraweronfirstlogin');
     }
 
     $isadminsettingyes = ($sitehomerighthandblockdrawerserverconfig == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES);
@@ -73,7 +74,7 @@ if (isloggedin()) {
     $courseindexopen = false;
     $blockdraweropen = false;
 
-    if (get_config('theme_boost_union_dhoch3', 'showsitehomerighthandblockdraweronvisit') == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES) {
+    if (get_config('theme_boost_union', 'showsitehomerighthandblockdraweronvisit') == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES) {
         $blockdraweropen = true;
     }
 }
@@ -81,9 +82,9 @@ if (isloggedin()) {
 if (defined('BEHAT_SITE_RUNNING') && get_user_preferences('behat_keep_drawer_closed') != 1) {
     try {
         if (
-            get_config('theme_boost_union_dhoch3', 'showsitehomerighthandblockdraweronvisit') === false &&
-            get_config('theme_boost_union_dhoch3', 'showsitehomerighthandblockdraweronguestlogin') === false &&
-            get_config('theme_boost_union_dhoch3', 'showsitehomerighthandblockdraweronfirstlogin') === false
+            get_config('theme_boost_union', 'showsitehomerighthandblockdraweronvisit') === false &&
+            get_config('theme_boost_union', 'showsitehomerighthandblockdraweronguestlogin') === false &&
+            get_config('theme_boost_union', 'showsitehomerighthandblockdraweronfirstlogin') === false
         ) {
             $blockdraweropen = true;
         }
@@ -123,18 +124,18 @@ if ($PAGE->has_secondary_navigation()) {
     }
 }
 
-// Load the navigation from boost_union_dhoch3 primary navigation, the extended version of core primary navigation.
+// Load the navigation from boost_union primary navigation, the extended version of core primary navigation.
 // It includes the smart menus and menu items, for multiple locations.
-$primary = new theme_boost_union_dhoch3\output\navigation\primary($PAGE);
+$primary = new theme_boost_union\output\navigation\primary($PAGE);
 $renderer = $PAGE->get_renderer('core');
 $primarymenu = $primary->export_for_template($renderer);
 
 // Add special class selectors to improve the Smart menus SCSS selectors.
 if (isset($primarymenu['includesmartmenu']) && $primarymenu['includesmartmenu'] == true) {
-    $extraclasses[] = 'theme-boost-union-dhoch3-smartmenu';
+    $extraclasses[] = 'theme-boost-union-smartmenu';
 }
 if (isset($primarymenu['bottombar']) && !empty($primarymenu['includesmartmenu'])) {
-    $extraclasses[] = 'theme-boost-union-dhoch3-bottombar';
+    $extraclasses[] = 'theme-boost-union-bottombar';
 }
 
 // Include the extra classes for the course index modification.
@@ -181,6 +182,9 @@ require_once(__DIR__ . '/includes/blockregions.php');
 // Include the content for the back to top button.
 require_once(__DIR__ . '/includes/backtotopbutton.php');
 
+// Include the content for the Boost Union footer buttons.
+require_once(__DIR__ . '/includes/footerbuttons.php');
+
 // Include the content for the scrollspy.
 require_once(__DIR__ . '/includes/scrollspy.php');
 
@@ -189,6 +193,9 @@ require_once(__DIR__ . '/includes/footnote.php');
 
 // Include the template content for the static pages.
 require_once(__DIR__ . '/includes/staticpages.php');
+
+// Include the template content for the accessibility pages.
+require_once(__DIR__ . '/includes/accessibilitypages.php');
 
 // Include the template content for the footer button.
 require_once(__DIR__ . '/includes/footer.php');
@@ -215,5 +222,5 @@ if ($PAGE->pagelayout == 'frontpage') {
 // Include the template content for the smart menus.
 require_once(__DIR__ . '/includes/smartmenus.php');
 
-// Render drawers.mustache from theme_boost (which is overridden in theme_boost_union_dhoch3).
+// Render drawers.mustache from theme_boost (which is overridden in theme_boost_union).
 echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);

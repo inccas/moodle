@@ -16,12 +16,12 @@
 /**
  * Theme Boost Union - JS code off-canvas
  *
- * @module     theme_boost_union_phd/offcanvas
+ * @module     theme_boost_union/offcanvas
  * @copyright  2022 bdecent gmbh <https://bdecent.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-define(['jquery', 'theme_boost/drawers', 'core/modal'], function($, Drawers, Modal) {
+define(['jquery', 'theme_boost/drawers', 'core/modal', 'core/notification'], function($, Drawers, Modal, Notification) {
 
     let modalBackdrop = null;
 
@@ -32,19 +32,20 @@ define(['jquery', 'theme_boost/drawers', 'core/modal'], function($, Drawers, Mod
      * @returns {object}
      */
     const getDrawerBackdrop = function() {
+
         if (!modalBackdrop) {
-             modalBackdrop = Modal.prototype.getBackdrop().then(backdrop => {
+            modalBackdrop = Modal.prototype.getBackdrop().then(backdrop => {
                 backdrop.getAttachmentPoint().get(0).addEventListener('click', e => {
                     e.preventDefault();
                     var currentDrawer = Drawers.getDrawerInstanceForNode(
-                        document.getElementById('theme_boost_union_phd-drawers-offcanvas')
+                        document.getElementById('theme_boost_union-drawers-offcanvas')
                     );
                     currentDrawer.closeDrawer(false);
                     backdrop.hide();
                 });
                 return backdrop;
             })
-            .catch();
+            .catch(Notification.exception);
         }
         return modalBackdrop;
     };
@@ -56,7 +57,7 @@ define(['jquery', 'theme_boost/drawers', 'core/modal'], function($, Drawers, Mod
         // Add EventListener for showing a drawer.
         document.addEventListener(Drawers.eventTypes.drawerShown, function(e) {
             // If the drawer which is shown is _not_ the offcanvas drawer, return.
-            if (e.target.id != 'theme_boost_union_phd-drawers-offcanvas') {
+            if (e.target.id != 'theme_boost_union-drawers-offcanvas') {
                 return null;
             }
 
@@ -65,7 +66,7 @@ define(['jquery', 'theme_boost/drawers', 'core/modal'], function($, Drawers, Mod
                 backdrop.show();
                 return backdrop;
             })
-            .catch();
+            .catch(Notification.exception);
 
             return true;
         });
@@ -73,7 +74,7 @@ define(['jquery', 'theme_boost/drawers', 'core/modal'], function($, Drawers, Mod
         // Add EventListener for hiding a drawer.
         document.addEventListener(Drawers.eventTypes.drawerHide, function(e) {
             // If the drawer which is hidden is _not_ the offcanvas drawer, return.
-            if (e.target.id != 'theme_boost_union_phd-drawers-offcanvas') {
+            if (e.target.id != 'theme_boost_union-drawers-offcanvas') {
                 return null;
             }
 
@@ -81,7 +82,7 @@ define(['jquery', 'theme_boost/drawers', 'core/modal'], function($, Drawers, Mod
                 backdrop.hide();
                 return backdrop;
             })
-            .catch();
+            .catch(Notification.exception);
 
             return true;
         });

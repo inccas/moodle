@@ -14,9 +14,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - JS code infobanner
+ * Theme Boost Union - JS code infobanner
  *
- * @module     theme_boost_union_dhoch3/infobanner
+ * @module     theme_boost_union/infobanner
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
  * @copyright  on behalf of Zurich University of Applied Sciences (ZHAW)
  * @copyright  based on code from theme_boost_campus by Kathrin Osswald.
@@ -31,13 +31,13 @@ define(['jquery'], function($) {
      */
     function initInfoBanner() {
         // Register click handler for all close buttons.
-        $('.themeboostuniondhoch3infobanner .close').on('click', function() {
+        $('.themeboostunioninfobanner .close').on('click', function() {
             // As soon as the button was clicked, get the number of the info banner.
             var infobannerno = $(this).attr('data-infobanner-no');
 
             // And store the dismissing of the info banner as a user preference to persist this decision.
             require(['core_user/repository'], function(UserRepository) {
-                UserRepository.setUserPreference('theme_boost_union_dhoch3_infobanner' + infobannerno + '_dismissed', true);
+                UserRepository.setUserPreference('theme_boost_union_infobanner' + infobannerno + '_dismissed', true);
             });
         });
     }

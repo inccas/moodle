@@ -17,14 +17,14 @@
 /**
  * Theme Boost Union - Flavours delete form
  *
- * @package    theme_boost_union_phd
+ * @package    theme_boost_union
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
  * @copyright  on behalf of Zurich University of Applied Sciences (ZHAW)
  * @copyright  based on code by bdecent gmbh <https://bdecent.de> in format_kickstart.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_boost_union_phd\form;
+namespace theme_boost_union\form;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -34,7 +34,7 @@ require_once($CFG->libdir.'/formslib.php');
 /**
  * Flavours delete form.
  *
- * @package    theme_boost_union_phd
+ * @package    theme_boost_union
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
  * @copyright  on behalf of Zurich University of Applied Sciences (ZHAW)
  * @copyright  based on code by bdecent gmbh <https://bdecent.de> in format_kickstart.
@@ -59,7 +59,7 @@ class flavour_delete_form extends \moodleform {
 
         // Add notification as html element.
         $notification = new \core\output\notification(
-                get_string('flavoursdeleteconfirmation', 'theme_boost_union_phd', $this->_customdata['flavour']->title),
+                get_string('flavoursdeleteconfirmation', 'theme_boost_union', $this->_customdata['flavour']->title),
                 \core\output\notification::NOTIFY_WARNING);
         $notification->set_show_closebutton(false);
         $mform->addElement('html', $OUTPUT->render($notification));

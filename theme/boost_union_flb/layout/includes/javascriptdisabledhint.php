@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 $hintsetting = get_config('theme_boost_union_flb', 'javascriptdisabledhint');
 
 // If the feature is enabled.
-if ($hintsetting == THEME_boost_union_flb_SETTING_SELECT_YES) {
+if ($hintsetting == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
     // Add marker to show the hint to templatecontext.
     $templatecontext['showjavascriptdisabledhint'] = true;
 }

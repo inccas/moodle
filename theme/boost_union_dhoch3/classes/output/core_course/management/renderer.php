@@ -15,14 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - Course management renderer
+ * Theme Boost Union - Course management renderer
  *
- * @package    theme_boost_union_dhoch3
+ * @package    theme_boost_union
  * @copyright  2023 Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_boost_union_dhoch3\output\core_course\management;
+namespace theme_boost_union\output\core_course\management;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -30,14 +30,14 @@ require_once($CFG->dirroot.'/course/classes/management_renderer.php');
 
 use core_course_category;
 use core_course_list_element;
-use html_writer;
 use moodle_url;
 use pix_icon;
+use core\output\html_writer;
 
 /**
  * Extending the core_course_management_renderer.
  *
- * @package    theme_boost_union_dhoch3
+ * @package    theme_boost_union
  * @copyright  2023 Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -55,7 +55,7 @@ class renderer extends \core_course_management_renderer {
         $actions = \core_course\management\helper::get_course_listitem_actions($category, $course);
 
         // If the admin decided to add a 'view course' icon.
-        if (get_config('theme_boost_union_dhoch3', 'showviewcourseiconincoursemgnt') == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES) {
+        if (get_config('theme_boost_union', 'showviewcourseiconincoursemgnt') == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES) {
             // If the user can access the course.
             if ($course->can_access()) {
                 // Prepend the 'view course' icon.
@@ -73,7 +73,7 @@ class renderer extends \core_course_management_renderer {
             $action['attributes']['role'] = 'button';
             $actionshtml[] = $this->output->action_icon($action['url'], $action['icon'], null, $action['attributes']);
         }
-        return html_writer::span(join('', $actionshtml), 'course-item-actions item-actions mr-0');
+        return html_writer::span(join('', $actionshtml), 'course-item-actions item-actions me-0');
     }
 
     /**
@@ -92,7 +92,7 @@ class renderer extends \core_course_management_renderer {
         $actions = [];
         if ($course->can_access()) {
             // If the admin decided to add a 'view course' icon.
-            if (get_config('theme_boost_union_dhoch3', 'showviewcourseiconincoursemgnt') == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES) {
+            if (get_config('theme_boost_union', 'showviewcourseiconincoursemgnt') == THEME_BOOST_UNION_DHOCH3_SETTING_SELECT_YES) {
                 // View.
                 $actions[] = $this->output->action_icon(
                     new moodle_url('/course/view.php', ['id' => $course->id]),

@@ -98,7 +98,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
 
         // Prepare options array for select settings.
         // Due to MDL-58376, we will use binary select settings instead of checkbox settings throughout this theme.
-        $yesnooption = array(THEME_boost_union_ida_SETTING_SELECT_YES => get_string('yes'),
+        $yesnooption = array(THEME_BOOST_UNION_FLB_SETTING_SELECT_YES => get_string('yes'),
                 THEME_boost_union_ida_SETTING_SELECT_NO => get_string('no'));
 
         // Prepare regular expression for checking if the value is a percent number (from 0% to 100%) or a pixel number
@@ -487,13 +487,13 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
         $setting->set_updatedcallback('theme_boost_union_ida_place_mod_icons');
         $tab->add($setting);
         $page->hide_if('theme_boost_union_ida/modiconsfiles', 'theme_boost_union_ida/modiconsenable', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
         // Information: Custom icons files list.
         // If there is at least one file uploaded and if custom icons are enabled (unfortunately, hide_if does not
         // work for admin_setting_description up to now, that's why we have to use this workaround).
         $modiconsenableconfig = get_config('theme_boost_union_ida', 'modiconsenable');
-        if ($modiconsenableconfig == THEME_boost_union_ida_SETTING_SELECT_YES &&
+        if ($modiconsenableconfig == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES &&
                 !empty(get_config('theme_boost_union_ida', 'modiconsfiles'))) {
             // Prepare the widget.
             $name = 'theme_boost_union_ida/modiconlist';
@@ -593,7 +593,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                 array('maxfiles' => 1, 'accepted_types' => 'web_image'));
         $tab->add($setting);
         $page->hide_if('theme_boost_union_ida/courseheaderimagefallback', 'theme_boost_union_ida/courseheaderimageenabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
         // Setting: Course header image layout.
         $name = 'theme_boost_union_ida/courseheaderimagelayout';
@@ -610,7 +610,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                 THEME_boost_union_ida_SETTING_COURSEIMAGELAYOUT_HEADINGABOVE, $courseheaderimagelayoutoptions);
         $tab->add($setting);
         $page->hide_if('theme_boost_union_ida/courseheaderimagelayout', 'theme_boost_union_ida/courseheaderimageenabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
         // Setting: Course header image height.
         $name = 'theme_boost_union_ida/courseheaderimageheight';
@@ -625,7 +625,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                 $courseheaderimageheightoptions);
         $tab->add($setting);
         $page->hide_if('theme_boost_union_ida/courseheaderimageheight', 'theme_boost_union_ida/courseheaderimageenabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
         // Setting: Course header image position.
         $name = 'theme_boost_union_ida/courseheaderimageposition';
@@ -654,7 +654,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                 THEME_boost_union_ida_SETTING_IMAGEPOSITION_CENTER_CENTER, $courseheaderimagepositionoptions);
         $tab->add($setting);
         $page->hide_if('theme_boost_union_ida/courseheaderimageposition', 'theme_boost_union_ida/courseheaderimageenabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
         // Add tab to settings page.
         $page->add($tab);
@@ -1081,7 +1081,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             // PHP warning otherwise.
                 THEME_boost_union_ida_SETTING_COURSEBREADCRUMBS_DONTCHANGE =>
                         get_string('dontchange', 'theme_boost_union_ida', null, false),
-                THEME_boost_union_ida_SETTING_SELECT_YES => get_string('yes'),
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES => get_string('yes'),
                 THEME_boost_union_ida_SETTING_SELECT_NO => get_string('no')
         );
         $name = 'theme_boost_union_ida/categorybreadcrumbs';
@@ -1431,7 +1431,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_confightmleditor($name, $title, $description, '');
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/'.$staticpage.'content', 'theme_boost_union_ida/enable'.$staticpage, 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Page title.
             $name = 'theme_boost_union_ida/'.$staticpage.'pagetitle';
@@ -1441,7 +1441,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_configtext($name, $title, $description, $default);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/'.$staticpage.'pagetitle', 'theme_boost_union_ida/enable'.$staticpage, 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Page link position.
             $name = 'theme_boost_union_ida/'.$staticpage.'linkposition';
@@ -1464,7 +1464,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_configselect($name, $title, $description, $default, $linkpositionoption);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/'.$staticpage.'linkposition', 'theme_boost_union_ida/enable'.$staticpage, 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
         }
 
         // Add tab to settings page.
@@ -1542,7 +1542,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_confightmleditor($name, $title, $description, '');
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'content', 'theme_boost_union_ida/infobanner'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Infobanner pages.
             $name = 'theme_boost_union_ida/infobanner'.$i.'pages';
@@ -1552,7 +1552,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                     array($infobannerpages[THEME_boost_union_ida_SETTING_INFOBANNERPAGES_MY]), $infobannerpages);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'pages', 'theme_boost_union_ida/infobanner'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Infobanner bootstrap class.
             $name = 'theme_boost_union_ida/infobanner'.$i.'bsclass';
@@ -1565,7 +1565,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                     'primary', $infobannerbsclasses);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'bsclass', 'theme_boost_union_ida/infobanner'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Infobanner order.
             $name = 'theme_boost_union_ida/infobanner'.$i.'order';
@@ -1575,7 +1575,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                     $i, $infobannerorders);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'order', 'theme_boost_union_ida/infobanner'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Infobanner mode.
             $name = 'theme_boost_union_ida/infobanner'.$i.'mode';
@@ -1585,7 +1585,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                     THEME_boost_union_ida_SETTING_INFOBANNERMODE_PERPETUAL, $infobannermodes);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'mode', 'theme_boost_union_ida/infobanner'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Infobanner start time.
             $name = 'theme_boost_union_ida/infobanner'.$i.'start';
@@ -1594,7 +1594,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_configdatetime($name, $title, $description, '');
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'start', 'theme_boost_union_ida/infobanner'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'start', 'theme_boost_union_ida/infobanner'.$i.'mode', 'neq',
                     THEME_boost_union_ida_SETTING_INFOBANNERMODE_TIMEBASED);
 
@@ -1605,7 +1605,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_configdatetime($name, $title, $description, '');
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'end', 'theme_boost_union_ida/infobanner'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'end', 'theme_boost_union_ida/infobanner'.$i.'mode', 'neq',
                     THEME_boost_union_ida_SETTING_INFOBANNERMODE_TIMEBASED);
 
@@ -1626,7 +1626,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                     $yesnooption);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'dismissible', 'theme_boost_union_ida/infobanner'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
             $page->hide_if('theme_boost_union_ida/infobanner'.$i.'dismissible', 'theme_boost_union_ida/infobanner'.$i.'mode', 'neq',
                     THEME_boost_union_ida_SETTING_INFOBANNERMODE_PERPETUAL);
         }
@@ -1713,7 +1713,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_configtext($name, $title, $description, '');
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/tile'.$i.'title', 'theme_boost_union_ida/tile'.$i.'enabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Advertisement tile content.
             $name = 'theme_boost_union_ida/tile'.$i.'content';
@@ -1722,7 +1722,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_confightmleditor($name, $title, $description, '');
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/tile'.$i.'content', 'theme_boost_union_ida/tile'.$i.'enabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Advertisement tile background image.
             $name = 'theme_boost_union_ida/tile'.$i.'backgroundimage';
@@ -1733,7 +1733,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting->set_updatedcallback('theme_reset_all_caches');
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/tile'.$i.'backgroundimage', 'theme_boost_union_ida/tile'.$i.'enabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Course header image position.
             $name = 'theme_boost_union_ida/tile'.$i.'backgroundimageposition';
@@ -1762,7 +1762,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                     THEME_boost_union_ida_SETTING_IMAGEPOSITION_CENTER_CENTER, $tilebackgroundimagepositionoptions);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/tile'.$i.'backgroundimageposition', 'theme_boost_union_ida/tile'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Advertisement tile link URL.
             $name = 'theme_boost_union_ida/tile'.$i.'link';
@@ -1771,7 +1771,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/tile'.$i.'link', 'theme_boost_union_ida/tile'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Advertisement tile link title.
             $name = 'theme_boost_union_ida/tile'.$i.'linktitle';
@@ -1780,7 +1780,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_configtext($name, $title, $description, '');
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/tile'.$i.'linktitle', 'theme_boost_union_ida/tile'.$i.'enabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Advertisement tile link target.
             $name = 'theme_boost_union_ida/tile'.$i.'linktarget';
@@ -1795,7 +1795,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
                     $tilelinktargetnoptions);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/tile'.$i.'linktarget', 'theme_boost_union_ida/tile'.$i.'enabled', 'neq',
-                    THEME_boost_union_ida_SETTING_SELECT_YES);
+                    THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
 
             // Setting: Advertisement tile order position.
             $name = 'theme_boost_union_ida/tile'.$i.'order';
@@ -1804,7 +1804,7 @@ if ($hassiteconfig || has_capability('theme/boost_union_ida:configure', context_
             $setting = new admin_setting_configselect($name, $title, $description, $i, $tilesorders);
             $tab->add($setting);
             $page->hide_if('theme_boost_union_ida/tile'.$i.'order', 'theme_boost_union_ida/tile'.$i.'enabled', 'neq',
-                THEME_boost_union_ida_SETTING_SELECT_YES);
+                THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
         }
 
         // Add tab to settings page.

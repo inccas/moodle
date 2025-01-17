@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - Hook callbacks.
+ * Theme Boost Union - Hook callbacks.
  *
- * @package    theme_boost_union_dhoch3
+ * @package    theme_boost_union
  * @copyright  2024 Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,7 +27,12 @@ defined('MOODLE_INTERNAL') || die();
 $callbacks = [
     [
         'hook' => \core\hook\output\before_standard_head_html_generation::class,
-        'callback' => 'theme_boost_union_dhoch3\local\before_standard_head_html_generation::callback',
+        'callback' => 'theme_boost_union\local\hook\output\before_standard_head_html_generation::callback',
+        'priority' => 0,
+    ],
+    [
+        'hook' => \core\hook\output\before_standard_top_of_body_html_generation::class,
+        'callback' => 'theme_boost_union\local\hook\output\before_standard_top_of_body_html_generation::callback',
         'priority' => 0,
     ],
 ];

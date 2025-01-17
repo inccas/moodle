@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - Event observers.
+ * Theme Boost Union - Event observers.
  *
  * @package    theme_boost_union_dhoch3
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
@@ -42,18 +42,18 @@ class eventobservers {
         global $CFG;
 
         // Require flavours library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/flavours/flavourslib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/flavours/flavourslib.php');
 
         // If a flavour exists which is configured to apply to the given cohort.
         if (theme_boost_union_dhoch3_flavour_exists_for_cohort($event->objectid)) {
             // Purge the flavours cache as the users might get other flavours which apply after the cohort deletion.
-            // We would have preferred using cache_helper::purge_by_definition, but this just purges the session cache
+            // We would have preferred using \core_cache\helper::purge_by_definition, but this just purges the session cache
             // of the current user and not for all users.
-            \cache_helper::purge_by_event('theme_boost_union_dhoch3_cohort_deleted');
+            \core_cache\helper::purge_by_event('theme_boost_union_dhoch3_cohort_deleted');
         }
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Deletion this cohort may result in a menu change for its users.
         // Verify if any of the menus used this cohort in restriction rules and, if yes, purge the menus cache.
@@ -69,7 +69,7 @@ class eventobservers {
         global $CFG;
 
         // Require flavours library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/flavours/flavourslib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/flavours/flavourslib.php');
 
         // If a flavour exists which is configured to apply to the given cohort.
         if (theme_boost_union_dhoch3_flavour_exists_for_cohort($event->objectid)) {
@@ -81,7 +81,7 @@ class eventobservers {
         }
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Adding users to this cohort may result in a menu change for these users.
         // Verify if any of the menus used this cohort in restriction rules and, if yes, purge the menus cache for this user.
@@ -97,7 +97,7 @@ class eventobservers {
         global $CFG;
 
         // Require flavours library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/flavours/flavourslib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/flavours/flavourslib.php');
 
         // If a flavour exists which is configured to apply to the given cohort.
         if (theme_boost_union_dhoch3_flavour_exists_for_cohort($event->objectid)) {
@@ -109,7 +109,7 @@ class eventobservers {
         }
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Removing users from this cohort may result in a menu change for these users.
         // Verify if any of the menus used this cohort in restriction rules and, if yes, purge the menus cache for this user.
@@ -125,7 +125,7 @@ class eventobservers {
         global $CFG;
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Purge the cached menus for the user with the assigned role.
         smartmenu_helper::purge_cache_session_roles($event->objectid, $event->relateduserid);
@@ -140,7 +140,7 @@ class eventobservers {
         global $CFG;
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Purge the cached menus for the user with the unassigned role.
         smartmenu_helper::purge_cache_session_roles($event->objectid, $event->relateduserid);
@@ -155,7 +155,7 @@ class eventobservers {
         global $CFG;
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Purge the cached menus for all users with the deleted role.
         smartmenu_helper::purge_cache_deleted_roles($event->objectid);
@@ -170,7 +170,7 @@ class eventobservers {
         global $CFG;
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Purge all the dynamic course items cache.
         smartmenu_helper::purge_cache_dynamic_courseitems();
@@ -187,7 +187,7 @@ class eventobservers {
         global $CFG;
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Clear the cache of menu when the course updated.
         smartmenu_helper::purge_cache_dynamic_courseitems();
@@ -202,7 +202,7 @@ class eventobservers {
         global $CFG;
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Clear the cache of menu when the course/module completion updated for user.
         smartmenu_helper::set_user_purgecache($event->relateduserid);
@@ -217,7 +217,7 @@ class eventobservers {
         global $CFG;
 
         // Require smart menus library.
-        require_once($CFG->dirroot . '/theme/boost_union_dhoch3/smartmenus/menulib.php');
+        require_once($CFG->dirroot . '/theme/boost_union/smartmenus/menulib.php');
 
         // Clear the cache of menu when the course/module completion updated for user.
         smartmenu_helper::set_user_purgecache($event->relateduserid);

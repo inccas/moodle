@@ -17,24 +17,69 @@
 /**
  * Theme Boost Union - Event handlers.
  *
- * @package    theme_boost_union_phd
+ * @package    theme_boost_union
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$observers = array(
-        array(
+$observers = [
+        [
                 'eventname' => '\core\event\cohort_deleted',
-                'callback' => '\theme_boost_union_phd\eventobservers::cohort_deleted'
-        ),
-        array(
+                'callback' => '\theme_boost_union\eventobservers::cohort_deleted',
+        ],
+        [
                 'eventname' => '\core\event\cohort_member_added',
-                'callback' => '\theme_boost_union_phd\eventobservers::cohort_member_added'
-        ),
-        array(
+                'callback' => '\theme_boost_union\eventobservers::cohort_member_added',
+        ],
+        [
                 'eventname' => '\core\event\cohort_member_removed',
-                'callback' => '\theme_boost_union_phd\eventobservers::cohort_member_removed'
-        ),
-);
+                'callback' => '\theme_boost_union\eventobservers::cohort_member_removed',
+        ],
+        [
+                'eventname' => 'core\event\role_assigned',
+                'callback' => '\theme_boost_union\eventobservers::role_assigned',
+        ],
+        [
+                'eventname' => 'core\event\role_deleted',
+                'callback' => '\theme_boost_union\eventobservers::role_deleted',
+        ],
+        [
+                'eventname' => 'core\event\role_unassigned',
+                'callback' => '\theme_boost_union\eventobservers::role_unassigned',
+        ],
+        [
+                'eventname' => 'core\event\user_updated',
+                'callback' => '\theme_boost_union\eventobservers::user_updated',
+        ],
+        [
+                'eventname' => 'core\event\course_created',
+                'callback' => '\theme_boost_union\eventobservers::course_updated',
+        ],
+        [
+                'eventname' => 'core\event\course_completion_updated',
+                'callback' => '\theme_boost_union\eventobservers::completion_updated',
+        ],
+        [
+                'eventname' => 'core\event\course_module_completion_updated',
+                'callback' => '\theme_boost_union\eventobservers::completion_updated',
+        ],
+        [
+                'eventname' => 'core\event\course_updated',
+                'callback' => '\theme_boost_union\eventobservers::course_updated',
+        ],
+        [
+                'eventname' => 'core\event\course_deleted',
+                'callback' => '\theme_boost_union\eventobservers::course_updated',
+        ],
+        [
+                'eventname' => 'core\event\course_category_deleted',
+                'callback' => '\theme_boost_union\eventobservers::category_updated',
+        ],
+        [
+                'eventname' => 'core\event\course_category_updated',
+                'callback' => '\theme_boost_union\eventobservers::category_updated',
+        ],
+
+];

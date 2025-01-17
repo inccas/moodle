@@ -14,9 +14,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - JS code scroll-spy
+ * Theme Boost Union - JS code scroll-spy
  *
- * @module     theme_boost_union_dhoch3/scrollspy
+ * @module     theme_boost_union/scrollspy
  * @copyright  2022 Josha Bartsch <bartsch@itc.rwth-aachen.de>
  * @copyright  based on code from theme_fordson by Chris Kenniburg.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -44,7 +44,7 @@ const initScrollSpy = () => {
         }
         editToggle.addEventListener('click', () => {
 
-            window.sessionStorage.setItem('theme_boost_union_dhoch3_scrollspy_edittoggled', true);
+            window.sessionStorage.setItem('theme_boost_union_scrollspy_edittoggled', true);
 
             let viewporttop = window.scrollY;
             let closest = null;
@@ -61,14 +61,14 @@ const initScrollSpy = () => {
                 }
             });
 
-            window.sessionStorage.setItem('theme_boost_union_dhoch3_scrollspy_closestid', closest.id);
-            window.sessionStorage.setItem('theme_boost_union_dhoch3_scrollspy_closestdelta', viewporttop - closest.offsetTop);
+            window.sessionStorage.setItem('theme_boost_union_scrollspy_closestid', closest.id);
+            window.sessionStorage.setItem('theme_boost_union_scrollspy_closestdelta', viewporttop - closest.offsetTop);
         });
-        let edittoggled = window.sessionStorage.getItem('theme_boost_union_dhoch3_scrollspy_edittoggled');
+        let edittoggled = window.sessionStorage.getItem('theme_boost_union_scrollspy_edittoggled');
         if (edittoggled) {
 
-            let closestid = window.sessionStorage.getItem('theme_boost_union_dhoch3_scrollspy_closestid');
-            let closestdelta = window.sessionStorage.getItem('theme_boost_union_dhoch3_scrollspy_closestdelta');
+            let closestid = window.sessionStorage.getItem('theme_boost_union_scrollspy_closestid');
+            let closestdelta = window.sessionStorage.getItem('theme_boost_union_scrollspy_closestdelta');
 
             if (closestid && closestdelta) {
                 let closest = document.getElementById(closestid);
@@ -77,9 +77,9 @@ const initScrollSpy = () => {
                 window.scrollTo(0, y);
             }
 
-            window.sessionStorage.removeItem('theme_boost_union_dhoch3_scrollspy_edittoggled');
-            window.sessionStorage.removeItem('theme_boost_union_dhoch3_scrollspy_closestid');
-            window.sessionStorage.removeItem('theme_boost_union_dhoch3_scrollspy_closestdelta');
+            window.sessionStorage.removeItem('theme_boost_union_scrollspy_edittoggled');
+            window.sessionStorage.removeItem('theme_boost_union_scrollspy_closestid');
+            window.sessionStorage.removeItem('theme_boost_union_scrollspy_closestdelta');
         }
     }
 };

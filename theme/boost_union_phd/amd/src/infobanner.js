@@ -16,7 +16,7 @@
 /**
  * Theme Boost Union - JS code infobanner
  *
- * @module     theme_boost_union_phd/infobanner
+ * @module     theme_boost_union/infobanner
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
  * @copyright  on behalf of Zurich University of Applied Sciences (ZHAW)
  * @copyright  based on code from theme_boost_campus by Kathrin Osswald.
@@ -36,7 +36,9 @@ define(['jquery'], function($) {
             var infobannerno = $(this).attr('data-infobanner-no');
 
             // And store the dismissing of the info banner as a user preference to persist this decision.
-            M.util.set_user_preference('theme_boost_union_phd_infobanner' + infobannerno + '_dismissed', true);
+            require(['core_user/repository'], function(UserRepository) {
+                UserRepository.setUserPreference('theme_boost_union_infobanner' + infobannerno + '_dismissed', true);
+            });
         });
     }
 

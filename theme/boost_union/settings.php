@@ -22,11 +22,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+use core\di;
+use core\hook\manager as hook_manager;
 use theme_boost_union\admin_setting_configdatetime;
 use theme_boost_union\admin_setting_configstoredfilealwayscallback;
 use theme_boost_union\admin_setting_configtext_url;
-use core\di;
-use core\hook\manager as hook_manager;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -191,7 +191,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $name = 'theme_boost_union/extscssheading';
         $title = get_string('extscssheading', 'theme_boost_union', null, true);
         $taskurl = new core\url('/admin/tool/task/scheduledtasks.php',
-                ['action' => 'edit', 'task' => 'theme_boost_union\task\purge_cache']);
+                ['action' => 'edit', 'task' => 'theme_boost_union_flb\task\purge_cache']);
         $description = get_string('extscssheading_desc', 'theme_boost_union', null, true).'<br /><br />'.
                 get_string('extscssheading_instr', 'theme_boost_union', null, true).
                 '<ul><li>'.get_string('extscssheading_sources', 'theme_boost_union', null, true).'</li>'.

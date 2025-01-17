@@ -20,18 +20,21 @@
  * This layoutfile is based on theme/boost/layout/drawers.php
  *
  * Modifications compared to this layout file:
- * * Render theme_boost_union_flb/drawers instead of theme_boost/drawers template
  * * Include activity navigation
  * * Include course related hints
  * * Include back to top button
  * * Include scroll spy
  * * Include footnote
  * * Include static pages
+ * * Include accessibility pages
  * * Include Jvascript disabled hint
  * * Include advertisement tiles
+ * * Include slider
  * * Include info banners
  * * Include additional block regions
  * * Handle admin setting for right-hand block drawer of site home
+ * * Include smart menus
+ * * Include course index modification
  *
  * @package   theme_boost_union_flb
  * @copyright 2022 Luca Bösch, BFH Bern University of Applied Sciences luca.boesch@bfh.ch
@@ -49,15 +52,12 @@ require_once($CFG->dirroot . '/theme/boost_union_flb/locallib.php');
 
 // Add activity navigation if the feature is enabled.
 $activitynavigation = get_config('theme_boost_union_flb', 'activitynavigation');
-if ($activitynavigation == THEME_boost_union_flb_SETTING_SELECT_YES) {
+if ($activitynavigation == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
     $PAGE->theme->usescourseindex = false;
 }
 
 // Add block button in editing mode.
 $addblockbutton = $OUTPUT->addblockbutton();
-
-user_preference_allow_ajax_update('drawer-open-index', PARAM_BOOL);
-user_preference_allow_ajax_update('drawer-open-block', PARAM_BOOL);
 
 if (isloggedin()) {
     $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
@@ -68,18 +68,18 @@ if (isloggedin()) {
         $sitehomerighthandblockdrawerserverconfig = get_config('theme_boost_union_flb', 'showsitehomerighthandblockdraweronfirstlogin');
     }
 
-    $isadminsettingyes = ($sitehomerighthandblockdrawerserverconfig == THEME_boost_union_flb_SETTING_SELECT_YES);
+    $isadminsettingyes = ($sitehomerighthandblockdrawerserverconfig == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
     $blockdraweropen = (get_user_preferences('drawer-open-block', $isadminsettingyes)) == true;
 } else {
     $courseindexopen = false;
     $blockdraweropen = false;
 
-    if (get_config('theme_boost_union_flb', 'showsitehomerighthandblockdraweronvisit') == THEME_boost_union_flb_SETTING_SELECT_YES) {
+    if (get_config('theme_boost_union_flb', 'showsitehomerighthandblockdraweronvisit') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
         $blockdraweropen = true;
     }
 }
 
-if (defined('BEHAT_SITE_RUNNING')) {
+if (defined('BEHAT_SITE_RUNNING') && get_user_preferences('behat_keep_drawer_closed') != 1) {
     try {
         if (
             get_config('theme_boost_union_flb', 'showsitehomerighthandblockdraweronvisit') === false &&
@@ -110,7 +110,6 @@ if (!$courseindex) {
     $courseindexopen = false;
 }
 
-$bodyattributes = $OUTPUT->body_attributes($extraclasses);
 $forceblockdraweropen = $OUTPUT->firstview_fakeblocks();
 
 $secondarynavigation = false;
@@ -125,12 +124,29 @@ if ($PAGE->has_secondary_navigation()) {
     }
 }
 
-$primary = new core\navigation\output\primary($PAGE);
+// Load the navigation from boost_union_flb primary navigation, the extended version of core primary navigation.
+// It includes the smart menus and menu items, for multiple locations.
+$primary = new theme_boost_union_flb\output\navigation\primary($PAGE);
 $renderer = $PAGE->get_renderer('core');
 $primarymenu = $primary->export_for_template($renderer);
+
+// Add special class selectors to improve the Smart menus SCSS selectors.
+if (isset($primarymenu['includesmartmenu']) && $primarymenu['includesmartmenu'] == true) {
+    $extraclasses[] = 'theme-boost-union-smartmenu';
+}
+if (isset($primarymenu['bottombar']) && !empty($primarymenu['includesmartmenu'])) {
+    $extraclasses[] = 'theme-boost-union-bottombar';
+}
+
+// Include the extra classes for the course index modification.
+require_once(__DIR__ . '/includes/courseindex.php');
+
 $buildregionmainsettings = !$PAGE->include_region_main_settings_in_header_actions() && !$PAGE->has_secondary_navigation();
 // If the settings menu will be included in the header then don't add it here.
 $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settings_menu() : false;
+
+$bodyattributes = $OUTPUT->body_attributes($extraclasses); // In the original layout file, this line is place more above,
+// but we amended $extraclasses and had to move it.
 
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
@@ -154,7 +170,7 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'overflow' => $overflow,
     'headercontent' => $headercontent,
-    'addblockbutton' => $addblockbutton
+    'addblockbutton' => $addblockbutton,
 ];
 
 // Include the template content for the course related hints.
@@ -166,6 +182,9 @@ require_once(__DIR__ . '/includes/blockregions.php');
 // Include the content for the back to top button.
 require_once(__DIR__ . '/includes/backtotopbutton.php');
 
+// Include the content for the Boost Union footer buttons.
+require_once(__DIR__ . '/includes/footerbuttons.php');
+
 // Include the content for the scrollspy.
 require_once(__DIR__ . '/includes/scrollspy.php');
 
@@ -175,13 +194,19 @@ require_once(__DIR__ . '/includes/footnote.php');
 // Include the template content for the static pages.
 require_once(__DIR__ . '/includes/staticpages.php');
 
+// Include the template content for the accessibility pages.
+require_once(__DIR__ . '/includes/accessibilitypages.php');
+
+// Include the template content for the footer button.
+require_once(__DIR__ . '/includes/footer.php');
+
 // Include the template content for the JavaScript disabled hint.
 require_once(__DIR__ . '/includes/javascriptdisabledhint.php');
 
 // Include the template content for the info banners.
 require_once(__DIR__ . '/includes/infobanners.php');
 
-// Include the template content for the navbar styling.
+// Include the template content for the navbar.
 require_once(__DIR__ . '/includes/navbar.php');
 
 // Include the template content for the advertisement tiles, but only if we are on the frontpage.
@@ -189,5 +214,13 @@ if ($PAGE->pagelayout == 'frontpage') {
     require_once(__DIR__ . '/includes/advertisementtiles.php');
 }
 
-// Render drawers.mustache from boost_union_flb.
-echo $OUTPUT->render_from_template('theme_boost_union_flb/drawers', $templatecontext);
+// Include the template content for the slider, but only if we are on the frontpage.
+if ($PAGE->pagelayout == 'frontpage') {
+    require_once(__DIR__ . '/includes/slider.php');
+}
+
+// Include the template content for the smart menus.
+require_once(__DIR__ . '/includes/smartmenus.php');
+
+// Render drawers.mustache from theme_boost (which is overridden in theme_boost_union_flb).
+echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);

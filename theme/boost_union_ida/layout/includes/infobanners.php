@@ -57,7 +57,7 @@ for ($i = 1; $i <= THEME_boost_union_ida_SETTING_INFOBANNER_COUNT; $i++) {
         // Info banner dismissible status (but not on the login page as the user preference can't be stored there).
         if ($PAGE->pagelayout != 'login') {
             $dismissiblesettingname = 'infobanner'.$i.'dismissible';
-            if ($config->{$dismissiblesettingname} == THEME_boost_union_ida_SETTING_SELECT_YES) {
+            if ($config->{$dismissiblesettingname} == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
                 $dismissible = true;
             } else {
                 $dismissible = false;

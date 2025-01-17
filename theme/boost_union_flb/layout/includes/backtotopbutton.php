@@ -28,6 +28,6 @@ defined('MOODLE_INTERNAL') || die();
 $backtotopbutton = get_config('theme_boost_union_flb', 'backtotopbutton');
 
 // Add back to top AMC module if the feature is enabled.
-if ($backtotopbutton == THEME_boost_union_flb_SETTING_SELECT_YES) {
+if ($backtotopbutton == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
     $PAGE->requires->js_call_amd('theme_boost_union_flb/backtotopbutton', 'init');
 }

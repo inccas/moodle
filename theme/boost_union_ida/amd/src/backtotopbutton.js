@@ -16,7 +16,7 @@
 /**
  * Theme Boost Union - JS code back to top button
  *
- * @module     theme_boost_union_ida/backtotopbutton
+ * @module     theme_boost_union/backtotopbutton
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
  * @copyright  on behalf of Zurich University of Applied Sciences (ZHAW)
  * @copyright  based on code from theme_boost_campus by Kathrin Osswald.
@@ -33,23 +33,33 @@ define(['jquery', 'core/str', 'core/notification'], function($, str, Notificatio
      * Initializing.
      */
     function initBackToTop() {
+        // Define the scroll distance after which the button will be shown.
+        const scrolldistance = 220;
+
         // Get the string backtotop from language file.
-        let stringsPromise = str.get_string('backtotop', 'theme_boost_union_ida');
+        let stringsPromise = str.get_string('backtotop', 'theme_boost_union');
 
         // If the string has arrived, add backtotop button to DOM and add scroll and click handlers.
         $.when(stringsPromise).then(function(string) {
-            // Add a fontawesome icon after the footer as the back to top button.
-            $('#page-footer').after('<button id="back-to-top" ' +
+            // Add a fontawesome icon to the footer as the back to top button.
+            $('#boost-union-footer-buttons').prepend('<button id="back-to-top" ' +
                     'class="btn btn-icon bg-secondary icon-no-margin d-print-none"' +
                     'aria-label="' + string + '">' +
                     '<i aria-hidden="true" class="fa fa-chevron-up fa-fw "></i></button>');
 
+            // Check directly if the button should be shown.
+            // This is helpful for all cases when this code here runs _after_ the page has been scrolled,
+            // especially by the scrollspy feature or by a simple browser page reload.
+            if ($(window).scrollTop() > scrolldistance) {
+                checkAndShow();
+            } else {
+                checkAndHide();
+            }
+
             // This function fades the button in when the page is scrolled down or fades it out
             // if the user is at the top of the page again.
-            // Please note that Boost in Moodle 4.0 does not scroll the window object / whole body tag anymore,
-            // it scrolls the #page element instead.
-            $('#page').on('scroll', function() {
-                if ($('#page').scrollTop() > 220) {
+            $(window).on('scroll', function() {
+                if ($(window).scrollTop() > scrolldistance) {
                     checkAndShow();
                 } else {
                     checkAndHide();
@@ -59,7 +69,7 @@ define(['jquery', 'core/str', 'core/notification'], function($, str, Notificatio
             // This function scrolls the page to top with a duration of 500ms.
             $('#back-to-top').on('click', function(event) {
                 event.preventDefault();
-                $('#page').animate({scrollTop: 0}, 500);
+                $('html, body').animate({scrollTop: 0}, 500);
                 $('#back-to-top').blur();
             });
 

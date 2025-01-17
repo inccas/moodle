@@ -23,7 +23,7 @@
  */
 
 // Constants which are use throughout this theme.
-define('THEME_boost_union_ida_SETTING_SELECT_YES', 'yes');
+define('THEME_BOOST_UNION_FLB_SETTING_SELECT_YES', 'yes');
 define('THEME_boost_union_ida_SETTING_SELECT_NO', 'no');
 
 define('THEME_boost_union_ida_SETTING_STATICPAGELINKPOSITION_NONE', 'none');
@@ -135,7 +135,7 @@ function theme_boost_union_ida_get_pre_scss($theme) {
     $scss = '';
 
     // Add SCSS constants for evaluating select setting values in SCSS code.
-    $scss .= '$boostunionsettingyes: '.THEME_boost_union_ida_SETTING_SELECT_YES. ";\n";
+    $scss .= '$boostunionsettingyes: '.THEME_BOOST_UNION_FLB_SETTING_SELECT_YES. ";\n";
     $scss .= '$boostunionsettingno: '.THEME_boost_union_ida_SETTING_SELECT_NO. ";\n";
 
     $configurable = [

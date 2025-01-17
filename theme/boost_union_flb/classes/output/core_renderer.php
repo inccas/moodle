@@ -367,7 +367,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         // Add the course header image for rendering.
         if ($this->page->pagelayout == 'course' && (get_config('theme_boost_union_flb', 'courseheaderimageenabled')
-                        == THEME_boost_union_flb_SETTING_SELECT_YES)) {
+                        == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES)) {
             // If course header images are activated, we get the course header image url
             // (which might be the fallback image depending on the course settings and theme settings).
             $header->courseheaderimageurl = theme_boost_union_flb_get_course_header_image_url();

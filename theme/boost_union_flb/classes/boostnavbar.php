@@ -19,8 +19,6 @@ namespace theme_boost_union_flb;
 use core\navigation\views\view;
 use navigation_node;
 use moodle_url;
-use action_link;
-use lang_string;
 
 /**
  * Creates a navbar for boost union that allows easy control of the navbar items.
@@ -56,8 +54,9 @@ class boostnavbar extends \theme_boost\boostnavbar {
             }
         }
         if ($this->page->context->contextlevel == CONTEXT_COURSE) {
-            if (get_config('theme_boost_union_flb', 'categorybreadcrumbs') == THEME_boost_union_flb_SETTING_SELECT_YES) {
-                // Add the categories breadcrumb navigation nodes.
+            if (get_config('theme_boost_union_flb', 'categorybreadcrumbs') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+                // Create the categories breadcrumb navigation nodes.
+                $categorynodes = [];
                 foreach (array_reverse($this->get_categories()) as $category) {
                     $context = \context_coursecat::instance($category->id);
                     if (!\core_course_category::can_view_category($category)) {
@@ -68,12 +67,24 @@ class boostnavbar extends \theme_boost\boostnavbar {
                     $url = new moodle_url('/course/index.php', ['categoryid' => $category->id]);
                     $name = format_string($category->name, true, ['context' => $displaycontext]);
                     $categorynode = \breadcrumb_navigation_node::create($name, $url, \breadcrumb_navigation_node::TYPE_CATEGORY,
-                            null, $category->id);
+                        null, $category->id);
                     if (!$category->visible) {
                         $categorynode->hidden = true;
                     }
-                    $this->items[] = $categorynode;
+                    $categorynodes[] = $categorynode;
                 }
+                $itemswithcategories = [];
+                if (!$this->items) {
+                    $itemswithcategories = $categorynodes;
+                } else {
+                    foreach ($this->items as $item) {
+                        if ($item->type == \breadcrumb_navigation_node::TYPE_COURSE) {
+                            $itemswithcategories = array_merge($itemswithcategories, $categorynodes);
+                        }
+                        $itemswithcategories[] = $item;
+                    }
+                }
+                $this->items = $itemswithcategories;
             }
 
             // Remove any duplicate navbar nodes.
@@ -83,20 +94,19 @@ class boostnavbar extends \theme_boost\boostnavbar {
             $this->remove('courses');
 
             switch (get_config('theme_boost_union_flb', 'categorybreadcrumbs')) {
-                case THEME_boost_union_flb_SETTING_SELECT_NO:
+                case THEME_BOOST_UNION_SETTING_SELECT_NO:
+                    // Remove the course category breadcrumb nodes.
                     foreach ($this->items as $key => $item) {
                         // Remove if it is a course category breadcrumb node.
                         $this->remove($item->key, \breadcrumb_navigation_node::TYPE_CATEGORY);
                     }
-                case THEME_boost_union_flb_SETTING_COURSEBREADCRUMBS_DONTCHANGE:
-                    // Remove the course category breadcrumb node.
-                    $this->remove($this->page->course->category, \breadcrumb_navigation_node::TYPE_CATEGORY);
-                case THEME_boost_union_flb_SETTING_SELECT_YES:
+                case THEME_BOOST_UNION_FLB_SETTING_SELECT_YES:
                     break;
             }
-
             // Remove the course breadcrumb node.
-            $this->remove($this->page->course->id, \breadcrumb_navigation_node::TYPE_COURSE);
+            if (!str_starts_with($this->page->pagetype, 'course-view-section-')) {
+                $this->remove($this->page->course->id, \breadcrumb_navigation_node::TYPE_COURSE);
+            }
             // Remove the navbar nodes that already exist in the secondary navigation menu.
             $this->remove_items_that_exist_in_navigation($PAGE->secondarynav);
 
@@ -123,13 +133,13 @@ class boostnavbar extends \theme_boost\boostnavbar {
         if ($this->page->context->contextlevel == CONTEXT_MODULE) {
             $this->remove('mycourses');
             $this->remove('courses');
-            // Remove the course category breadcrumb node.
-            $this->remove($this->page->course->category, \breadcrumb_navigation_node::TYPE_CATEGORY);
-            $courseformat = course_get_format($this->page->course)->get_course();
-            // Section items can be only removed if a course layout (coursedisplay) is not explicitly set in the
-            // given course format or the set course layout is not 'One section per page'.
-            $removesections = !isset($courseformat->coursedisplay) ||
-                $courseformat->coursedisplay != COURSE_DISPLAY_MULTIPAGE;
+            // Remove the course category breadcrumb nodes.
+            foreach ($this->items as $key => $item) {
+                // Remove if it is a course category breadcrumb node.
+                $this->remove($item->key, \breadcrumb_navigation_node::TYPE_CATEGORY);
+            }
+            $courseformat = course_get_format($this->page->course);
+            $removesections = $courseformat->can_sections_be_removed_from_navigation();
             if ($removesections) {
                 // If the course sections are removed, we need to add the anchor of current section to the Course.
                 $coursenode = $this->get_item($this->page->course->id);
@@ -156,8 +166,8 @@ class boostnavbar extends \theme_boost\boostnavbar {
 
         // Don't display the navbar if there is only one item. Apparently this is bad UX design.
         // Except, leave it in when in course context and categorybreadcrumbs are desired.
-        if (get_config('theme_boost_union_flb', 'categorybreadcrumbs') != THEME_boost_union_flb_SETTING_SELECT_YES &&
-                $this->page->context->contextlevel == CONTEXT_COURSE) {
+        if (!(get_config('theme_boost_union_flb', 'categorybreadcrumbs') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES &&
+            $this->page->context->contextlevel == CONTEXT_COURSE)) {
             if ($this->item_count() <= 1) {
                 $this->clear_items();
                 return;
@@ -165,8 +175,9 @@ class boostnavbar extends \theme_boost\boostnavbar {
         }
 
         // Make sure that the last item is not a link. Not sure if this is always a good idea.
-        // Except, leave it when categorybreadcrumbs are desired.
-        if (get_config('theme_boost_union_flb', 'categorybreadcrumbs') != THEME_boost_union_flb_SETTING_SELECT_YES) {
+        // Except, leave it when categorybreadcrumbs are desired and if we are on a course page.
+        if (!(get_config('theme_boost_union_flb', 'categorybreadcrumbs') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES &&
+            $this->page->context->contextlevel == CONTEXT_COURSE)) {
             $this->remove_last_item_action();
         }
     }
@@ -239,7 +250,7 @@ class boostnavbar extends \theme_boost\boostnavbar {
     protected function remove_no_link_items(bool $removesections = true): void {
         foreach ($this->items as $key => $value) {
             if (isset($lastitem) && is_a($lastitem, 'breadcrumb_navigation_node') && !$value->is_last() &&
-                    (!$value->has_action() || ($value->type == \navigation_node::TYPE_SECTION && $removesections))) {
+                (!$value->has_action() || ($value->type == \navigation_node::TYPE_SECTION && $removesections))) {
                 unset($this->items[$key]);
             }
         }

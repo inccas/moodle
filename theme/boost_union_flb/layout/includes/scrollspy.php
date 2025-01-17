@@ -27,6 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 $scrollspy = get_config('theme_boost_union_flb', 'scrollspy');
 
 // Add scroll-spy AMD module if the feature is enabled.
-if ($scrollspy == THEME_boost_union_flb_SETTING_SELECT_YES) {
+if ($scrollspy == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
     $PAGE->requires->js_call_amd('theme_boost_union_flb/scrollspy', 'init');
 }

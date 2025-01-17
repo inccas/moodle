@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - Settings class file
+ * Theme Boost Union - Settings class file
  *
  * @package    theme_boost_union_dhoch3
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>

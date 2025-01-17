@@ -14,9 +14,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Dhoch3 - JS code back to top button
+ * Theme Boost Union - JS code back to top button
  *
- * @module     theme_boost_union_dhoch3/backtotopbutton
+ * @module     theme_boost_union/backtotopbutton
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
  * @copyright  on behalf of Zurich University of Applied Sciences (ZHAW)
  * @copyright  based on code from theme_boost_campus by Kathrin Osswald.
@@ -37,12 +37,12 @@ define(['jquery', 'core/str', 'core/notification'], function($, str, Notificatio
         const scrolldistance = 220;
 
         // Get the string backtotop from language file.
-        let stringsPromise = str.get_string('backtotop', 'theme_boost_union_dhoch3');
+        let stringsPromise = str.get_string('backtotop', 'theme_boost_union');
 
         // If the string has arrived, add backtotop button to DOM and add scroll and click handlers.
         $.when(stringsPromise).then(function(string) {
-            // Add a fontawesome icon after the footer as the back to top button.
-            $('#page-footer').after('<button id="back-to-top" ' +
+            // Add a fontawesome icon to the footer as the back to top button.
+            $('#boost-union-footer-buttons').prepend('<button id="back-to-top" ' +
                     'class="btn btn-icon bg-secondary icon-no-margin d-print-none"' +
                     'aria-label="' + string + '">' +
                     '<i aria-hidden="true" class="fa fa-chevron-up fa-fw "></i></button>');
@@ -72,14 +72,6 @@ define(['jquery', 'core/str', 'core/notification'], function($, str, Notificatio
                 $('html, body').animate({scrollTop: 0}, 500);
                 $('#back-to-top').blur();
             });
-
-            // This will check if there is a communication button shown on the page already.
-            // If yes, it will add a class to the body tag which will be later used to align the back-to-top button
-            // with the communications button.
-            // This is necessary as the communications button would otherwise be overlaid by the back-to-top button.
-            if ($('#page-footer .btn-footer-communication').length) {
-                $('body').addClass('theme-boost-union-dhoch3-commincourse');
-            }
 
             return true;
         }).fail(Notification.exception);
