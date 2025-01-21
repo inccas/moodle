@@ -23,8 +23,8 @@
  */
 
 // Constants which are use throughout this theme.
-define('THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_INHERIT', 0);
-define('THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_DUPLICATE', 1);
+define('THEME_BOOST_UNION_FLB_SETTING_INHERITANCE_INHERIT', 0);
+define('THEME_BOOST_UNION_FLB_SETTING_INHERITANCE_DUPLICATE', 1);
 
 /**
  * Returns the main SCSS content.
@@ -70,7 +70,7 @@ function theme_boost_union_flb_get_pre_scss($theme) {
     // If such a fault happens, the Boost Union FlB administrator can switch the inheritance to 'Duplicate'.
     // This way, we will add the pre SCSS code with the explicit use of the Boost Union configuration to the stack.
     $inheritanceconfig = get_config('theme_boost_union_flb', 'prescssinheritance');
-    if ($inheritanceconfig == THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_DUPLICATE) {
+    if ($inheritanceconfig == THEME_BOOST_UNION_FLB_SETTING_INHERITANCE_DUPLICATE) {
         $scss .= theme_boost_union_get_pre_scss(\core\output\theme_config::load('boost_union'));
     }
 
@@ -108,7 +108,7 @@ function theme_boost_union_flb_get_extra_scss($theme) {
     // If such a fault happens, the Boost Union FlB administrator can switch the inheritance to 'Duplicate'.
     // This way, we will add the extra SCSS code with the explicit use of the Boost Union configuration to the stack.
     $inheritanceconfig = get_config('theme_boost_union_flb', 'extrascssinheritance');
-    if ($inheritanceconfig == THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_DUPLICATE) {
+    if ($inheritanceconfig == THEME_BOOST_UNION_FLB_SETTING_INHERITANCE_DUPLICATE) {
         $scss .= theme_boost_union_get_extra_scss(\core\output\theme_config::load('boost_union'));
     }
 

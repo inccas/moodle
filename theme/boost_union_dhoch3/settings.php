@@ -24,6 +24,10 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+// Constants which are use throughout this theme.
+defined('THEME_BOOST_UNION_DHOCH3_SETTING_INHERITANCE_INHERIT') || define('THEME_BOOST_UNION_DHOCH3_SETTING_INHERITANCE_INHERIT', 0);
+defined('THEME_BOOST_UNION_DHOCH3_SETTING_INHERITANCE_DUPLICATE') || define('THEME_BOOST_UNION_DHOCH3_SETTING_INHERITANCE_DUPLICATE', 1);
+
 if ($hassiteconfig || has_capability('theme/boost_union:configure', context_system::instance())) {
 
     // How this file works:
@@ -86,9 +90,9 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
 
         // Prepare inheritance options.
         $inheritanceoptions = [
-                THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_INHERIT =>
+                THEME_BOOST_UNION_DHOCH3_SETTING_INHERITANCE_INHERIT =>
                         get_string('inheritanceinherit', 'theme_boost_union_dhoch3'),
-                THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_DUPLICATE =>
+                THEME_BOOST_UNION_DHOCH3_SETTING_INHERITANCE_DUPLICATE =>
                         get_string('inheritanceduplicate', 'theme_boost_union_dhoch3'),
         ];
 
@@ -98,7 +102,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $description = get_string('prescssinheritancesetting_desc', 'theme_boost_union_dhoch3', null, true).'<br />'.
                 get_string('inheritanceoptionsexplanation', 'theme_boost_union_dhoch3', null, true);
         $setting = new admin_setting_configselect($name, $title, $description,
-                THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_INHERIT, $inheritanceoptions);
+                THEME_BOOST_UNION_DHOCH3_SETTING_INHERITANCE_INHERIT, $inheritanceoptions);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
@@ -108,7 +112,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $description = get_string('extrascssinheritancesetting_desc', 'theme_boost_union_dhoch3', null, true).'<br />'.
                 get_string('inheritanceoptionsexplanation', 'theme_boost_union_dhoch3', null, true);
         $setting = new admin_setting_configselect($name, $title, $description,
-                THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_INHERIT, $inheritanceoptions);
+                THEME_BOOST_UNION_DHOCH3_SETTING_INHERITANCE_INHERIT, $inheritanceoptions);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
