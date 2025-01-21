@@ -44,7 +44,7 @@ $templatecontext = [
     'loginbackgroundimagetextcolor' => $loginbackgroundimagetextcolor,
     'loginwrapperclass' => 'login-wrapper-'.get_config('theme_boost_union_ida', 'loginformposition'),
     'logincontainerclass' =>
-            (get_config('theme_boost_union_ida', 'loginformtransparency') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) ?
+            (get_config('theme_boost_union_ida', 'loginformtransparency') == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) ?
                     'login-container-80t' : ''
 ];
 

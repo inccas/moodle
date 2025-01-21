@@ -42,7 +42,7 @@ function theme_boost_union_ida_get_course_related_hints() {
 
     // If the setting showhintcoursehidden is set and the visibility of the course is hidden and
     // a hint for the visibility will be shown.
-    if (get_config('theme_boost_union_ida', 'showhintcoursehidden') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES
+    if (get_config('theme_boost_union_ida', 'showhintcoursehidden') == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES
             && has_capability('theme/boost_union_ida:viewhintinhiddencourse', \context_course::instance($COURSE->id))
             && $PAGE->has_set_url()
             && $PAGE->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)
@@ -67,7 +67,7 @@ function theme_boost_union_ida_get_course_related_hints() {
     // We also check that the user did not switch the role. This is a special case for roles that can fully access the course
     // without being enrolled. A role switch would show the guest access hint additionally in that case and this is not
     // intended.
-    if (get_config('theme_boost_union_ida', 'showhintcourseguestaccess') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES
+    if (get_config('theme_boost_union_ida', 'showhintcourseguestaccess') == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES
             && is_guest(\context_course::instance($COURSE->id), $USER->id)
             && $PAGE->has_set_url()
             && $PAGE->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)
@@ -107,7 +107,7 @@ function theme_boost_union_ida_get_course_related_hints() {
     // If the setting showhintcourseselfenrol is set, a hint for users is shown that the course allows unrestricted self
     // enrolment. This hint is only shown if the course is visible, the self enrolment is visible and if the user has the
     // capability "theme/boost_union_ida:viewhintcourseselfenrol".
-    if (get_config('theme_boost_union_ida', 'showhintcourseselfenrol') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES
+    if (get_config('theme_boost_union_ida', 'showhintcourseselfenrol') == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES
             && has_capability('theme/boost_union_ida:viewhintcourseselfenrol', \context_course::instance($COURSE->id))
             && $PAGE->has_set_url()
             && $PAGE->url->compare(new moodle_url('/course/view.php'), URL_MATCH_BASE)
@@ -252,7 +252,7 @@ function theme_boost_union_ida_get_course_related_hints() {
 
     // If the setting showswitchedroleincourse is set and the user has switched his role,
     // a hint for the role switch will be shown.
-    if (get_config('theme_boost_union_ida', 'showswitchedroleincourse') === THEME_BOOST_UNION_FLB_SETTING_SELECT_YES
+    if (get_config('theme_boost_union_ida', 'showswitchedroleincourse') === THEME_BOOST_UNION_IDA_SETTING_SELECT_YES
             && is_role_switched($COURSE->id) ) {
 
         // Get the role name switched to.
@@ -338,7 +338,7 @@ function theme_boost_union_ida_infobanner_is_shown_on_page($bannerno) {
 
     // If the info banner is enabled.
     $enabledsettingname = 'infobanner'.$bannerno.'enabled';
-    if ($config->{$enabledsettingname} == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+    if ($config->{$enabledsettingname} == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
         // If the info banner has any content.
         $contentsettingname = 'infobanner'.$bannerno.'content';
         if (!empty($config->{$contentsettingname})) {
@@ -1448,7 +1448,7 @@ function theme_boost_union_ida_place_mod_icons() {
     $modiconsenable = get_config('theme_boost_union_ida', 'modiconsenable');
 
     // If modiconsenable is not enabled, return directly as we do not want to modify the placed icons.
-    if ($modiconsenable != THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+    if ($modiconsenable != THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
         return;
     }
 
@@ -1614,7 +1614,7 @@ function theme_boost_union_ida_get_scss_to_mark_external_links($theme) {
     $scss = '';
 
     // If the corresponding setting is set to 'yes'.
-    if ($theme->settings->markexternallinks == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+    if ($theme->settings->markexternallinks == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
 
         // SCSS to add external link icon after the link and respect LTR and RTL while doing this.
         $scss = 'body.dir-ltr a:not([href^="' . $CFG->wwwroot . '"])[href^="http://"]::after,

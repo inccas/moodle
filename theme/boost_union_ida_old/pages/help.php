@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union - Contact page.
+ * Theme Boost Union - Help page.
  *
  * @package    theme_boost_union_ida
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
@@ -34,7 +34,7 @@ require_once($CFG->dirroot.'/theme/boost_union_ida/lib.php');
 require_once($CFG->dirroot.'/theme/boost_union_ida/locallib.php');
 
 // Set page URL.
-$PAGE->set_url('/theme/boost_union_ida/pages/contact.php');
+$PAGE->set_url('/theme/boost_union_ida/pages/help.php');
 
 // Set page layout.
 $PAGE->set_pagelayout('standard');
@@ -43,15 +43,15 @@ $PAGE->set_pagelayout('standard');
 $PAGE->set_context(context_system::instance());
 
 // Add page name as body class.
-$PAGE->add_body_class('theme_boost_union_ida-contact');
+$PAGE->add_body_class('theme_boost_union_ida-help');
 
 // Get theme config.
 $config = get_config('theme_boost_union_ida');
 
-// If the contact page is disabled, we just show a short friendly warning page and are done.
-if ($config->enablecontact != THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+// If the help page is disabled, we just show a short friendly warning page and are done.
+if ($config->enablehelp != THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
     echo $OUTPUT->header();
-    $notification = new \core\output\notification(get_string('contactdisabled', 'theme_boost_union_ida'),
+    $notification = new \core\output\notification(get_string('helpdisabled', 'theme_boost_union_ida'),
             \core\output\notification::NOTIFY_INFO);
     $notification->set_show_closebutton(false);
     echo $OUTPUT->render($notification);
@@ -60,16 +60,16 @@ if ($config->enablecontact != THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
 }
 
 // Set page title.
-$PAGE->set_title(theme_boost_union_ida_get_staticpage_pagetitle('contact'));
+$PAGE->set_title(theme_boost_union_ida_get_staticpage_pagetitle('help'));
 
 // Start page output.
 echo $OUTPUT->header();
 
 // Show page heading.
-echo $OUTPUT->heading(theme_boost_union_ida_get_staticpage_pagetitle('contact'));
+echo $OUTPUT->heading(theme_boost_union_ida_get_staticpage_pagetitle('help'));
 
-// Output contact page content.
-echo format_text($config->contactcontent);
+// Output help page content.
+echo format_text($config->helpcontent);
 
 // Finish page.
 echo $OUTPUT->footer();

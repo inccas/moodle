@@ -69,7 +69,7 @@ $templatecontext['advtileslayoutclass'] = $colclass;
 // Iterate over all advertisement tiles.
 for ($i = 1; $i <= THEME_boost_union_ida_SETTING_ADVERTISEMENTTILES_COUNT; $i++) {
     // If the tile is enabled? (regardless if it contains any content).
-    if ($config->{'tile'.$i.'enabled'} == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+    if ($config->{'tile'.$i.'enabled'} == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
         // Get and set the tile's title.
         $title = format_string(trim($config->{'tile'.$i.'title'}));
 

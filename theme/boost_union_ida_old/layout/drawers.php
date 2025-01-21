@@ -52,7 +52,7 @@ require_once($CFG->dirroot . '/theme/boost_union_ida/locallib.php');
 
 // Add activity navigation if the feature is enabled.
 $activitynavigation = get_config('theme_boost_union_ida', 'activitynavigation');
-if ($activitynavigation == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+if ($activitynavigation == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
     $PAGE->theme->usescourseindex = false;
 }
 
@@ -68,13 +68,13 @@ if (isloggedin()) {
         $sitehomerighthandblockdrawerserverconfig = get_config('theme_boost_union_ida', 'showsitehomerighthandblockdraweronfirstlogin');
     }
 
-    $isadminsettingyes = ($sitehomerighthandblockdrawerserverconfig == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES);
+    $isadminsettingyes = ($sitehomerighthandblockdrawerserverconfig == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES);
     $blockdraweropen = (get_user_preferences('drawer-open-block', $isadminsettingyes)) == true;
 } else {
     $courseindexopen = false;
     $blockdraweropen = false;
 
-    if (get_config('theme_boost_union_ida', 'showsitehomerighthandblockdraweronvisit') == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+    if (get_config('theme_boost_union_ida', 'showsitehomerighthandblockdraweronvisit') == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
         $blockdraweropen = true;
     }
 }

@@ -35,7 +35,7 @@ $staticpages = array('imprint', 'contact', 'help', 'maintenance');
 // Iterate over the static pages.
 foreach ($staticpages as $staticpage) {
     // If the page is enabled.
-    if ($config->{'enable'.$staticpage} == THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+    if ($config->{'enable'.$staticpage} == THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
         // If the admin wants to show a link in the footnote or in both locations.
         if ($config->{$staticpage.'linkposition'} == THEME_boost_union_ida_SETTING_STATICPAGELINKPOSITION_FOOTNOTE ||
                 $config->{$staticpage.'linkposition'} == THEME_boost_union_ida_SETTING_STATICPAGELINKPOSITION_BOTH) {

@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union - Maintenance page.
+ * Theme Boost Union - Contact page.
  *
  * @package    theme_boost_union_ida
  * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
@@ -34,7 +34,7 @@ require_once($CFG->dirroot.'/theme/boost_union_ida/lib.php');
 require_once($CFG->dirroot.'/theme/boost_union_ida/locallib.php');
 
 // Set page URL.
-$PAGE->set_url('/theme/boost_union_ida/pages/maintenance.php');
+$PAGE->set_url('/theme/boost_union_ida/pages/contact.php');
 
 // Set page layout.
 $PAGE->set_pagelayout('standard');
@@ -43,15 +43,15 @@ $PAGE->set_pagelayout('standard');
 $PAGE->set_context(context_system::instance());
 
 // Add page name as body class.
-$PAGE->add_body_class('theme_boost_union_ida-maintenance');
+$PAGE->add_body_class('theme_boost_union_ida-contact');
 
 // Get theme config.
 $config = get_config('theme_boost_union_ida');
 
-// If the maintenance page is disabled, we just show a short friendly warning page and are done.
-if ($config->enablemaintenance != THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
+// If the contact page is disabled, we just show a short friendly warning page and are done.
+if ($config->enablecontact != THEME_BOOST_UNION_IDA_SETTING_SELECT_YES) {
     echo $OUTPUT->header();
-    $notification = new \core\output\notification(get_string('maintenancedisabled', 'theme_boost_union_ida'),
+    $notification = new \core\output\notification(get_string('contactdisabled', 'theme_boost_union_ida'),
             \core\output\notification::NOTIFY_INFO);
     $notification->set_show_closebutton(false);
     echo $OUTPUT->render($notification);
@@ -60,16 +60,16 @@ if ($config->enablemaintenance != THEME_BOOST_UNION_FLB_SETTING_SELECT_YES) {
 }
 
 // Set page title.
-$PAGE->set_title(theme_boost_union_ida_get_staticpage_pagetitle('maintenance'));
+$PAGE->set_title(theme_boost_union_ida_get_staticpage_pagetitle('contact'));
 
 // Start page output.
 echo $OUTPUT->header();
 
 // Show page heading.
-echo $OUTPUT->heading(theme_boost_union_ida_get_staticpage_pagetitle('maintenance'));
+echo $OUTPUT->heading(theme_boost_union_ida_get_staticpage_pagetitle('contact'));
 
-// Output maintenance content.
-echo format_text($config->maintenancecontent);
+// Output contact page content.
+echo format_text($config->contactcontent);
 
 // Finish page.
 echo $OUTPUT->footer();
