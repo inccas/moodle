@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $tasks = [
     [
-        'classname' => '\theme_boost_union_flb\task\purge_cache',
+        'classname' => '\theme_boost_union\task\purge_cache',
         'blocking' => 0,
         'minute' => '0',
         'hour' => '0',
