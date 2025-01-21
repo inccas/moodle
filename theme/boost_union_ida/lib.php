@@ -23,8 +23,8 @@
  */
 
 // Constants which are use throughout this theme.
-define('THEME_BOOST_UNION_IDA_SETTING_INHERITANCE_INHERIT', 0);
-define('THEME_BOOST_UNION_IDA_SETTING_INHERITANCE_DUPLICATE', 1);
+defined('THEME_BOOST_UNION_IDA_SETTING_INHERITANCE_INHERIT') || define('THEME_BOOST_UNION_IDA_SETTING_INHERITANCE_INHERIT', 0);
+defined('THEME_BOOST_UNION_IDA_SETTING_INHERITANCE_DUPLICATE') || define('THEME_BOOST_UNION_IDA_SETTING_INHERITANCE_DUPLICATE', 1);
 
 /**
  * Returns the main SCSS content.
@@ -43,7 +43,7 @@ function theme_boost_union_ida_get_main_scss_content($theme) {
     $scss = theme_boost_union_get_main_scss_content(\core\output\theme_config::load('boost_union'));
 
     // And add Boost Union IDA's main SCSS file to the stack.
-    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_union_child/scss/post.scss');
+    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_union_ida/scss/post.scss');
 
     return $scss;
 }
@@ -75,7 +75,7 @@ function theme_boost_union_ida_get_pre_scss($theme) {
     }
 
     // And add Boost Union IDA's pre SCSS file to the stack.
-    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_union_child/scss/pre.scss');
+    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_union_ida/scss/pre.scss');
 
     /**********************************************************
      * EXTENSION POINT:

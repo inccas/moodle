@@ -41,7 +41,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
     // settings and which is automatically linked from the theme selector page.
     // To avoid that there appears a broken "Boost Union VORsprung" settings page, we redirect the user to a settings
     // overview page if he opens this page.
-    $mainsettingspageurl = new \core\url('/admin/settings.php', ['section' => 'themesettingboost_union_child']);
+    $mainsettingspageurl = new \core\url('/admin/settings.php', ['section' => 'themesettingboost_union_vorsprung']);
     if ($ADMIN->fulltree && $PAGE->has_set_url() && $PAGE->url->compare($mainsettingspageurl)) {
         redirect(new \core\url('/admin/settings.php', ['section' => 'theme_boost_union_vorsprung']));
     }
@@ -63,8 +63,8 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         // Require the necessary libraries.
         require_once($CFG->dirroot . '/theme/boost_union/lib.php');
         require_once($CFG->dirroot . '/theme/boost_union/locallib.php');
-        require_once($CFG->dirroot . '/theme/boost_union_child/lib.php');
-        require_once($CFG->dirroot . '/theme/boost_union_child/locallib.php');
+        require_once($CFG->dirroot . '/theme/boost_union_vorsprung/lib.php');
+        require_once($CFG->dirroot . '/theme/boost_union_vorsprung/locallib.php');
 
         // Prepare options array for select settings.
         // Due to MDL-58376, we will use binary select settings instead of checkbox settings throughout this theme.

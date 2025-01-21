@@ -35,10 +35,10 @@ defined('MOODLE_INTERNAL') || die();
 require($CFG->dirroot . '/theme/boost_union/config.php');
 
 // Then, we require Boost Union PhD's locallib.php to make sure that it's always loaded.
-require_once($CFG->dirroot . '/theme/boost_union_child/locallib.php');
+require_once($CFG->dirroot . '/theme/boost_union_phd/locallib.php');
 
 // Next, we overwrite only the settings which differ between Boost Union and Boost Union PhD.
-$THEME->name = 'boost_union_child';
+$THEME->name = 'boost_union_phd';
 $THEME->scss = function($theme) {
     return theme_boost_union_phd_get_main_scss_content($theme);
 };
