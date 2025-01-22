@@ -3,3 +3,21 @@
  * Add your Pre-SCSS code here.
  * It will be added on top of Boost Union's Pre-SCSS code.
  ***************************************************************/
+
+/*=======================================
+ * Settings: Colors and Vars
+ ======================================*/
+/** Some pre-SCSS from the old theme_boost_union_ida where it was still in the backend settings
+    within the textareas **/
+
+:root {
+  --color-1: #0BA1E2;
+  --color-2: #0060af;
+  --color-3: #595959;
+  --color-4: #ffffff;
+  --logo-height:80px;
+}
+
+li.activity.activity-wrapper.bootstrapelements{
+  margin-left: 1rem;
+}
