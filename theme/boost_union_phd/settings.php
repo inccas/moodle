@@ -124,6 +124,26 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
          * Add your Boost Union PhD settings here.
          *********************************************************/
 
+
+        // Create footer tab.
+        $tab = new admin_settingpage('theme_boost_union_phd_content_footer', get_string('footertab', 'theme_boost_union', null, true));
+
+        // Create footnote heading.
+        $name = 'theme_boost_union_phd/footnoteheading';
+        $title = get_string('footnoteheading', 'theme_boost_union', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Footnote.
+        $name = 'theme_boost_union_phd/footnote';
+        $title = get_string('footnotesetting', 'theme_boost_union', null, true);
+        $description = get_string('footnotesetting_desc', 'theme_boost_union', null, true);
+        $setting = new admin_setting_confightmleditor($name, $title, $description, '');
+        $tab->add($setting);
+
+        // Add tab to settings page.
+        $page->add($tab);
+
         // Add settings page to the admin settings category.
         $ADMIN->add('theme_boost_union', $page);
     }

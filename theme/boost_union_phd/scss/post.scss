@@ -4,6 +4,19 @@
  * It will be added on top of Boost Union's SCSS code.
  ***************************************************************/
 
+
+
+.section .activity {
+  list-style: none;
+  padding: 0.25rem 0;
+  border-top: 0px solid #ffffff;
+  .activity-item:not(.activityinline) {
+    border: 1px solid #dee2e6;
+  }
+}
+
+
+
 /*---------------------------------------
  * Die alten importierten CSS aus den Flavors des Alten themes
  --------------------------------------*/
@@ -1227,7 +1240,7 @@ body.pagelayout-login:not(.loginbackgroundimage) #footnote {
   }
 
   /* On not-so-large screens. */
-  @include media-breakpoint-down(lg) { /* This means less than 300px per outside block region. */
+  @include media-breakpoint-down(lg) { /* This means less than 300px per outside block region PhD2. */
     /* Stack content vertically. */
     .main-inner-outside-nextmaincontent {
       display: flex;

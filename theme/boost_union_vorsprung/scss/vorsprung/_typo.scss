@@ -1,0 +1,27 @@
+// stylelint-disable all
+
+.text-black { color: #{$black} !important; }
+
+.headline-primary {
+  color: $primary;
+  position: relative;
+  img {
+    position: absolute;
+    content:url(staticimageurl('typo/typo-secondary-header-prefix.png'));
+  }
+}
+
+h1 {
+  &.headline-primary img {
+    left: -3.8rem;
+    height: 1.4rem;
+    margin-top: 0.65rem;
+  }
+}
+h2 {
+  &.headline-primary img {
+    left: -3.3rem;
+    height: 1.2rem;
+    margin-top: 0.5rem;
+  }
+}

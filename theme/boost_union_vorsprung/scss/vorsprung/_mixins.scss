@@ -1,0 +1,39 @@
+// stylelint-disable all
+
+@mixin fas-char($code, $weight:900) {
+  font-family: "Font Awesome 5 Free";
+  font-weight: $weight;
+  content: "#{$code}";
+}
+
+@mixin fab-char($code, $weight:400) {
+  font-family: "Font Awesome 5 Brands";
+  font-weight: $weight;
+  content: "#{$code}";
+}
+
+@mixin clamp($property, $min-size, $scaler, $max-size, $min-size-left:false, $scaler-left:false, $max-size-left:false){
+  @if $min-size-left == false {
+    #{$property}:$max-size;
+    #{$property}:#{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"};
+    #{$property}:clamp(#{$min-size}, #{$scaler}, #{$max-size});
+  } @else if $min-size-left == 0 or $min-size-left == auto{
+    #{$property}:$max-size $min-size-left;
+    #{$property}:#{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"} $min-size-left;
+    #{$property}:clamp(#{$min-size}, #{$scaler}, #{$max-size}) $min-size-left;
+  } @else {
+    #{$property}:$max-size $min-size-left;
+    #{$property}:#{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"} #{"min(max(#{$min-size-left}, #{$scaler-left}), #{$max-size-left})"};
+    #{$property}:clamp(#{$min-size}, #{$scaler}, #{$max-size}) clamp(#{$min-size-left}, #{$scaler-left}, #{$max-size-left});
+  }
+}
+
+@mixin text-link($color: $primary) {
+  a {
+    color: $color !important;
+    &:hover,
+    &:focus {
+      color: $color !important;
+    }
+  }
+}
