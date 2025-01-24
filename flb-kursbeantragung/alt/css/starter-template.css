@@ -1,0 +1,29 @@
+body {
+    padding-top: 50px;
+}
+.starter-template {
+    padding: 40px 15px;
+}
+
+.logo{
+    width:200px;
+    height:auto;
+    display: block;
+    margin: 0 15px;
+}
+
+.captchacode{
+    margin-top:50px;
+}
+
+.btn-primary {
+    background-color: #005faf;
+    border-color: transparent;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #e98a12;
+    border-color: transparent;
+}
+

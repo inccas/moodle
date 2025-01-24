@@ -1,0 +1,217 @@
+<!-- 2014 by Bootstrapaholic.de -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kontaktformular</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/starter-template.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <img class="logo" src="img/dhoch3.png">
+	<h1>Modulbeantragung</h1>
+    <div class="starter-template">
+        <div class="row">
+            <div id="message"></div>
+
+            <!-- Formular Beginn -->
+
+            <form role="form" id="frmContact">
+                <div class="col-md-6">
+                    <div class="form-group" id="frmGrpVorname">
+                        <label for="vorname" class="control-label">Vorname</label>
+                        <input type="text" id="vorname" class="form-control" placeholder="Ihr Vorname">
+                    </div>
+                    <div class="form-group" id="frmGrpNachname">
+                        <label for="nachname" class="control-label">Nachname</label>
+                        <input type="text" id="nachname" class="form-control" placeholder="Ihr Nachname">
+                    </div>
+                    <div class="form-group" id="frmGrpEmail">
+                        <label for="email" class="control-label">E-Mail Adresse</label>
+                        <input type="text" id="email" class="form-control"  placeholder="Ihre E-Mail Adresse">
+                    </div>
+					
+					<div class="form-group" id="frmGrpModulbeantrag">
+					
+						<label for "modulbeantrag" class="control-label">Modulbeantrag</label>
+						
+						 <label class="checkbox">
+							<input type="checkbox"  id="inlineCheckbox1" value="option1">Modul 1:</label>
+						
+						<label class="checkbox">
+							<input type="checkbox" id="inlineCheckbox2" value="option2">Modul 2</label>
+						
+						<label class="checkbox">
+							<input type="checkbox"  id="inlineCheckbox3" value="option3">Modul 3:</label>
+						
+						<label class="checkbox">
+							<input type="checkbox" id="inlineCheckbox2" value="option4">Modul 4</label>
+							
+						<label class="checkbox">
+							<input type="checkbox"  id="inlineCheckbox1" value="option5">Modul 5:</label>
+						
+						<label class="checkbox">
+							<input type="checkbox" id="inlineCheckbox2" value="option6">Modul 6</label>
+						
+						<label class="checkbox">
+							<input type="checkbox"  id="inlineCheckbox1" value="option7">Modul 7:</label>
+						
+						<label class="checkbox">
+							<input type="checkbox" id="inlineCheckbox2" value="option8">Modul 8:</label>
+					</div>
+					
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" id="frmGrpHochschule">
+                        <label for="hochschule" class="control-label">Hochschule</label>
+                        <input type="text" id="hochschule" placeholder="Ihre Hochschule" class="form-control">
+                    </div>
+                    <div class="form-group" id="frmGrpStadt">
+                        <label for="stadt" class="control-label">Stadt</label>
+                        <input type="text" id="stadt" placeholder="Ihre Stadt" class="form-control">
+                    </div>
+                    <div class="form-group" id="frmGrpLand">
+                        <label for="land" class="control-label">Land</label>
+                        <input type="text" id="land" placeholder="Ihr Land" class="form-control">
+                    </div>
+					
+					<div class="form-group" id="frmGrpDownMenu">
+                        <label for="liste" class="control-label">Module</label>
+							<select name"liste" type="text" id="downmenu" class="form-control"  placeholder="Wählen Sie aus">
+								<option>Modul 1</option>
+								<option>Modul 2</option>
+								<option>Modul 3</option>
+								<option>Modul 4</option>
+								<option>Modul 5</option>
+								<option>Modul 6</option>
+								<option>Modul 7</option>
+								<option>Modul 8</option>
+							</select>
+                    </div>
+					
+					<div class="form-group" id="frmGrpComment">>
+						<label for="comment">Kommentare:</label>
+						<textarea class="form-control" rows="5" id="comment"></textarea>
+					</div>
+                </div>
+                <div class="col-md-12 captchacode">
+                    <p><i>Sie erhalten Ihre Anmeldedaten an Werktagen innerhalb von 48 Stunden</i></p>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" id="frmGrpCaptcha">
+                        <label for="captcha" class="control-label">Sicherheitsfrage: Wie viel ist "2 + Drei"?</label>
+                        <input type="text" id="captcha" class="form-control" placeholder="Ergebnis der o.g. Rechenaufgabe">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-lg btn-block">Absenden</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Formular Ende -->
+
+        </div>
+    </div>
+
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    $( '#frmContact').submit( function() {
+        var formControl = true;
+
+        $( '#frmGrpVorname' ).removeClass( 'has-error' );
+        $( '#frmGrpNachname' ).removeClass( 'has-error' );
+        $( '#frmGrpEmail' ).removeClass( 'has-error' );
+        $( '#frmGrpHochschule' ).removeClass( 'has-error' );
+        $( '#frmGrpStadt' ).removeClass( 'has-error' );
+        $( '#frmGrpLand' ).removeClass( 'has-error' );
+        $( '#frmGrpCaptcha' ).removeClass( 'has-error' );
+
+
+        var vorname = $( '#vorname' );
+        var nachname = $( '#nachname' );
+        var email = $( '#email' );
+        var hochschule = $( '#hochschule' );
+        var stadt = $( '#stadt' );
+        var land = $( '#land' );
+        var captcha = $( '#captcha' );
+
+        if(vorname.val() == '') {
+            formControl = false;
+            $( '#frmGrpVorname' ).addClass( 'has-error' );
+        }
+
+        if(nachname.val() == '') {
+            formControl = false;
+            $( '#frmGrpNachname' ).addClass( 'has-error' );
+        }
+
+        if(hochschule.val() == '') {
+            formControl = false;
+            $( '#frmGrpHochschule' ).addClass( 'has-error' );
+        }
+
+        if(stadt.val() == '') {
+            formControl = false;
+            $( '#frmGrpStadt' ).addClass( 'has-error' );
+        }
+
+        if(land.val() == '') {
+            formControl = false;
+            $( '#frmGrpLand' ).addClass( 'has-error' );
+        }
+
+        if(validateEmail(email.val()) == false) {
+            formControl = false;
+            $( '#frmGrpEmail' ).addClass( 'has-error' );
+        }
+
+        if(captcha.val() != '5') {
+            formControl = false;
+            $( '#frmGrpCaptcha' ).addClass( 'has-error' );
+        }
+
+        if(formControl) {
+            $.ajax({
+                type: "POST",
+                url: "php/senden.php",
+                data: { vorname:vorname.val(),
+                        nachname:nachname.val(),
+                        email:email.val(),
+                        hochschule:hochschule.val(),
+                        stadt:stadt.val(),
+                        land:land.val()        
+                }
+
+            }).done(function(msg) {
+                $( '#message' ).addClass( 'alert' );
+                $( '#message' ).addClass( 'alert-success' );
+                $( '#message').html( msg );
+            });
+        }
+
+        return false;
+    } );
+</script>
+</body>
+</html>

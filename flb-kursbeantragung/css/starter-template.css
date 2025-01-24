@@ -1,0 +1,31 @@
+body {
+    padding-top: 50px;
+}
+.starter-template {
+    padding: 40px 15px;
+}
+
+.logo{
+    width:300px;
+    height:auto;
+    display: block;
+    margin-left: -15px;
+}
+
+.captchacode{
+    margin-top:50px;
+}
+
+.btn-primary {
+    background-color: #005faf;
+    border-color: transparent;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #e98a12;
+    border-color: transparent;
+}
+
+input[type="checkbox"]:required:invalid + label { color: red; }
+input[type="checkbox"]:required:valid + label { color: green; }
