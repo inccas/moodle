@@ -1,0 +1,254 @@
+<!-- 2014 by Bootstrapaholic.de -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kontaktformular</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/starter-template.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <img style="margin-left:-25px; max-width: 150px;" src="img/daad-logo.svg">
+    <div class="starter-template">
+        <h3>Formular zur Beantragung eines lokalen Kursraums für mein DAAD-Lektorat auf der DAAD-Moodle-Plattform</h3>
+        <div class="row">
+            <p>&nbsp;</p>
+            <div id="message"></div>
+
+            <!-- Formular Start -->
+            <form role="form" id="frmContact">
+                <div class="col-md-6">
+                    <h4>Angaben zur Person</h4>
+                    <div class="form-group" id="frmGrpVorname">
+                        <label for="vorname" class="control-label">Vorname *</label>
+                        <input type="text" id="vorname" class="form-control" placeholder="Ihr Vorname">
+                    </div>
+                    <div class="form-group" id="frmGrpNachname">
+                        <label for="nachname" class="control-label">Nachname *</label>
+                        <input type="text" id="nachname" class="form-control" placeholder="Ihr Nachname">
+                    </div>
+                    <div class="form-group" id="frmGrpEmail">
+                        <label for="email" class="control-label">E-Mail Adresse *</label>
+                        <input type="text" id="email" class="form-control"  placeholder="Ihre E-Mail Adresse">
+                    </div>
+                    <div class="form-group" id="frmGrpStadt">
+                        <label for="stadt" class="control-label">Ihre Stadt *</label>
+                        <input type="text" id="stadt" placeholder="Ihre Stadt" class="form-control">
+                    </div>
+                    <div class="form-group" id="frmGrpLand">
+                        <label for="land" class="control-label">Ihr Land *</label>
+                        <input type="text" id="land" placeholder="Ihr Land" class="form-control">
+                    </div>
+                    <div class="form-group" id="frmGrpGasthochschule">
+                        <label for="gasthochschule" class="control-label">Gasthochschule des DAAD-Lektorats *</label>
+                        <input type="text" id="gasthochschule" placeholder="Gasthochschule des DAAD-Lektorats" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Angaben zum Kurs</h4>
+                    <div class="form-group" id="frmGrpKursraum">
+                        <label for="kursraum" class="control-label">Titel des Kursraumes *</label>
+                        <input type="text" id="kursraum" placeholder="Titel des Kursraumes" class="form-control">
+                    </div>
+                    <p><b>Wie möchten Sie den Kursraum nutzen?</b></p>
+                    <select class="form-control custom-select" id="kursneu">
+                        <option selected>Bitte wählen...</option>
+                        <option value="Unterricht bzw. Lehre">Unterricht bzw. Lehre</option>
+                        <option value="(Unterrichts)-Projekt">(Unterrichts)-Projekt</option>
+                        <option value="Sonstiges">Sonstiges (bitte unter „Weitere Kommentare“ konkretisieren)</option>
+                    </select>
+                    <p>&nbsp;</p>
+                    <div class="form-group" id="frmGrpKommentare">
+                        <label for="kommentare" class="control-label">Weitere Kommentare</label>
+                        <textarea type="text" id="kommentare" placeholder="Kommentare" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                </div>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <div class="col-md-12 row">
+                    <div class="form-group" id="frmGrpDatenschutz">
+						<p><h4>Urheberrecht und Haftungsfreistellung</h4></p>
+						<p>Bitte beachten Sie bei der Verwendung von urheberrechtlich geschützten Texten, Bildern und Videos in Ihren lokalen Kursräumen unbedingt die Regelungen zum Urheberrecht und der Haftungsfreistellung.</p>
+						<p>Sie müssen die Quelle jeweils ausweisen (entweder direkt unter dem Text/Bild/Video oder an einer Stelle im Kursraum gesammelt hinterlegt), ein solcher Hinweis auf die Quelle reicht allein aber nicht aus.</p>
+						<p>Sie müssen die entsprechenden Nutzungsrechte einholen und dokumentieren, denn Sie selbst haften für urheberrechtswidrig
+                        eingestellte Inhalte. Diesem Sachverhalt haben Sie beim ersten Login auf die DAAD-Moodle-Plattform durch das Akzeptieren der Nutzungsbedingungen zugestimmt.</p>
+                    </div>
+                    <div class="form-group" id="frmGrpCheckbox">
+                        <input type="checkbox" required name="agree" id="checkbox" >
+                        <label for="checkbox" class="control-label">Ich bestätige, die Hinweise zum Urheberrecht und zur Haftungsfreistellung gelesen und verstanden zu haben</label>
+                    </div>
+                    <p>&nbsp;</p>
+                </div>
+                <div>
+                    <p><strong>Hinweis:</strong> Mit dem Absenden des Registrierungsformulars bestätigen Sie</p>
+                    <ol>
+                        <li>die Verarbeitung Ihrer personenbezogenen Daten gemäß der <a href="https://moodle.daad.de/infos-daad/datenschutzerklaerung-moodle-daad.pdf" target="blank">Datenschutzbestimmungen</a>.</li>
+                        <li>dass Sie die Einrichtung des lokalen Kursraums für Ihren Unterricht bzw. Ihr Unterrichtsprojekt auf der DAAD-Moodle-Plattform mit Einverständnis Ihrer Hochschule beantragen</li>
+                    </ol>
+                </div>
+                    <p>&nbsp;</p>
+                    <p><i><b>Sie erhalten eine Rückmeldung, sobald der Kursraum erstellt ist.</b></i></p>
+                    <p>&nbsp;</p>
+                    <p><strong>Bitte beantworten Sie die unten stehende Sicherheitsabfrage!</strong></p>
+                <div class="col-md-4 row">
+                    <div class="form-group" id="frmGrpCaptcha">
+                        <label for="captcha" class="control-label">Sicherheitsfrage: Wie viel ist "2 + Vier"? *</label>
+                        <p>(Bitte nur Zahlen eingeben)</p>
+                        <input type="text" id="captcha" class="form-control" placeholder="Ergebnis der o.g. Rechenaufgabe">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-lg btn-block">Absenden</button>
+                    </div>
+                </div>
+            </form>
+            <!-- Formular Ende -->
+        </div>
+    </div>
+</div><!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+
+    $(document).ready(function() {
+        // Beim Laden der Seite die Funktion ausführen
+        handleKursneuChange();
+    });
+
+    function handleKursneuChange() {
+        var selectedOption = $("#kursneu").val();
+        if (selectedOption === "Sonstiges") {
+            // Wenn "Sonstiges" ausgewählt wurde, machen wir das Kommentarfeld zu einem Pflichtfeld
+            $("#frmGrpKommentare").addClass("required");
+            $("#kommentare").prop("required", true); // Add the required attribute
+        } else {
+            // Andernfalls entfernen wir die Pflichtfeld-Markierung und setzen das Kommentarfeld zurück
+            $("#frmGrpKommentare").removeClass("required");
+            $("#kommentare").prop("required", false); // Remove the required attribute
+            $("#kommentare").val(""); // Das Kommentarfeld wird zurückgesetzt, wenn "Sonstiges" nicht ausgewählt ist
+        }
+    }
+
+    $("#kursneu").change(function() {
+        // Wenn sich die Auswahl im Dropdown-Feld "kursneu" ändert, rufen wir die Funktion auf
+        handleKursneuChange();
+    });
+
+    $( '#frmContact').submit( function() {
+        var formControl = true;
+
+        $( '#frmGrpVorname' ).removeClass( 'has-error' );
+        $( '#frmGrpNachname' ).removeClass( 'has-error' );
+        $( '#frmGrpEmail' ).removeClass( 'has-error' );
+        $( '#frmGrpStadt' ).removeClass( 'has-error' );
+        $( '#frmGrpLand' ).removeClass( 'has-error' );
+        $( '#frmGrpGasthochschule' ).removeClass( 'has-error' );
+        $( '#frmGrpCaptcha' ).removeClass( 'has-error' );
+        $( '#frmGrpKommentare' ).removeClass( 'has-error' );
+
+        var vorname = $( '#vorname' );
+        var nachname = $( '#nachname' );
+        var email = $( '#email' );
+        var stadt = $( '#stadt' );
+        var land = $( '#land' );
+        var gasthochschule = $( '#gasthochschule' );
+        var kursraum = $( '#kursraum' );
+        var kursneu = $( '#kursneu' );
+        var kommentare = $( '#kommentare' );
+        var captcha = $( '#captcha' );
+
+        if(vorname.val() == '') {
+            formControl = false;
+            $( '#frmGrpVorname' ).addClass( 'has-error' );
+        }
+
+        if(nachname.val() == '') {
+            formControl = false;
+            $( '#frmGrpNachname' ).addClass( 'has-error' );
+        }
+
+        if(stadt.val() == '') {
+            formControl = false;
+            $( '#frmGrpStadt' ).addClass( 'has-error' );
+        }
+
+        if(land.val() == '') {
+            formControl = false;
+            $( '#frmGrpLand' ).addClass( 'has-error' );
+        }
+
+        if(gasthochschule.val() == '') {
+            formControl = false;
+            $( '#frmGrpGasthochschule' ).addClass( 'has-error' );
+        }
+
+        if(validateEmail(email.val()) == false) {
+            formControl = false;
+            $( '#frmGrpEmail' ).addClass( 'has-error' );
+        }
+
+        if(kursraum.val() == '') {
+            formControl = false;
+            $( '#frmGrpKursraum' ).addClass( 'has-error' );
+        }
+
+        if(captcha.val() != '6') {
+            formControl = false;
+            $( '#frmGrpCaptcha' ).addClass( 'has-error' );
+        }
+
+    if (kursneu.val() === "Sonstiges" && kommentare.val() == '') {
+            // Wenn "Sonstiges" ausgewählt ist und das Kommentarfeld leer ist, machen wir das Kommentarfeld zu einem Pflichtfeld
+            formControl = false;
+            $("#frmGrpKommentare").addClass("required");
+            $("#kommentare").prop("required", true); // Add the required attribute
+            $("#frmGrpKommentare").addClass("has-error"); // Add the has-error class to the textarea
+    }
+
+        if(formControl) {
+            $.ajax({
+                type: "POST",
+                url: "/flb-kursbeantragung/php/senden.php",
+                data: { vorname:vorname.val(),
+                        nachname:nachname.val(),
+                        email:email.val(),
+                        stadt:stadt.val(),
+                        land:land.val(),
+                        gasthochschule:gasthochschule.val(),
+                        kursraum:kursraum.val(),
+                        kursneu:kursneu.val(),
+                        kommentare:kommentare.val(),
+                }
+
+            }).done(function(msg) {
+                $( '#message' ).addClass( 'alert' );
+                $( '#message' ).addClass( 'alert-success' );
+                $( '#message').html( msg );
+                window.location.href = 'vielendank.html';
+            });
+        }
+
+        return false;
+    } );
+</script>
+</body>
+</html>
