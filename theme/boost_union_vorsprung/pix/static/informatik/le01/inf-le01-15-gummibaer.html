@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width" name="viewport" />
+    <title>replit</title>
+    <style>
+        @import url('https://vorsprung.fernuni-hagen.de/theme/vorsprung/scss/tools.css');
+
+
+        :root {
+            box-sizing: border-box;
+            --rot: #ca1717;
+            --hebel: #444;
+            font-family: 'Inter', sans-serif;
+            max-width: 420px;
+            max-height: 620px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            color: var(--tools-primary);
+        }
+
+        header p,
+        #loesung {
+            font-size: 1.5rem;
+            margin-left: 3rem;
+            margin-right: 3rem;
+
+        }
+
+        main {
+            position: absolute;
+            margin-top: 8rem;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        #wrapper {
+            background-color: #f8f8f8;
+            border: solid #dcdcdc 4px;
+            border-radius: 20px;
+            padding: 10px 20px;
+            padding-bottom: 30px;
+            width: 800px;
+            z-index: -2;
+            display: flex;
+            flex-direction: column;
+            min-height: 800px;
+
+        }
+
+        #label-mixer {
+            top: 40px;
+            left: 130px;
+        }
+
+        button {
+            background: #ddd;
+            margin-left: 1rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 1.5rem;
+        }
+
+        button:hover {
+            background: #ccc;
+        }
+
+        button:active {
+            background: #aaa;
+            transform: translateY(2px);
+        }
+
+
+        #mixer {
+            position: absolute;
+            top: 250px;
+            left: 120px;
+            width: 550px;
+            height: 120px;
+            background-color: var(--tools-primary);
+            border-radius: 0 0 30px 30px;
+        }
+
+        #mixer-rechts {
+            position: absolute;
+            left: 330px;
+            top: 30px;
+            right: 20px;
+            text-align: right;
+            font-size: 18pt;
+        }
+
+        #loesung {
+            position: absolute;
+            top: 400px;
+            left: 0px;
+            width: 700px;
+            height: 120px;
+        }
+
+        .trichter {
+            position: absolute;
+            top: 60px;
+            width: 150px;
+            height: 0px;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-top: 130px solid var(--tools-secondary);
+        }
+
+        .label {
+            position: absolute;
+            width: 230px;
+            text-align: center;
+            top: 100px;
+            font-size: 24pt;
+        }
+
+
+        .licht {
+            top: 66px;
+            left: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: green;
+
+            position: absolute;
+        }
+
+        .licht-rot {
+            background-color: var(--rot);
+        }
+
+        #hebel-zucker,
+        #hebel-farbe {
+            position: absolute;
+            top: 50px;
+            left: 180px;
+            cursor: pointer;
+        }
+
+
+
+        #wrapper-zucker {
+            left: 100px;
+            position: absolute;
+        }
+
+        #wrapper-farbe {
+            left: 450px;
+            position: absolute;
+        }
+
+        .hebel-basis {
+            background: var(--hebel);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            top: 17px;
+            right: -40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .hebel-basis::before {
+            content: "";
+            background: #111;
+            width: 10px;
+            height: 10px;
+            display: block;
+            border-radius: 50%;
+        }
+
+        .hebel {
+            background: var(--hebel);
+            width: 60px;
+            height: 15px;
+            position: absolute;
+            right: -80px;
+            top: 27px;
+            border-radius: 10px;
+            transform: rotate(-20deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-origin: left top;
+        }
+
+        .hebel-gedrueckt {
+            top: 24px;
+            transform: rotate(10deg);
+        }
+
+        .hebel-ball {
+            content: "";
+            display: block;
+            background: var(--rot);
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: -40px;
+            top: -20px;
+            border-radius: 50%;
+        }
+
+        #ball-zucker,
+        #ball-farbe {
+            left: 88px;
+            top: 120px;
+        }
+
+        #ball-zucker {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid gray;
+            position: absolute;
+        }
+
+        #ball-farbe {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ff9933;
+            position: absolute;
+
+        }
+
+        .animate {
+            animation: downwardMovement 500ms;
+        }
+
+        @keyframes downwardMovement {
+            0% {
+                top: 120px;
+            }
+
+            100% {
+                top: 250px;
+            }
+        }
+
+        .box {
+            position: relative;
+            left: 0px;
+            top: -35px;
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .wedge {
+            position: absolute;
+            top: 65px;
+            left: 40px;
+            width: 0;
+            height: 0;
+            border-right: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-top: 30px solid #bbb;
+        }
+
+        .content {
+            background-color: #bbb;
+            padding: 10px;
+            margin-left: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Die Gummibärenfabrik</h1>
+        </header>
+        <main>
+            <div id="wrapper-zucker">
+                <div class="ball" id="ball-zucker"></div>
+                <div class="trichter" id="trichter-zucker"></div>
+                <div class="licht" id="licht-zucker"></div>
+                <div class="label" id="label-zucker">Zucker</div>
+                <div id="hebel-zucker">
+                    <div class="hebel">
+                        <div class="hebel-ball"></div>
+                    </div>
+                    <div class="hebel-basis"></div>
+                </div>
+            </div>
+            <div id="wrapper-farbe">
+                <div class="ball" id="ball-farbe"></div>
+                <div class="trichter" id="trichter-farbe"></div>
+                <div class="licht" id="licht-farbe"></div>
+                <div class="label" id="label-farbe">Farbstoff</div>
+                <div id="hebel-farbe">
+                    <div class="hebel">
+                        <div class="hebel-ball"></div>
+                    </div>
+                    <div class="hebel-basis"></div>
+                </div>
+            </div>
+            <div id="mixer">
+                <div class="label" id="label-mixer">Mixer</div>
+                <div id="mixer-rechts">
+                    <div class="label-small" id="mixer-zucker"></div>
+                    <div id="mixer-farbe"></div>
+                </div>
+            </div>
+            <div id="loesung"></div>
+        </main>
+        <footer>
+            <button id="btn-reload" onclick="location.reload();">Neu starten</button> <button id="btn-loesung"
+                onclick="show_loesung();">Lösung prüfen</button><button disabled="" id="btn-demo"
+                onclick="start_demo();">Lösung anzeigen</button>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.08 48.06">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        stroke-width: 3.01px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #333;
+      }
+
+      .cls-1, .cls-3 {
+        fill: #ffc200;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-5 {
+        mix-blend-mode: multiply;
+      }
+
+      .cls-5, .cls-6 {
+        opacity: .1;
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        stroke-miterlimit: 5;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g class="cls-4">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layout">
+        <g>
+          <path id="path5161" class="cls-1" d="m24.58,24.42V2.58s37.69,21.33,37.69,21.33l-37.69,21.47v-20.97"/>
+          <path id="path5165" class="cls-2" d="m100.08,23.99h-22.1"/>
+          <path id="path5161-2" data-name="path5161" class="cls-1" d="m0,24.08h24.58s0-21.41,0-21.41l37.69,21.33-37.69,21.47v-20.97"/>
+          <polygon class="cls-6" points="62.27 23.91 24.66 2.7 24.66 24.02 62.27 23.91"/>
+          <g>
+            <circle class="cls-3" cx="70.42" cy="24.1" r="6.8"/>
+            <path class="cls-5" d="m77.21,23.87c-.12-3.65-3.11-6.57-6.79-6.57s-6.67,2.92-6.79,6.57h13.58Z"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

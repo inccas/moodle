@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128.94 56">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 3.01px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke: #333;
+      }
+
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-5 {
+        isolation: isolate;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-width: 3px;
+      }
+
+      .cls-2, .cls-4 {
+        fill: #ffc200;
+      }
+
+      .cls-6 {
+        fill: #333;
+        font-family: Inter-SemiBold, Inter;
+        font-size: 24px;
+        font-variation-settings: 'wght' 600, 'slnt' 0;
+        font-weight: 600;
+      }
+
+      .cls-7 {
+        mix-blend-mode: multiply;
+        opacity: .1;
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        stroke-miterlimit: 5;
+      }
+    </style>
+  </defs>
+  <g class="cls-5">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layout">
+        <g>
+          <path id="path5165" class="cls-1" d="m128.94,28.58h-26"/>
+          <g>
+            <circle class="cls-4" cx="94.05" cy="28.7" r="8"/>
+            <path class="cls-7" d="m102.03,28.44c-.14-4.29-3.66-7.73-7.99-7.73s-7.84,3.44-7.99,7.73h15.97Z"/>
+          </g>
+          <path id="path6174" class="cls-3" d="m0,16.77h26"/>
+          <path id="path6174-2" data-name="path6174" class="cls-3" d="m0,40.81h26"/>
+          <rect class="cls-2" x="26.85" y="1.5" width="56.73" height="53"/>
+          <rect class="cls-7" x="26.85" y="1.5" width="56.73" height="27.1"/>
+          <text class="cls-6" transform="translate(50.87 24.48)"><tspan x="0" y="0">1</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

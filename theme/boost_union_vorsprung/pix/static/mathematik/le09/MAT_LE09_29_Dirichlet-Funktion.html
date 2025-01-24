@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Dirichlet-Funktion</title>
+  <style>
+    @import url('https://vorsprung.fernuni-hagen.de/theme/vorsprung/scss/tools.css');
+    :root {
+      max-width: 640px;
+      max-height: 420px;
+    }
+
+    footer {
+      padding-top: 2em;
+      padding-bottom: 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    main {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    main svg {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    svg circle {
+      fill: var(--tools-primary);
+      stroke: black;
+      z-index: -1;
+    }
+
+    svg text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.7rem;
+
+    }
+
+    button {
+      width: 50px;
+      height: 50px;
+      padding-top: 4px;
+      border: none;
+      border-radius: 50%;
+      background-color: var(--tools-secondary);
+      color: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.1s;
+    }
+
+    .icon {
+      fill: white;
+    }
+
+    button:hover {
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    button:active {
+      transform: scale(0.9);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <!--
+		<header>
+			<h1>Dirichlet-Funktion</h1>
+		</header>
+-->
+    <main>
+      <svg id="dirichlet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+        width="640" height="240" viewBox="0 0 640 240" xml:space="preserve">
+
+        <line style="stroke: #000; stroke-width: 2;" x1="32" y1="208" x2="604" y2="208" />
+        <polygon style="stroke: #000; stroke-width: 5;" points="604,224 604,192 620,208" />
+        <!-- 605,210 605,205 611,208-->
+
+        <line style="stroke: #000; stroke-width: 2;" x1="320" y1="208" x2="320" y2="32" />
+        <polygon style="stroke: #000; stroke-width: 5;" points="336,32 304,32 320,16" />
+        <!-- 322,32 317,32 320,26 -->
+        <line style="stroke: #000; stroke-width: 2;" x1="320" y1="64" x2="324" y2="64" />
+        <text x="328" y="95">1</text>
+        <text x="328" y="241">0</text>
+      </svg>
+
+    </main>
+    <footer>
+      <button onclick="playPauseRestart()"> <span id="playIcon"><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+            height="30px" viewBox="0 0 384 512">
+            <path
+              d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z" />
+          </svg>
+        </span>
+        <span style="display: none;" id="pauseIcon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="30px"
+            viewBox="0 0 320 512">
+            <path
+              d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z" />
+          </svg></span>
+        <span style="display: none;" id="restartIcon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="30px"
+            viewBox="0 0 320 512">
+            <path
+              d="M267.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160L64 241V96c0-17.7-14.3-32-32-32S0 78.3 0 96V416c0 17.7 14.3 32 32 32s32-14.3 32-32V271l11.5 9.6 192 160z" />
+          </svg></span></button>
+
+    </footer>
+    <script>const svg = document.getElementById("dirichlet");
+      let animationRunning = false;
+      let animationFinished = false;
+      let circleCount = 0;
+      let playIcon = document.getElementById("playIcon");
+      let pauseIcon = document.getElementById("pauseIcon");
+      let restartIcon = document.getElementById("restartIcon");
+      let circlePositions = []
+
+      function setIconDisplay(iconToShow) {
+        const icons = {
+          play: playIcon,
+          pause: pauseIcon,
+          restart: restartIcon
+        };
+
+        for (const icon in icons) {
+          const display = icon === iconToShow ? "inline" : "none";
+          icons[icon].style.display = display;
+        }
+      }
+
+      function playPauseRestart() {
+
+        if (!animationRunning) {
+          animationRunning = true;
+          setIconDisplay("pause");
+          animationStep();
+        }
+        else if (!animationFinished) {
+          animationRunning = false;
+          setIconDisplay("play");
+        }
+        if (animationFinished) {
+          resetAnimation();
+        }
+
+
+      }
+
+
+      function animationStep() {
+        randomCircle();
+        animationFinished = circleCount > 550
+        if (animationRunning & !animationFinished) {
+          setTimeout(function () {
+            animationStep()
+          }, 20);
+        }
+        if (animationFinished) {
+          animationRunning = false;
+          setIconDisplay("restart");
+        }
+
+
+      }
+
+      function resetAnimation() {
+        var circles = svg.getElementsByTagName("circle");
+        var circlesArray = Array.from(circles);
+        circlesArray.forEach(function (circle) {
+          circle.remove();
+        });
+        circleCount = 0;
+        animationRunning = false;
+        animationFinished = false;
+        setIconDisplay("play");
+      }
+
+      function addCircle(xPosition) {
+        var yPosition = (xPosition % 2 == 0) ? 208 : 64;
+        var newCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        newCircle.setAttribute("cx", xPosition);
+        newCircle.setAttribute("cy", yPosition);
+        newCircle.setAttribute("r", 5);
+        svg.appendChild(newCircle);
+      }
+
+      function randomCircle() {
+        // generiert mögliche x-Werte für die Punkte, zwschen 32 und 592
+        if (circlePositions.length === 0) {
+          circlePositions = Array.from({ length: 560 }, (_, i) => i + 32);
+        }
+
+        const randomIndex = Math.floor(Math.random() * circlePositions.length)
+        const number = circlePositions[randomIndex];
+        circlePositions.splice(randomIndex, 1);
+        addCircle(number);
+        circleCount++;
+      }
+    </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Zweierkomplement</title>
+  <style>
+    @import url('https://vorsprung.fernuni-hagen.de/theme/vorsprung/scss/tools.css');
+
+    #wrapper {
+      max-width: 420px;
+    }
+
+
+    .biginput {
+      border-radius: 5px;
+      background: var(--tools-media-bg-color);
+      border: 2px solid var(--tools-media-border-color);
+      text-align: right;
+      font-size: 2rem;
+      padding: 0.35rem;
+      width: 8rem;
+      margin: 0.5rem;
+    }
+
+    .biginput:focus {
+      outline: none;
+      border-color: var(--tools-red-special);
+    }
+
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 11rem 10.5rem;
+      align-items: center;
+      text-align: right;
+      font-size: 1.1rem;
+      margin: 0.5rem;
+    }
+
+    .number {
+      font-family: var(--tools-font-mono);
+      font-size: 1.5rem;
+      text-align: right;
+      margin: inherit;
+      background: var(--tools-media-bg-color);
+      margin-left: 1rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      width: 8rem;
+    }
+
+    .result {
+      background: var(--tools-secondary);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <header>
+      <h1> Zweierkomplement </h1>
+    </header>
+    <div class="grid-container">
+      <div> Die Zahl</div>
+      <div> <input type="number" id="number" class="biginput"
+          onKeyDown="if(this.value.length==4 && event.keyCode!=8) return false;" value="-10"> </div>
+      <div> als positive Binärzahl: </div>
+      <div class="number" id="bin"></div>
+      <div> das Komplement davon: </div>
+      <div class="number" id="cmp"></div>
+      <div>addiert man eins </div>
+      <div class="number"> +1</div>
+      <div>erhält man das Zweierkomplement: </div>
+      <div class="number result" id="result"></div>
+    </div>
+
+  </div>
+
+  <script>
+    "use strict";
+
+    // DOM-Elemente abrufen
+    const number = document.getElementById("number");
+    const bin = document.getElementById("bin");
+    const cmp = document.getElementById("cmp");
+    const result = document.getElementById("result");
+
+    // Variablen initialisieren
+    let calcPowers = false;
+    let calloutOn = true;
+
+    // Funktion zum Umschalten der Potenzen
+    function togglePowers() {
+      calcPowers = !calcPowers;
+      calloutOn = false;
+      update();
+    }
+
+    // Funktion zum Konvertieren einer Dezimalzahl in eine Binärzahl
+    function dec2bin(dec) {
+      return (dec >>> 0).toString(2);
+    }
+
+    // Funktion zum Aktualisieren der Ausgabe
+    function update() {
+      let i = Number(number.value);
+
+      // Binärzahl berechnen und anzeigen
+      bin.innerHTML = dec2bin(-i).padStart(8, "0");
+
+      // Komplementzahl berechnen und anzeigen
+      cmp.innerHTML = dec2bin(~(-i)).slice(-8);
+
+      // Ergebniszahl berechnen und anzeigen
+      result.innerHTML = dec2bin(i).slice(-8).padStart(8, "0");
+    }
+
+    // Event-Listener für Eingabe-Änderungen hinzufügen
+    number.oninput = function () {
+      if (number.value > 0) {
+        number.value = -1;
+      }
+
+      if (number.value < -128) {
+        number.value = -128;
+      }
+
+      update();
+    };
+
+    // Ausgabe initialisieren
+    update();
+
+  </script>
+</body>
+
+</html>

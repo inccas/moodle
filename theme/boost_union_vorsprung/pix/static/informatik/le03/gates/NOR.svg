@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124.69 53.98">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 3.01px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #333;
+      }
+
+      .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #ffc200;
+      }
+
+      .cls-5 {
+        mix-blend-mode: multiply;
+        opacity: .1;
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        stroke-miterlimit: 5;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g class="cls-4">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layout">
+        <g>
+          <path id="path6174" class="cls-1" d="m0,14.73h26"/>
+          <path id="path6174-2" data-name="path6174" class="cls-1" d="m0,38.67h26"/>
+          <path id="path6174-3" data-name="path6174" class="cls-1" d="m98.69,26.5h26"/>
+          <path class="cls-2" d="m18.53,1.82s10.17,12.96,10.17,24.99-10.17,25.41-10.17,25.41c0,0,40.67,4.58,63.55-25.41C59.21-3.18,18.53,1.82,18.53,1.82Z"/>
+          <path class="cls-5" d="m81.86,26.49C58.93-3.14,18.56,1.82,18.56,1.82c0,0,9.98,12.73,10.16,24.67h53.14Z"/>
+          <g>
+            <circle class="cls-3" cx="90.38" cy="26.75" r="8"/>
+            <path class="cls-5" d="m98.37,26.49c-.14-4.29-3.66-7.73-7.99-7.73s-7.84,3.44-7.99,7.73h15.97Z"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

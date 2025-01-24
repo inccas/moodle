@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Binärzahlkonverter</title>
+	<style>
+		@import url('https://vorsprung.fernuni-hagen.de/theme/vorsprung/scss/tools.css');
+
+		#wrapper {
+			max-width: 420px;
+		}
+		
+		.flex-container {
+			display: flex;
+			flex-flow: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			font-size: 1.2rem;
+			margin: 0.5rem;
+		}
+
+		#number button {
+			width: 2rem;
+			text-align: center;
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+			font-family: var(--tools-font-mono);
+			font-weight: 500;
+		}
+
+		#number button:hover {
+			background: #ced4da ;
+			border: 2px solid var(--tools-red-special);
+		}
+
+		#explain {
+			position: relative;
+			border-color: transparent;
+			text-align: right;
+			margin: inherit;
+			font-size: 1.2rem;
+			line-height: 2rem;
+			font-weight: 600;
+		}
+
+		#output {
+			font-size: 2rem;
+			border-color: transparent;
+			text-align: center;
+			background: var(--tools-secondary);
+			margin: inherit;
+			min-width: 3rem;
+			padding: 0.5rem;
+			border-radius: 10px;
+			font-weight: 600;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<h1> Binärzahl zu Dezimal </h1>
+		</header>
+		<div class="flex-container">
+			Die Binärzahl:&nbsp; &nbsp;
+			<div id="number"></div>
+			rechnen wir mit Hilfe<br>der Zweierpotenzen in eine<br>Dezimalzahl um:
+			<div id="explain" title="eine Summe von Potenzen der Basis">
+			</div>
+			<div id="output"></div>
+
+		</div>
+	</div>
+
+	<script>
+		"use strict";
+
+		// DOM-Elemente abrufen
+		const output = document.getElementById("output");
+		const explain = document.getElementById("explain");
+		const numberDiv = document.getElementById("number");
+
+		// Variablen initialisieren
+		let number = 0;
+		const numberButtons = [];
+
+		// Erstellen der numberButtons und Hinzufügen der Event-Listener
+		for (let i = 7; i >= 0; i--) {
+			const btn = document.createElement("button");
+			btn.innerHTML = "0";
+			btn.title = `2 hoch ${i}`;
+			btn.addEventListener("click", () => toggleNumber(i));
+			numberButtons.push(btn);
+			numberDiv.appendChild(btn);
+		}
+		numberButtons.reverse();
+		toggleNumber(0);
+
+		// Schaltet den Zustand eines numberButtons um und aktualisiert die Darstellung
+		function toggleNumber(pos) {
+			const btn = numberButtons[pos];
+			btn.innerHTML = btn.innerHTML === "1" ? "0" : "1";
+			number ^= 2 ** pos;
+			explain.innerHTML = explainer(number);
+			output.innerHTML = number;
+		}
+
+		// Generiert eine Erklärung für die gegebene Nummer
+		function explainer(number) {
+			if (number === 0) {
+				return "0 =";
+			}
+
+			const coeff = Array.from(number.toString(2));
+			let exponent = coeff.length - 1;
+			const powers1 = [];
+			const powers2 = [];
+
+			for (const c of coeff) {
+				if (c !== "0") {
+					powers2.push(2 ** exponent);
+					powers1.push(`2<sup>${exponent}</sup>`);
+				}
+				exponent--;
+			}
+
+			return `${powers1.join(" + ")} =<br>${powers2.join(" + ")} =`;
+		}
+
+	</script>
+</body>
+
+</html>

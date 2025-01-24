@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117.08 53.98">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #333;
+        stroke-width: 3.01px;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: #ffc200;
+      }
+
+      .cls-5 {
+        mix-blend-mode: multiply;
+        opacity: .1;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g class="cls-4">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layout">
+        <g>
+          <path id="path6174" class="cls-2" d="m0,14.73h35"/>
+          <path id="path6174-2" data-name="path6174" class="cls-2" d="m0,38.67h35"/>
+          <path id="path6174-3" data-name="path6174" class="cls-2" d="m91.08,26.5h26"/>
+          <path class="cls-3" d="m27.53,1.82s10.17,12.96,10.17,24.99-10.17,25.41-10.17,25.41c0,0,40.67,4.58,63.55-25.41C68.21-3.18,27.53,1.82,27.53,1.82Z"/>
+          <path class="cls-1" d="m18.33,1.79s10.17,12.96,10.17,24.99-10.17,25.41-10.17,25.41"/>
+          <path class="cls-5" d="m90.86,26.49C67.93-3.14,27.56,1.82,27.56,1.82c0,0,9.98,12.73,10.16,24.67h53.14Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
