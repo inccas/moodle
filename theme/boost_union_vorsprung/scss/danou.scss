@@ -8,10 +8,15 @@ body {
   color: #333;
   text-align: left;
   background-color: #fafcfc;
-  .card {
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: .25rem;
+  .section {
+    .activity a.stealth, .activity a.stealth:hover {
+      color: var(--color-main) !important;
+    }
+    .card {
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, .125);
+      border-radius: .25rem;
+    }
   }
 }
 .drawer-left{
@@ -26,16 +31,26 @@ body {
     padding-bottom: 20px;
     scrollbar-width: unset;
     .courseindex .courseindex-section{
+      .courseindex-item {
+        flex-direction: row-reverse;
+      }
       position: relative;
       display: block;
-      padding: .75rem 1.25rem;
+      padding: 0.5rem 0.1rem 0.5rem 0.2rem;
       background-color: #fff;
       border: 1px solid rgba(0, 0, 0, .125);
       width: 100%;
       color: #495057;
       text-align: inherit;
-      .courseindex-item.courseindex-section-title a {
-        font-weight: normal;
+      .courseindex-item.courseindex-section-title{
+        &:after {
+          content: "📁";
+          padding-right: 10px;
+          margin:auto 0px;
+        }
+        a {
+          font-weight: normal;
+        }
       }
     }
   }
@@ -59,50 +74,155 @@ body {
 }
 
 .format-tiles .course-content {
-  ul.tiles .tile {
-    &.phototile, & {
-      border: 1px solid var(--color-main);
-      &.tilestyle-1, &.tilestyle-2 {
-        a{
-          padding:0px;
-        }
-        .photo-tile-image {
-          height: 105px;
-          position: relative;
+  ul.tiles {
+    .tile {
+      &.phototile, & {
+        border: 1px solid var(--color-main);
 
-          .availabilityinfo {
-            position: absolute;
-            top: 2px;
-            left: 2px;
+        &.tilestyle-1, &.tilestyle-2 {
+          a {
+            padding: 0px;
           }
-        }
 
-        .photo-tile-text {
-          top: inherit;
-          display: block;
-          width: 100%;
-          height: 70px;
-
-          h3 {
-            background-color: var(--color-main);
-            display: block;
+          .photo-tile-image {
+            height: 105px;
             position: relative;
-            text-align: left;
-            padding: 4px 10px;
-            margin: 0;
-            font-size: 1.2em;
-            line-height: 20px;
-            color: #fff;
-            height: 100%;
+
+            .availabilityinfo {
+              position: absolute;
+              top: 2px;
+              left: 2px;
+            }
           }
+
+          .photo-tile-text {
+            top: inherit;
+            display: block;
+            width: 100%;
+            height: 70px;
+
+            h3 {
+              background-color: var(--color-main);
+              display: block;
+              position: relative;
+              text-align: left;
+              padding: 4px 10px;
+              margin: 0;
+              font-size: 1.2em;
+              line-height: 20px;
+              color: #fff;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+    .tile-clickable:hover .tileiconcontainer {
+      transform: translate(-40px, -5px) scale(1.1);
+      transition: 0.5s ease-in-out;
+    }
+  }
+  ul.subtiles{
+    li.activity {
+      &.subtile {
+        border-radius: 0px;
+        &:not(.unclickable):hover .tileiconcontainer{
+          transform: translate(-40px, -5px) scale(1.1);
+          transition: 0.5s ease-in-out;
+        }
+        .contentafterlink {
+          position: absolute;
+          bottom: -10;
+          display: inline-block;
+          background-color: var(--color-light);
+          color: var(--color-text);
+          z-index:10;
+          font-size: x-small;
+          strong{
+            color: var(--color-main);
+          }
+        }
+      }
+      &.label {
+        position: relative;
+        left: -10px;
+
+        h1 {
+          background: linear-gradient(90deg, #fff 51%, rgba(255, 245, 255, .75) 70%, rgba(255, 255, 255, 0) 100%), url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=936341);
+          background-position: right center;
+          background-size: initial;
+          background-repeat: no-repeat;
+          position: relative;
+          text-indent: -4.3rem;
+          left: -20px;
+          overflow: visible !important;
+          font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+          font-size: 2.34375rem !important;
+          font-weight: 500 !important;
+          border: none !important;
+          color: var(--color-primary) !important;
+          width: calc(100% + 30px);
+
+          &:before {
+            content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
+            width: 80px;
+            width: 150px;
+            display: inline-block;
+          }
+
+          &:after {
+            content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
+            width: 80px;
+            position: relative;
+            right: 10px;
+            top: -20px;
+            display: inline-block;
+            float: right;
+          }
+        }
+      }
+      .tileiconcontainer {
+        position: absolute;
+        bottom: 10px;
+        right: 30px;
+      }
+      .activityname {
+        position: absolute;
+        top: 20px;
+        width: 100%;
+        text-align: left;
+        padding: 6px;
+        display: block;
+        h5{
+          font-size: 24px;
         }
       }
     }
   }
 }
 
+
 #footnote {
   background-color: #dae9e9;
   display: flex;
-
 }
+
+
+
+
+
+
+// Jetzt definieren wir alle Robotor bilder.
+.vorsprung-informatik {
+  h1#header-worumgehtes:after,
+  h1#header-wozuistdasgut:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-frage-cb.svg);
+  }
+  h1#header-wasmussichwissen:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-summary-cb.svg);
+  }
+  h1#header-achtung:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
+  }
+}
+

@@ -399,8 +399,8 @@ h1, h2, h3, h4, h5, h6 {
     &::after {
       transition: opacity 0.5s ease-in-out;
       opacity: 0.5;
-      background-image: url('/theme/vorsprung/pix/shapes/shape-rect-border-thick-gray300.svg'),
-      url('/theme/vorsprung/pix/shapes/shape-circle-border-thin-gray200.svg');
+      background-image: url('/theme/boost_union_vorsprung/pix/shapes/shape-rect-border-thick-gray300.svg'),
+      url('/theme/boost_union_vorsprung/pix/shapes/shape-circle-border-thin-gray200.svg');
       background-size: 60% 60%, 120% 120%;
       background-position: -4.45rem 7rem, 0 0;
       background-repeat: no-repeat;
