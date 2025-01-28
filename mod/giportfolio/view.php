@@ -113,7 +113,9 @@ echo $OUTPUT->heading(format_string($giportfolio->name));
 echo $OUTPUT->box_start('generalbox giportfolio_content');
 
 $intro = file_rewrite_pluginfile_urls($giportfolio->intro, 'pluginfile.php', $context->id, 'mod_giportfolio', 'intro', '');
-echo format_text($intro, $giportfolio->intro, array('noclean' => true, 'context' => $context));
+# echo format_text($intro, $giportfolio->intro, array('noclean' => true, 'context' => $context));
+echo format_text($intro, FORMAT_HTML, array('context' => $context), true, false);
+
 
 $usercontribution = 0;
 if ($allowedit) {

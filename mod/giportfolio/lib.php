@@ -415,7 +415,7 @@ function giportfolio_scale_used_anywhere($scaleid) {
 function giportfolio_get_view_actions() {
     $return = array('view', 'view all');
 
-    $plugins = get_plugin_list('giportfoliotool');
+    $plugins = core_component::get_plugin_list('giportfoliotool');
     foreach ($plugins as $plugin => $dir) {
         if (file_exists("$dir/lib.php")) {
             require_once("$dir/lib.php");
@@ -438,7 +438,7 @@ function giportfolio_get_view_actions() {
 function giportfolio_get_post_actions() {
     $return = array('update');
 
-    $plugins = get_plugin_list('giportfoliotool');
+    $plugins = core_component::get_plugin_list('giportfoliotool');
     foreach ($plugins as $plugin => $dir) {
         if (file_exists("$dir/lib.php")) {
             require_once("$dir/lib.php");
@@ -501,7 +501,7 @@ function giportfolio_extend_settings_navigation(settings_navigation $settingsnav
     }
 
     $context = context_module::instance($PAGE->cm->id);
-    $plugins = get_plugin_list('giportfoliotool');
+    $plugins = core_component::get_plugin_list('giportfoliotool');
     foreach ($plugins as $plugin => $dir) {
         if (file_exists("$dir/lib.php")) {
             require_once("$dir/lib.php");
