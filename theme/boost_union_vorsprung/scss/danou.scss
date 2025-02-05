@@ -30,6 +30,9 @@ body {
     padding-right: 20px;
     padding-bottom: 20px;
     scrollbar-width: unset;
+    .list-group-item {
+      padding: 0.75rem 0.75rem;
+    }
     .courseindex {
       .list-group-item {
         padding: 0.5rem 0.5rem;
@@ -45,7 +48,6 @@ body {
         text-align: inherit;
       }
       .courseindex-item {
-        justify-content: space-between;
         &.courseindex-section-title {
           a {
             font-weight: normal;
