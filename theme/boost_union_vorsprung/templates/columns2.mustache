@@ -57,8 +57,8 @@
 
     {{{ output.standard_top_of_body_html }}}
 
-    {{> theme_vorsprung/navbar }}
-    {{> theme_vorsprung/nav-drawer }}
+    {{> theme_boost_union_vorsprung/navbar }}
+    {{> theme_boost_union_vorsprung/nav-drawer }}
 
     <div id="page" class="container-fluid d-print-block">
         {{{ output.full_header }}}
@@ -90,20 +90,20 @@
         </div>
     </div>
     {{{ output.standard_after_main_region_html }}}
-    {{> theme_vorsprung/footer }}
+    {{> theme_boost_union/footer }}
 </div>
 
 </body>
 </html>
 {{#js}}
-M.util.js_pending('theme_boost_vorsprung/loader');
-require(['theme_boost_vorsprung/loader'], function() {
-    M.util.js_complete('theme_boost_vorsprung/loader');
+M.util.js_pending('theme_boost_union_vorsprung/loader');
+require(['theme_boost_union_vorsprung/loader'], function() {
+    M.util.js_complete('theme_boost_union_vorsprung/loader');
 });
 
-M.util.js_pending('theme_boost_vorsprung/drawer');
-require(['theme_boost_vorsprung/drawer'], function(drawer) {
+M.util.js_pending('theme_boost_union_vorsprung/drawer');
+require(['theme_boost_union_vorsprung/drawer'], function(drawer) {
     drawer.init();
-    M.util.js_complete('theme_boost_vorsprung/drawer');
+    M.util.js_complete('theme_boost_union_vorsprung/drawer');
 });
 {{/js}}

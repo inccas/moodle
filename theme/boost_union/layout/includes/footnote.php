@@ -25,7 +25,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$footnotesetting = get_config('theme_boost_union', 'footnote');
+# CORE HACK DANOU
+# We need to split this config grabber to the appropriate FOOTER element. Now it works
+# $themename = $PAGE->theme->name;
+# echo("<br><br><br>name: <h3>".$PAGE->theme->name."</h3> footnotesetting:: ");
+# var_dump($footnotesetting);
+
+global $PAGE;
+$footnotesetting = get_config('theme_'.$PAGE->theme->name, 'footnote');
 
 // Only proceed if text area does not only contains empty tags.
 if (!html_is_blank($footnotesetting)) {

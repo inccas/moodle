@@ -54,3 +54,4 @@ $string['extrascssinheritancesetting_desc'] = 'Mit dieser Einstellung steuern Si
 
 // Datenschutz-API.
 $string['privacy:metadata'] = 'Das Boost Union VORsprung-Design speichert keine persönlichen Daten über Benutzer.';
+$string['poweredbyinccas'] = 'Unterstützt von <a href="https://www.inccas.de" target="_blank">INCCAS</a>';

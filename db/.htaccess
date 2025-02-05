@@ -1,0 +1,4 @@
+AuthName "Kulturbanause Login-Bereich"
+AuthType Basic
+AuthUserFile /var/www/html/db/.htpasswd
+require valid-user

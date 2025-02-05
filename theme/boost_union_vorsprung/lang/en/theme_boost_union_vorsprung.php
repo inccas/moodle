@@ -54,3 +54,4 @@ $string['extrascssinheritancesetting_desc'] = 'With this setting, you control if
 
 // Privacy API.
 $string['privacy:metadata'] = 'The Boost Union VORsprung theme does not store any personal data about any user.';
+$string['poweredbyinccas'] = 'Powered by <a href="https://www.inccas.de" target="_blank">INCCAS</a>';

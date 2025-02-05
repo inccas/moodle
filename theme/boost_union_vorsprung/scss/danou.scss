@@ -30,26 +30,36 @@ body {
     padding-right: 20px;
     padding-bottom: 20px;
     scrollbar-width: unset;
-    .courseindex .courseindex-section{
-      .courseindex-item {
-        flex-direction: row-reverse;
+    .courseindex {
+      .list-group-item {
+        padding: 0.5rem 0.5rem;
       }
-      position: relative;
-      display: block;
-      padding: 0.5rem 0.1rem 0.5rem 0.2rem;
-      background-color: #fff;
-      border: 1px solid rgba(0, 0, 0, .125);
-      width: 100%;
-      color: #495057;
-      text-align: inherit;
-      .courseindex-item.courseindex-section-title{
-        &:after {
-          content: "📁";
-          padding-right: 10px;
-          margin:auto 0px;
+      .courseindex-section {
+        position: relative;
+        display: block;
+        padding: 0.5rem 0rem 0.5rem 0rem;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, .125);
+        width: 100%;
+        color: #495057;
+        text-align: inherit;
+      }
+      .courseindex-item {
+        justify-content: space-between;
+        &.courseindex-section-title {
+          a {
+            font-weight: normal;
+          }
         }
-        a {
-          font-weight: normal;
+        .icons-collapse-expand {
+          padding-right: 0px;
+        }
+        .spacer {
+          flex: 1 1 auto;
+        }
+
+        .icon {
+          font-size: 16px;
         }
       }
     }
@@ -200,16 +210,35 @@ body {
     }
   }
 }
-
-
+#page-footer {
+  left: -1rem;
+  position: relative;
+  width: calc(100% + 4rem) !important;
+}
 #footnote {
+  left: -1rem;
+  position: relative;
+  width: calc(100% + 4rem) !important;
   background-color: #dae9e9;
+  margin: 0 !important;
   display: flex;
+  .iconleiste {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: row;
+    img {
+      max-height: 60px;
+      padding-right: 15px;
+    }
+  }
 }
 
 
-
-
+// Cleaning old stuph from boost
+.pagelayout-standard #page.drawers .footer-popover,
+body.limitedwidth #page.drawers .footer-popover {
+  max-width: unset !important;
+}
 
 
 // Jetzt definieren wir alle Robotor bilder.
