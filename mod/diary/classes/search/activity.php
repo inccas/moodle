@@ -24,7 +24,7 @@
 namespace mod_diary\search;
 
 defined('MOODLE_INTERNAL') || die(); // @codingStandardsIgnoreLine
-
+const DIARY_INTROATTACHMENT_FILEAREA = 0;
 /**
  * Search area for mod_diary activities.
  *
