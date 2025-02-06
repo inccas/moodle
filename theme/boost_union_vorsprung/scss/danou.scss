@@ -139,6 +139,7 @@ body {
       transition: 0.5s ease-in-out;
     }
   }
+
   ul.subtiles{
     li.activity {
       &.subtile {
@@ -182,7 +183,6 @@ body {
 
           &:before {
             content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
-            width: 80px;
             width: 150px;
             display: inline-block;
           }
@@ -217,26 +217,40 @@ body {
     }
   }
 }
+
+
 // Footer elements
-#page-footer {
-  left: -1rem;
-  position: relative;
-  width: calc(100% + 4rem) !important;
-}
-#footnote {
-  left: -1rem;
-  position: relative;
-  width: calc(100% + 4rem) !important;
-  background-color: #dae9e9;
-  margin: 0 !important;
-  display: flex;
-  .iconleiste {
-    padding: 0 15px;
+#page {
+  #page-footer {
+    left: -3rem;
+    position: relative;
+    width: calc(100% + 6rem) !important;
+  }
+  #footnote {
+    left: -3rem;
+    position: relative;
+    width: calc(100% + 6rem) !important;
+    background-color: #dae9e9;
+    margin: 0 !important;
     display: flex;
-    flex-direction: row;
-    img {
-      max-height: 60px;
-      padding-right: 15px;
+    .iconleiste {
+      padding: 0 15px;
+      display: flex;
+      flex-direction: row;
+      img {
+        max-height: 60px;
+        padding-right: 15px;
+      }
+    }
+  }
+  &.show-drawer-left {
+    #page-footer {
+      left: -1rem;
+      width: calc(100% + 4rem) !important;
+    }
+    #footnote {
+      left: -1rem;
+      width: calc(100% + 4rem) !important;
     }
   }
 }
@@ -261,6 +275,12 @@ body.limitedwidth #page.drawers .footer-popover {
   h1#header-achtung:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
   }
+  .format-tiles .course-content ul.subtiles li.activity.label h1:before {
+    content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
+  }
+  .format-tiles .course-content ul.subtiles li.activity.label h1:after {
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
+  }
 }
 
 .vorsprung-mathematik {
@@ -273,6 +293,31 @@ body.limitedwidth #page.drawers .footer-popover {
   }
   h1#header-achtung:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
+  }
+  .format-tiles .course-content ul.subtiles li.activity.label h1:before {
+    content: url(/theme/boost_union_vorsprung/pix/typo/typo-mathematik-header-prefix.png);
+  }
+  .format-tiles .course-content ul.subtiles li.activity.label h1:after {
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
+  }
+}
+
+.vorsprung-physik {
+  h1#header-worumgehtes:after,
+  h1#header-wozuistdasgut:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-frage-cb.svg);
+  }
+  h1#header-wasmussichwissen:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-summary-cb.svg);
+  }
+  h1#header-achtung:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
+  }
+  .format-tiles .course-content ul.subtiles li.activity.label h1:before {
+    content: url(/theme/boost_union_vorsprung/pix/typo/typo-physik-header-prefix.png);
+  }
+  .format-tiles .course-content ul.subtiles li.activity.label h1:after {
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-neutral-cb.svg);
   }
 }
 
@@ -287,17 +332,10 @@ body.limitedwidth #page.drawers .footer-popover {
   h1#header-achtung:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
   }
-}
-
-.vorsprung-physik {
-  h1#header-worumgehtes:after,
-  h1#header-wozuistdasgut:after{
-    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-frage-cb.svg);
+  .format-tiles .course-content ul.subtiles li.activity.label h1:before {
+    content: url(/theme/boost_union_vorsprung/pix/typo/typo-chemie-header-prefix.png);
   }
-  h1#header-wasmussichwissen:after{
-    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-summary-cb.svg);
-  }
-  h1#header-achtung:after{
-    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
+  .format-tiles .course-content ul.subtiles li.activity.label h1:after {
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-neutral-cb.svg);
   }
 }
