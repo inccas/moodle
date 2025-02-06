@@ -263,15 +263,41 @@ body.limitedwidth #page.drawers .footer-popover {
   }
 }
 
-.vorsprung-informatik {
+.vorsprung-mathematik {
   h1#header-worumgehtes:after,
   h1#header-wozuistdasgut:after{
-    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-frage-cb.svg);
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-frage-cb.svg);
   }
   h1#header-wasmussichwissen:after{
-    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-summary-cb.svg);
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-summary-cb.svg);
   }
   h1#header-achtung:after{
-    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
+  }
+}
+
+.vorsprung-chemie {
+  h1#header-worumgehtes:after,
+  h1#header-wozuistdasgut:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-frage-cb.svg);
+  }
+  h1#header-wasmussichwissen:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-summary-cb.svg);
+  }
+  h1#header-achtung:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
+  }
+}
+
+.vorsprung-physik {
+  h1#header-worumgehtes:after,
+  h1#header-wozuistdasgut:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-frage-cb.svg);
+  }
+  h1#header-wasmussichwissen:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-summary-cb.svg);
+  }
+  h1#header-achtung:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
   }
 }
