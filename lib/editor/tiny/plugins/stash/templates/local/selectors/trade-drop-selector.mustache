@@ -1,0 +1,6 @@
+<select class="tiny-stash-trade-selector form-control custom-select mr-sm-2">
+    <option selected>{{#str}}choose, tiny_stash{{/str}}</option>
+    {{#trades}}
+        <option data-hash="{{hashcode}}" data-type="trade" data-id="{{id}}">{{name}}</option>
+    {{/trades}}
+</select>

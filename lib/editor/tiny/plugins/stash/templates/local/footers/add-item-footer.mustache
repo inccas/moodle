@@ -1,0 +1,12 @@
+<div class="w-100 pl-3 d-flex justify-content-end">
+    <button class="btn btn-secondary mr-1" data-action="back">{{#str}}back, core{{/str}}</button>
+    <button class="btn btn-secondary mr-1" data-action="cancel">{{#str}}cancel, core{{/str}}</button>
+    {{#location}}
+    <button class="btn btn-primary mr-1" data-action="add">{{#str}}additem, tiny_stash{{/str}}</button>
+    <button class="btn btn-primary mr-1" data-action="add-and-location">{{#str}}additemlocation, tiny_stash{{/str}}</button>
+    {{/location}}
+    {{#trade}}
+    <button class="btn btn-primary mr-1" data-action="add-gain">{{#str}}additemgain, tiny_stash{{/str}}</button>
+    <button class="btn btn-primary mr-1" data-action="add-loss">{{#str}}additemloss, tiny_stash{{/str}}</button>
+    {{/trade}}
+</div>

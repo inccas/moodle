@@ -1,0 +1,87 @@
+#page-report-embedquestion-activity .groupselector,
+#page-report-embedquestion-index .groupselector {
+    width: 100%;
+}
+
+#page-report-embedquestion-activity #selectgroup,
+#page-report-embedquestion-index #selectgroup {
+    display: block;
+}
+
+#page-report-embedquestion-activity .que.correctness .state-icon,
+#page-report-embedquestion-index .que.correctness .state-icon {
+    padding-left: 5px;
+}
+
+#page-report-embedquestion-activity .que.correctness,
+#page-report-embedquestion-index .que.correctness {
+    font-weight: bold;
+}
+
+#page-report-embedquestion-activity .que.correctness.correct,
+#page-report-embedquestion-index .que.correctness.correct {
+    color: #398439;
+}
+
+#page-report-embedquestion-activity .que.correctness.incorrect,
+#page-report-embedquestion-index .que.correctness.incorrect {
+    color: #d43f3a;
+}
+
+#page-report-embedquestion-activity .que.correctness.partiallycorrect,
+#page-report-embedquestion-index .que.correctness.partiallycorrect {
+    color: #f0ad4e;
+}
+
+#page-report-embedquestion-activity .generaltable,
+#page-report-embedquestion-index .generaltable {
+    min-height: auto;
+}
+
+#page-report-embedquestion-activity div.commands,
+#page-report-embedquestion-index div.commands,
+#page-report-embedquestion-activity .download-response .download-response-infomation,
+#page-report-embedquestion-index .download-response .download-response-infomation,
+#page-report-embedquestion-activity .download-response .download-response-buttons,
+#page-report-embedquestion-index .download-response .download-response-buttons {
+    padding-top: 10px;
+}
+
+#page-report-embedquestion-attemptdetail .closewindow {
+    margin-top: 10px;
+}
+
+#page-report-embedquestion-activity .show-only-heading,
+#page-report-embedquestion-index .show-only-heading {
+    padding: 10px 0;
+}
+
+#page-report-embedquestion-activity .show-only-heading .student-info,
+#page-report-embedquestion-index .show-only-heading .student-info {
+    padding-right: 5px;
+}
+
+#page-report-embedquestion-activity #region-main form table span.view-all,
+#page-report-embedquestion-index #region-main form table span.view-all {
+    display: block;
+    font-size: 0.85714em;
+}
+
+#page-report-embedquestion-responsedownload .cloudexport-info-text {
+    margin-bottom: 15px;
+}
+
+#page-report-embedquestion-responsedownload .downloadexport {
+    padding: 8px 0;
+}
+
+#page-report-embedquestion-responsedownload .downloadexport img {
+    height: 20px;
+    padding-right: 5px;
+    vertical-align: baseline;
+}
+
+#page-report-embedquestion-responsedownload .downloadexport.sizer {
+    padding-left: 5px;
+    color: #676463;
+}

@@ -1,0 +1,27 @@
+<div class="block-stash-trade tiny-stash-trade-preview" title="{{trade.name}}" id="block-stash-trade-id-{{trade.id}}" data-id="{{trade.id}}" contenteditable="false">
+    <div class="trade-label text-center py-1 px-1">{{name}}</div>
+        <div>
+            <div style="display: flex">
+                <div style="flex: 1" class="px-2 py-2">
+                    <div class="block-stash-column-title"><strong>{{gaintitle}}</strong></div>
+                    {{#additems}}
+                    <div class="block-stash-trade-item">
+                        {{>block_stash/item_xsmall}} <span>{{name}} ({{quantity}})</span>
+                    </div>
+                    {{/additems}}
+                </div>
+                <div style="flex: 1" class="px-2 py-2">
+                    <div class="block-stash-column-title"><strong>{{losstitle}}</strong></div>
+                    {{#lossitems}}
+                    <div class="block-stash-trade-item">
+                        {{>block_stash/item_xsmall}} <span class="block-stash-trade-item-{{itemid}}" data-tradeid="{{trade.id}}">{{name}} ({{quantity}})</span>
+                    </div>
+                    {{/lossitems}}
+                </div>
+            </div>
+        </div>
+    <div class="accept-trade text-xs-center py-2">
+        <center><button disabled class="btn btn-secondary">{{#str}}accept, block_stash{{/str}}</button></center>
+    </div>
+    {{#shortcode}}<div class="tiny-stash-shortcode" style="display: none;">{{shortcode}}</div>{{/shortcode}}
+</div>
