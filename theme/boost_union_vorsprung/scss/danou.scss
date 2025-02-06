@@ -19,6 +19,8 @@ body {
     }
   }
 }
+
+// Navigation elements
 .drawer-left{
   -webkit-overflow-scrolling: touch;
   background-color: #eaf2f2;
@@ -73,6 +75,7 @@ body {
   }
 }
 
+// General Page elements
 #page-header {
   h1.h2 {
     font-size: 2.34375rem;
@@ -84,7 +87,9 @@ body {
 .activity-item.hiddenactivity {
   background-color: #ffffff;
 }
-
+.alert {
+  border: 1px solid transparent;
+}
 .format-tiles .course-content {
   ul.tiles {
     .tile {
@@ -212,6 +217,7 @@ body {
     }
   }
 }
+// Footer elements
 #page-footer {
   left: -1rem;
   position: relative;
@@ -257,3 +263,15 @@ body.limitedwidth #page.drawers .footer-popover {
   }
 }
 
+.vorsprung-informatik {
+  h1#header-worumgehtes:after,
+  h1#header-wozuistdasgut:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-frage-cb.svg);
+  }
+  h1#header-wasmussichwissen:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-summary-cb.svg);
+  }
+  h1#header-achtung:after{
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
+  }
+}
