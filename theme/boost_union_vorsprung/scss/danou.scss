@@ -104,6 +104,7 @@ body {
           .photo-tile-image {
             height: 105px;
             position: relative;
+            background-size: cover;
 
             .availabilityinfo {
               position: absolute;
@@ -166,7 +167,6 @@ body {
         left: -10px;
 
         h1 {
-          background: linear-gradient(90deg, #fff 51%, rgba(255, 245, 255, .75) 70%, rgba(255, 255, 255, 0) 100%), url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=936341);
           background-position: right center;
           background-size: initial;
           background-repeat: no-repeat;
@@ -180,19 +180,24 @@ body {
           border: none !important;
           color: var(--color-primary) !important;
           width: calc(100% + 30px);
+          margin-top: 30px;
 
           &:before {
             content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
             width: 150px;
+            position: relative;
+            left: 40px;
+            top: 0px;
             display: inline-block;
+            float: left;
           }
 
           &:after {
             content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
             width: 80px;
             position: relative;
-            right: 10px;
-            top: -20px;
+            right: -60px;
+            top: -40px;
             display: inline-block;
             float: right;
           }
@@ -214,6 +219,18 @@ body {
           font-size: 24px;
         }
       }
+    }
+  }
+  .availabilityinfo {
+    bottom: 7px !important;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    .badge-info {
+      font-size: 100%;
+      background-color: transparent;
+      color: var( --color-text);
     }
   }
 }
@@ -265,6 +282,20 @@ body.limitedwidth #page.drawers .footer-popover {
 
 // Jetzt definieren wir alle Robotor bilder.
 .vorsprung-informatik {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1 {
+    background: linear-gradient(90deg, #fff 51%,
+            rgba(255, 245, 255, .75) 70%,
+            rgba(255, 255, 255, 0) 100%),
+    url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg);
+    background-position: right center;
+  }
+  ul.subtiles li.activity.label h1:before {
+    content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
+  }
+
+  ul.subtiles li.activity.label h1:after {
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
+  }
   h1#header-worumgehtes:after,
   h1#header-wozuistdasgut:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-frage-cb.svg);
@@ -275,15 +306,28 @@ body.limitedwidth #page.drawers .footer-popover {
   h1#header-achtung:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
   }
-  .format-tiles .course-content ul.subtiles li.activity.label h1:before {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1:before {
     content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
   }
-  .format-tiles .course-content ul.subtiles li.activity.label h1:after {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1:after {
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
   }
 }
 
-.vorsprung-mathematik {
+.vorsprung-mathe {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1 {
+    background: linear-gradient(90deg, #fff 51%,
+            rgba(240,251,255,.75) 70%,
+            rgba(255, 255, 255, 0) 100%),
+    url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
+    background-position: right center;
+  }
+  ul.subtiles li.activity.label h1:before {
+    content: url(/theme/boost_union_vorsprung/pix/typo/typo-mathematik-header-prefix.png);
+  }
+  ul.subtiles li.activity.label h1:after {
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
+  }
   h1#header-worumgehtes:after,
   h1#header-wozuistdasgut:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-frage-cb.svg);
@@ -294,15 +338,26 @@ body.limitedwidth #page.drawers .footer-popover {
   h1#header-achtung:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
   }
-  .format-tiles .course-content ul.subtiles li.activity.label h1:before {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1:before {
     content: url(/theme/boost_union_vorsprung/pix/typo/typo-mathematik-header-prefix.png);
   }
-  .format-tiles .course-content ul.subtiles li.activity.label h1:after {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1:after {
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
   }
 }
 
 .vorsprung-physik {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1 {
+    background: linear-gradient(90deg, #fff 51%, rgba(255,246,234,.75), rgba(255, 255, 255, 0) 100%),
+    url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg);
+    background-position: right center;
+  }
+  ul.subtiles li.activity.label h1:before {
+    content: url(/theme/boost_union_vorsprung/pix/typo/typo-physik-header-prefix.png);
+  }
+  ul.subtiles li.activity.label h1:after {
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-neutral-cb.svg);
+  }
   h1#header-worumgehtes:after,
   h1#header-wozuistdasgut:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-frage-cb.svg);
@@ -313,15 +368,26 @@ body.limitedwidth #page.drawers .footer-popover {
   h1#header-achtung:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
   }
-  .format-tiles .course-content ul.subtiles li.activity.label h1:before {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1:before {
     content: url(/theme/boost_union_vorsprung/pix/typo/typo-physik-header-prefix.png);
   }
-  .format-tiles .course-content ul.subtiles li.activity.label h1:after {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1:after {
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-neutral-cb.svg);
   }
 }
 
 .vorsprung-chemie {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1 {
+    background: linear-gradient(90deg,#fff 51%,rgba(242,254,220,.75) 70%,rgba(255,255,255,0) 100%),
+    url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg);
+    background-position: right center;
+  }
+  ul.subtiles li.activity.label h1:before {
+    content: url(/theme/boost_union_vorsprung/pix/typo/typo-chemie-header-prefix.png);
+  }
+  ul.subtiles li.activity.label h1:after {
+    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-neutral-cb.svg);
+  }
   h1#header-worumgehtes:after,
   h1#header-wozuistdasgut:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-frage-cb.svg);
@@ -332,10 +398,10 @@ body.limitedwidth #page.drawers .footer-popover {
   h1#header-achtung:after{
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
   }
-  .format-tiles .course-content ul.subtiles li.activity.label h1:before {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1:before {
     content: url(/theme/boost_union_vorsprung/pix/typo/typo-chemie-header-prefix.png);
   }
-  .format-tiles .course-content ul.subtiles li.activity.label h1:after {
+  &.format-tiles .course-content ul.subtiles li.activity.label h1:after {
     content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-neutral-cb.svg);
   }
 }
