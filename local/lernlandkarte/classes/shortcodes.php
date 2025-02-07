@@ -29,8 +29,8 @@ class shortcodes {
             $initialY = self::get_arg($args, 'y', 0, 100);
             $initialZoom = self::get_arg($args, 'zoom', 100, 2000);
 
-//            $PAGE->requires->js('/local/lernlandkarte/amd/build/external/wheelzoom.min.js');
-/*           $PAGE->requires->js_call_amd('local_lernlandkarte/lernlandkarte', 'init', [[
+            $PAGE->requires->js('/local/lernlandkarte/amd/build/external/wheelzoom.min.js');
+           $PAGE->requires->js_call_amd('local_lernlandkarte/lernlandkarte', 'init', [[
                 'id' => $id,
                 'x' => $initialX * 0.01,
                 'y' => $initialY * 0.01,
@@ -41,7 +41,7 @@ class shortcodes {
                 'id' => $id,
                 'imagesrc' => $imagesrc,
             ]);
-*/
+
         }
 
         return '';

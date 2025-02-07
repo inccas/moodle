@@ -16,7 +16,8 @@ Allows zooming and panning of the visible part of the image if zoom > 100
   ```
 * Requires filter Shortcodes to be active on pages where `[lernlandkarte][/lernlandkarte]` is used
 
-Enter `[lernlandkarte][/lernlandkarte]` into any text field. This will display the lernlandkarte image. Default values specified in config.php are used.
+Enter `[lernlandkarte][/lernlandkarte]` into any text field. This will display the lernlandkarte image. 
+Default values specified in config.php are used.
 
 Attributes/parameters
 * `[lernlandkarte]/path/to/my/lernlandkarte.png[/lernlandkarte]`
