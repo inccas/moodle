@@ -452,11 +452,15 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.5vw;
 }
 
-.course-carousel {
+.carousel {
   width: 100%;
   margin-bottom: 1rem;
   background-color: #f8f8f8;
 
+  li:empty {
+    height: 5px;
+    visibility: visible;
+  }
   .carousel-inner {
     height: 100%;
   }
@@ -471,7 +475,6 @@ h1, h2, h3, h4, h5, h6 {
       margin: 0;
     }
   }
-
   .carousel-item-wrapper {
     padding: 3% 0 3% 0;
     p {
