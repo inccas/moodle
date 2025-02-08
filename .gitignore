@@ -64,3 +64,6 @@ questions_chemie.xml
 questions_physik.xml
 questions_vorkurs.xml
 */securepdf/
+
+theme/vorsprung
+./theme/vorsprung/*

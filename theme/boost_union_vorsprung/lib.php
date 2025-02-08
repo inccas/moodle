@@ -156,3 +156,46 @@ function theme_boost_union_vorsprung_alter_css_urls(&$urls) {
     // Call Boost Union's theme_boost_union_alter_css_urls() function which implements the logic to change the CSS URL for flavours.
     theme_boost_union_alter_css_urls($urls);
 }
+
+
+
+/**
+ * Render the message drawer to be included in the top of the body of each page.
+ *
+ * @return string HTML
+ */
+function core_course_vorsprung_drawer(): string {
+    global $PAGE, $OUTPUT;
+
+ #   echo("<br><br>core_course_drawer:<br>");
+ #   var_dump($PAGE);
+
+    // If the course index is explicitly set and if it should be hidden.
+    if ($PAGE->get_show_course_index() === false) {
+        return '';
+    }
+
+    // Only add course index on non-site course pages.
+    if (!$PAGE->course || $PAGE->course->id == SITEID) {
+        return '';
+    }
+
+    // Show course index to users can access the course only.
+    if (!can_access_course($PAGE->course, null, '', true)) {
+        return '';
+    }
+
+    $format = course_get_format($PAGE->course);
+    $renderer = $format->get_renderer($PAGE);
+    #echo("<br><br>renderer:<br>");
+    #var_dump($renderer);
+    if (method_exists($renderer, 'course_index_drawer')) {
+        # $result =  $renderer->course_index_drawer($format);
+        $result =  $OUTPUT->render_from_template('core_courseformat/local/courseindex/drawer', []);
+
+        # var_dump($result);
+        return $result;
+    }
+
+    return '';
+}

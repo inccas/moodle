@@ -105,7 +105,10 @@ $hasblocks = (strpos($blockshtml, 'data-block=') !== false || !empty($addblockbu
 if (!$hasblocks) {
     $blockdraweropen = false;
 }
-$courseindex = core_course_drawer();
+
+require_once($CFG->dirroot. '/theme/boost_union_vorsprung/lib.php');
+$courseindex = core_course_vorsprung_drawer();
+
 if (!$courseindex) {
     $courseindexopen = false;
 }
