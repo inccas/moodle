@@ -51,6 +51,7 @@
     {{^hastilephoto}}<div class="tile-bg"></div>{{/hastilephoto}}
     <a class="tile-link"{{#userclickable}} href="{{{config.wwwroot}}}/course/view.php?id={{courseid}}&section={{tileid}}"{{/userclickable}}
        data-section="{{tileid}}" id="sectionlink-{{tileid}}" aria-label="{{tilearialabel}}">
+
         {{^hastilephoto}}
             <div id="tileText-{{tileid}}"
                 {{#activity_summary}}{{^ismobile}}{{#usetooltips}}

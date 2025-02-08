@@ -67,3 +67,7 @@ questions_vorkurs.xml
 
 theme/vorsprung
 ./theme/vorsprung/*
+theme/bootstrapbase
+./theme/bootstrapbase/*
+theme/boost_vorsprung
+./theme/boost_vorsprung/*
