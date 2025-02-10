@@ -272,7 +272,7 @@ body {
     bottom: 7px !important;
     padding: 0;
     border-radius: 0;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     opacity: 0.7;
     .badge-info {
       font-size: 100%;
@@ -372,12 +372,12 @@ body.limitedwidth #page.drawers .footer-popover {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
     }
     li.subtile .tileiconcontainer.assessment {
-      border: 1px dashed rgba(142, 184, 120, .75);
-      background-color:  rgba(242, 254, 220, .5);
+      border: 1px dashed #774075ac;
+      background-color:  #c740c520;
     }
     li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
     li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
-      filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
+      filter: invert(76%) sepia(58%) saturate(6969%) hue-rotate(250deg) brightness(70%) contrast(79%);
     }
 
     ul.tiles, ul.subtiles {
