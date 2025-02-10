@@ -61,3 +61,6 @@ $string['generalmenusettings'] = 'Menu Settings';
 $string['generalmenusettings_heading'] = 'In this section you can configure the appearance of the left side drawer to your needs and define if more subsections should be displayed. And if they should be displayed, which ones should show up.';
 $string['generalmenusettings_showfull'] = 'Sidedrawer accordeon';
 $string['generalmenusettings_showfull_desc'] = 'Do you want to show the left sidedrawer with many more options, that can be opened up in an accordion style?';
+$string['generalmenusettings_sidedrawer_menu_options'] = 'Which elements should appear in the sidebar';
+$string['generalmenusettings_sidedrawer_menu_options_help'] = 'Activate all activities that are then on a whitelist. All of these activities will then be displayed with the corresponding title text in the left menu tree in the sidedrawer left.';
+

@@ -61,3 +61,7 @@ $string['generalmenusettings'] = 'Menü Einstellungen';
 $string['generalmenusettings_heading'] = 'In diesem Abschnitt können Sie das Erscheinungsbild der linken Seitenleiste nach Ihren Wünschen konfigurieren und angeben, ob und welche Unterabschnitte angezeigt werden sollen.';
 $string['generalmenusettings_showfull'] = 'Seitenleisten-Akkordeon';
 $string['generalmenusettings_showfull_desc'] = 'Möchten Sie die linke Seitenleiste mit vielen weiteren Optionen anzeigen, die im Akkordeonstil geöffnet werden können?';
+$string['generalmenusettings_sidedrawer_menu_options'] = 'Welche Elemente sollen in der Seitenleiste erscheinen';
+$string['generalmenusettings_sidedrawer_menu_options_help'] = 'Aktiviere alle Aktiviäten, welche dann auf einer Whiteliste stehen. Alle diese Aktivitäten werden dann mit dem dazugehörigen Title Text auch im linken Menübaum im Sidedrawer left dargestellt.';
+
+

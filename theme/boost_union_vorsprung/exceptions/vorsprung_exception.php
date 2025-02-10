@@ -15,16 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union VORsprung - Version file
- *
  * @package    theme_boost_union_vorsprung
  * @copyright  2025 Danou Nauck <danou@nauck.eu>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace theme_boost_union_vorsprung\exceptions;
 
-$plugin->component = 'theme_boost_union_vorsprung';
-$plugin->version = 2025010300;
-$plugin->maturity = MATURITY_STABLE;
-$plugin->dependencies = ['theme_boost_union' => 2024100700];
+defined('MOODLE_INTERNAL') || die('Direct access to this script is forbidden.'); // It must be included from a Moodle page.
+
+/**
+ * This class empty. We only use it to differentiate this exception from a core exception.
+ */
+class vorsprung_exception extends \moodle_exception {
+}

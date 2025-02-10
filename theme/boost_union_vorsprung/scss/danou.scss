@@ -108,8 +108,18 @@ body {
 }
 .dimmed {
   opacity: 0.7;
-  background-color: blue;
+  background-color: lightgray;
 }
+.format-tiles .course-content ul.subtiles li.activity .activityname  {
+  z-index: 2;
+  background: transparent;
+}
+.format-tiles li.activity.subtile a:not(.dropdown-item),
+.format-tiles #page-content li.activity.subtile a:not(.dropdown-item) {
+  color: #565656;
+  background: #ffffff;
+}
+
 .format-tiles .course-content {
   .tileiconcontainer .tile-icon .icon {
     color: var(--color-main);
@@ -361,12 +371,21 @@ body.limitedwidth #page.drawers .footer-popover {
     .alert-dark:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
     }
+    li.subtile .tileiconcontainer.assessment {
+      border: 1px dashed rgba(142, 184, 120, .75);
+      background-color:  rgba(242, 254, 220, .5);
+    }
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+      filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
+    }
+
     ul.tiles, ul.subtiles {
       h1 {
         background: linear-gradient(90deg, #fff 51%,
                 rgba(255, 245, 255, .75) 70%,
                 rgba(255, 255, 255, 0) 100%),
-        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg);
+        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
         background-position: right center;
       }
       h1:before {
@@ -398,6 +417,14 @@ body.limitedwidth #page.drawers .footer-popover {
   &.format-tiles .course-content {
     .alert-dark:before{
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
+    }
+    li.subtile .tileiconcontainer.assessment {
+      border: 1px dashed rgba(142, 184, 120, .75);
+      background-color:  rgba(242, 254, 220, .5);
+    }
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+      filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
     }
     ul.tiles, ul.subtiles {
       h1 {
@@ -433,12 +460,20 @@ body.limitedwidth #page.drawers .footer-popover {
     .alert-dark:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
     }
+    li.subtile .tileiconcontainer.assessment {
+      border: 1px dashed rgba(142, 184, 120, .75);
+      background-color:  rgba(242, 254, 220, .5);
+    }
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+      filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
+    }
     ul.tiles, ul.subtiles {
       h1 {
         background: linear-gradient(90deg, #fff 51%,
                 rgba(255, 246, 234, .75),
                 rgba(255, 255, 255, 0) 100%),
-        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg);
+        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
         background-position: right center;
       }
       h1:before {
@@ -467,14 +502,23 @@ body.limitedwidth #page.drawers .footer-popover {
     .alert-dark:before{
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
     }
+    li.subtile .tileiconcontainer.assessment {
+      border: 1px dashed rgba(142, 184, 120, .75);
+      background-color:  rgba(242, 254, 220, .5);
+    }
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+      filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
+    }
     ul.tiles, ul.subtiles {
       h1 {
         background: linear-gradient(90deg, #fff 51%,
                 rgba(242, 254, 220, .75) 70%,
                 rgba(255, 255, 255, 0) 100%),
-        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg);
+        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
         background-position: right center;
       }
+
       h1:before {
         content: url(/theme/boost_union_vorsprung/pix/typo/typo-chemie-header-prefix.png);
       }
