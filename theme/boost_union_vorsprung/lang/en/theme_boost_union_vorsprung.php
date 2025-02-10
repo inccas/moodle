@@ -55,3 +55,9 @@ $string['extrascssinheritancesetting_desc'] = 'With this setting, you control if
 // Privacy API.
 $string['privacy:metadata'] = 'The Boost Union VORsprung theme does not store any personal data about any user.';
 $string['poweredbyinccas'] = 'Powered by <a href="https://www.inccas.de" target="_blank">INCCAS</a>';
+
+// Settings for the left side menu / Drawer left
+$string['generalmenusettings'] = 'Menu Settings';
+$string['generalmenusettings_heading'] = 'In this section you can configure the appearance of the left side drawer to your needs and define if more subsections should be displayed. And if they should be displayed, which ones should show up.';
+$string['generalmenusettings_showfull'] = 'Sidedrawer accordeon';
+$string['generalmenusettings_showfull_desc'] = 'Do you want to show the left sidedrawer with many more options, that can be opened up in an accordion style?';

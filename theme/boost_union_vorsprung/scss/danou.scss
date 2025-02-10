@@ -106,6 +106,10 @@ body {
 .alert {
   border: 1px solid transparent;
 }
+.dimmed {
+  opacity: 0.7;
+  background-color: blue;
+}
 .format-tiles .course-content {
   .tileiconcontainer .tile-icon .icon {
     color: var(--color-main);
@@ -157,7 +161,8 @@ body {
     }
     li:empty{
       height: 5px;
-      visibility: visible;
+      // visibility: visible; //
+      visibility: hidden;
     }
   }
   ul.tiles {

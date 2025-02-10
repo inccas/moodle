@@ -21,28 +21,38 @@
   --color-text: #595959;
 }
 
+.vorsprung-campus {
+  --color-main:  #00a0a2;
+  --color-light: #f2e887;
+  --color-text:  #006062;
+}
+
 .vorsprung-informatik {
-  --color-main: #774075;
+  --color-main:  #774075;
   --color-light: #e6d2e6;
-  --color-text: #361d35;
+  --color-text:  #361d35;
 }
 
 .vorsprung-mathe {
-  --color-main: #00577a;
+  --color-main:  #00577a;
   --color-light: #ade7ff;
-  --color-text: #003347;
+  --color-text:  #003347;
 }
 
 .vorsprung-physik {
-  --color-main: #d58139;
+  --color-main:  #d58139;
   --color-light: #f0d2b8;
-  --color-text: #38200b;
+  --color-text:  #38200b;
 }
 
 .vorsprung-chemie {
-  --color-main: #d1d75b;
+  --color-main:  #d1d75b;
   --color-light: #e8ebae;
-  --color-text: #505314;
+  --color-text:  #505314;
+}
+
+.bg-vorsprung-light {
+  background-color: #f2f8c7;
 }
 
 .bg-informatik-light {

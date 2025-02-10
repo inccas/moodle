@@ -55,3 +55,9 @@ $string['extrascssinheritancesetting_desc'] = 'Mit dieser Einstellung steuern Si
 // Datenschutz-API.
 $string['privacy:metadata'] = 'Das Boost Union VORsprung-Design speichert keine persönlichen Daten über Benutzer.';
 $string['poweredbyinccas'] = 'Unterstützt von <a href="https://www.inccas.de" target="_blank">INCCAS</a>';
+
+// Settings for the left side menu / Drawer left
+$string['generalmenusettings'] = 'Menü Einstellungen';
+$string['generalmenusettings_heading'] = 'In diesem Abschnitt können Sie das Erscheinungsbild der linken Seitenleiste nach Ihren Wünschen konfigurieren und angeben, ob und welche Unterabschnitte angezeigt werden sollen.';
+$string['generalmenusettings_showfull'] = 'Seitenleisten-Akkordeon';
+$string['generalmenusettings_showfull_desc'] = 'Möchten Sie die linke Seitenleiste mit vielen weiteren Optionen anzeigen, die im Akkordeonstil geöffnet werden können?';

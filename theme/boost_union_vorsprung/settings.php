@@ -124,6 +124,27 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
          * EXTENSION POINT:
          * Add your Boost Union VORsprung settings here.
          *********************************************************/
+        // Create general menu settings.
+        $tab = new admin_settingpage('theme_boost_union_vorsprung_menu',
+            get_string('generalmenusettings', 'theme_boost_union_vorsprung', null, true));
+
+        // Create inheritance heading.
+        $name = 'theme_boost_union_vorsprung/sidemenudetails';
+        $desc = get_string('generalmenusettings_heading', 'theme_boost_union_vorsprung', null, true);
+        $default = '';
+        $setting = new admin_setting_heading($name, null, $desc, $default);
+        $tab->add($setting);
+
+        // Setting: Enable Details Menu in left drawer if desired
+        $name = 'theme_boost_union_vorsprung/sidedraweraccordeon';
+        $title = get_string('generalmenusettings_showfull', 'theme_boost_union_vorsprung', null, true);
+        $description = get_string('generalmenusettings_showfull_desc', 'theme_boost_union_vorsprung', null, true);
+        $setting = new admin_setting_configselect($name, $title, $description, THEME_BOOST_UNION_SETTING_SELECT_NO, $yesnooption);
+        $tab->add($setting);
+
+        // Add tab to settings page.
+        $page->add($tab);
+
 
         // Create footer tab.
         $tab = new admin_settingpage('theme_boost_union_vorsprung_content_footer', get_string('footertab', 'theme_boost_union', null, true));
