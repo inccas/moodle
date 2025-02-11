@@ -43,6 +43,18 @@ use core_block\output\block_contents;
  */
 class core_renderer extends \theme_boost_union\output\core_renderer {
 
+    /** Returns the filename for this specific Business Unit of the currently logged in user
+     * @return false
+     * @throws \dml_exception
+     */
+    public function get_businessunit_logo_name() {
+        global $USER, $CFG;
+        $logo_filename = $CFG->wwwroot . "/theme/iu_black/pix/iu-logo.svg";
+
+        return $logo_filename;
+
+    }
+
     public function header() {
         global $COURSE,$CFG;
 

@@ -351,6 +351,8 @@ h1, h2, h3, h4, h5, h6 {
 
     .section .activity:hover {
       background-color: transparent;
+      color: #495057;
+      transition: all 0.5s ease-in-out;
     }
 
      .single-section .navigation-arrows {
@@ -456,6 +458,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-bottom: 1rem;
   background-color: #f8f8f8;
+  border-radius: 0.5rem;
 
   li:empty {
     height: 5px;

@@ -50,7 +50,7 @@ body {
       .courseindex-section {
         position: relative;
         display: block;
-        padding: 0.5rem 0rem 0.5rem 0rem;
+        padding: 0;
         background-color: #fff;
         border: 1px solid rgba(0, 0, 0, .125);
         width: 100%;
@@ -58,9 +58,18 @@ body {
         text-align: inherit;
       }
       .courseindex-item {
+        border-radius: 0;
+        padding: 0.75rem 0.5rem;
         &.courseindex-section-title {
           a {
             font-weight: normal;
+          }
+        }
+        &:hover {
+          background-color: var(--color-light);
+          color: #495057;
+          &.pageitem .courseindex-link, &.pageitem .courseindex-chevron {
+            color: #495057;
           }
         }
         .icons-collapse-expand {
@@ -99,6 +108,18 @@ body {
 }
 .activity {
   border-top: 0px solid #ffffff;
+  &.dimmed {
+    opacity: 1;
+    background-color: #e0e0e0aa;
+    border-radius: 0.25rem;
+    padding: 2px;
+    .activity-item {
+      border-radius: 0.25rem;
+      padding: 3px;
+      opacity: 1;
+      background-color: #FFFFFFEE;
+    }
+  }
 }
 .activity-item.hiddenactivity {
   background-color: #ffffff;
@@ -117,19 +138,52 @@ body {
 .format-tiles li.activity.subtile a:not(.dropdown-item),
 .format-tiles #page-content li.activity.subtile a:not(.dropdown-item) {
   color: #565656;
-  background: #ffffff;
+  background-color: #cfcfcf00;
+  z-index: 2;
+  &.dimmed{
+    background-color: #afafaf40;
+    &:hover{
+      background-color: #afafaf00;
+    }
+  }
 }
 
-.format-tiles .course-content {
+.format-tiles .course-content, .format-tiles #page-content {
   .tileiconcontainer .tile-icon .icon {
     color: var(--color-main);
   }
-  .navigation-arrows img.icon {
-    font-size: 30px;
-    height: 35px;
-    width: 35px;
-    max-width: 40px;
-    max-height: 40px;
+  .navigation-arrows {
+    .icon {
+      font-size: 32px;
+      height: 32px;
+      width: 32px;
+      padding: 4px 3px 2px 7px;
+    }
+    img.icon {
+      height: 42px;
+      width: 42px;
+      padding: 0 0 0 15px;
+      margin: 0;
+      max-width: unset;
+      max-height: unset;
+    }
+  }
+  .feedback_itemlist fieldset {
+    .align-items-center {
+      align-items: unset !important;
+    }
+    .flex-wrap {
+      flex-direction: column;
+    }
+    .fitem {
+      margin: 0.1rem 0.25rem 0.1rem 30px !important;
+      .weight {
+        display: none;
+      }
+    }
+  }
+  .completioncheckbox {
+    z-index: 2;
   }
   ul.tiles, ul.subtiles {
     h1 {
@@ -137,7 +191,7 @@ body {
       background-size: initial;
       background-repeat: no-repeat;
       position: relative;
-      text-indent: -4.3rem;
+      /* text-indent: -4.3rem; */
       left: -1px;
       overflow: visible !important;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
@@ -149,21 +203,17 @@ body {
       margin-top: 30px;
 
       &:before {
-        content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
-        width: 280px;
         position: relative;
-        left: 50px;
+        left: -45px !important;;
         top: 20px;
-        display: inline-block;
         float: left;
         zoom: 50%;
       }
 
       &:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
         width: 80px;
         position: relative;
-        right: -60px;
+        right: 8px !important;;
         top: -40px;
         display: inline-block;
         float: right;
@@ -173,6 +223,10 @@ body {
       height: 5px;
       // visibility: visible; //
       visibility: hidden;
+    }
+    .carousel-indicators li:empty{
+      height: 5px;
+      visibility: visible;
     }
   }
   ul.tiles {
@@ -300,6 +354,7 @@ body {
   }
   .label_content {
     overflow: visible;
+    border-radius: 0.5rem;
   }
   .alert-dark {
     min-height: 170px;
@@ -317,7 +372,7 @@ body {
   left: -14px;
   width: calc(100% + 14px);
    &:after{
-     right: -60px;
+     right: -105px;
    }
 }
 
@@ -393,7 +448,7 @@ body.limitedwidth #page.drawers .footer-popover {
       }
       h1:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
-        right: -62px;
+        right: 8px !important;;
         top: -33px;
       }
       h1#header-worumgehtes:after,
@@ -461,12 +516,12 @@ body.limitedwidth #page.drawers .footer-popover {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
     }
     li.subtile .tileiconcontainer.assessment {
-      border: 1px dashed rgba(142, 184, 120, .75);
-      background-color:  rgba(242, 254, 220, .5);
+      border: 1px dashed rgba(242, 124, 50, 0.85);
+      background-color:  rgba(242, 125, 50, 0.15);
     }
     li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
     li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
-      filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
+      filter: invert(76%) sepia(34) saturate(6000%) hue-rotate(0deg) brightness(90%) contrast(79%);
     }
     ul.tiles, ul.subtiles {
       h1 {
@@ -482,6 +537,7 @@ body.limitedwidth #page.drawers .footer-popover {
       h1:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-neutral-cb.svg);
         top: -45px;
+        right: -35px !important;
       }
       h1#header-worumgehtes:after,
       h1#header-wozuistdasgut:after {
@@ -525,7 +581,12 @@ body.limitedwidth #page.drawers .footer-popover {
       h1:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-neutral-cb.svg);
         top: -43px;
+        right: -34px !important;
       }
+      .dimmed h1:after {
+        right: 10px !important;
+      }
+
       h1#header-worumgehtes:after,
       h1#header-wozuistdasgut:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-frage-cb.svg);
@@ -536,6 +597,29 @@ body.limitedwidth #page.drawers .footer-popover {
       h1#header-achtung:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
       }
+    }
+  }
+}
+
+
+.vorsprung-campus {
+  &.format-tiles .course-content {
+    .alert-dark:before{
+      content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
+    }
+    li.subtile .tileiconcontainer.assessment {
+      border: 1px dashed rgba(242, 192, 120, .75);
+      background-color:  rgba(242, 194, 100, .25);
+    }
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+      filter: invert(92%) sepia(88%) saturate(4969%) hue-rotate(344deg) brightness(94%) contrast(99%);
+    }
+    ul.tiles, ul.subtiles {
+      h1:before {
+        content: url(/theme/boost_union_vorsprung/pix/typo/typo-primary-header-prefix.png);
+      }
+
     }
   }
 }
