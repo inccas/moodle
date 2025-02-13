@@ -189,6 +189,15 @@ function core_course_vorsprung_drawer(): string {
     $renderer = $format->get_renderer($PAGE);
     #echo("<br><br>renderer:<br>");
     #var_dump($renderer);
+
+    $themeconfig = get_config('theme_boost_union_vorsprung');
+    // Enable the toggle button in the settings.php to show bigger or smaller menu elements
+    if (isset($themeconfig->sidemenudetails) && ($themeconfig->sidemenudetails == 1)) {
+        $templatecontext['courseindex_slim'] = $courseindex;
+    } else {
+        // $templatecontext['courseindex'] = $courseindex;
+    }
+
     if (method_exists($renderer, 'course_index_drawer')) {
         # $result =  $renderer->course_index_drawer($format);
         $result =  $OUTPUT->render_from_template('core_courseformat/local/courseindex/drawer', []);

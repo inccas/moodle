@@ -129,7 +129,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
             get_string('generalmenusettings', 'theme_boost_union_vorsprung', null, true));
 
         // Create inheritance heading.
-        $name = 'theme_boost_union_vorsprung_sidemenudetails';
+        $name = 'theme_boost_union_vorsprung/sidemenudetails';
         $desc = get_string('generalmenusettings_heading', 'theme_boost_union_vorsprung', null, true);
         $default = '';
         $setting = new admin_setting_heading($name, null, $desc, $default);
@@ -148,7 +148,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
 
 
         $setting = new admin_setting_configmulticheckbox(
-            'theme_boost_union_vorsprung_sidedrawer_menu_layouts',
+            'theme_boost_union_vorsprung/sidedrawer_menu_layouts',
             get_string('generalmenusettings_sidedrawer_menu_options', 'theme_boost_union_vorsprung'),
             get_string('generalmenusettings_sidedrawer_menu_options_help', 'theme_boost_union_vorsprung'),
             $choicesDefault,

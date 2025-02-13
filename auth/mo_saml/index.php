@@ -194,7 +194,7 @@ if ( array_key_exists( 'SAMLResponse', $_POST ) && ! empty( $_POST['SAMLResponse
 			redirect( $urltogo, 0 );
 		} else {
 			// This block executed only when user is not created.
-			print_error( 'USER is not created.' );
+            throw new \moodle_exception( 'USER is not created.' );
 		}
 	}
 }

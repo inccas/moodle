@@ -72,6 +72,9 @@ body {
             color: #495057;
           }
         }
+        .courseindex-link{
+          flex: 1 1 auto;
+        }
         .icons-collapse-expand {
           padding-right: 0px;
         }
@@ -83,6 +86,11 @@ body {
           font-size: 16px;
         }
       }
+      .dimmed {
+        background-color: #efefef;
+        opacity: 0.8;
+      }
+
     }
   }
 }
@@ -108,12 +116,12 @@ body {
 }
 .activity {
   border-top: 0px solid #ffffff;
-  &.dimmed {
+  &.fullwidth.dimmed {
     opacity: 1;
-    background-color: #e0e0e0aa;
+    background-color: #e0e0e0aa !important;
     border-radius: 0.25rem;
-    padding: 2px;
-    .activity-item {
+    padding: 3px !important;
+    .activity-item, &:hover {
       border-radius: 0.25rem;
       padding: 3px;
       opacity: 1;
@@ -129,7 +137,13 @@ body {
 }
 .dimmed {
   opacity: 0.7;
-  background-color: lightgray;
+  &:hover {
+    opacity:1;
+  }
+  h3 {
+    padding: 0;
+    margin: 5px 0 0 5px;
+  }
 }
 .format-tiles .course-content ul.subtiles li.activity .activityname  {
   z-index: 2;
@@ -352,19 +366,35 @@ body {
       transition: max-height 400ms ease-out, border 0ms linear;
     }
   }
-  .label_content {
-    overflow: visible;
-    border-radius: 0.5rem;
-  }
-  .alert-dark {
-    min-height: 170px;
-  }
-  .alert-dark:before{
-    content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
-    float: left;
-    width: 80px;
-    margin: 0 40px 0 10px;
-    display: block;
+  .cm-inner {
+    .completioncheckbox {
+      position: relative;
+      top: 10px;
+      right: 10px;
+      height: 22px;
+      width: 22px;
+      .icon {
+        font-size: 12px;
+        width: 12px;
+        position: absolute;
+        left: 2px;
+        top: 3px;
+        height: 12px;
+      }
+    }
+    .label_content {
+      overflow: visible;
+      border-radius: 0.5rem;
+    }
+    .alert-dark {
+      min-height: 170px;
+    }
+    .alert-dark:before{
+      float: left;
+      width: 80px;
+      margin: 0 40px 0 10px;
+      display: block;
+    }
   }
 }
 .format-tiles .course-content .single-section li.activity.label h1 {
@@ -555,6 +585,11 @@ body.limitedwidth #page.drawers .footer-popover {
 
 .vorsprung-chemie {
   &.format-tiles .course-content {
+    .alert-dark {
+      color: #333333 !important;
+      background-color: #b7e5dc !important;
+      border-color: #aed9d1 !important;
+    }
     .alert-dark:before{
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
     }
@@ -594,7 +629,8 @@ body.limitedwidth #page.drawers .footer-popover {
       h1#header-wasmussichwissen:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-summary-cb.svg);
       }
-      h1#header-achtung:after {
+      h1#header-achtung:after,
+      h1#header-waskannichmachen:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
       }
     }

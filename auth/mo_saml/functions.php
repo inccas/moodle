@@ -25,7 +25,7 @@
  use RobRichards\XMLSecLibs\XMLSecurityKey;
  use \RobRichards\XMLSecLibs\XMLSecurityDSig;
 
- function create_authn_request($acsurl, $issuer, $forceauthn = 'false') { 
+ function create_authn_request($acsurl, $issuer, $forceauthn = 'false') {
 
     $requestxmlstr = '<?xml version="1.0" encoding="UTF-8"?>' .
                     '<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="' . generate_id() .
@@ -92,14 +92,14 @@ function auth_mo_saml_authenticate_user_login($accountmatcher, $userssaml, $role
 
     if(!$user && $authpreventaccountcreation){
         $errormsg = "Please contact your administrator. You are not allowed to access the Site.";
-        print_error($errormsg);
+        throw new \moodle_exception($errormsg);
         return false;
     }
-    
+
     if($userwithsameemail && $userwithsameemail->auth == 'manual' && !$allowaccountssameemail)
     {
         $errormsg = "Already A User is present with same Email Address.";
-        print_error($errormsg);
+        throw new \moodle_exception($errormsg);
         return false;
     }
 
@@ -111,7 +111,7 @@ function auth_mo_saml_authenticate_user_login($accountmatcher, $userssaml, $role
         // If here no authentication plugin enabled then then it will show an error.
         if ($auth == 'nologin' or !is_enabled_auth($auth)) {
             $errormsg = '[client '.getremoteaddr().'] '.$CFG->wwwroot.'  --->  DISABLED_LOGIN: '.$userssaml[$accountmatcher];
-            print_error($errormsg);
+            throw new \moodle_exception($errormsg);
             return false;
         }
     } else {
@@ -126,7 +126,7 @@ function auth_mo_saml_authenticate_user_login($accountmatcher, $userssaml, $role
         if ($DB->get_field('user', 'id', $queryconditions)) {
             $errormsg = '[client '.$_SERVER['REMOTE_ADDR'].'] '.  $CFG->wwwroot.'  --->  ALREADY LOGEDIN:
             '.$userssaml[$accountmatcher];
-            print_error($errormsg);
+            throw new \moodle_exception($errormsg);
             return false;
         }
 
@@ -148,7 +148,7 @@ function auth_mo_saml_authenticate_user_login($accountmatcher, $userssaml, $role
             }
             else {
                 $errormsg = "The username cannot be blank. Please check the Attribute Mapping.";
-                print_error($errormsg);
+                throw new \moodle_exception($errormsg);
                 return false;
             }
             assign_roles($user, $rolesfromidp);
@@ -158,12 +158,12 @@ function auth_mo_saml_authenticate_user_login($accountmatcher, $userssaml, $role
             if(array_key_exists('custom_attribute_values', $userssaml))
             {
                 $custom_attribute_values = $userssaml['custom_attribute_values'];
-                foreach ($custom_attribute_values as $attribute=>$attribute_value) 
+                foreach ($custom_attribute_values as $attribute=>$attribute_value)
                 {
-                    if (isset($attribute_value)) 
+                    if (isset($attribute_value))
                     {
                         $custom_field_record = $DB->get_record('user_info_field', array('shortname' => $attribute));
-                        if ($DB->record_exists('user_info_data', array('userid' => $user->id, 'fieldid' => $custom_field_record->id))) 
+                        if ($DB->record_exists('user_info_data', array('userid' => $user->id, 'fieldid' => $custom_field_record->id)))
                         {
                             $record = new stdClass();
                             $record->id = $DB->get_field('user_info_data', 'id', array('userid' => $user->id, 'fieldid' => $custom_field_record->id));
@@ -171,8 +171,8 @@ function auth_mo_saml_authenticate_user_login($accountmatcher, $userssaml, $role
                             $record->fieldid = $custom_field_record->id;
                             $record->data = $attribute_value;
                             $result = $DB->update_record('user_info_data', $record);
-                        } 
-                        else 
+                        }
+                        else
                         {
                             $record = new stdClass();
                             $record->userid = $user->id;
@@ -297,7 +297,7 @@ function auth_mo_saml_authenticate_user_login($accountmatcher, $userssaml, $role
         $authes->user_authenticated_hook($user, $userssaml[$accountmatcher], $password);
     }
     if (!$user->id && !$samlcreate) {
-        print_error("New coming User ". ' "'. $userssaml[$accountmatcher] . '" '
+        throw new \moodle_exception("New coming User ". ' "'. $userssaml[$accountmatcher] . '" '
         . "not exists in moodle and auto-create is disabled");
         return false;
     }
@@ -323,11 +323,11 @@ function assign_roles( $user, $rolesfromidp){
     }
 
     $idp_groups_mapping = json_decode($pluginconfig->idp_reverse_role_mapping,true);
-    $moodle_roles = get_all_roles();   
-        
+    $moodle_roles = get_all_roles();
+
     $roles = explode(';',$rolesfromidp);
     $mappedroles = array();
-       
+
     $checkrole = false;
 
     foreach($roles as $role){
@@ -505,11 +505,11 @@ function mo_saml_create_logout_request($nameId, $sessionIndex, $logout_url, $log
     } else {
         $redirect .= '?';
     }
-    
+
     if($config->saml_request_signed != 'on'){
-        
+
         $redirect .= 'SAMLRequest=' . $samlRequest;
-        require_logout();  
+        require_logout();
         set_moodle_cookie('nobody');
         header('Location: '.$redirect);
         exit();
@@ -520,12 +520,12 @@ function mo_saml_create_logout_request($nameId, $sessionIndex, $logout_url, $log
     $key = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, $param);
     $private_key = get_config('auth_mo_saml', 'private_key');
     $key->loadKey($private_key);
-    
+
     $objXmlSecDSig = new XMLSecurityDSig();
     $signature = $key->signData($samlRequest);
     $signature = base64_encode($signature);
     $redirect .= $samlRequest . '&Signature=' . urlencode($signature);
-    require_logout();  
+    require_logout();
     set_moodle_cookie('nobody');
     header('Location: '.$redirect);
     exit();
@@ -557,13 +557,13 @@ function createLogoutResponseAndRedirect( $logout_url, $logout_binding_type ) {
                 $redirect .= '?';
             }
                 $redirect .= 'SAMLResponse=' . $logoutResponse . '&RelayState=' . urlencode($relay_state);
-                require_logout();  
+                require_logout();
                 set_moodle_cookie('nobody');
                 header('Location: '.$redirect);
                 exit();
         } else {
                 $base64EncodedXML = base64_encode($logoutResponse);
-                require_logout();  
+                require_logout();
                 set_moodle_cookie('nobody');
                 utilities::postSAMLResponse($logout_url, $base64EncodedXML, $relay_state);
                 exit();
