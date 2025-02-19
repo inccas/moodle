@@ -157,8 +157,6 @@ function theme_boost_union_vorsprung_alter_css_urls(&$urls) {
     theme_boost_union_alter_css_urls($urls);
 }
 
-
-
 /**
  * Render the message drawer to be included in the top of the body of each page.
  *
@@ -167,8 +165,8 @@ function theme_boost_union_vorsprung_alter_css_urls(&$urls) {
 function core_course_vorsprung_drawer(): string {
     global $PAGE, $OUTPUT;
 
- #   echo("<br><br>core_course_drawer:<br>");
- #   var_dump($PAGE);
+    // echo("<br><br><hr><br>core_course_vorsprung_drawer:<br>");
+    // var_dump($PAGE);
 
     // If the course index is explicitly set and if it should be hidden.
     if ($PAGE->get_show_course_index() === false) {
@@ -187,23 +185,28 @@ function core_course_vorsprung_drawer(): string {
 
     $format = course_get_format($PAGE->course);
     $renderer = $format->get_renderer($PAGE);
-    #echo("<br><br>renderer:<br>");
-    #var_dump($renderer);
+   # echo("<hr><br>renderer:<br>");
+   # var_dump($renderer);
+
 
     $themeconfig = get_config('theme_boost_union_vorsprung');
     // Enable the toggle button in the settings.php to show bigger or smaller menu elements
     if (isset($themeconfig->sidemenudetails) && ($themeconfig->sidemenudetails == 1)) {
-        $templatecontext['courseindex_slim'] = $courseindex;
+        // $templatecontext['courseindex_slim'] = $courseindex;
     } else {
         // $templatecontext['courseindex'] = $courseindex;
     }
 
     if (method_exists($renderer, 'course_index_drawer')) {
-        # $result =  $renderer->course_index_drawer($format);
-        $result =  $OUTPUT->render_from_template('core_courseformat/local/courseindex/drawer', []);
-
+        $result =  $renderer->course_index_drawer($format);
+        # $result =  $OUTPUT->render_from_template('core_courseformat/local/courseindex/drawer', []);
         # var_dump($result);
+        // echo("<pre>");
+        // print_r($result);
+        // echo("</pre>");
         return $result;
+    } else {
+        echo("<h2> NOT method_exists(renderer, 'course_index_drawer2'))</h2>");
     }
 
     return '';

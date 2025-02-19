@@ -36,6 +36,9 @@ body {
   .drawerheader {
     height: unset;
   }
+  .bg-light{
+    background-color: #eaf2f2;
+  }
   .drawercontent{
     padding-right: 20px;
     padding-bottom: 20px;
@@ -117,8 +120,8 @@ body {
 .activity {
   border-top: 0px solid #ffffff;
   &.fullwidth.dimmed {
+    linear-gradient(270deg, rgba(0, 0, 0, 0.20), rgba(255, 255, 255, 1))
     opacity: 1;
-    background-color: #e0e0e0aa !important;
     border-radius: 0.25rem;
     padding: 3px !important;
     .activity-item, &:hover {
@@ -213,7 +216,7 @@ body {
       font-weight: 500 !important;
       border: none !important;
       color: var(--color-primary) !important;
-      width: calc(100% + 21px);
+      width: calc(100% + 4px);
       margin-top: 30px;
 
       &:before {
@@ -245,23 +248,37 @@ body {
   }
   ul.tiles {
     .tile {
-      &.phototile, & {
+      &.phototile {
         border: 1px solid var(--color-main);
+        .progress-indic{
+          color: var(--color-main);
+          padding: 4px 7px 1px 7px;
+          position: absolute;
+          background-color: #fff;
+          bottom: 4px;
+          left: 0;
+          font-size: 0.9em;
+          font-weight: 700;
+          line-height: 1;
+        }
 
         &.tilestyle-1, &.tilestyle-2 {
           a {
             padding: 0px;
           }
-
           .photo-tile-image {
             height: 105px;
             position: relative;
             background-size: cover;
-
             .availabilityinfo {
               position: absolute;
-              top: 2px;
-              left: 2px;
+              top: 4px;
+              left: 0px;
+              .badge-info {
+                color: var(--color-main);
+                background-color: #fff;
+                border-radius: 0;
+              }
             }
           }
 
@@ -317,6 +334,9 @@ body {
       &.label {
         position: relative;
         left: -10px;
+        margin: 0;
+        border-radius: 0;
+        min-width: calc(100% + 50px);
       }
       .tileiconcontainer {
         position: absolute;
@@ -440,6 +460,11 @@ body {
       width: calc(100% + 4rem) !important;
     }
   }
+}
+
+.drawer-toggles .drawer-toggler {
+  // Make sure the buttons are always above the tiles content and headlines
+  z-index: 5;
 }
 
 
@@ -658,4 +683,104 @@ body.limitedwidth #page.drawers .footer-popover {
 
     }
   }
+}
+
+@media screen and (max-width: 999px) {
+  .format-tiles {
+    .course-content, #page-content {
+      ul.tiles, ul.subtiles{
+        h1 {
+          font-size: 2rem !important;
+          &:before{
+            left: -52px !important;
+            zoom: 45%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .drawer.drawer-left.drawer-primary .drawerheader {
+    display: flex;
+    position: relative;
+    button {
+      position: absolute;
+      top: -7px;
+      right: -12px;
+      background-color: #fff;
+    }
+    img {
+      width: 100%;
+      padding-right: 20px;
+    }
+  }
+  .drawer.drawer-left {
+    .drawerheader {
+      display: flex;
+      position: relative;
+      button {
+        position: absolute;
+        top: -7px;
+        right: 15px;
+        background-color: #fff;
+      }
+    }
+    .drawercontent {
+      padding-bottom: 100px;
+    }
+  }
+  .drawer.drawer-right .drawerheader {
+    display: flex;
+    position: relative;
+    button {
+      position: absolute;
+      top: 2px;
+      left: -15px;
+      background-color: #fff;
+    }
+  }
+  .drawercontent {
+    height: 100%;
+  }
+  .format-tiles {
+    .course-content, #page-content {
+      ul.tiles, ul.subtiles{
+        h1 {
+          font-size: 1.8rem !important;
+          width: calc(100% + 35px);
+          &:before{
+            left: -65px !important;
+            zoom: 40%;
+          }
+        }
+      }
+    }
+  }
+  .badge {
+    white-space: wrap;
+  }
+  #page #page-footer,
+  #page #footnote {
+    left: 0;
+    width: 100% !important;
+    [data-region=footer-container-popover] {
+      position: relative;
+      button {
+        position: absolute;
+        top: 50px;
+      }
+    }
+  }
+}
+
+// Re.set the buttom button for help
+.jsenabled #page-footer .footer-content-popover {
+  display: none;
+}
+.jsenabled .btn-footer-popover,
+.jsenabled .btn-footer-communication {
+  display: block;
+  z-index: 1000;
 }
