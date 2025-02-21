@@ -1,5 +1,5 @@
 // stylelint-disable all
-$root-dir: '/theme/vorsprung';
+$root-dir: '/theme/boost_union_vorsprung';
 $images-dir: '#{$root-dir}/pix';
 $fonts-dir: '#{$root-dir}/fonts';
 $blue: #0f6cbf;
@@ -7,6 +7,30 @@ $purple: #613d7c;
 $red: #ca3120;
 $green: #357a32;
 $cyan: #008196;
+
+$vorsprung-colors: (
+        "primary": #00a0a2,
+        "secondary": #e2b847,
+        "physik": #d58139,
+        "physik-light": #f0d2b8,
+        "physik-text": #38200b,
+        "chemie": #d1d75b,
+        "chemie-light": #e8ebae,
+        "chemie-text": #505314,
+        "mathematik": #00577a,
+        "mathematik-light": #ade7ff,
+        "mathematik-text": #003347,
+        "informatik": #774075,
+        "informatik-light": #e6d2e6,
+        "informatik-text": #361d35,
+);
+
+$ch-colors: (
+        "physik": #fff6ea,
+        "chemie": #f2fedc,
+        "mathematik": #f0fbff,
+        "informatik": #fff5ff,
+);
 
 $zap-colors: (
         "blue-100": #b6e9ff,
@@ -76,30 +100,6 @@ $zap-colors: (
         "gray-fonts": #333333,
         "yellow-special": #f5e600,
         "red-special": #ff4d84,
-);
-
-$vorsprung-colors: (
-        "primary": #00a0a2,
-        "secondary": #e2b847,
-        "physik": #d58139,
-        "physik-light": #f0d2b8,
-        "physik-text": #38200b,
-        "chemie": #d1d75b,
-        "chemie-light": #e8ebae,
-        "chemie-text": #505314,
-        "mathematik": #00577a,
-        "mathematik-light": #ade7ff,
-        "mathematik-text": #003347,
-        "informatik": #774075,
-        "informatik-light": #e6d2e6,
-        "informatik-text": #361d35,
-);
-
-$ch-colors: (
-        "physik": #fff6ea,
-        "chemie": #f2fedc,
-        "mathematik": #f0fbff,
-        "informatik": #fff5ff,
 );
 
 $cb-colors: (

@@ -168,6 +168,8 @@ body {
 .format-tiles .course-content, .format-tiles #page-content {
   .tileiconcontainer .tile-icon .icon {
     color: var(--color-main);
+    max-width: unset;
+    max-height: unset;
   }
   .navigation-arrows {
     .icon {
@@ -203,12 +205,18 @@ body {
     z-index: 2;
   }
   ul.tiles, ul.subtiles {
+    .alert h1 {
+      background: transparent;
+      margin: 0px;
+      &:before, &:after {
+        display: none;
+      }
+    }
     h1 {
       background-position: right center;
       background-size: initial;
       background-repeat: no-repeat;
       position: relative;
-      /* text-indent: -4.3rem; */
       left: -1px;
       overflow: visible !important;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
