@@ -775,6 +775,16 @@ body.limitedwidth #page.drawers .footer-popover {
   }
 }
 
+@media screen and (max-width: 499px) {
+  #footnote{
+    flex-direction: column;
+    padding: 16px;
+    .container-fluid{
+      text-align: center;
+    }
+  }
+}
+
 // Re.set the buttom button for help
 .jsenabled #page-footer .footer-content-popover {
   display: none;
