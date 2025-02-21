@@ -120,7 +120,7 @@ body {
 .activity {
   border-top: 0px solid #ffffff;
   &.fullwidth.dimmed {
-    linear-gradient(270deg, rgba(0, 0, 0, 0.20), rgba(255, 255, 255, 1))
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.20), rgba(255, 255, 255, 1));
     opacity: 1;
     border-radius: 0.25rem;
     padding: 3px !important;
