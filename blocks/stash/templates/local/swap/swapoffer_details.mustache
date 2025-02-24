@@ -1,0 +1,74 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_stash/local/swap/swapoffer_details
+
+    Swap offer details.
+}}
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col">
+                        {{{user.picture}}}
+                    </div>
+                    <div class="col-11">
+                        <h3 class="h4">{{user.fullname}}</h3>
+                        <div>{{#str}}offerdetail, block_stash{{/str}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col border rounded mr-1">
+            <h3>{{#str}}requesteditems, block_stash{{/str}}</h3>
+            <div>
+                <ul class="list-unstyled">
+                    {{#theirs}}
+                        <li class="border-bottom">
+                            <div class="d-flex">
+                                <div class="p-2">{{>block_stash/item_small}}</div>
+                                <div class="p-2 text-capitalize">{{name}}</div>
+                                <div class="p-2 font-weight-bold">({{quantity}})</div>
+                            </div>
+                        </li>
+                    {{/theirs}}
+                </ul>
+            </div>
+        </div>
+        <div class="col border rounded ml-1">
+            <h3>{{#str}}offereditems, block_stash{{/str}}</h3>
+            <div>
+                <ul class="list-unstyled">
+                    {{#mine}}
+                        <li class="border-bottom">
+                            <div class="d-flex">
+                                <div class="p-2">{{>block_stash/item_small}}</div>
+                                <div class="p-2 text-capitalize">{{name}}</div>
+                                <div class="p-2 font-weight-bold">({{quantity}})</div>
+                            </div>
+                        </li>
+                    {{/mine}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-secondary my-2" href="{{declineurl}}">{{#str}}delete, block_stash{{/str}}</a>
+</div>

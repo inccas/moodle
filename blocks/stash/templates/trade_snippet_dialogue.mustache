@@ -1,0 +1,86 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Drop snippet dialogue.
+}}
+<div class="block-stash-trade-snippet-dialogue">
+    <div id="{{uuid}}" style="display: inline;">
+        <div class="block-stash-trade" title="{{trade.name}}" data-id="{{trade.id}}">
+            <div class="trade-label text-center py-1 px-1">{{trade.name}}</div>
+                <div>
+                    <div style="display: flex">
+                        <div style="flex: 1" class="px-2 py-2">
+                            <div class="block-stash-column-title"><strong>{{trade.gaintitle}}</strong></div>
+                            {{#tradeitems}}
+                                {{#gainloss}}
+                                <div class="block-stash-trade-item">
+                                {{>block_stash/item_xsmall}} {{name}} ({{quantity}})
+                                <a title="" href="{{editurl}}">{{#pix}}t/edit, core, {{#str}}edittradeitem, block_stash, {{name}}{{/str}}{{/pix}}</a>
+                                <a title="" href="{{deleteurl}}">{{#pix}}t/delete, core, {{#str}}deleteitem, block_stash, {{name}}{{/str}}{{/pix}}</a>
+                                </div>
+                                {{/gainloss}}
+                            {{/tradeitems}}
+                        </div>
+                        <div style="flex: 1" class="px-2 py-2">
+                            <div class="block-stash-column-title"><strong>{{trade.losstitle}}</strong></div>
+                            {{#tradeitems}}
+                                {{^gainloss}}
+                                <div class="block-stash-trade-item">
+                                {{>block_stash/item_xsmall}} {{name}} ({{quantity}})
+                                <a title="" href="{{editurl}}">{{#pix}}t/edit, core, {{#str}}edittradeitem, block_stash, {{name}}{{/str}}{{/pix}}</a>
+                                <a title="" href="{{deleteurl}}">{{#pix}}t/delete, core, {{#str}}deleteitem, block_stash, {{name}}{{/str}}{{/pix}}</a>
+                                </div>
+                                {{/gainloss}}
+                            {{/tradeitems}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div>
+        <p><strong>{{#str}}snippet, block_stash{{/str}}</strong></p>
+        <div style="display: flex">
+            <textarea id="block-stash-trade-snippet" name="snippet" onclick="this.select();" readonly class="form-control" style="flex: 1; margin: 0">{{snippet}}</textarea>
+            <button id="block-stash-trade-snippet-copy" class="btn btn-secondary" title="{{#str}}copytoclipboard, block_stash{{/str}}">{{#pix}}t/copy, core{{/pix}}</button>
+        </div>
+        <p><small>{{#str}}copypaste, block_stash{{/str}}</small></p>
+    </div>
+
+    {{#haswarnings}}
+    <div>
+        <div>
+            {{#warnings}}
+                <div class="alert alert-warning"><small>{{{.}}}</small></div>
+            {{/warnings}}
+        </div>
+    </div>
+    {{/haswarnings}}
+</div>
+
+{{#js}}
+require([
+], function() {
+    let snippetbox = document.getElementById('block-stash-trade-snippet');
+    document.getElementById('block-stash-trade-snippet-copy').addEventListener('click', (e) => {
+        e.preventDefault();
+        snippetbox.select();
+        document.execCommand("copy");
+    });
+});
+{{/js}}

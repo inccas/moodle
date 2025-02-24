@@ -1,0 +1,73 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_stash/local/swap/trade_center
+
+    Trade center.
+}}
+<div class="container-fluid border">
+    {{#zerostate}}
+    <div class="zero-state mx-auto w-50 text-center my-6">
+        <h3>{{#str}}tradecenter:zero, block_stash{{/str}}</h3>
+        <p>{{#str}}tradecenterdetail:zero, block_stash{{/str}}</p>
+    </div>
+    {{/zerostate}}
+    <div class="container my-3">
+    {{#item}}
+        <div class="border py-2 px-3">
+            <h3 class="h5">{{item.name}}</h3>
+            {{>block_stash/item_detail}}
+        </div>
+        <div class="border my-3 py-3 px-3">
+            <p class="font-weight-bold">{{#str}}participantswithitem, block_stash{{/str}}</p>
+            <ul class="list-group list-unstyled list-group-flush ml-3">
+            {{#users}}
+                <li class="list-item my-1">
+                    {{{pic}}}
+                    {{fullname}}
+                    <span>
+                        <button
+                         class="btn btn-secondary"
+                         data-swap data-courseid={{other.courseid}}
+                         data-userid="{{id}}"
+                         data-itemid="{{item.id}}"
+                         data-myuserid="{{other.myuserid}}"
+                         >
+                            {{#str}}requestswap, block_stash{{/str}}
+                        </button>
+                    </span>
+                </li>
+            {{/users}}
+            </ul>
+        </div>
+    </div>
+    {{/item}}
+    {{#userview}}
+        <div class="border py-2 px-3">
+            <h3 class="h5">{{fullname}}</h3>
+            <div>{{{pic}}}</div>
+            <div class="py-2">
+                <button class="btn btn-secondary" data-swap data-courseid={{other.courseid}} data-userid="{{id}}" data-myuserid="{{other.myuserid}}">{{#str}}trade, block_stash{{/str}}</button>
+            </div>
+        </div>
+    {{/userview}}
+</div>
+{{#js}}
+require(["block_stash/swap"], function(Swap) {
+    Swap.init();
+});
+{{/js}}
