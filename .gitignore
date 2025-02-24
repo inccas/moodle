@@ -72,5 +72,5 @@ theme/bootstrapbase
 theme/boost_vorsprung
 ./theme/boost_vorsprung/*
 
-mod/securepdf/*
+mod/securepdf
 ./mod/securepdf/*
