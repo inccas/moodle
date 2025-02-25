@@ -15,28 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file replaces the legacy STATEMENTS section in db/install.xml,
- * lib.php/modulename_install() post installation hook and partially defaults.php
+ * Strings for component 'block_thememode'
  *
- * @package    mod_securepdf
- * @copyright  2020 Yedidia Klein <yedidia@openapp.co.il>
+ * @package    block_thememode
+ * @copyright  2025 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
-
-/**
- * Post installation procedure
- *
- * @see upgrade_plugins_modules()
- */
-function xmldb_securepdf_install() {
-}
-
-/**
- * Post installation recovery procedure
- *
- * @see upgrade_plugins_modules()
- */
-function xmldb_securepdf_install_recovery() {
-}
+$string['pluginname'] = 'Theme Darkmode Toggle';
+$string['thememode:addinstance'] = 'Add a new Theme Darkmode Toggle block';
+$string['thememode:myaddinstance'] = 'Add a new Theme Darkmode Toggle block to Dashboard';
+$string['darkmode'] = 'Switch to Dark Mode';
+$string['lightmode'] = 'Switch to Light Mode';

@@ -15,17 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * View all event class for securepdf
+ * External functions and service definitions.
  *
- * @package    mod_securepdf
- * @copyright  2017 Yedidia Klein <yedidia@openapp.co.il>
- * @since      Moodle 3.1
+ * @package    block_thememode
+ * @copyright  2025 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_securepdf\event;
-
 defined('MOODLE_INTERNAL') || die();
 
-class course_module_instance_list_viewed extends \core\event\course_module_instance_list_viewed {
-}
+$functions = array(
+    'block_thememode_set_preference' => array(
+        'classname'     => 'block_thememode_external',
+        'methodname'    => 'set_preference',
+        'classpath'     => 'blocks/thememode/externallib.php',
+        'description'   => 'Save user theme mode preference',
+        'type'          => 'write',
+        'loginrequired' => true,
+        'ajax'          => true
+    )
+);

@@ -15,21 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the version of securepdf.
+ * Version details.
  *
- * This code fragment is called by moodle_needs_upgrading() and
- * /admin/index.php.
- *
- * @package    mod_securepdf
- * @copyright  2020 Yedidia Klein <yedidia@openapp.co.il >
+ * @package    block_thememode
+ * @copyright  2025 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version  = 2023041001;
-$plugin->requires = 2016052301;
-$plugin->cron     = 0;
-$plugin->component = 'mod_securepdf';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release  = '1.0';
+$plugin->version   = 2025022500;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->requires  = 2024040402;        // Requires Moodle 4.5
+$plugin->component = 'block_thememode'; // Full name of the plugin (used for diagnostics)
+$plugin->maturity  = MATURITY_STABLE;
+$plugin->release   = '1.0';

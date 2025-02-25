@@ -1,0 +1,127 @@
+/**
+ * Theme mode toggle styles
+ *
+ * @package    block_thememode
+ * @copyright  2025 Your Name
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+/* The toggle switch container */
+.theme-mode-toggle-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.theme-mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Mode text */
+.mode-text {
+    font-weight: 500;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    --primary-bg-color: #222;
+    --secondary-bg-color: #333;
+    --primary-text-color: #f5f5f5;
+    --secondary-text-color: #ddd;
+    --link-color: #80b3ff;
+    --border-color: #444;
+    
+    color: var(--primary-text-color);
+    background-color: var(--primary-bg-color);
+}
+
+body.dark-mode a:not(.btn) {
+    color: var(--link-color);
+}
+
+body.dark-mode .card,
+body.dark-mode .navbar,
+body.dark-mode .block,
+body.dark-mode .list-group-item,
+body.dark-mode .modal-content,
+body.dark-mode .dropdown-menu {
+    background-color: var(--secondary-bg-color);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .table {
+    color: var(--primary-text-color);
+}
+
+body.dark-mode .form-control,
+body.dark-mode .custom-select {
+    background-color: var(--secondary-bg-color);
+    color: var(--primary-text-color);
+    border-color: var(--border-color);
+}
+
+/* Light mode styles - default Moodle styling */
+body.light-mode {
+    /* Default Moodle styling applies */
+}

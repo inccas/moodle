@@ -15,17 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * securepdf module capability definition
+ * Strings for component 'block_thememode'
  *
- * @package    mod_securepdf
- * @copyright  2020 Yedidia Klein <yedidia@openapp.co.il>
+ * @package    block_thememode
+ * @copyright  2025 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
-
-$definitions = [
-    'pages' => [
-        'mode' => cache_store::MODE_APPLICATION,
-    ]
-];
+$string['pluginname'] = 'Theme Darkmode Toggle';
+$string['thememode:addinstance'] = 'Neuen Theme Darkmode Toggle-Block hinzufügen';
+$string['thememode:myaddinstance'] = 'Neuen Theme Darkmode Toggle-Block zum Dashboard hinzufügen';
+$string['darkmode'] = 'Zum Dunkelmodus wechseln';
+$string['lightmode'] = 'Zum Hellmodus wechseln';
