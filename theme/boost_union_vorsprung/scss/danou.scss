@@ -28,6 +28,14 @@ body {
   }
 }
 
+// Usermenu
+.dropdown-menu {
+  padding:0;
+  .carousel {
+    margin-bottom: 0px;
+  }
+}
+
 // Navigation elements
 .drawer-left{
   -webkit-overflow-scrolling: touch;
@@ -212,6 +220,10 @@ body {
         display: none;
       }
     }
+    .dimmed h1{
+      left: -4px;
+      width: calc(100% + 36px);
+    }
     h1 {
       background-position: right center;
       background-size: initial;
@@ -224,12 +236,12 @@ body {
       font-weight: 500 !important;
       border: none !important;
       color: var(--color-primary) !important;
-      width: calc(100% + 4px);
+      width: calc(100% + 30px);
       margin-top: 30px;
 
       &:before {
         position: relative;
-        left: -45px !important;;
+        left: -46px !important;
         top: 20px;
         float: left;
         zoom: 50%;
@@ -344,7 +356,7 @@ body {
         left: -10px;
         margin: 0;
         border-radius: 0;
-        min-width: calc(100% + 50px);
+        min-width: calc(100% + 20px);
       }
       .tileiconcontainer {
         position: absolute;
@@ -389,7 +401,8 @@ body {
       overflow: hidden;
     }
     &[open] {
-      max-height: 800px; /* Set a max-height value enough to show all the content */
+      // max-height: 800px; /* Set a max-height value enough to show all the content */
+      max-height: unset; /* Didnt work here: Video transcript: http://localhost/mod/book/view.php?id=1118 */
       border-color: #888;
       transition: max-height 400ms ease-out, border 0ms linear;
     }
@@ -434,6 +447,31 @@ body {
    }
 }
 
+
+ul.list-group{
+  li.list-group-item {
+    i.fa{
+      padding-right: 10px;
+    }
+    &:hover, &:focus {
+      border-bottom-color: #f8f9fa;
+      &:last-of-type {
+        border-bottom-color: #ddd;
+      }
+    }
+  }
+}
+// Arrows in the book section
+.tertiary-navigation {
+  .row {
+    margin-right: -40px;
+    margin-left: -40px;
+    .navitem {
+      z-index: 10;
+    }
+  }
+}
+
 // Footer elements
 #page {
   #page-footer {
@@ -458,6 +496,15 @@ body {
       }
     }
   }
+
+  &.drawers.show-drawer-left {
+    margin-left: 315px;
+  }
+
+  &.drawers.show-drawer-right {
+    margin-right: 335px;
+  }
+
   &.show-drawer-left {
     #page-footer {
       left: -1rem;
@@ -710,6 +757,11 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 
 @media screen and (max-width: 768px) {
+  .tertiary-navigation .row {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
   .drawer.drawer-left.drawer-primary .drawerheader {
     display: flex;
     position: relative;
@@ -757,10 +809,16 @@ body.limitedwidth #page.drawers .footer-popover {
       ul.tiles, ul.subtiles{
         h1 {
           font-size: 1.8rem !important;
-          width: calc(100% + 35px);
+          width: calc(100% + 15px);
           &:before{
-            left: -65px !important;
+            left: -45px !important;
             zoom: 40%;
+          }
+        }
+        .dimmed h1 {
+          width: calc(100% + 21px);
+          &:before{
+            left: -48px !important;
           }
         }
       }
@@ -783,6 +841,12 @@ body.limitedwidth #page.drawers .footer-popover {
   }
 }
 
+@media screen and (max-width: 680px) {
+  .format-tiles .course-content ul.subtiles li.activity.label, .format-tiles #page-content ul.subtiles li.activity.label {
+    left: 0px;
+  }
+}
+
 @media screen and (max-width: 499px) {
   #footnote{
     flex-direction: column;
@@ -790,8 +854,12 @@ body.limitedwidth #page.drawers .footer-popover {
     .container-fluid{
       text-align: center;
     }
+    .iconleiste img {
+      max-width: 90%;
+    }
   }
 }
+
 
 // Re.set the buttom button for help
 .jsenabled #page-footer .footer-content-popover {
