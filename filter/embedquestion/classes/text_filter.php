@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace filter_embedquestion;
+
 use filter_embedquestion\embed_id;
 use filter_embedquestion\embed_location;
 use filter_embedquestion\output\embed_iframe;
@@ -29,7 +31,7 @@ use filter_embedquestion\utils;
  * @copyright 2018 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class filter_embedquestion extends moodle_text_filter {
+class text_filter extends \core_filters\text_filter {
     /**
      * @var string Closing part of the embed token wrapper.
      */
