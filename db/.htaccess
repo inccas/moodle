@@ -1,4 +1,4 @@
-AuthName "DAAD DEV Login-Bereich"
+AuthName "DAAD Login-Bereich"
 AuthType Basic
-AuthUserFile /var/www/moodle-daad-de.daad.com/moodle/db/.htpasswd
+AuthUserFile /var/www/moodle.daad.de/moodle/db/.htpasswd
 require valid-user

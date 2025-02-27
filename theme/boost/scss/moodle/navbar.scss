@@ -9,7 +9,7 @@
     box-shadow: none;
     border-bottom: $gray-300 1px solid;
     align-items: stretch;
-    height: $navbar-height + 1px;
+    height: .navbar.fixed-top + 1px;
 
     .navbar-brand {
         .logo {

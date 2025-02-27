@@ -5,7 +5,7 @@
  * @copyright  2016 Leo Santos {@link http://github.com/leorenis}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
+
 /* styles using by icontent */
 .path-mod-icontent .block_icontent_toc .action-list {
 	float: right;
@@ -97,12 +97,12 @@
 .path-mod-icontent .icontent-page .highcontrast a,
 .path-mod-icontent .icontent-page .highcontrast a:active,
 .path-mod-icontent .icontent-page .highcontrast a:hover,
-.path-mod-icontent .icontent-page .highcontrast .nav-tabs > .active > a, 
-.path-mod-icontent .icontent-page .highcontrast .nav-tabs > .active > a:hover, 
+.path-mod-icontent .icontent-page .highcontrast .nav-tabs > .active > a,
+.path-mod-icontent .icontent-page .highcontrast .nav-tabs > .active > a:hover,
 .path-mod-icontent .icontent-page .highcontrast .nav-tabs > .active > a:focus{
   color: #ff0;
 }
-.path-mod-icontent .icontent-page .highcontrast p, 
+.path-mod-icontent .icontent-page .highcontrast p,
 .path-mod-icontent .icontent-page .highcontrast b,
 .path-mod-icontent .icontent-page .highcontrast strong,
 .path-mod-icontent .icontent-page .highcontrast span,
@@ -127,7 +127,8 @@
 .path-mod-icontent .icontent-page .highcontrast .notesarea .fulltab .nav-tabs .active a:focus,
 .path-mod-icontent .icontent-page .highcontrast .notesarea .fulltab .nav-tabs a:hover,
 .path-mod-icontent .icontent-page .highcontrast .notesarea .fulltab .nav-tabs a:focus,
-.path-mod-icontent .icontent-page .highcontrast .questionsarea .icontentattemptsummary tbody tr:hover > td, .table-hover tbody tr:hover > th {
+.path-mod-icontent .icontent-page .highcontrast .questionsarea .icontentattemptsummary tbody tr:hover > td,
+.path-mod-icontent .icontent-page .table-hover tbody tr:hover > th {
 	background-color: #222;
 }
 .path-mod-icontent .icontent-page .highcontrast .notesarea .fulltab .nav-tabs a,
@@ -284,7 +285,7 @@
 .path-mod-icontent .icontent-page .notesarea .notelist .noterowicontent .noteheader .noteon{
 	color: #aaa;
 }
-.path-mod-icontent .icontent-page .notesarea .notelist .noterowicontent .notefooter .notedate, 
+.path-mod-icontent .icontent-page .notesarea .notelist .noterowicontent .notefooter .notedate,
 .path-mod-icontent .icontent-page .notesarea .notelist .noterowicontent .notefooter a{
 	color: #aaa;
 	font-size: 12px;

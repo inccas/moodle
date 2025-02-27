@@ -196,8 +196,8 @@ i.icon, .icon {
 
 @media (min-width: 768px){
   .navbar-brand img.logo  {
-    height: 80px;
-    max-height: 80px!important;
+    height: var(--logo-height);
+    max-height: var(--logo-height)!important;
   }
 }
 

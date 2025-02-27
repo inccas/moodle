@@ -35,7 +35,7 @@ use filter_embedquestion\form\embed_options_form;
  */
 function tiny_embedquestion_output_fragment_questionselector(array $args): string {
     global $CFG;
-    require_once($CFG->dirroot . '/filter/embedquestion/filter.php');
+    require_once($CFG->dirroot . '/filter/embedquestion/classes/text_filter.php');
     $context = context::instance_by_id($args['contextId']);
     $mform = new embed_options_form(null, ['context' => $context]);
 

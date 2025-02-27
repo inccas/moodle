@@ -141,7 +141,7 @@ if (data_submitted() && confirm_sesskey()) {
 }
 
 // Log the view.
-$attempt->log_view();
+// $attempt->log_view(); // This throws errors we can skip it... HACK DANOU  27.02.2025
 
 // Start output.
 $title = get_string('iframetitle', 'filter_embedquestion');
