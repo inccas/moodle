@@ -1287,6 +1287,20 @@ body.theme_boost-union-footerbuttonnone.jsenabled {
 
 
 /*=======================================
+ * Settings: Login Window
+ ======================================*/
+.login-form-submit {
+    display: flex;
+    .btn-lg {
+        margin-right: 20px;
+    }
+    .btn-block{
+        font-size: 1.171875rem;
+        line-height: 1.5;
+    }
+}
+
+/*=======================================
  * Settings: Content -> Advertisement tiles.
  ======================================*/
 
