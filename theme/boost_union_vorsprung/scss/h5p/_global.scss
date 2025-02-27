@@ -1,0 +1,152 @@
+body p,
+h1, h2, h3, h4, h5, h6,
+.h5p-content,
+.h5p-text-input-field .h5p-text-input-field-textfield,
+.h5p-footer,
+.h5p-embed {
+  font-family: $font-family-sans-serif !important;
+}
+
+.h5p-player,
+.h5p-embed {
+  background-color: red !important;
+}
+
+.h5p-player,
+.hp-iframe {
+  min-height: 400px !important;
+  height: 10vh !important;
+}
+
+.h5p-box-wrapper {
+  background-color: $media-bg-color !important;
+}
+
+.h5p-core-button,
+.h5p-confirmation-dialog-confirm-button,
+.h5p-joubelui-button {
+  color: $white !important;
+  background-color: $primary !important;
+
+  &:hover,
+  &:visited,
+  &:link,
+  &:focus {
+    color: $white !important;
+    background-color: darken($primary, 7.5%) !important;
+    border-color: darken($primary, 10%) !important;
+  }
+}
+
+.h5p-core-cancel-button {
+  color: $primary !important;
+
+  &:hover,
+  &:visited,
+  &:link,
+  &:focus {
+    color: darken($primary, 7.5%) !important;
+  }
+}
+
+.h5p-course-presentation {
+  .h5p-progressbar .h5p-progressbar-part-show {
+    background: $primary;
+    background-image: none;
+    transition: none;
+  }
+}
+
+.h5p-multichoice {
+  * {
+    outline: none !important;
+  }
+
+  .h5p-answer[aria-checked="true"] {
+
+    .h5p-alternative-container {
+      color: zap-color('gray-fonts') !important;
+      background: $secondary !important;
+      border: none !important;
+      box-shadow: 0 0.1em 0 zap-color('yellow-800');
+    }
+
+    &:not(.h5p-wrong):not(.h5p-correct):not([aria-disabled="true"]):hover .h5p-alternative-container {
+      box-shadow: 0 0.1em 0 zap-color('yellow-800');
+    }
+  }
+}
+
+.h5p-question-feedback-content,
+.h5p-question-feedback-content-text,
+.h5p-confirmation-dialog-header-text {
+  color: zap-color('gray-fonts') !important;
+}
+
+.h5p-blanks .h5p-text-input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: inherit;
+  border-width: 2px;
+}
+
+.h5p-single-choice-set {
+  .h5p-joubelui-progressbar-background {
+    background-color: $primary !important;
+  }
+  .h5p-sc-close-solution-view {
+    color: $primary !important;
+  }
+}
+
+.h5p-multi-media-choice {
+  .h5p-multi-media-choice-enabled:hover:not(.h5p-multi-media-choice-selected),
+  .h5p-multi-media-choice-selected {
+    border-color: $secondary !important;
+  }
+  .h5p-multi-media-choice-list-item:focus .h5p-multi-media-choice-enabled {
+    box-shadow: 0 0 4px 2px $secondary !important;
+  }
+  .h5p-multi-media-choice-show-correct {
+    background-color: #edfff0 !important;
+    border-color: #6ea776 !important;
+    &:before {
+      color: #6ea776 !important;
+    }
+  }
+}
+.h5p-drag-text {
+  :focus {
+    outline: 0;
+  }
+
+  [aria-dropeffect],
+  [aria-grabbed].h5p-drag-dropped {
+    background: zap-color('gray-100') !important;
+    border: 0.1em solid zap-color('gray-200') !important;
+  }
+
+  [aria-grabbed="true"],
+  [aria-grabbed].h5p-drag-dropped:not(.ui-state-disabled):hover,
+  [aria-grabbed]:not(.ui-state-disabled):hover {
+    color: zap-color('gray-fonts') !important;
+    background: zap-color('gray-100') !important;
+    border: none !important;
+  }
+
+  [aria-grabbed].h5p-drag-dropped,
+  .h5p-drag-dropped.h5p-drag-draggable-wrong {
+    color: zap-color('gray-fonts') !important;
+    background: transparent !important;
+    border: none !important;
+  }
+}
+
+.h5p-joubelui-score-bar .joubel-tip-container {
+  color: zap-color('gray-300') !important;
+}
+.h5p-agamotto {
+  .h5p-agamotto-wrapper .h5p-agamotto-title {
+    display: none;
+  }
+}
