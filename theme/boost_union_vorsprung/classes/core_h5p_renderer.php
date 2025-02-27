@@ -24,7 +24,7 @@ if (file_exists($CFG->dirroot.'/h5p/classes/output/renderer.php')) {
          * @copyright   2023 Jörg Hagemann
          */
         class theme_boost_union_vorsprung_core_h5p_renderer extends \core_h5p\output\renderer {
-            use h5p_helper;
+           // use h5p_helper;
 
             public function h5p_alter_styles(&$styles, $libraries, $embedtype) {
                 $this->hvp_helper_alter_styles($styles, $libraries, $embedtype);
