@@ -445,9 +445,9 @@ body {
   position: relative;
   left: -14px;
   width: calc(100% + 14px);
-   &:after{
-     right: -105px;
-   }
+  &:after{
+    right: -105px;
+  }
 }
 
 
@@ -478,7 +478,9 @@ ul.list-group{
 // Footer elements
 #page {
   #page-footer {
+    left: -3rem;
     position: relative;
+    width: calc(100% + 6rem) !important;
   }
   #footnote {
     position: relative;
@@ -504,7 +506,7 @@ ul.list-group{
     margin-right: 335px;
   }
 
-  &.show-drawer-left-backup {
+  &.show-drawer-left-reserved {
     #page-footer {
       left: -1rem;
       width: calc(100% + 4rem) !important;
@@ -883,33 +885,4 @@ body.limitedwidth #page.drawers .footer-popover {
 .jsenabled .btn-footer-communication {
   display: block;
   z-index: 1000;
-}
-
-
-.format-tiles.editing .course-content ul.tiles h1,
-.format-tiles.editing .course-content ul.subtiles h1,
-.format-tiles.editing #page-content ul.tiles h1,
-.format-tiles.editing #page-content ul.subtiles h1 {
-  width: calc(100% + 40px);
-}
-
-#page .btn-primary:focus, #page .btn-primary.focus {
-  color: #fff;
-  background-color: #007a7c99 !important;
-  border-color: #006e6f;
-  box-shadow: 0 0 0 0.2rem rgba(38, 174, 176, 0.5) !important;
-}
-
-#page .carousel .carousel-control-next {
-  background-image: url(/theme/boost_union_vorsprung/pix/shapes/arrow-right.svg);
-  background-repeat: no-repeat;
-  background-size: 75%;
-  background-position: 50% 50%;
-}
-
-#page .carousel .carousel-control-prev {
-  background-image: url(/theme/boost_union_vorsprung/pix/shapes/arrow-left.svg);
-  background-repeat: no-repeat;
-  background-size: 75%;
-  background-position: 50% 50%;
 }
