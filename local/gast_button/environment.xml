@@ -1,0 +1,7 @@
+<COMPATIBILITY_MATRIX>
+  <PLUGIN name="local_gast_button">
+    <PHP_EXTENSIONS>
+      <PHP_EXTENSION name="bcmath" level="required" />
+    </PHP_EXTENSIONS>
+  </PLUGIN>
+</COMPATIBILITY_MATRIX>
