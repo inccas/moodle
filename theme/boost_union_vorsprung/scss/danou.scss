@@ -483,9 +483,7 @@ ul.list-group{
     width: calc(100% + 6rem) !important;
   }
   #footnote {
-    left: -3rem;
     position: relative;
-    width: calc(100% + 6rem) !important;
     background-color: #dae9e9;
     margin: 0 !important;
     display: flex;
@@ -508,7 +506,7 @@ ul.list-group{
     margin-right: 335px;
   }
 
-  &.show-drawer-left {
+  &.show-drawer-left-reserved {
     #page-footer {
       left: -1rem;
       width: calc(100% + 4rem) !important;
@@ -538,6 +536,9 @@ body.limitedwidth #page.drawers .footer-popover {
   &.format-tiles .course-content {
     .alert-dark:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
+      float: left;
+      width: 80px;
+      margin: 0 40px 0 10px;
     }
     li.subtile .tileiconcontainer.assessment {
       border: 1px dashed #774075ac;
@@ -585,6 +586,9 @@ body.limitedwidth #page.drawers .footer-popover {
   &.format-tiles .course-content {
     .alert-dark:before{
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
+      float: left;
+      width: 80px;
+      margin: 0 40px 0 10px;
     }
     li.subtile .tileiconcontainer.assessment {
       border: 1px dashed rgba(142, 184, 120, .75);
@@ -627,6 +631,9 @@ body.limitedwidth #page.drawers .footer-popover {
   &.format-tiles .course-content {
     .alert-dark:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
+      float: left;
+      width: 80px;
+      margin: 0 40px 0 10px;
     }
     li.subtile .tileiconcontainer.assessment {
       border: 1px dashed rgba(242, 124, 50, 0.85);
@@ -675,6 +682,9 @@ body.limitedwidth #page.drawers .footer-popover {
     }
     .alert-dark:before{
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
+      float: left;
+      width: 80px;
+      margin: 0 40px 0 10px;
     }
     li.subtile .tileiconcontainer.assessment {
       border: 1px dashed rgba(142, 184, 120, .75);
@@ -725,6 +735,9 @@ body.limitedwidth #page.drawers .footer-popover {
   &.format-tiles .course-content {
     .alert-dark:before{
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
+      float: left;
+      width: 80px;
+      margin: 0 40px 0 10px;
     }
     li.subtile .tileiconcontainer.assessment {
       border: 1px dashed rgba(242, 192, 120, .75);
