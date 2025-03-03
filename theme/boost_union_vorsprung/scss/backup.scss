@@ -677,7 +677,7 @@ body.limitedwidth #page.drawers .footer-popover {
   &.format-tiles .course-content {
     .alert-dark {
       color: #333333 !important;
-      background-color: #b7e5dc !important;
+      background-color: var(teal-100) !important;
       border-color: #aed9d1 !important;
     }
     .alert-dark:before{
