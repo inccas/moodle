@@ -16,7 +16,7 @@
 
 namespace local_gast_button;
 defined('MOODLE_INTERNAL') || die();
-require_once(dirname(__DIR__) . '/vendor/autoload.php');
+require_once('/auth/cas/CAS/vendor/autoload.php');
 use Hashids\Hashids;
 
 class shortcodes {
