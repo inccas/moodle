@@ -435,12 +435,20 @@ body {
       background-color: #b7e5dc !important;
       border-color: #aed9d1 !important;
     }
-    .alert-dark:before{
+    .blue-dark {
+      min-height: 170px;
+      background-color: #b6e9ff !important;
+      border-color: #adddf2 !important;
+    }
+    .alert-dark:before, .blue-dark:before{
       float: left;
       width: 80px;
       margin: 0 40px 0 10px;
       display: block;
     }
+  }
+  .nolink .MathJax_Display {
+    display: inline !important;
   }
 }
 .format-tiles .course-content .single-section li.activity.label h1 {
@@ -534,7 +542,7 @@ body.limitedwidth #page.drawers .footer-popover {
 // Jetzt definieren wir alle Robotor bilder.
 .vorsprung-informatik {
   &.format-tiles .course-content {
-    .alert-dark:before {
+    .alert-dark:before, .blue-dark:before  {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
       float: left;
       width: 80px;
@@ -584,7 +592,7 @@ body.limitedwidth #page.drawers .footer-popover {
 
 .vorsprung-mathe {
   &.format-tiles .course-content {
-    .alert-dark:before{
+    .alert-dark:before, .blue-dark:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
       float: left;
       width: 80px;
@@ -629,7 +637,7 @@ body.limitedwidth #page.drawers .footer-popover {
 
 .vorsprung-physik {
   &.format-tiles .course-content {
-    .alert-dark:before {
+    .alert-dark:before, .blue-dark:before  {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
       float: left;
       width: 80px;
@@ -680,7 +688,7 @@ body.limitedwidth #page.drawers .footer-popover {
       background-color: #b7e5dc !important;
       border-color: #aed9d1 !important;
     }
-    .alert-dark:before{
+    .alert-dark:before, .blue-dark:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
       float: left;
       width: 80px;
@@ -733,7 +741,7 @@ body.limitedwidth #page.drawers .footer-popover {
 
 .vorsprung-campus {
   &.format-tiles .course-content {
-    .alert-dark:before{
+    .alert-dark:before, .blue-dark:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
       float: left;
       width: 80px;
