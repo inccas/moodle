@@ -430,22 +430,22 @@ body {
       overflow: visible;
       border-radius: 0.5rem;
     }
-    .alert-dark {
+  }
+ .alert-dark {
       min-height: 170px;
       background-color: #b7e5dc !important;
       border-color: #aed9d1 !important;
-    }
-    .blue-dark {
+  }
+  .alert-blue {
       min-height: 170px;
       background-color: #b6e9ff !important;
       border-color: #adddf2 !important;
-    }
-    .alert-dark:before, .blue-dark:before{
+  }
+  .alert-dark:before, .alert-blue:before{
       float: left;
       width: 80px;
       margin: 0 40px 0 10px;
       display: block;
-    }
   }
   .nolink .MathJax_Display {
     display: inline !important;
@@ -475,7 +475,7 @@ ul.list-group{
   }
 }
 // Arrows in the book section
-.tertiary-navigation {
+.path-mod-book .tertiary-navigation {
   .row {
     margin-right: -40px;
     margin-left: -40px;
@@ -541,8 +541,8 @@ body.limitedwidth #page.drawers .footer-popover {
 
 // Jetzt definieren wir alle Robotor bilder.
 .vorsprung-informatik {
-  &.format-tiles .course-content {
-    .alert-dark:before, .blue-dark:before  {
+  &.format-tiles {
+    .alert-dark:before, .alert-blue:before  {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
       float: left;
       width: 80px;
@@ -591,8 +591,8 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 
 .vorsprung-mathe {
-  &.format-tiles .course-content {
-    .alert-dark:before, .blue-dark:before {
+  &.format-tiles {
+    .alert-dark:before, .alert-blue:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
       float: left;
       width: 80px;
@@ -636,8 +636,8 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 
 .vorsprung-physik {
-  &.format-tiles .course-content {
-    .alert-dark:before, .blue-dark:before  {
+  &.format-tiles {
+    .alert-dark:before, .alert-blue:before  {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
       float: left;
       width: 80px;
@@ -682,13 +682,13 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 
 .vorsprung-chemie {
-  &.format-tiles .course-content {
+  &.format-tiles {
     .alert-dark {
       color: #333333 !important;
       background-color: #b7e5dc !important;
       border-color: #aed9d1 !important;
     }
-    .alert-dark:before, .blue-dark:before {
+    .alert-dark:before, .alert-blue:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
       float: left;
       width: 80px;
@@ -740,8 +740,8 @@ body.limitedwidth #page.drawers .footer-popover {
 
 
 .vorsprung-campus {
-  &.format-tiles .course-content {
-    .alert-dark:before, .blue-dark:before {
+  &.format-tiles {
+    .alert-dark:before, .alert-blue:before {
       content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
       float: left;
       width: 80px;
