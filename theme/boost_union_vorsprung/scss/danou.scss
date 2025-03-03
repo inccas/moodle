@@ -923,3 +923,7 @@ body.limitedwidth #page.drawers .footer-popover {
   background-size: 75%;
   background-position: 50% 50%;
 }
+
+body.limitedwidth #page.drawers .main-inner {
+  max-width: unset;
+}
