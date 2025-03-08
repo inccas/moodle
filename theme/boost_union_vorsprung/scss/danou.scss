@@ -431,21 +431,21 @@ body {
       border-radius: 0.5rem;
     }
   }
- .alert-dark {
-      min-height: 170px;
-      background-color: #b7e5dc !important;
-      border-color: #aed9d1 !important;
+  .alert-dark {
+    min-height: 170px;
+    background-color: #b7e5dc !important;
+    border-color: #aed9d1 !important;
   }
   .alert-blue {
-      min-height: 170px;
-      background-color: #b6e9ff !important;
-      border-color: #adddf2 !important;
+    min-height: 170px;
+    background-color: #b6e9ff !important;
+    border-color: #adddf2 !important;
   }
   .alert-dark:before, .alert-blue:before{
-      float: left;
-      width: 80px;
-      margin: 0 40px 0 10px;
-      display: block;
+    float: left;
+    width: 80px;
+    margin: 0 40px 0 10px;
+    display: block;
   }
   .nolink .MathJax_Display {
     display: inline !important;
@@ -455,9 +455,9 @@ body {
   position: relative;
   left: -14px;
   width: calc(100% + 14px);
-   &:after{
-     right: -105px;
-   }
+  &:after{
+    right: -105px;
+  }
 }
 
 
@@ -580,7 +580,8 @@ body.limitedwidth #page.drawers .footer-popover {
       h1#header-wasmussichwissen:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-summary-cb.svg);
       }
-      h1#header-achtung:after {
+      h1#header-achtung:after,
+      h1#header-waskannichmachen:after{
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
       }
     }
@@ -628,7 +629,8 @@ body.limitedwidth #page.drawers .footer-popover {
       h1#header-wasmussichwissen:after{
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-summary-cb.svg);
       }
-      h1#header-achtung:after{
+      h1#header-achtung:after,
+      h1#header-waskannichmachen:after{
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
       }
     }
@@ -674,7 +676,8 @@ body.limitedwidth #page.drawers .footer-popover {
       h1#header-wasmussichwissen:after {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-summary-cb.svg);
       }
-      h1#header-achtung:after {
+      h1#header-achtung:after,
+      h1#header-waskannichmachen:after{
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
       }
     }
