@@ -1,0 +1,5631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/MA_LE11</text>
+    </category>
+    <info format="markdown">
+      <text></text>
+    </info>
+    <idnumber>MA_LE11</idnumber>
+  </question>
+
+<!-- question: 1258206  -->
+  <question type="stack">
+    <name>
+      <text>MA_LE11_21a_Elementare_Kettenregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(x)={@p2@}.\]<p><br></p>
+<p> \( h'(x) =\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MAT_LE11_21a</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+t:v^2+5;
+p2:t^6;
+p:exp(pp);
+
+abl:diff(p2,v);
+
+abl_f: 6*(2*v)^5;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p2,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>abl</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Prima, Sie haben korrekt abgeleitet.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>abl_f</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-1-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch. Sie scheinen die innere und äußere Ableitung miteinander verkettet zu haben. Beachten Sie die Formel der Kettenregel. Versuchen Sie es noch einmal!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>Result-1-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>6*t^5</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch. Sie scheinen die innere Ableitung vergessen zu haben. Beachten Sie die Formel der Kettenregel. Versuchen Sie es noch einmal!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch. Versuchen Sie es noch einmal!</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)/diff(pp,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Um die Funktion abzuleiten, benötigen Sie die Kettenregel  \(f(g(x))'=f'(g(x)) \cdot g'(x)\). </p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Beachten Sie die Variablen, die in der Aufgabe genutzt werden. Gehen Sie wie in dem Beispiel vor: <br>
+Bestimmen Sie zuerst die Ableitungen der inneren und der äußeren Funktion und setzen diese dann mit der Kettenregel zusammen. </p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Lösung lautet: \(h'(x)=f(g(x))'={@abl@} \)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1258207  -->
+  <question type="stack">
+    <name>
+      <text>MA_LE11_21b_Elementare_Kettenregel2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(x)={@p2@}.\]<p><br></p>
+<p> \( h'(x) =\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_21b</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+t:v^3-2v+1;
+p2:e^t;
+
+abl:diff(p2,v);
+
+abl_f: e^(diff(t,v));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text></text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p2,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>abl</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Prima, Sie haben korrekt abgeleitet.</p>
+[stashdrop secret="RsjLro"  image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>abl_f</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-1-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch. Sie scheinen die innere und äußere Ableitung miteinander verkettet zu haben. Beachten Sie die Formel der Kettenregel. Versuchen Sie es noch einmal!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>Result-1-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>p2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch. Sie scheinen die innere Ableitung vergessen zu haben. Beachten Sie die Formel der Kettenregel. Versuchen Sie es noch einmal!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch. Versuchen Sie es noch einmal!</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)/diff(pp,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Um die Funktion abzuleiten, benötigen Sie die Kettenregel  \(f(g(x))'=f'(g(x)) \cdot g'(x)\). </p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Beachten Sie die Variablen, die in der Aufgabe genutzt werden. Gehen Sie wie in dem Beispiel vor: <br>
+Bestimmen Sie zuerst die Ableitung der inneren und der äußeren Funktionen und setzen diese dann mit der Kettenregel zusammen. </p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Lösung lautet: \(h'(x)=f(g(x))'={@abl@} \)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1257839  -->
+  <question type="stack">
+    <name>
+      <text>MA_LE11_24a_Elementare Quotientenregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(x)={@p@}.\]<p><br></p>
+<p>\( h'(x) =\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_24a</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+p:(3*v+e^v)/(5*v^2);
+
+abl:diff(p,v);
+abl_f:(3+e^v)/(10*v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text></text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>abl_f</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Lösung falsch. Sie scheinen den Quotienten komponentenweise abgeleitet zu haben. Versuchen Sie es noch einmal!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Lösung falsch. Versuchen Sie es noch einmal!</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Nutzen Sie zum Lösen der Aufgabe die Quotientenregel: Ist \(f(x) = \frac{u(x)}{v(x)}\) dann gilt \(f'(x) = \frac{(u'(x)\cdot v(x) - u(x)\cdot v'(x))}{(v^2(x)}\).</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Schauen Sie in die Tabelle mit den Ableitungen spezieller Funktionen. Dort finden Sie die Ableitungen aller Teilterme.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \( h'(x) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1258243  -->
+  <question type="stack">
+    <name>
+      <text>MA_LE11_24b_Elementare Quotientenregel2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(x)={@p@}.\]<p><br></p>
+<p>\( h'(x) =\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_24b</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+p:(sin(v))/(v^2);
+
+abl:diff(p,v);
+abl_f:(cos(v))/(2*v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text></text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.</p>
+[stashdrop secret="o91F2J" image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>abl_f</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Lösung falsch. Sie scheinen den Quotienten komponentenweise abgeleitet zu haben. Versuchen Sie es noch einmal!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Lösung falsch. Versuchen Sie es noch einmal!</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Nutzen Sie zum Lösen der Aufgabe die Quotientenregel: Ist \(f(x) = \frac{u(x)}{v(x)}\) dann gilt \(f'(x) = \frac{(u'(x)\cdot v(x) - u(x)\cdot v'(x))}{(v^2(x)}\).</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Schauen Sie in die Tabelle mit den Ableitungen spezieller Funktionen. Dort finden Sie die Ableitungen aller Teilterme.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \( h'(x) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1257847  -->
+  <question type="stack">
+    <name>
+      <text>MA_LE11_28_Erweiterte_Produktregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Gegeben sei die Funktion \[f(x)=A(x) \cdot B(x) \cdot C(x)\] 
+mit den Funktionen<p>
+\(A: \mathbb{R} \to \mathbb{R}\), \(\;\; B: \mathbb{R} \to \mathbb{R}\) und \(C: \mathbb{R} \to \mathbb{R}\).</p>
+<br>
+<p>Leiten Sie aus der Produktregel im Satz 11.3 eine Formel für die Ableitung von \(f\) her, d.h. die Ableitung eines Produkts aus drei Funktionen.</p>
+<p>Bezeichnen Sie die Ableitungen der Funktionen \(A,B,C\) jeweils mit den kleinen Buchstaben \(a, b, c\).</p><p><i>(Beispielsweise könnte Ihre Lösung lauten: <code>A*b+C*c</code>. Verzichten Sie bei der Angabe Ihrer Lösung auf die Variable \(x\).)</i></p>
+<br>
+<p></p><p>\( f' =\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_28</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>Ta: A*B*c + A*b*C + a*B*C;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text></text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>Ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>1</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>Ta</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Ihre Formel ist korrekt.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Formel falsch. Versuchen Sie es noch einmal!</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="markdown">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Um die Funktion abzuleiten, müssen Sie sie in zwei Faktoren aufteilen. Zudem benötigen Sie die Produktregel. </p>]]></text>
+    </hint>
+    <hint format="markdown">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Sie müssen die Produktregel zweimal anwenden.</p>]]></text>
+    </hint>
+    <hint format="markdown">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Eingabe der Lösung sollte ohne die Variable \(x\) erfolgen. Es gilt:</p>
+\[(A \cdot B \cdot C)'=((A\cdot B) \cdot C)'\]
+\[=(A\cdot B)'\cdot C + (A\cdot B)\cdot C'=(A' \cdot B + A \cdot B') \cdot C + (A\cdot B)\cdot C'\]
+\[= A'\cdot B\cdot C + A\cdot B'\cdot C + A\cdot B\cdot C' = a\cdot B\cdot C + A\cdot b\cdot C + A\cdot B\cdot c\]
+<p>Umformuliert mit der Variablen \(x\) lautet die Lösung:
+\[(A\cdot B\cdot C)'(x)= a(x)\cdot B(x)\cdot C(x) + A(x)\cdot b(x)\cdot C(x) + A(x)\cdot B(x)\cdot c(x)\]</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1257837  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_11_Elementare Summenregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(t)={@p@}.\]<p><br></p><p>\( h'(t) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_11</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:t;
+rdm1:1+2*rand(3);
+rdm2:2+2*rand(3);
+p:4*v+ e^v-3*v^2+4;
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Sie haben leider falsch abgeleitet.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Nutzen Sie zum Lösen der Aufgabe die Summenregel: Bei endlichen Summen von differenzierbaren Funktionen darf termweise abgeleitet werden.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Schauen Sie in die Tabelle mit den Ableitungen spezieller Funktionen, dort finden Sie die Ableitungen aller Teilterme. Beachten Sie, dass hier \(t\) die Variable ist, nach der abgeleitet wird.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \( h'(t) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1257975  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_14_Elementare Faktorregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(t)={@p@}.\]<p><br></p><p>\( h'(t) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_14</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:t;
+rdm1:1+2*rand(3);
+rdm2:2+2*rand(3);
+p:5*v^2;
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Sie haben falsch abgeleitet.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Nutzen Sie zum Lösen der Aufgabe die Faktorregel: Konstante Vorfaktoren vor einer differenzierbaren Funktion bleiben beim Ableiten als Vorfaktoren vor der Ableitung der Funktion stehen.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Schauen Sie in die Tabelle mit den Ableitungen spezieller Funktionen, dort finden Sie auch die Ableitung der Funktion in dieser Aufgabe. Beachten Sie, dass in dieser Aufgabe nach der Variablen \(t\) abgeleitet wird.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \( h'(t) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1257838  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_17_Elementare Produktregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(x)={@p@}.\]<p><br></p><p>\( h'(x) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MAT_LE11_17</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+pp0:rdm1*v^2;
+pp1:e^v;
+p:v*e^v;
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.</p>
+[stashdrop secret="t7MtBl"  image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>e^v</tans>
+        <testoptions></testoptions>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Lösung falsch. Sie scheinen das Produkt komponentenweise abgeleitet zu haben. Versuchen Sie es noch einmal!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Lösung falsch. Versuchen Sie es noch einmal!</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Nutzen Sie zum Lösen der Aufgabe die Produktregel: Ist \( h(x) = f(x)\cdot g(x) \), dann gilt \(h'(x) = f'(x)\cdot g(x) + f(x)\cdot g'(x)\).</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Schauen Sie in die Tabelle mit den Ableitungen spezieller Funktionen. Dort finden Sie die Ableitungen aller Teilterme.</p><br><p></p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \( h'(x) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1258244  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_30_zusammengesetzte_Ableitung</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(y)={@p@}.\]<p><br></p>
+<p>\( h'(y) =\) [[input:ans1]] [[validation:ans1]]</p>
+<i> Achtung: Die Lösung ist lang, Sie brauchen die Terme nicht zusammenzufassen. </i>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MAT_LE11_30</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:y;
+p:v*cos(v)*e^(5*v^2-3);
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>45</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.</p>
+[stashdrop secret="S5kBNy" image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch. Versuchen Sie es noch einmal!</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Wenn Sie keine Idee haben für den Einstieg in diese Aufgabe, so schauen Sie sich die drei Anwendungen auf dieser Buchseite nochmals an. Beachten Sie auch die hier in dieser Aufgabe verwendete Variable \(y\).</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Schauen Sie in die Tabelle mit den Ableitungen spezieller Funktionen. Dort finden Sie die Ableitungen aller Teilterme.</p><br><p></p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \(h'(y) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1258245  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_34_Allgemeine_Exponentialfunktion</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h(t)={@p@}.\]<p><br></p><p>\( h'(t) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_34</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:t;
+p:5^v;
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>
+
+[stashdrop secret="mXl7KT" image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Ihre Lösung ist leider falsch.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Nutzen Sie zum Lösen der Aufgabe Satz 11.7.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Beachten Sie, dass hier \(t\) die Variable ist, nach der abgeleitet wird.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \( h'(t) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1258270  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_34b_Ableitung_von x^x-Varianten</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion 
+\[g: (3, \infty) \to \mathbb{R} \quad \text{mit} \quad g({@v@})={@p@}.\]<p><br></p><p>\( g'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_34b</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+p:(1-3/x)^x;
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>
+
+[stashdrop secret="mXl7KT" image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Ihre Lösung ist leider falsch.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Nutzen Sie zum Lösen der Aufgabe das Vorgehen aus der Herleitung von Satz 11.8.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Sie müssen neben dem Umschreiben der Funktion auch die Kettenregel nutzen.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \( h'({@v@}) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1258174  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_6_Verkettung durchrechnen</text>
+    </name>
+    <questiontext format="markdown">
+      <text><![CDATA[<p>Gegeben seien die Funktionen \(f,g: \mathbb{R} \to \mathbb{R}\) mit 
+\[f(x)=3x^2+4\quad \text{und} \quad g(x)=\frac{1}{\sin(x)+2}\]</p>
+<p>Bestimmen Sie die Funktionsvorschriften von</p>
+<p> \((f\circ g)(x)=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p> \((g\circ f)(x)=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="markdown">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_6</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>tans1: 3*(1/(sin(x)+2))^2 + 4;
+tans2: 1/(sin(3*x^2+4)+2);</text>
+    </questionvariables>
+    <specificfeedback format="markdown">
+      <text>[[feedback:prt3]]</text>
+    </specificfeedback>
+    <questionnote>
+      <text></text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="markdown">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="markdown">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="markdown">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>tans1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>tans2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>wrong1: 3*(1/sin(x)+2) + 4;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tans1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Ihre Lösung ist richtig.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tans2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch. Sie haben die Funktionen in falscher Reihenfolge verkettet.</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>wrong1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch. Sie haben beim Verketten vergessen den Term von \( g(x) \) zu quadrieren.</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tans2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Ihre Lösung ist richtig.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tans1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch. Sie haben die Funktionen in falscher Reihenfolge verkettet.</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>0.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tans1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tans2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[[stashdrop secret="hIR6Wm" image]]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <hint format="markdown">
+      <text><![CDATA[<strong> Hinweis 1: </strong><br>
+
+Für die Verkettung von Funktionen nutzen Sie die Definition 11.2 und setzen dann die gegebenen Funktionen ein.]]></text>
+    </hint>
+    <hint format="markdown">
+      <text><![CDATA[<strong> Hinweis 2: </strong><br>
+
+Sie müssen die Funktionen nicht weiter zusammenfassen.]]></text>
+    </hint>
+    <hint format="markdown">
+      <text><![CDATA[<strong> Hinweis 3 - Musterlösung: </strong><br>
+
+<p>Die Lösungen lauten:<br>
+\((f \circ g)(x)=f(g(x))=3(\frac{1}{\sin(x)+2})^2+4\)<br>
+\((g \circ f)(x)=g(f(x))=\frac{1}{\sin(3x^2+4)+2}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1258175  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_8_Summe+Produkt durchrechnen</text>
+    </name>
+    <questiontext format="markdown">
+      <text><![CDATA[<p>Gegeben seien die Funktionen \(f,g: \mathbb{R} \to \mathbb{R}\) mit 
+\[f(x)=3x^2+4\quad \text{und} \quad g(x)=\frac{1}{\sin(x)+2}\]</p>
+<p>Bestimmen Sie die Funktionsvorschriften von</p>
+<p> \((f + g)(x)=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p> \((f \cdot g)(x)=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="markdown">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_8</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>tans1: 3*x^2+4 + 1/(sin(x)+2);
+tans2: (3*x^2+4)/(sin(x)+2);</text>
+    </questionvariables>
+    <specificfeedback format="markdown">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text></text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="markdown">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="markdown">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="markdown">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>tans1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>tans2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tans1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Ihre Lösung ist richtig.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tans2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Ihre Lösung ist richtig.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <hint format="markdown">
+      <text><![CDATA[<strong> Hinweis 1: </strong><br>
+
+Für die Addition und Multiplikation von Funktionen nutzen Sie die Definition 11.1 und setzen dann die gegebenen Funktionen ein.]]></text>
+    </hint>
+    <hint format="markdown">
+      <text><![CDATA[<strong> Hinweis 2: </strong><br>
+
+Sie müssen die Funktionen nicht weiter zusammenfassen.]]></text>
+    </hint>
+    <hint format="markdown">
+      <text><![CDATA[<strong> Hinweis 3 - Musterlösung: </strong><br>
+
+<p>Die Lösungen lauten:<br>
+\((f + g)(x)=f(x)+g(x)=3x^2+4+\frac{1}{\sin(x)+2}\)<br>
+\((f \cdot g)(x)=f(x)\cdot g(x)=\frac{3x^2+4}{\sin(x)+2}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/MA_LE11/Aufgaben zur Übung</text>
+    </category>
+    <info format="markdown">
+      <text></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 1258173  -->
+  <question type="matching">
+    <name>
+      <text>MA_LE11-X2_Verknuepfung_von_Funktionen</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Gegeben seien die folgenden Funktionen:  
+\[f(x) = x^2 \quad \text{und} \quad g(x) = e^{5x}\]
+
+Entscheiden Sie, um welche Kompositionen dieser Funktionen es sich handelt.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11-X2</idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Ihre Antwort ist richtig</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Ihre Antwort ist teilweise richtig.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Ihre Antwort ist leider falsch</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <subquestion format="html">
+      <text><![CDATA[<p>$e^{10x}=$</p>]]></text>
+      <answer>
+        <text>f(g(x))</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>$e^{5x^2}=$</p>]]></text>
+      <answer>
+        <text>g(f(x))</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>$x^2 \cdot e^{5x}=$]]></text>
+      <answer>
+        <text>f(x)g(x)</text>
+      </answer>
+    </subquestion>
+  </question>
+
+<!-- question: 1257848  -->
+  <question type="multichoice">
+    <name>
+      <text>MA_LE11_X1_Erweiterte Kettenregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Gegeben sei die Funktion \(f(x)=(A \circ B \circ C)(x)\) mit Funktionen<p>\(A: \mathbb{R} \to \mathbb{R}\), \(B: \mathbb{R} \to \mathbb{R}\) und \(C: \mathbb{R} \to \mathbb{R}\).</p><p>Leiten Sie aus der Kettenregel eine Formel für die Ableitung von \(f\) her, d.h. die Ableitung einer Verkettung aus drei Funktionen.</p><p>Bezeichnen Sie die Ableitungen von \(A,B,C\) jeweils mit den kleinen Buchstaben \(a, b, c\).</p><p><br></p><p>Welche der folgenden Formeln ist korrekt?</p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_X1</idnumber>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Ihre Antwort ist richtig.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Ihre Antwort ist teilweise richtig.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Ihre Antwort ist leider falsch.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>\(f'(x) = a(B(C(x))) \cdot b(C(x)) \cdot c(x)\)</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>\(f'(x) = a(b(c(x)))\)<br></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>\(f'(x) = a(B(C(x))) + b(C(x)) + c(x)\)<br></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>\(f'(x) = a(B(C(x))) \cdot A(b(C(x))) \cdot A(B(c(x)))\)<br></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 1257843  -->
+  <question type="stack">
+    <name>
+      <text>Ableitungen von verketteten Grundfunktionen (affin) (angelehnt an AP)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Berechnen Sie die 1. Ableitung der Funktion \[ f({@v@}) = &nbsp;{@p@}.\]</p><p><br></p><p>\( f'({@v@}) =\) &nbsp;[[input:ans1]]</p><div>[[validation:ans1]]</div>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Nutzen Sie zur Lösung der Aufgabe die Kettenregel:</p><p>Für \(f(x)=u(v(x))\) gilt: \(f´(x)=u´(v(x)) \cdot v´(x)\)<br></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2018080600</text>
+    </stackversion>
+    <questionvariables>
+      <text>v : rand([x,t]);
+c0 : (2*rand(2)-1)*(rand(5)+1);
+c1 : (2*rand(2)-1)*(rand(5)+1);
+e1 : rand(5)+4;
+a : c0+c1*v;
+p : rand([cos(a),sin(a),exp(a), log(a), a^(e1)]);
+ta : diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]]</text>
+    </specificfeedback>
+    <questionnote>
+      <text>ta</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text>Richtige Antwort, gut gemacht!</text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text>Ihre Antwort ist teilweise korrekt.</text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text>Falsche Antwort.</text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords>diff</forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Ihre Ableitung ist korrekt.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Ableitung falsch. Ihre Lösung war {@ans1@}, richtig ist aber {@ta@}.<br></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+<!-- question: 1257841  -->
+  <question type="stack">
+    <name>
+      <text>elementare Produktregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[f(x)={@p@}.\]<p><br></p><p>\( f'(x) =\) [[input:ans1]] [[validation:ans1]]</p><p><br></p><p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Nutzen Sie zur Lösung der Aufgabe die Produktregel: Ist \( f(x) = u(x)*v(x) \), dann gilt \(f´(x) = u´(x)*v(x) + u(x)*v´(x)\).<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+rdm1:1+2*rand(3);
+rdm2:2+2*rand(3);
+pp1:rdm1*v^2;
+pp1:e^v;
+p:rdm1*v^2*e^v;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[Richtig, gut gemacht!<br>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span class="partially">Ihre Antwort ist teilweise richtig</span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[Leider ist Ihre Antwort falsch.<br>]]></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Sie haben falsch abgeleitet. Ihre Ableitung war {@ans1@}, richtig ist aber {@diff(p,v)@}.<br></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1257842  -->
+  <question type="stack">
+    <name>
+      <text>elementare Quotientenregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[h(x)={@p@}.\]<p><br></p><p>\( h'(x) =\) [[input:ans1]] [[validation:ans1]]</p><p><br></p><p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Nutzen Sie zum Lösen der Aufgabe die Quotientenregel: Ist \(f(x) = u(x)/v(x)\) dann gilt \(f´(x) = (u´(x)*v(x) - u(x)*v´(x))/(v(x)^2)\).<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+rdm1:1+2*rand(3);
+rdm2:2+2*rand(3);
+rdm3:1+rand(1)
+p:(rdm1*v^(rdm3)-e^v)/(rdm2*v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[Richtige Antwort, gut gemacht!<br>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span class="partially">Ihre Antwort ist teilweise richtig.</span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span class="incorrect">Leider ist Ihre Antwort falsch.</span>]]></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Sie haben falsch abgeleitet. Ihre Ableitung war {@ans1@}, richtig ist aber {@diff(p,v)@}.<br></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1257840  -->
+  <question type="stack">
+    <name>
+      <text>elementare Summenregel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[g(x)={@p@}.\]<p><br></p><p>\( g'(x) =\) [[input:ans1]] [[validation:ans1]]</p><p><br></p><p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Nutzen Sie zum Lösen der Aufgabe die Summenregel: Bei endlichen Summen von Funktionen darf gliedweise abgeleitet werden.<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+rdm1:1+2*rand(3);
+rdm2:2+2*rand(3);
+p:rdm1*v^2+ e^v+rdm2;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span class="correct">Richtige Antwort, gut gemacht!</span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span class="partially">Ihre Antwort ist zum Teil korrekt.</span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span class="incorrect">Leider ist Ihre Antwort falsch.</span>]]></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Sie haben falsch abgeleitet. Ihre Ableitung ist {@ans1@}, richtig ist aber {@diff(p,v)@}.<br></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258228  -->
+  <question type="stack">
+    <name>
+      <text>Kettenregel 1</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[f({@v@})={@p@}.\]
+<p><br></p>
+<p>\( f'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2020120600</text>
+    </stackversion>
+    <questionvariables>
+      <text>v : rand([x,t,z]);
+rdm1:1+2*rand(3);
+rdm2:2+2*rand(3);
+m:rand(4)+2;
+a:rand(5)+2
+pp1:v^m;
+p:log(rdm2*pp1);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>{@p@}</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span class="correct">Richtig, gut gemacht!</span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span class="partially">Ihre Antwort ist zum Teil richtig.</span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span class="incorrect">Leider falsch.</span>]]></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">Leider ist Ihre Ableitung falsch. Hier muss die Kettenregel verwendet werden.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>71</deployedseed>
+    <deployedseed>1979707813</deployedseed>
+    <deployedseed>2087500896</deployedseed>
+    <deployedseed>308181504</deployedseed>
+    <deployedseed>569020610</deployedseed>
+    <deployedseed>266518934</deployedseed>
+    <deployedseed>199226274</deployedseed>
+    <deployedseed>1010255179</deployedseed>
+    <deployedseed>1369934223</deployedseed>
+    <deployedseed>364685504</deployedseed>
+    <deployedseed>1424459977</deployedseed>
+    <deployedseed>1245520080</deployedseed>
+    <deployedseed>1821225717</deployedseed>
+    <deployedseed>1788237048</deployedseed>
+    <deployedseed>1313192816</deployedseed>
+    <deployedseed>996172990</deployedseed>
+    <deployedseed>34945081</deployedseed>
+    <deployedseed>2104977465</deployedseed>
+    <deployedseed>1794444730</deployedseed>
+    <deployedseed>2139945071</deployedseed>
+    <deployedseed>807839245</deployedseed>
+    <deployedseed>844251333</deployedseed>
+    <deployedseed>1169386428</deployedseed>
+    <deployedseed>1384584304</deployedseed>
+    <deployedseed>2058361164</deployedseed>
+    <deployedseed>2127375112</deployedseed>
+    <deployedseed>564804169</deployedseed>
+    <deployedseed>840750317</deployedseed>
+    <deployedseed>1005201216</deployedseed>
+    <deployedseed>136941064</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>4*v</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-0-F</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258229  -->
+  <question type="stack">
+    <name>
+      <text>Kettenregel 2</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[f({@v@})={@p@}.\]
+<p><br></p>
+<p>\( f'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2020120600</text>
+    </stackversion>
+    <questionvariables>
+      <text>v : rand([x,t,z]);
+rdm1:1+2*rand(3);
+rdm2:2+2*rand(3);
+m:rand(4)+2;
+a:rand(5)+2
+pp1:v^m;
+p:cos(rdm2*pp1);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>{@p@}</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span class="correct">Richtige Antwort, gut gemacht!</span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span class="partially">Ihre Antwort ist teilweise richtig.</span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span class="incorrect">Leider ist Ihre Antwort falsch.</span>]]></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>Diff</answertest>
+        <sans>-ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.6000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">Sie haben das Vorzeichen vergessen.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">Leider ist Ihre Ableitung falsch. Sie hätten die Kettenregel anwenden sollen.<br></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>132323912</deployedseed>
+    <deployedseed>1287440472</deployedseed>
+    <deployedseed>11747345</deployedseed>
+    <deployedseed>1062498364</deployedseed>
+    <deployedseed>194933412</deployedseed>
+    <deployedseed>36120606</deployedseed>
+    <deployedseed>1121002328</deployedseed>
+    <deployedseed>1534027231</deployedseed>
+    <deployedseed>1667917084</deployedseed>
+    <deployedseed>1211385893</deployedseed>
+    <deployedseed>843093883</deployedseed>
+    <deployedseed>1993160015</deployedseed>
+    <deployedseed>361296181</deployedseed>
+    <deployedseed>1692604586</deployedseed>
+    <deployedseed>1768858078</deployedseed>
+    <deployedseed>163584221</deployedseed>
+    <deployedseed>315150879</deployedseed>
+    <deployedseed>281822061</deployedseed>
+    <deployedseed>1468030960</deployedseed>
+    <deployedseed>1844079751</deployedseed>
+    <deployedseed>1313407727</deployedseed>
+    <deployedseed>1152231726</deployedseed>
+    <deployedseed>1332868247</deployedseed>
+    <deployedseed>227281303</deployedseed>
+    <deployedseed>571115344</deployedseed>
+    <deployedseed>501990106</deployedseed>
+    <deployedseed>1613110770</deployedseed>
+    <deployedseed>895925558</deployedseed>
+    <deployedseed>466766977</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>4*v</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-2-F</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>3</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>-diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.6000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-2-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1257845  -->
+  <question type="stack">
+    <name>
+      <text>Kettenregel (engl-projekt)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[f(y)={@p@}.\]<p><br></p><p><br></p><p>&nbsp;\( f'(y) =\) [[input:ans1]] [[validation:ans1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:y;
+rdm1:2+rand(7);
+pp:cos(rdm1*v);
+p:exp(pp);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)/diff(pp,v)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-1-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Um die gegebene Funktion abzuleiten, benötigen Sie die Kettenregel \(f(g(x))'=f'(g(x)) \cdot g'(x)\). Sie scheinen die innere Ableitung \(g'(x)\) vergessen zu haben.&nbsp;]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-1-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)/diff(pp,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258255  -->
+  <question type="stack">
+    <name>
+      <text>MA_LE11_21a_Elementare_Kettenregel_rand</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h({@v@})={@p2@}.\]<p><br></p>
+<p> \( h'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_21a_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+b: rand(5)+2;
+k: rand([sin(v^2), cos(v+3), e^(2*v-2), ln(v+1)]);
+l: rand([v^b, e^v, ln(v), sin(v)]);
+
+p2: subst(v=k,l);
+
+
+abl:diff(p2,v);
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p2,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>abl</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Prima, Sie haben korrekt abgeleitet.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch. Versuchen Sie es noch einmal!</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)/diff(pp,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258254  -->
+  <question type="stack">
+    <name>
+      <text>MA_LE11_24a_Elementare Quotientenregel_rand</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h({@v@})={@p@}.\]<p><br></p>
+<p>\( h'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_24_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+b: rand(3)+3;
+c: rand(6)+1;
+k: rand([sin(v^b), cos(v+c), e^(2*v^c-2), ln(v^2+b)]);
+l: rand([3*v^b, 5*v^c, -b*v^4]);
+
+p:k/l;
+
+abl:diff(p,v);
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>p:k/l</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258253  -->
+  <question type="stack">
+    <name>
+      <text>MA_LE11_28_Erweiterte_Produktregel (zur Übung)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Gegeben sei die Funktion \[f(x)=A(x) \cdot B(x) \cdot C(x)\] 
+mit den Funktionen<p>
+\(A: \mathbb{R} \to \mathbb{R}\), \(B: \mathbb{R} \to \mathbb{R}\) und \(C: \mathbb{R} \to \mathbb{R}\).</p>
+<br>
+<p>Leiten Sie aus der Produktregel im Satz 11.3 eine Formel für die Ableitung von \(f\) her, d.h. die Ableitung eines Produkts aus drei Funktionen.</p>
+<p>Bezeichnen Sie die Ableitungen der Funktionen \(A,B,C\) jeweils mit den kleinen Buchstaben \(a, b, c\).</p><p><i>(Beispielsweise könnte Ihre Lösung lauten: <code>A*b+C*c</code>. Verzichten Sie bei der Angabe Ihrer Lösung auf die Variable \(x\).)</i></p>
+<br>
+<p></p><p>\( f' =\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_28_uebung</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>Ta: A*B*c + A*b*C + a*B*C;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text></text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>Ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>1</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>Ta</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Ihre Formel ist korrekt.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Leider ist Ihre Formel falsch. </p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258252  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_11_Elementare Summenregel_rand</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[g({@v@})={@p@}.\]<p><br></p><p>\( g'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_11_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+k: rand([sin(v^2), cos(v+3), e^(2*v-2), ln(v^2+1)]);
+l: rand([3*v^2, 5*v^3, -4*v^4]);
+b: rand(5)+2;
+p:b*v+ k-l;
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Sie haben leider falsch abgeleitet.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258251  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_14_Elementare Faktorregel (Kopie)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[g({@v@})={@p@}.\]<p><br></p><p>\( g'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_14_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+k: rand([sin(v^2), cos(v+3), e^(2*v-2), ln(v^2+1)]);
+l: rand([3*v^2, 5*v^3, -4*v^4]);
+a: rand(4)+3;
+p:a*k;
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Sie haben falsch abgeleitet.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258250  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_17_Elementare Produktregel_rand</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[f({@v@})={@p@}.\]<p><br></p><p>\( f'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MAT_LE11_18_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+c: rand(5)+1;
+b: rand(6)+3;
+k: rand([sin(v^c), cos(v+3), e^(2*v^b-2), ln(v^2+b)]);
+l: rand([3*v^b, 5*v^c, -b*v^4]);
+
+
+
+p:k*l;
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.</p>
+[stashdrop secret="t7MtBl"  image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258249  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_30_zusammengesetzte_Ableitung (Kopie)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[g({@v@})={@p@}.\]<p><br></p>
+<p>\( g'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p>
+<i> Achtung: Die Lösung ist lang, Sie brauchen die Terme nicht zusammenzufassen. </i>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MAT_LE11_30_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+c: rand(7)+2;
+b: rand(4)+3;
+k: rand([sin(v^b), cos(v+3), e^(2*v^c-2), ln(v^2+b)]);
+l: rand([3*v^c, 5*v^b, -c*v^4]);
+p:v^b*k*e^(l+3);
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>45</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Super, Sie haben richtig abgeleitet.</p>
+[stashdrop secret="S5kBNy" image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p> Leider ist Ihre Lösung falsch.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258271  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_34b_Var_Ableitung_von x^x-Varianten (zur Übung)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion 
+\[g: ({@3+b@}, \infty) \to \mathbb{R} \quad \text{mit} \quad g({@v@})={@p@}.\]<p><br></p><p>\( h'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p><p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MAT_LE11_34b_Var</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+b: rand(2)+3;
+c: rand(3)+1;
+p:(1-(3+b)/x^c)^(b*x);
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>
+
+[stashdrop secret="mXl7KT" image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Ihre Lösung ist leider falsch.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1258248  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_34_Var_Allgemeine_Exponentialfunktion_Variante</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die Ableitung der Funktion \[h({@v@})={@p@}.\]<p><br></p><p>\( h'({@v@}) =\) [[input:ans1]] [[validation:ans1]]</p>
+<i> Hinweis: Sie brauchen die Ableitungsformel für die verallgemeinerte Exponentialfunktion und die Kettenregel.</i>
+<p>[[feedback:Result]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_34_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+a: rand(3)+3;
+b:rand(5)+2;
+p:b^(a*v);
+
+abl: diff(p,v);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Ihre Ableitung ist korrekt.<br></p>
+
+[stashdrop secret="mXl7KT" image]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Ihre Lösung ist leider falsch.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 1:</strong></p>
+<p>Nutzen Sie zum Lösen der Aufgabe Satz 11.7.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 2:</strong></p>
+<p>Beachten Sie, dass hier \(t\) die Variable ist, nach der abgeleitet wird.</p>]]></text>
+    </hint>
+    <hint format="html">
+      <text><![CDATA[<p><strong>Hinweis 3 - Musterlösung:</strong></p>
+<p>Die Ableitung lautet: \( h'(t) ={@abl@}\)</p>]]></text>
+    </hint>
+  </question>
+
+<!-- question: 1258247  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_6_Verkettung durchrechnen_rand</text>
+    </name>
+    <questiontext format="markdown">
+      <text><![CDATA[<p>Gegeben seien die Funktionen \(f,g: \mathbb{R} \to \mathbb{R}\) mit 
+\[f({@v@})={@p1@}\quad \text{und} \quad g({@v@})={@p2@}\]</p>
+<p>Bestimmen Sie die Funktionsvorschriften von</p>
+<p> \((f\circ g)({@v@})=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p> \((g\circ f)({@v@})=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="markdown">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_6_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+c: rand(5)+1;
+b: rand(6)+3;
+k: rand([sin(v^c), cos(v+b), e^(2*v^c-2)]);
+l: rand([(3*v^2-b)/v^c, c+5*v^3, v^b/(c+4*v^4)]);
+
+p1: k;
+p2: l;
+
+tans1: subst(v=p2,p1);
+tans2: subst(v=p1,p2);
+</text>
+    </questionvariables>
+    <specificfeedback format="markdown">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>subst(v=p2,p1);
+subst(v=p1,p2);</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="markdown">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="markdown">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="markdown">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>tans1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>tans2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tans1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Ihre Lösung ist richtig.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tans2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch. Sie haben die Funktionen in falscher Reihenfolge verkettet.</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tans2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Ihre Lösung ist richtig.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tans1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch. Sie haben die Funktionen in falscher Reihenfolge verkettet.</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+<!-- question: 1258246  -->
+  <question type="stack">
+    <name>
+      <text>MAT_LE11_8_Summe+Produkt durchrechnen_rand</text>
+    </name>
+    <questiontext format="markdown">
+      <text><![CDATA[<p>Gegeben seien die Funktionen \(f,g: \mathbb{R} \to \mathbb{R}\) mit 
+\[f({@v@})={@p1@}\quad \text{und} \quad g({@v@})={@p2@}\]</p>
+<p>Bestimmen Sie die Funktionsvorschriften von</p>
+<p> \((f + g)({@v@})=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p> \((f \cdot g)({@v@})=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="markdown">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>MA_LE11_8_rand</idnumber>
+    <stackversion>
+      <text>2023010400</text>
+    </stackversion>
+    <questionvariables>
+      <text>v: rand([x,y,z,t]);
+c: rand(5)+1;
+b: rand(6)+3;
+k: rand([sin(v^c), cos(v+b), e^(2*v^c-2)]);
+l: rand([(3*v^2-b)/v^c, c+5*v^3, v^b/(c+4*v^4)]);
+
+
+p1: k;
+p2: l;
+
+tans1: p1 + p2;
+tans2: p1*p2;</text>
+    </questionvariables>
+    <specificfeedback format="markdown">
+      <text></text>
+    </specificfeedback>
+    <questionnote>
+      <text>p1 + p2</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="markdown">
+      <text></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="markdown">
+      <text></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="markdown">
+      <text></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>tans1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>tans2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>tans1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Ihre Lösung ist richtig.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>tans2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text>Ihre Lösung ist richtig.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text>Leider ist Ihre Lösung falsch.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+<!-- question: 1258241  -->
+  <question type="stack">
+    <name>
+      <text>Produktregel-Variante (EVA + engl-projekt) (Kopie)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[f(z)={@p@}.\]<p><span style="font-size: 1rem;"><br></span></p><p><span style="font-size: 1rem;">\( f'(z) =\) [[input:ans1]] [[validation:ans1]]</span><br></p><p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2018080600</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:z;
+rdm1:2+2*rand(3);
+rdm2:6+2*rand(3);
+pp1:cos(rdm1*v);
+pp2:exp(rdm2*v);
+p:pp1*pp2;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span class="correct">Gut, Ihre Antwort ist richtig!</span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span class="partially">Ihre Antwort ist teilweise richtig.</span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span class="incorrect">Leider ist Ihre Lösung falsch.</span>]]></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>diff(pp1,v)*diff(pp2,v)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-1-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Um ein Produkt abzuleiten, wird die Produktregel \((u \cdot v)'({@v@})= u'({@v@})\cdot v({@v@}) + u({@v@}) \cdot v'({@v@})\) angewendet. <br><br>Sie haben stattdessen nur die Ableitungen beider Faktoren miteinander multipliziert.&nbsp;]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>Result-1-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>diff(pp1,v)*pp1+pp2*diff(pp2,v)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-2-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Um ein Produkt abzuleiten, wird die Produktregel \((u \cdot v)'({@v@})= u'({@v@})\cdot v({@v@}) + u{@v@}) \cdot v'({@v@})\) angewendet.&nbsp;<br><br>Sie scheinen stattdessen&nbsp;\(&nbsp;u'({@v@})\cdot u({@v@}) + v({@v@}) \cdot v'({@v@})\) berechnet zu haben.<br>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>Result-2-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>diff(pp1,v)*pp2/(rdm1)+pp1*diff(pp2,v)/(rdm2)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.2000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p><span style="font-size: 1rem;">Um ein Produkt abzuleiten, wird die Produktregel \((u \cdot v)'({@v@})= u'({@v@})\cdot v({@v@}) + u{@v@}) \cdot v'({@v@})\) angewendet.&nbsp;</span><br></p><p>Ihr Ergebnis deutet darauf hin, dass Sie fälschlicherweise die inneren Ableitungen vergessen haben.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1257844  -->
+  <question type="stack">
+    <name>
+      <text>Produktregel-Variante (EVA + engl-projekt) (Kopie)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[f(z)={@p@}.\]<p><span style="font-size: 1rem;"><br></span></p><p><span style="font-size: 1rem;">\( f'(z) =\) [[input:ans1]] [[validation:ans1]]</span><br></p><p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2018080600</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:z;
+rdm1:2+2*rand(3);
+rdm2:6+2*rand(3);
+pp1:cos(rdm1*v);
+pp2:exp(rdm2*v);
+p:pp1*pp2;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span class="correct">Gut, Ihre Antwort ist richtig!</span>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span class="partially">Ihre Antwort ist teilweise richtig.</span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span class="incorrect">Leider ist Ihre Lösung falsch.</span>]]></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>diff(p,v)</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>diff(p,v)</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>diff(pp1,v)*diff(pp2,v)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-1-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Um ein Produkt abzuleiten, wird die Produktregel \((u \cdot v)'({@v@})= u'({@v@})\cdot v({@v@}) + u({@v@}) \cdot v'({@v@})\) angewendet. <br><br>Sie haben stattdessen nur die Ableitungen beider Faktoren miteinander multipliziert.&nbsp;]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>Result-1-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>diff(pp1,v)*pp1+pp2*diff(pp2,v)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-2-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Um ein Produkt abzuleiten, wird die Produktregel \((u \cdot v)'({@v@})= u'({@v@})\cdot v({@v@}) + u{@v@}) \cdot v'({@v@})\) angewendet.&nbsp;<br><br>Sie scheinen stattdessen&nbsp;\(&nbsp;u'({@v@})\cdot u({@v@}) + v({@v@}) \cdot v'({@v@})\) berechnet zu haben.<br>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>Result-2-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>diff(pp1,v)*pp2/(rdm1)+pp1*diff(pp2,v)/(rdm2)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.2000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p><span style="font-size: 1rem;">Um ein Produkt abzuleiten, wird die Produktregel \((u \cdot v)'({@v@})= u'({@v@})\cdot v({@v@}) + u{@v@}) \cdot v'({@v@})\) angewendet.&nbsp;</span><br></p><p>Ihr Ergebnis deutet darauf hin, dass Sie fälschlicherweise die inneren Ableitungen vergessen haben.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(p,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)*diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+<!-- question: 1257846  -->
+  <question type="stack">
+    <name>
+      <text>Quotientenregel (engl-projekt)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Berechnen Sie die 1. Ableitung der Funktion \[f(x)={@p@}.\]<p><br></p><p></p><p>\( f'(x)) =\) [[input:ans1]] [[validation:ans1]]</p><p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<br>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2018080600</text>
+    </stackversion>
+    <questionvariables>
+      <text>v:x;
+rdm1:2+rand(4);
+rdm2:2+rand(4);
+pp1:v^rdm1;
+pp2:log(rdm2*v);
+p:pp1/pp2;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:Result]]</p>]]></text>
+    </specificfeedback>
+    <questionnote>
+      <text>rdm1</text>
+    </questionnote>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[Richtige Antwort, prima!<br>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span class="partially">Ihre Antwort ist teilweise richtig.</span>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span class="incorrect">Leider ist Ihre Antwort falsch.</span>]]></text>
+    </prtincorrect>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>factor(diff(p,v))</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>1</requirelowestterms>
+      <checkanswertype>1</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>Result</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <answertest>Diff</answertest>
+        <sans>ans1</sans>
+        <tans>factor(diff(p,v))</tans>
+        <testoptions>v</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-0-T </trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>Result-0-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>diff(pp1,v)/diff(pp2,v)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-1-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Um einen Quotienten abzuleiten, wird die Quotientenregel &nbsp;\((\frac{u}{v})'(x)= \frac{u'(x)\cdot v(x) - u(x) \cdot v'(x)}{v^2(x)}\). Es darf nicht einfach der Quotient der Ableitungen gebildet werden.]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>Result-1-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>(diff(pp1,v)*pp2-pp1*diff(pp2,v))/(pp1^2)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-2-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Sie scheinen die Quotientenregel&nbsp;\((\frac{u}{v})'(x)= \frac{u'(x)\cdot v(x) - u(x) \cdot v'(x)}{v^2(x)}\)&nbsp;nicht korrekt angewendet zu haben. Sie scheinen durch fälschlicherweise durch \(u^2(x)\) statt durch&nbsp;\(v^2(x)\) geteilt zu haben.]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>Result-2-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>(diff(pp1,v)*pp2-pp1*diff(pp2,v))/(pp2)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-3-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Sie scheinen die Quotientenregel&nbsp;\((\frac{u}{v})'(x)= \frac{u'(x)\cdot v(x) - u(x) \cdot v'(x)}{v^2(x)}\)&nbsp;nicht korrekt angewendet zu haben. Sie scheinen nur durch \(v(x)\) statt \(v^2(x)\) geteilt zu haben.]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>Result-3-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>(diff(pp1,v)*pp2+pp1*diff(pp2,v))/(pp2^2)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.0000000</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Result-4-T </trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[Sie scheinen die Quotientenregel&nbsp;\((\frac{u}{v})'(x)= \frac{u'(x)\cdot v(x) - u(x) \cdot v'(x)}{v^2(x)}\)&nbsp;nicht korrekt angewendet zu haben. Sie scheinen im Zähler ein Pluszeichen statt eines Minuszeichens verwendet zu haben.&nbsp;]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0.0000000</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Result-4-F </falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>factor(diff(p,v))</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>Result-0-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>diff(pp1,v)/diff(pp2,v)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-1-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>3</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>(diff(pp1,v)*pp2-pp1*diff(pp2,v))/(pp1^2)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-2-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>4</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>(diff(pp1,v)*pp2-pp1*diff(pp2,v))/(pp2)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-3-T </expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>5</testcase>
+      <testinput>
+        <name>ans1</name>
+        <value>(diff(pp1,v)*pp2+pp1*diff(pp2,v))/(pp2^2)</value>
+      </testinput>
+      <expected>
+        <name>Result</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>Result-4-T </expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>
