@@ -26,6 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/questionlib.php');
 use filter_embedquestion\form\embed_options_form;
+# use filter_embedquestion\text_filter;
 
 /**
  * Initialise the js strings required for this module.
@@ -70,7 +71,7 @@ function atto_embedquestion_params_for_js($elementid, $options, $fpoptions) {
  */
 function atto_embedquestion_output_fragment_questionselector($args) {
     global $CFG;
-    require_once($CFG->dirroot . '/filter/embedquestion/filter.php');
+    require_once($CFG->dirroot . '/filter/embedquestion/classes/text_filter.php');
     $context = context::instance_by_id($args['contextId']);
     $mform = new embed_options_form(null, ['context' => $context]);
 
