@@ -40,7 +40,7 @@ function tiny_embedquestion_output_fragment_questionselector(array $args): strin
     $mform = new embed_options_form(null, ['context' => $context]);
 
     $currentvalue = $args['embedCode'];
-    if ($currentvalue && preg_match(filter_embedquestion::get_filter_regexp(), $currentvalue, $matches)) {
+    if ($currentvalue && preg_match(text_filter::get_filter_regexp(), $currentvalue, $matches)) {
 
         [$embedid, $toform] = text_filter::parse_embed_code($matches[1]);
         if ($embedid !== null) {
