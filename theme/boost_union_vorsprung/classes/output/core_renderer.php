@@ -77,6 +77,12 @@ class core_renderer extends \theme_boost_union\output\core_renderer {
             $this->page->add_body_class('vorsprung-campus');
         }
 
+        // Show roles in this course.
+        if ($rolestring = get_user_roles_in_course($USER->id, $COURSE->id)) {
+            $this->page->add_body_class($rolestring);
+        }
+
+        
         return parent::header();
     }
 
