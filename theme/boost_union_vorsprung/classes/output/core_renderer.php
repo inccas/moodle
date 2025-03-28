@@ -24,6 +24,7 @@
 
 namespace theme_boost_union_vorsprung\output;
 
+use Aws\signer\Exception\signerException;
 use context_course;
 use context_system;
 use moodle_url;
@@ -56,7 +57,7 @@ class core_renderer extends \theme_boost_union\output\core_renderer {
     }
 
     public function header() {
-        global $COURSE,$CFG;
+        global $COURSE,$USER;
 
         // Let's check every course that is running this theme, weather it has any of our given titles in it.
         if (stripos($COURSE->fullname,"Mathematik") !== false) {
@@ -77,12 +78,44 @@ class core_renderer extends \theme_boost_union\output\core_renderer {
             $this->page->add_body_class('vorsprung-campus');
         }
 
-        // Show roles in this course.
-        if ($rolestring = get_user_roles_in_course($USER->id, $COURSE->id)) {
-            $this->page->add_body_class($rolestring);
+        // Add the userrole also as css class into the body
+        $systemcontext = context_system::instance();
+        $roles = get_user_roles_with_special($systemcontext, $USER->id);
+
+        if (sizeof($roles) >= 1) {
+            $CSSrolestring = "";
+            if (is_siteadmin($USER->id)) {
+                $CSSrolestring = "userrole-admin";
+            }
+            # echo("<br><br><br>");
+            # var_dump($roles);
+            foreach ($roles as $userrole) {
+                switch ($userrole->roleid) {
+                    case 1:
+                        $CSSrolestring .= " userrole-manager";
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 9:
+                        $CSSrolestring .= " userrole-teacher";
+                        break;
+                    case 5:
+                        $CSSrolestring .= " userrole-student";
+                        break;
+                    case 6:
+                        $CSSrolestring .= " userrole-guest";
+                        break;
+                    case 7:
+                    case 8:
+                        $CSSrolestring .= " userrole-auth";
+                        break;
+                }
+            }
+            $this->page->add_body_class($CSSrolestring);
         }
 
-        
+
         return parent::header();
     }
 
