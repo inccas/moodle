@@ -63,7 +63,10 @@ body {
         display: block;
         padding: 0;
         background-color: #fff;
-        border: 1px solid rgba(0, 0, 0, .125);
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+        border-left: 1px solid rgba(0, 0, 0, .125);
+        border-right: 1px solid rgba(0, 0, 0, .125);
+        border-top: 0px solid rgba(0, 0, 0, 0);
         width: 100%;
         color: #495057;
         text-align: inherit;
