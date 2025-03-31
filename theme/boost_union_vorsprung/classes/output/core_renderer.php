@@ -44,17 +44,6 @@ use core_block\output\block_contents;
  */
 class core_renderer extends \theme_boost_union\output\core_renderer {
 
-    /** Returns the filename for this specific Business Unit of the currently logged in user
-     * @return false
-     * @throws \dml_exception
-     */
-    public function get_businessunit_logo_name() {
-        global $USER, $CFG;
-        $logo_filename = $CFG->wwwroot . "/theme/iu_black/pix/iu-logo.svg";
-
-        return $logo_filename;
-
-    }
 
     public function header() {
         global $COURSE,$USER;
@@ -79,7 +68,7 @@ class core_renderer extends \theme_boost_union\output\core_renderer {
         }
 
         // Add the userrole also as css class into the body
-        $systemcontext = context_system::instance();
+        $systemcontext = context_course::instance($COURSE->id);
         $roles = get_user_roles_with_special($systemcontext, $USER->id);
 
         if (sizeof($roles) >= 1) {
@@ -87,19 +76,8 @@ class core_renderer extends \theme_boost_union\output\core_renderer {
             if (is_siteadmin($USER->id)) {
                 $CSSrolestring = "userrole-admin";
             }
-            # echo("<br><br><br>");
-            # var_dump($roles);
             foreach ($roles as $userrole) {
                 switch ($userrole->roleid) {
-                    case 1:
-                        $CSSrolestring .= " userrole-manager";
-                        break;
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 9:
-                        $CSSrolestring .= " userrole-teacher";
-                        break;
                     case 5:
                         $CSSrolestring .= " userrole-student";
                         break;
@@ -109,6 +87,15 @@ class core_renderer extends \theme_boost_union\output\core_renderer {
                     case 7:
                     case 8:
                         $CSSrolestring .= " userrole-auth";
+                        break;
+                    case 1:
+                        $CSSrolestring .= " userrole-manager";
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 9:
+                        $CSSrolestring .= " userrole-teacher";
                         break;
                 }
             }
