@@ -102,6 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Modify the row: change questionid to the target value
                     $row['questionid'] = $questionid_alt;
 
+                    // Set the ID to NULL to allow auto-increment
+                    if (isset($row['id'])) {
+                        $row['id'] = NULL;
+                    }
+
                     // Build the INSERT query dynamically
                     $columns = implode(", ", array_keys($row));
                     $placeholders = implode(", ", array_fill(0, count($row), "?"));
@@ -114,7 +119,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $params = [];
 
                     foreach ($row as $value) {
-                        if (is_int($value)) {
+                        if ($value === NULL) {
+                            $types .= "s"; // Handle NULL values
+                        } elseif (is_int($value)) {
                             $types .= "i";
                         } elseif (is_float($value)) {
                             $types .= "d";
@@ -136,16 +143,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     call_user_func_array(array($insertStmt, 'bind_param'), $bindParams);
 
                     // Execute and store result
+                    $success = $insertStmt->execute();
+                    $insertId = $success ? $conn->insert_id : "N/A";
+                    $error = $success ? "" : $conn->error;
 
-                        $success = $insertStmt->execute();
-                        $insertId = $success ? $conn->insert_id : "N/A";
-                        $error = $success ? "" : $conn->error;
-
-                        if ($success) {
-                            // Save the cloned data for display
-                            $tableData[$table]['cloned'][] = $row;
+                    if ($success) {
+                        // Save the cloned data for display
+                        // Make sure to fetch the actual inserted row with new ID for display
+                        if ($insertId !== "N/A") {
+                            $row['id'] = $insertId; // Update the ID for display
                         }
-
+                        $tableData[$table]['cloned'][] = $row;
+                    }
 
                     $results[$table] = [
                         'status' => $success,
@@ -476,13 +485,15 @@ function h($string) {
                     <label for="questionid_alt">Geben Sie hier die ID aus der Fehlermeldung von moodle ein, zu der in der Tabelle qtype_stack_options WHERE questionid = ? die Fehlermeldung kam:</label>
                     <input type="number" id="questionid_alt" name="questionid_alt" value="<?php echo h($questionid_alt); ?>" required>
                 </div>
+                <br>
                 <div class="form-input">
                     <label for="questionid_alt">Geben Sie hier die neue ID ein, welche zur neuen question passt:</label>
                     <input type="number" id="questionid_neu" name="questionid_neu" value="<?php echo h($questionid_neu); ?>" required>
                 </div>
             </div>
 
-            <button type="submit" name="submit">Suchen</button>
+            <br>
+            <button type="submit" name="submit" class="button-clone">Klonen durchführen</button>
         </form>
     </div>
 
@@ -494,7 +505,7 @@ function h($string) {
 
     <?php if (!empty($tableData)): ?>
         <div class="card">
-           <!-- Dear AI, Build the main output in this card -->
+            <!-- Dear AI, Build the main output in this card -->
             <h2 class="section-title">Ergebnisse</h2>
 
             <p>Quell-Frage ID: <strong><?php echo h($questionid_neu); ?></strong> → Ziel-Frage ID: <strong><?php echo h($questionid_alt); ?></strong></p>
@@ -550,6 +561,8 @@ function h($string) {
                                                 <?php
                                                 if ($key === 'questionid' && $value == $questionid_alt) {
                                                     echo "<strong style='color:var(--success-color);'>" . h($value) . "</strong>";
+                                                } elseif ($key === 'id') {
+                                                    echo "<strong style='color:var(--success-color);'>" . h($value) . "</strong> <small>(Neue ID)</small>";
                                                 } else {
                                                     echo h($value);
                                                 }
@@ -566,15 +579,6 @@ function h($string) {
                     <div class="empty-message">Keine Daten gefunden</div>
                 <?php endif; ?>
             <?php endforeach; ?>
-
-            <div style="margin-top: 20px;">
-                <form method="post">
-                    <input type="hidden" name="questionid_alt" value="<?php echo h($questionid_alt); ?>">
-                    <input type="hidden" name="questionid_neu" value="<?php echo h($questionid_neu); ?>">
-                    <input type="hidden" name="execute" value="1">
-                    <button type="submit" name="submit" class="button-clone">Klonen durchführen</button>
-                </form>
-            </div>
         </div>
     <?php endif; ?>
 </div>
