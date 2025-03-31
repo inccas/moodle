@@ -8,6 +8,8 @@ $config = [
     'dbname' => $CFG->dbname
 ];
 
+require_once($CFG->libdir.'/clilib.php');
+
 // Verbindung zur Datenbank herstellen
 $conn = new mysqli($config['host'], $config['user'], $config['password'], $config['dbname']);
 
@@ -29,7 +31,7 @@ $tables = [
 ];
 
 // Verarbeitung des Formulars
-$questionid_alt = '';
+$questionid_alt = 47160;
 $questionid_neu = '';
 
 $message = '';
@@ -42,36 +44,35 @@ $questionDetails_neu = null;
 
 // AJAX Anfrage für die Frage-Details verarbeiten
 if (isset($_GET['fetch_question_details']) && !empty($_GET['id'])) {
-    $questionId = $_GET['id'];
+    $question_id = $_GET['id'];
 
-    // Holen Sie den Datensatz mit der angegebenen ID
-    $sql = "SELECT * FROM mdl_questions WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $questionId);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $result1 = $DB->get_record('question', array('id' => $question_id), '*', MUST_EXIST);
 
-    if ($row = $result->fetch_assoc()) {
-        // Datensatz_1 gefunden
-        $questionDetails_alt = $row;
+    # $db_connect = mysqli_connect($config['host'], $config['user'], $config['password'], $config['dbname']);
 
-        // Finden Sie den neuesten Datensatz mit dem gleichen Namen
-        $name = $row['name'];
-        $sql = "SELECT * FROM mdl_questions WHERE name = ? AND id != ? ORDER BY id DESC LIMIT 1";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $name, $questionId);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    // Datensatz_1 abrufen
+    # $query1 = "SELECT * FROM mdl_questions WHERE id = ".$question_id . ";";
+    # $result1 = mysqli_query($db_connect, $query1);
+    #echo("<br><br><br>");
+    #var_dump($result1);
+    $datensatz_1 = $result1;
 
-        if ($row2 = $result->fetch_assoc()) {
-            // Datensatz_2 gefunden
-            $questionDetails_neu = $row2;
+    # var_dump($result1);
+    # echo("<hr>");
+    if ($datensatz_1) {
+        // Datensatz_2 abrufen (neueste mit gleichem Namen)
+        # $query2 = "SELECT * FROM mdl_questions WHERE name = '".$datensatz_1['name']."' ORDER BY id DESC LIMIT 1 ;";
 
+        $results2 = $DB->get_records('question', array('name' => $datensatz_1->name), 'id DESC', '*', -1, 1);
+        $datensatz_2 = current($results2);
+        
+        # var_dump($datensatz_2);
+        if ($datensatz_2) {
             // Geben Sie beide Datensätze als JSON zurück
             echo json_encode([
                 'success' => true,
-                'questionDetails_alt' => $questionDetails_alt,
-                'questionDetails_neu' => $questionDetails_neu
+                'questionDetails_alt' => $datensatz_1,
+                'questionDetails_neu' => $datensatz_2
             ]);
             exit;
         } else {
@@ -588,9 +589,9 @@ function h($string) {
                     <label for="questionid_alt">Geben Sie hier die ID aus der Fehlermeldung von moodle ein, zu der in der Tabelle qtype_stack_options WHERE questionid = ? die Fehlermeldung kam:</label>
                     <div class="form-input-group">
                         <input type="number" id="questionid_alt" name="questionid_alt" value="<?php echo h($questionid_alt); ?>" required>
-                        <button type="button" id="searchButton" class="button-clone">
+                        <button type="button" id="searchButton" class="search-button">
                             <span id="searchButtonText">Suchen</span>
-                            <span id="loadingIndicator" class="loading hidden"></span>
+                            <span id="loadingIndicator" class="loading hidden" style="display: none"></span>
                         </button>
                     </div>
                 </div>

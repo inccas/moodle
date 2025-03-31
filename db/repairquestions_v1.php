@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/../config.php');
-// Konfiguration aus Moodle-Config übernehmen
+// Konfiguration aus Moodle-Config �bernehmen
 $config = [
     'host' => $CFG->dbhost,
     'user' => $CFG->dbuser,
@@ -11,10 +11,10 @@ $config = [
 // Verbindung zur Datenbank herstellen
 $conn = new mysqli($config['host'], $config['user'], $config['password'], $config['dbname']);
 
-// UTF-8 Zeichensatz für Verbindung setzen
+// UTF-8 Zeichensatz f�r Verbindung setzen
 $conn->set_charset("utf8mb4");
 
-// Überprüfen, ob die Verbindung erfolgreich war
+// �berpr�fen, ob die Verbindung erfolgreich war
 if ($conn->connect_error) {
     die("Verbindungsfehler: " . $conn->connect_error);
 }
@@ -35,60 +35,6 @@ $questionid_neu = '';
 $message = '';
 $tableData = [];
 $existingData = [];
-
-// Variable für die Anzeige der Frage-Details
-$questionDetails_alt = null;
-$questionDetails_neu = null;
-
-// AJAX Anfrage für die Frage-Details verarbeiten
-if (isset($_GET['fetch_question_details']) && !empty($_GET['id'])) {
-    $questionId = $_GET['id'];
-
-    // Holen Sie den Datensatz mit der angegebenen ID
-    $sql = "SELECT * FROM mdl_questions WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $questionId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($row = $result->fetch_assoc()) {
-        // Datensatz_1 gefunden
-        $questionDetails_alt = $row;
-
-        // Finden Sie den neuesten Datensatz mit dem gleichen Namen
-        $name = $row['name'];
-        $sql = "SELECT * FROM mdl_questions WHERE name = ? AND id != ? ORDER BY id DESC LIMIT 1";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $name, $questionId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($row2 = $result->fetch_assoc()) {
-            // Datensatz_2 gefunden
-            $questionDetails_neu = $row2;
-
-            // Geben Sie beide Datensätze als JSON zurück
-            echo json_encode([
-                'success' => true,
-                'questionDetails_alt' => $questionDetails_alt,
-                'questionDetails_neu' => $questionDetails_neu
-            ]);
-            exit;
-        } else {
-            echo json_encode([
-                'success' => false,
-                'message' => "Keinen neueren Datensatz mit dem Namen '{$name}' gefunden."
-            ]);
-            exit;
-        }
-    } else {
-        echo json_encode([
-            'success' => false,
-            'message' => "Kein Datensatz mit der ID {$questionId} gefunden."
-        ]);
-        exit;
-    }
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verarbeitung des Formulars bei Submit
@@ -237,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// htmlspecialchars-Alternative - Fix für den Deprecated-Fehler
+// htmlspecialchars-Alternative - Fix f�r den Deprecated-Fehler
 function h($string) {
     // Sicherstellen, dass $string nicht null ist
     if ($string === null) {
@@ -327,15 +273,9 @@ function h($string) {
             flex-wrap: wrap;
         }
 
-        .form-input {
+        .form-row .form-input {
             flex-grow: 1;
             margin-right: 20px;
-        }
-
-        .form-input-group {
-            display: flex;
-            align-items: center;
-            max-width: 500px;
         }
 
         .form-row .form-toggle {
@@ -378,17 +318,6 @@ function h($string) {
         }
 
         button:hover {
-            background-color: #1565c0;
-        }
-
-        .search-button {
-            padding: 12px;
-            margin-left: 10px;
-            border-radius: 4px;
-            background-color: var(--primary-color);
-        }
-
-        .search-button:hover {
             background-color: #1565c0;
         }
 
@@ -538,38 +467,6 @@ function h($string) {
             text-align: center;
             color: var(--light-text);
         }
-
-        .question-details {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: var(--secondary-color);
-            border-radius: 4px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .question-details h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body>
@@ -586,31 +483,12 @@ function h($string) {
             <div class="form-row">
                 <div class="form-input">
                     <label for="questionid_alt">Geben Sie hier die ID aus der Fehlermeldung von moodle ein, zu der in der Tabelle qtype_stack_options WHERE questionid = ? die Fehlermeldung kam:</label>
-                    <div class="form-input-group">
-                        <input type="number" id="questionid_alt" name="questionid_alt" value="<?php echo h($questionid_alt); ?>" required>
-                        <button type="button" id="searchButton" class="button-clone">
-                            <span id="searchButtonText">Suchen</span>
-                            <span id="loadingIndicator" class="loading hidden"></span>
-                        </button>
-                    </div>
+                    <input type="number" id="questionid_alt" name="questionid_alt" value="<?php echo h($questionid_alt); ?>" required>
                 </div>
                 <br>
                 <div class="form-input">
-                    <label for="questionid_neu">Geben Sie hier die neue ID ein, welche zur neuen question passt:</label>
+                    <label for="questionid_alt">Geben Sie hier die neue ID ein, welche zur neuen question passt:</label>
                     <input type="number" id="questionid_neu" name="questionid_neu" value="<?php echo h($questionid_neu); ?>" required>
-                </div>
-            </div>
-
-            <!-- Container für Datensatz-Anzeige -->
-            <div id="questionDetails" class="hidden">
-                <div id="questionDetails_alt" class="question-details">
-                    <h3>Details zur Frage (Datensatz 1 - Problematische Frage)</h3>
-                    <div id="questionDetails_alt_content"></div>
-                </div>
-
-                <div id="questionDetails_neu" class="question-details">
-                    <h3>Details zur neuesten Frage mit gleichem Namen (Datensatz 2 - Funktionierende Frage)</h3>
-                    <div id="questionDetails_neu_content"></div>
                 </div>
             </div>
 
@@ -704,88 +582,6 @@ function h($string) {
         </div>
     <?php endif; ?>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchButton = document.getElementById('searchButton');
-        const questionid_alt = document.getElementById('questionid_alt');
-        const questionid_neu = document.getElementById('questionid_neu');
-        const questionDetails = document.getElementById('questionDetails');
-        const questionDetails_alt_content = document.getElementById('questionDetails_alt_content');
-        const questionDetails_neu_content = document.getElementById('questionDetails_neu_content');
-        const searchButtonText = document.getElementById('searchButtonText');
-        const loadingIndicator = document.getElementById('loadingIndicator');
-
-        searchButton.addEventListener('click', function() {
-            const id = questionid_alt.value;
-
-            if (!id) {
-                alert('Bitte geben Sie eine Frage-ID ein.');
-                return;
-            }
-
-            // Zeige Lade-Animation
-            searchButtonText.classList.add('hidden');
-            loadingIndicator.classList.remove('hidden');
-
-            // Hole die Frage-Details per AJAX
-            fetch(`?fetch_question_details=1&id=${id}`)
-                .then(response => response.json())
-                .then(data => {
-                    // Verstecke Lade-Animation
-                    searchButtonText.classList.remove('hidden');
-                    loadingIndicator.classList.add('hidden');
-
-                    if (data.success) {
-                        // Zeige die Datensätze an
-                        questionDetails.classList.remove('hidden');
-
-                        // Erstelle Tabellen für die Datensätze
-                        questionDetails_alt_content.innerHTML = createTable(data.questionDetails_alt);
-                        questionDetails_neu_content.innerHTML = createTable(data.questionDetails_neu);
-
-                        // Fülle die neue ID in das Eingabefeld ein
-                        questionid_neu.value = data.questionDetails_neu.id;
-                    } else {
-                        // Zeige Fehlermeldung
-                        alert(data.message);
-                    }
-                })
-                .catch(error => {
-                    // Verstecke Lade-Animation
-                    searchButtonText.classList.remove('hidden');
-                    loadingIndicator.classList.add('hidden');
-
-                    console.error('Error:', error);
-                    alert('Fehler bei der Anfrage. Bitte versuchen Sie es erneut.');
-                });
-        });
-
-        // Funktion zum Erstellen einer Tabelle für die Datensätze
-        function createTable(data) {
-            let html = '<table><thead><tr><th>Feld</th><th>Wert</th></tr></thead><tbody>';
-
-            for (const [key, value] of Object.entries(data)) {
-                let displayValue = value;
-
-                // Markiere wichtige Felder
-                if (key === 'id') {
-                    displayValue = `<strong style="color:var(--primary-color);">${value}</strong>`;
-                } else if (key === 'name') {
-                    displayValue = `<strong>${value}</strong>`;
-                }
-
-                html += `<tr>
-                <td>${key}</td>
-                <td>${displayValue}</td>
-            </tr>`;
-            }
-
-            html += '</tbody></table>';
-            return html;
-        }
-    });
-</script>
 
 </body>
 </html>
