@@ -107,16 +107,6 @@ class core_renderer extends \theme_boost_union\output\core_renderer {
     }
 
     /**
-     * Renders the "breadcrumb" for all pages in boost_vorsprung.
-     *
-     * @return string the HTML for the navbar.
-     */
-    public function navbar(): string {
-        $newnav = new \theme_boost_union_vorsprung\boostnavbar($this->page);
-        return $this->render_from_template('core/navbar', $newnav);
-    }
-
-    /**
      * Renders the context header for the page.
      *
      * @param array $headerinfo Heading information.
