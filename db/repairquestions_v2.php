@@ -65,7 +65,7 @@ if (isset($_GET['fetch_question_details']) && !empty($_GET['id'])) {
 
         $results2 = $DB->get_records('question', array('name' => $datensatz_1->name), 'id DESC', '*', -1, 1);
         $datensatz_2 = current($results2);
-        
+
         # var_dump($datensatz_2);
         if ($datensatz_2) {
             // Geben Sie beide Datensätze als JSON zurück
