@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/../config.php');
-// Konfiguration aus Moodle-Config übernehmen
+// Konfiguration aus Moodle-Config �bernehmen
 $config = [
     'host' => $CFG->dbhost,
     'user' => $CFG->dbuser,
@@ -8,15 +8,13 @@ $config = [
     'dbname' => $CFG->dbname
 ];
 
-require_once($CFG->libdir.'/clilib.php');
-
 // Verbindung zur Datenbank herstellen
 $conn = new mysqli($config['host'], $config['user'], $config['password'], $config['dbname']);
 
-// UTF-8 Zeichensatz für Verbindung setzen
+// UTF-8 Zeichensatz f�r Verbindung setzen
 $conn->set_charset("utf8mb4");
 
-// Überprüfen, ob die Verbindung erfolgreich war
+// �berpr�fen, ob die Verbindung erfolgreich war
 if ($conn->connect_error) {
     die("Verbindungsfehler: " . $conn->connect_error);
 }
@@ -38,59 +36,6 @@ $message = '';
 $tableData = [];
 $existingData = [];
 
-// Variable für die Anzeige der Frage-Details
-$questionDetails_alt = null;
-$questionDetails_neu = null;
-
-// AJAX Anfrage für die Frage-Details verarbeiten
-if (isset($_GET['fetch_question_details']) && !empty($_GET['id'])) {
-    $question_id = $_GET['id'];
-
-    $result1 = $DB->get_record('question', array('id' => $question_id), '*', MUST_EXIST);
-
-    # $db_connect = mysqli_connect($config['host'], $config['user'], $config['password'], $config['dbname']);
-
-    // Datensatz_1 abrufen
-    # $query1 = "SELECT * FROM mdl_questions WHERE id = ".$question_id . ";";
-    # $result1 = mysqli_query($db_connect, $query1);
-    #echo("<br><br><br>");
-    #var_dump($result1);
-    $datensatz_1 = $result1;
-
-    # var_dump($result1);
-    # echo("<hr>");
-    if ($datensatz_1) {
-        // Datensatz_2 abrufen (neueste mit gleichem Namen)
-        # $query2 = "SELECT * FROM mdl_questions WHERE name = '".$datensatz_1['name']."' ORDER BY id DESC LIMIT 1 ;";
-
-        $results2 = $DB->get_records('question', array('name' => $datensatz_1->name), 'id DESC', '*', -1, 1);
-        $datensatz_2 = current($results2);
-
-        # var_dump($datensatz_2);
-        if ($datensatz_2) {
-            // Geben Sie beide Datensätze als JSON zurück
-            echo json_encode([
-                'success' => true,
-                'questionDetails_alt' => $datensatz_1,
-                'questionDetails_neu' => $datensatz_2
-            ]);
-            exit;
-        } else {
-            echo json_encode([
-                'success' => false,
-                'message' => "Keinen neueren Datensatz mit dem Namen '{$name}' gefunden."
-            ]);
-            exit;
-        }
-    } else {
-        echo json_encode([
-            'success' => false,
-            'message' => "Kein Datensatz mit der ID {$questionId} gefunden."
-        ]);
-        exit;
-    }
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verarbeitung des Formulars bei Submit
     if (isset($_POST['submit'])) {
@@ -99,12 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // PHP HEADER SECTION
         // Dear AI, here comes the new code for all tables from $tables
 
-        // Clear previous results
+// Clear previous results
         $tableData = [];
         $results = [];
 
-
-        // Check if both IDs are provided and not the same
+// Check if both IDs are provided and not the same
         if (empty($questionid_alt) || empty($questionid_neu)) {
             $message = "Fehler: Bitte geben Sie beide Fragen-IDs ein.";
         } elseif ($questionid_alt == $questionid_neu) {
@@ -239,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// htmlspecialchars-Alternative - Fix für den Deprecated-Fehler
+// htmlspecialchars-Alternative - Fix f�r den Deprecated-Fehler
 function h($string) {
     // Sicherstellen, dass $string nicht null ist
     if ($string === null) {
@@ -329,15 +273,9 @@ function h($string) {
             flex-wrap: wrap;
         }
 
-        .form-input {
+        .form-row .form-input {
             flex-grow: 1;
             margin-right: 20px;
-        }
-
-        .form-input-group {
-            display: flex;
-            align-items: center;
-            max-width: 500px;
         }
 
         .form-row .form-toggle {
@@ -377,31 +315,10 @@ function h($string) {
             font-weight: 500;
             cursor: pointer;
             transition: background-color 0.3s;
-            width: 60%;
         }
 
         button:hover {
             background-color: #1565c0;
-        }
-
-        .button-search {
-            padding: 12px;
-            margin-left: 10px;
-            border-radius: 4px;
-            background-color: var(--primary-color);
-        }
-
-        .button-search:hover {
-            background-color: #1565c0;
-        }
-
-        .button-clone {
-            margin-left: 10px;
-            background-color: var(--success-color);
-        }
-
-        .button-clone:hover {
-            background-color: #388e3c;
         }
 
         .message {
@@ -466,6 +383,68 @@ function h($string) {
             background-color: #f0f0f0;
         }
 
+        .new-icon:before,
+        .new-icon:after {
+            content: '';
+            position: absolute;
+            background-color: white;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .button-clone {
+            background-color: var(--success-color);
+        }
+
+        .button-clone:hover {
+            background-color: #388e3c;
+        }
+
         .table-info {
             display: flex;
             justify-content: space-between;
@@ -488,38 +467,6 @@ function h($string) {
             text-align: center;
             color: var(--light-text);
         }
-
-        .question-details {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: var(--secondary-color);
-            border-radius: 4px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .question-details h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .loading.hidden, .hidden {
-            display: none;
-        }
-
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body>
@@ -536,48 +483,28 @@ function h($string) {
             <div class="form-row">
                 <div class="form-input">
                     <label for="questionid_alt">Geben Sie hier die ID aus der Fehlermeldung von moodle ein, zu der in der Tabelle qtype_stack_options WHERE questionid = ? die Fehlermeldung kam:</label>
-                    <div class="form-input-group">
-                        <input type="number" id="questionid_alt" name="questionid_alt" value="<?php echo h($questionid_alt); ?>" required>
-                        <button type="button" id="searchButton" class="button-search">
-                            <span id="searchButtonText">Suchen</span>
-                            <span id="loadingIndicator" class="loading hidden"></span>
-                        </button>
-                    </div>
+                    <input type="number" id="questionid_alt" name="questionid_alt" value="<?php echo h($questionid_alt); ?>" required>
                 </div>
                 <br>
                 <div class="form-input">
-                    <label for="questionid_neu">Geben Sie hier die neue ID ein, welche zur neuen question passt:</label>
-                    <div class="form-input-group">
-                        <input type="number" id="questionid_neu" name="questionid_neu" value="<?php echo h($questionid_neu); ?>" required>
-                        <button type="submit" id="cloneButton" name="submit" class="button-clone hidden">Klonen durchführen</button>
-                    </div>
+                    <label for="questionid_alt">Geben Sie hier die neue ID ein, welche zur neuen question passt:</label>
+                    <input type="number" id="questionid_neu" name="questionid_neu" value="<?php echo h($questionid_neu); ?>" required>
                 </div>
             </div>
-          </form>
+
+            <br>
+            <button type="submit" name="submit" class="button-clone">Klonen durchführen</button>
+        </form>
     </div>
 
-
     <?php if (!empty($message)): ?>
-        <div id="messageBlock" class="message <?php echo strpos($message, 'Fehler') !== false ? 'error' : 'success'; ?>">
+        <div class="message <?php echo strpos($message, 'Fehler') !== false ? 'error' : 'success'; ?>">
             <?php echo $message; ?>
         </div>
     <?php endif; ?>
 
-    <!-- Container für Datensatz-Anzeige -->
-    <div id="questionDetails" class="card hidden">
-        <div id="questionDetails_alt" class="question-details">
-            <h3>Details zur Frage (Datensatz 1 - Problematische Frage)</h3>
-            <div id="questionDetails_alt_content"></div>
-        </div>
-
-        <div id="questionDetails_neu" class="question-details">
-            <h3>Details zur neuesten Frage mit gleichem Namen (Datensatz 2 - Funktionierende Frage)</h3>
-            <div id="questionDetails_neu_content"></div>
-        </div>
-    </div>
-
     <?php if (!empty($tableData)): ?>
-        <div class="card" id="resultDetails">
+        <div class="card">
             <!-- Dear AI, Build the main output in this card -->
             <h2 class="section-title">Ergebnisse</h2>
 
@@ -655,118 +582,6 @@ function h($string) {
         </div>
     <?php endif; ?>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchButton = document.getElementById('searchButton');
-        const questionid_alt = document.getElementById('questionid_alt');
-        const questionid_neu = document.getElementById('questionid_neu');
-        const questionDetails = document.getElementById('questionDetails');
-        const questionDetails_alt_content = document.getElementById('questionDetails_alt_content');
-        const questionDetails_neu_content = document.getElementById('questionDetails_neu_content');
-        const searchButtonText = document.getElementById('searchButtonText');
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        const messageDiv = document.getElementById('messageBlock');
-        const resultDiv = document.getElementById('resultDetails');
-        const cloneButton = document.getElementById('cloneButton');
-
-        searchButton.addEventListener('click', function() {
-            const id = questionid_alt.value;
-
-            if (!id) {
-                alert('Bitte geben Sie eine Frage-ID ein.');
-                return;
-            }
-
-            // if exists element
-            if(messageDiv) {
-                messageDiv.classList.add('hidden');
-            }
-            // if exists element
-            if(resultDiv) {
-                resultDiv.classList.add('hidden');
-            }
-
-            // Zeige Lade-Animation
-            searchButtonText.classList.add('hidden');
-            loadingIndicator.classList.remove('hidden');
-
-            // Hole die Frage-Details per AJAX
-            fetch(`?fetch_question_details=1&id=${id}`)
-                .then(response => response.json())
-                .then(data => {
-                    // Zeige Lade-Animation
-                    searchButtonText.classList.add('hidden');
-                    loadingIndicator.classList.remove('hidden');
-                    if (data.success) {
-
-                        // Fülle die neue ID in das Eingabefeld ein
-                        questionid_neu.value = data.questionDetails_neu.id;
-
-                        if (questionid_neu.value == questionid_alt.value) {
-                            // Zeige Fehlermeldung
-                            alert("Die alte QuestionID muss anders sein, als die neue QuestionID, da man sonst ja den gleichen Datensatz klont und das keine Probleme löst. \n\n Du musst erst die neuen Fragen dieser Lektion von HAGEN per XML hier importieren, damit es weiter gehen kann.");
-                        } else {
-                            // Zeige die Datensätze an
-                            questionDetails.classList.remove('hidden');
-
-                            // Erstelle Tabellen für die Datensätze
-                            questionDetails_alt_content.innerHTML = createTable(data.questionDetails_alt);
-                            questionDetails_neu_content.innerHTML = createTable(data.questionDetails_neu);
-
-                            // Show the submit button
-                            cloneButton.classList.remove('hidden');
-                        }
-
-                        // Verstecke Lade-Animation
-                        searchButtonText.classList.remove('hidden');
-                        loadingIndicator.classList.add('hidden');
-
-                    } else {
-                        // Zeige Fehlermeldung
-                        alert(data.message);
-
-                        // Verstecke Lade-Animation
-                        searchButtonText.classList.remove('hidden');
-                        loadingIndicator.classList.add('hidden');
-
-                    }
-                })
-                .catch(error => {
-                    // Verstecke Lade-Animation
-                    searchButtonText.classList.remove('hidden');
-                    loadingIndicator.classList.add('hidden');
-
-                    console.error('Error:', error);
-                    alert('Fehler bei der Anfrage. Bitte versuchen Sie es erneut.');
-                });
-        });
-
-        // Funktion zum Erstellen einer Tabelle für die Datensätze
-        function createTable(data) {
-            let html = '<table><thead><tr><th>Feld</th><th>Wert</th></tr></thead><tbody>';
-
-            for (const [key, value] of Object.entries(data)) {
-                let displayValue = value;
-
-                // Markiere wichtige Felder
-                if (key === 'id') {
-                    displayValue = `<strong style="color:var(--primary-color);">${value}</strong>`;
-                } else if (key === 'name') {
-                    displayValue = `<strong>${value}</strong>`;
-                }
-
-                html += `<tr>
-                <td>${key}</td>
-                <td>${displayValue}</td>
-            </tr>`;
-            }
-
-            html += '</tbody></table>';
-            return html;
-        }
-    });
-</script>
 
 </body>
 </html>

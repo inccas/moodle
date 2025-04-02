@@ -477,7 +477,12 @@ ul.list-group{
     }
   }
 }
+
 // Arrows in the book section
+.path-mod-book #mod_book-chaptersnavigation {
+  top: 120px;
+}
+
 .path-mod-book .tertiary-navigation {
   .row {
     margin-right: -40px;
@@ -486,6 +491,10 @@ ul.list-group{
       z-index: 10;
     }
   }
+}
+
+.carousel .carousel-inner {
+  padding-bottom: 25px;
 }
 
 // Footer elements

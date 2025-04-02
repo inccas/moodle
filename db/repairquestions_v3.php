@@ -102,6 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Modify the row: change questionid to the target value
                     $row['questionid'] = $questionid_alt;
 
+                    // Set the ID to NULL to allow auto-increment
+                    if (isset($row['id'])) {
+                        $row['id'] = NULL;
+                    }
+
                     // Build the INSERT query dynamically
                     $columns = implode(", ", array_keys($row));
                     $placeholders = implode(", ", array_fill(0, count($row), "?"));
@@ -114,7 +119,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $params = [];
 
                     foreach ($row as $value) {
-                        if (is_int($value)) {
+                        if ($value === NULL) {
+                            $types .= "s"; // Handle NULL values
+                        } elseif (is_int($value)) {
                             $types .= "i";
                         } elseif (is_float($value)) {
                             $types .= "d";
@@ -136,16 +143,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     call_user_func_array(array($insertStmt, 'bind_param'), $bindParams);
 
                     // Execute and store result
+                    $success = $insertStmt->execute();
+                    $insertId = $success ? $conn->insert_id : "N/A";
+                    $error = $success ? "" : $conn->error;
 
-                        $success = $insertStmt->execute();
-                        $insertId = $success ? $conn->insert_id : "N/A";
-                        $error = $success ? "" : $conn->error;
-
-                        if ($success) {
-                            // Save the cloned data for display
-                            $tableData[$table]['cloned'][] = $row;
+                    if ($success) {
+                        // Save the cloned data for display
+                        // Make sure to fetch the actual inserted row with new ID for display
+                        if ($insertId !== "N/A") {
+                            $row['id'] = $insertId; // Update the ID for display
                         }
-
+                        $tableData[$table]['cloned'][] = $row;
+                    }
 
                     $results[$table] = [
                         'status' => $success,
@@ -189,6 +198,8 @@ function h($string) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://moodle.daad.de/pluginfile.php/1/theme_boost_union/favicon/64x64/1743156741/Kreis-transparent.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Moodle Fragen-Kloner</title>
     <style>
         :root {
@@ -475,14 +486,20 @@ function h($string) {
                 <div class="form-input">
                     <label for="questionid_alt">Geben Sie hier die ID aus der Fehlermeldung von moodle ein, zu der in der Tabelle qtype_stack_options WHERE questionid = ? die Fehlermeldung kam:</label>
                     <input type="number" id="questionid_alt" name="questionid_alt" value="<?php echo h($questionid_alt); ?>" required>
+                    <button id="fetchButton">Abrufen</button>
                 </div>
+                <br>
                 <div class="form-input">
                     <label for="questionid_alt">Geben Sie hier die neue ID ein, welche zur neuen question passt:</label>
                     <input type="number" id="questionid_neu" name="questionid_neu" value="<?php echo h($questionid_neu); ?>" required>
                 </div>
             </div>
 
-            <button type="submit" name="submit">Suchen</button>
+            <div id="datensatz_1_container"></div>
+            <div id="datensatz_2_container"></div>
+
+            <br>
+            <button type="submit" name="submit" class="button-clone">Klonen durchführen</button>
         </form>
     </div>
 
@@ -494,7 +511,7 @@ function h($string) {
 
     <?php if (!empty($tableData)): ?>
         <div class="card">
-           <!-- Dear AI, Build the main output in this card -->
+            <!-- Dear AI, Build the main output in this card -->
             <h2 class="section-title">Ergebnisse</h2>
 
             <p>Quell-Frage ID: <strong><?php echo h($questionid_neu); ?></strong> → Ziel-Frage ID: <strong><?php echo h($questionid_alt); ?></strong></p>
@@ -550,6 +567,8 @@ function h($string) {
                                                 <?php
                                                 if ($key === 'questionid' && $value == $questionid_alt) {
                                                     echo "<strong style='color:var(--success-color);'>" . h($value) . "</strong>";
+                                                } elseif ($key === 'id') {
+                                                    echo "<strong style='color:var(--success-color);'>" . h($value) . "</strong> <small>(Neue ID)</small>";
                                                 } else {
                                                     echo h($value);
                                                 }
@@ -566,18 +585,33 @@ function h($string) {
                     <div class="empty-message">Keine Daten gefunden</div>
                 <?php endif; ?>
             <?php endforeach; ?>
-
-            <div style="margin-top: 20px;">
-                <form method="post">
-                    <input type="hidden" name="questionid_alt" value="<?php echo h($questionid_alt); ?>">
-                    <input type="hidden" name="questionid_neu" value="<?php echo h($questionid_neu); ?>">
-                    <input type="hidden" name="execute" value="1">
-                    <button type="submit" name="submit" class="button-clone">Klonen durchführen</button>
-                </form>
-            </div>
         </div>
     <?php endif; ?>
 </div>
+
+<script>
+    document.getElementById('fetchButton').addEventListener('click', function() {
+        const questionId = document.getElementById('questionid_alt').textContent;
+
+        fetch('../admin/cli/fetchquestions.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `question_id=47160`
+        })
+
+            .then(response => response.json())
+            .then(data => {
+                if (data.datensatz_1 && data.datensatz_2) {
+                    document.getElementById('datensatz_1_container').innerHTML = JSON.stringify(data.datensatz_1, null, 2);
+                    document.getElementById('questionid_neu').value = data.datensatz_2.id;
+                    document.getElementById('datensatz_2_container').innerHTML = JSON.stringify(data.datensatz_2, null, 2);
+                } else {
+                    console.error('Fehler:', data.error);
+                }
+            });
+    });
+
+</script>
 
 </body>
 </html>
