@@ -72,7 +72,7 @@ body {
   }
 
   // Arrows in the book section
-  .path-mod-book {
+  &.path-mod-book {
     #mod_book-chaptersnavigation {
       top: 120px;
     }
