@@ -1,4 +1,11 @@
 // stylelint-disable all
+/* Baue das in die config.php ein
+
+$CFG->tiny_config = [
+    'extended_valid_elements' => 'script[type|src],div[id|style|class],jsxgraph[width|height|boundingbox]'
+];
+
+*/
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
