@@ -1,11 +1,5 @@
 // stylelint-disable all
-/* Baue das in die config.php ein
 
-$CFG->tiny_config = [
-    'extended_valid_elements' => 'script[type|src],div[id|style|class],jsxgraph[width|height|boundingbox]'
-];
-
-*/
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -18,70 +12,80 @@ body {
 }
 
 .vorsprung {
-  .section {
-    .activity a.stealth, .activity a.stealth:hover {
-      color: var(--color-main) !important;
-    }
-
-    .card {
-      background-clip: border-box;
-      border: 1px solid rgba(0, 0, 0, .125);
-      border-radius: .25rem;
-    }
-  }
-
-  .vorsprung-label:before {
-    color: #e2b847;
-    content: "VOR";
-  }
-
-  .vorsprung-label:after {
-    color: #00a0a2;
-    content: "SPRUNG";
-  }
-
-  /* VORsprung Bug 62: dieses Snippet entfernt den grauen Kasten um die Questbeschreibung */
-  .activity-header:not(:empty) {
-    background-color: #ffffff;
-  }
-
-  /* Bug 62: Die H3 Überschriften "Ihre Aufträge" waren zu nah am Quest-Informationskasten und zu weit weg von den Aufträgen auf die sich die überschrift bezieht. Das wird hier korrigiert */
-  .activity-description h3:not(.card h3) {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  /* Bug 62: Links vom Kasten unter "Ihre Aufträge" wird mehr Abstand hinzugefügt, damit "Ihre Aufträge" und "Alle Elemente" darunter linksbündig aneinander ausgerichtet sind  */
-  .drawers div[role="main"] {
-    margin-left: 19px;
-  }
-
-  /* VORsprung Bug 35: Ausblenden der Fortschrittsleiste über den Kacheln. Hier wollte ich eigentlich .vorsprung-blabla .format-tiles #abovetiles als Selektor nehmen, aber das hat die vorhandenen Styles nicht überschrieben*/
-  #abovetiles {
-    display: none !important;
-  }
-
-
-  ul.list-group {
-    li.list-group-item {
-      i.fa {
-        padding-right: 10px;
+  #page-wrapper {
+    .section {
+      .activity a.stealth, .activity a.stealth:hover {
+        color: var(--color-main) !important;
       }
 
-      &:hover, &:focus {
-        border-bottom-color: #f8f9fa;
+      .card {
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, .125);
+        border-radius: .25rem;
+      }
+    }
 
-        &:last-of-type {
-          border-bottom-color: #ddd;
+    .vorsprung-label:before {
+      color: #e2b847;
+      content: "VOR";
+    }
+
+    .vorsprung-label:after {
+      color: #00a0a2;
+      content: "SPRUNG";
+    }
+
+    /* VORsprung Bug 62: dieses Snippet entfernt den grauen Kasten um die Questbeschreibung */
+    .activity-header:not(:empty) {
+      background-color: #ffffff;
+    }
+
+    /* Bug 62: Die H3 Überschriften "Ihre Aufträge" waren zu nah am Quest-Informationskasten und zu weit weg von den Aufträgen auf die sich die überschrift bezieht. Das wird hier korrigiert */
+    .activity-description h3:not(.card h3) {
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .drawer {
+      top: 60px;
+    }
+
+    /* Bug 62: Links vom Kasten unter "Ihre Aufträge" wird mehr Abstand hinzugefügt, damit "Ihre Aufträge" und "Alle Elemente" darunter linksbündig aneinander ausgerichtet sind  */
+    .drawers div[role="main"] {
+      margin-left: 19px;
+    }
+
+    /* VORsprung Bug 35: Ausblenden der Fortschrittsleiste über den Kacheln. Hier wollte ich eigentlich .vorsprung-blabla .format-tiles #abovetiles als Selektor nehmen, aber das hat die vorhandenen Styles nicht überschrieben*/
+    #abovetiles {
+      display: none !important;
+    }
+
+    ul.list-group {
+      li.list-group-item {
+        i.fa {
+          padding-right: 10px;
+        }
+
+        &:hover, &:focus {
+          border-bottom-color: #f8f9fa;
+
+          &:last-of-type {
+            border-bottom-color: #ddd;
+          }
         }
       }
     }
+  }
+
+  .modal-backdrop {
+    top: 60px;
   }
 
   // Arrows in the book section
   &.path-mod-book {
     #mod_book-chaptersnavigation {
       top: 120px;
+      margin: 0 -35px 0 -53px;
     }
 
     .tertiary-navigation {
@@ -420,8 +424,8 @@ body {
         }
 
         .dimmed h1 {
-          left: -4px;
-          width: calc(100% + 36px);
+          left: -22px;
+          width: calc(100% + 54px);
         }
 
         h1 {
@@ -429,15 +433,16 @@ body {
           background-size: initial;
           background-repeat: no-repeat;
           position: relative;
-          left: -1px;
+          left: -20px;
           overflow: visible !important;
           font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
           font-size: 2.34375rem !important;
           font-weight: 500 !important;
           border: none !important;
           color: var(--color-primary) !important;
-          width: calc(100% + 30px);
+          width: calc(100% + 49px);
           margin-top: 30px;
+          height: 54px;
 
           &:before {
             position: relative;
@@ -694,59 +699,6 @@ body.limitedwidth #page.drawers .footer-popover {
   max-width: unset !important;
 }
 
-
-// Jetzt definieren wir alle Robotor bilder.
-.vorsprung-informatik {
-  &.format-tiles {
-    .alert-dark:before, .alert-blue:before  {
-      content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
-      float: left;
-      width: 80px;
-      margin: 0 40px 0 10px;
-    }
-    li.subtile .tileiconcontainer.assessment {
-      border: 1px dashed #774075ac;
-      background-color:  #c740c520;
-    }
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
-      filter: invert(76%) sepia(58%) saturate(6969%) hue-rotate(250deg) brightness(70%) contrast(79%);
-    }
-
-    ul.tiles, ul.subtiles {
-      h1 {
-        background: linear-gradient(90deg, #fff 51%,
-                rgba(255, 245, 255, .75) 70%,
-                rgba(255, 255, 255, 0) 100%),
-        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
-        background-position: right center;
-      }
-      h1:before {
-        content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
-      }
-      h1:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
-        right: 8px !important;;
-        top: -33px;
-      }
-      h1#header-worumgehtes:after,
-      h1#header-wozuistdasgut:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-frage-cb.svg);
-      }
-      h1#header-wasmussichwissen:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-summary-cb.svg);
-      }
-      h1#header-achtung:after,
-      h1#header-waskannichmachen:after{
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
-      }
-    }
-  }
-}
-
-
-
-
 /*VORsprung Bug 86 und 34: für alle farbig hinterlegten Alert-Kästen mit Avatar-Bild gilt*/
 .alert.alert-primary,
 .alert.alert-danger,
@@ -758,211 +710,303 @@ body.limitedwidth #page.drawers .footer-popover {
   margin: 20px auto; /* Zentriert den Container */
 }
 
-.vorsprung-mathe {
+
+// Jetzt definieren wir alle Robotor bilder.
+.vorsprung.vorsprung-informatik {
   &.format-tiles {
-    /* VORsprung Bug 86 : blauer Kasten mit fragendem Avatar: Hintergrundfarbe ändern*/
-    .alert.alert-primary {
-      background-color: #B6E9FF;
-    }
+    #page-content, .course-content {
+      .alert-dark:before, .alert-blue:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
+        float: left;
+        width: 80px;
+        margin: 0 40px 0 10px;
+      }
 
-    /* VORsprung Bug 86 und 34: für den Text in farbig hinterlegten Alert-Kästen gilt*/
-    .alert.alert-primary .text,
-    .alert.alert-danger .text,
-    .alert.alert-info .text {
-      flex: 1; /* Erlaubt dem Text, den verbleibenden Platz einzunehmen */
-      padding: 15px; /* Fügt Abstand zwischen Text und Bild hinzu */
-      line-height: 1.6; /*vergroessert den Zeilenabstand ein wenig für bessere Lesbarkeit */
-    }
+      li.subtile .tileiconcontainer.assessment {
+        border: 1px dashed #774075ac;
+        background-color: #c740c520;
+      }
 
-    /* VORsprung Bug 86: Größe und Abstand vom umgebenen Kasten für die Avatar-Bilder in blauen Alert-Kästen anpassen*/
-    .alert.alert-primary .image img {
-      height: 150px;
-      padding: 5px;
-    }
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+        filter: invert(76%) sepia(58%) saturate(6969%) hue-rotate(250deg) brightness(70%) contrast(79%);
+      }
 
-    /* VORsprung Bug 34: Größe und Abstand vom umgebenen Kasten für die Avatar-Bilder in roten und blauen Alert-Kästen anpassen*/
-    .alert.alert-danger .image img,
-    .alert.alert-info .image img {
-      height: 216px;
-      padding: 5px;
-    }
+      ul.tiles, ul.subtiles {
+        h1 {
+          background: linear-gradient(90deg, #fff 51%,
+                  rgba(255, 245, 255, .75) 70%,
+                  rgba(255, 255, 255, 0) 100%),
+          url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
+          background-position: right center;
+        }
 
-    .alert-dark:before, .alert-blue:before {
-      content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
-      float: left;
-      width: 80px;
-      margin: 0 40px 0 10px;
-    }
-    li.subtile .tileiconcontainer.assessment {
-      border: 1px dashed rgba(142, 184, 120, .75);
-      background-color:  rgba(242, 254, 220, .5);
-    }
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
-      filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
-    }
-    ul.tiles, ul.subtiles {
-      h1 {
-        background: linear-gradient(90deg, #fff 51%,
-                rgba(240,251,255,.75) 70%,
-                rgba(255, 255, 255, 0) 100%),
-        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
-        background-position: right center;
-      }
-      h1:before {
-        content: url(/theme/boost_union_vorsprung/pix/typo/typo-mathematik-header-prefix.png);
-      }
-      h1:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
-        top: -33px;
-      }
-      h1#header-worumgehtes:after,
-      h1#header-wozuistdasgut:after{
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-frage-cb.svg);
-      }
-      h1#header-wasmussichwissen:after{
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-summary-cb.svg);
-      }
-      h1#header-achtung:after,
-      h1#header-waskannichmachen:after{
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
+        h1:before {
+          content: url(/theme/boost_union_vorsprung/pix/typo/typo-informatik-header-prefix.png);
+        }
+
+        h1:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
+          right: 8px !important;;
+          top: -33px;
+        }
+
+        h1#header-worumgehtes:after,
+        h1#header-wozuistdasgut:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-frage-cb.svg);
+        }
+
+        h1#header-wasmussichwissen:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-summary-cb.svg);
+        }
+
+        h1#header-achtung:after,
+        h1#header-waskannichmachen:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
+        }
       }
     }
   }
 }
 
-.vorsprung-physik {
+.vorsprung.vorsprung-mathe {
   &.format-tiles {
-    .alert-dark:before, .alert-blue:before  {
-      content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
-      float: left;
-      width: 80px;
-      margin: 0 40px 0 10px;
-    }
-    li.subtile .tileiconcontainer.assessment {
-      border: 1px dashed rgba(242, 124, 50, 0.85);
-      background-color:  rgba(242, 125, 50, 0.15);
-    }
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
-      filter: invert(76%) sepia(34) saturate(6000%) hue-rotate(0deg) brightness(90%) contrast(79%);
-    }
-    ul.tiles, ul.subtiles {
-      h1 {
-        background: linear-gradient(90deg, #fff 51%,
-                rgba(255, 246, 234, .75),
-                rgba(255, 255, 255, 0) 100%),
-        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
-        background-position: right center;
+    #page-content, .course-content {
+      /* VORsprung Bug 86 : blauer Kasten mit fragendem Avatar: Hintergrundfarbe ändern*/
+      .alert.alert-primary {
+        background-color: #B6E9FF;
       }
-      h1:before {
-        content: url(/theme/boost_union_vorsprung/pix/typo/typo-physik-header-prefix.png);
+
+      /* VORsprung Bug 86 und 34: für den Text in farbig hinterlegten Alert-Kästen gilt*/
+      .alert.alert-primary .text,
+      .alert.alert-danger .text,
+      .alert.alert-info .text {
+        flex: 1; /* Erlaubt dem Text, den verbleibenden Platz einzunehmen */
+        padding: 15px; /* Fügt Abstand zwischen Text und Bild hinzu */
+        line-height: 1.6; /*vergroessert den Zeilenabstand ein wenig für bessere Lesbarkeit */
       }
-      h1:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-neutral-cb.svg);
-        top: -45px;
-        right: -35px !important;
+
+      /* VORsprung Bug 86: Größe und Abstand vom umgebenen Kasten für die Avatar-Bilder in blauen Alert-Kästen anpassen*/
+      .alert.alert-primary .image img {
+        height: 150px;
+        padding: 5px;
       }
-      h1#header-worumgehtes:after,
-      h1#header-wozuistdasgut:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-frage-cb.svg);
+
+      /* VORsprung Bug 34: Größe und Abstand vom umgebenen Kasten für die Avatar-Bilder in roten und blauen Alert-Kästen anpassen*/
+      .alert.alert-danger .image img,
+      .alert.alert-info .image img {
+        height: 216px;
+        padding: 5px;
       }
-      h1#header-wasmussichwissen:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-summary-cb.svg);
+
+      .alert-dark:before, .alert-blue:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
+        float: left;
+        width: 80px;
+        margin: 0 40px 0 10px;
       }
-      h1#header-achtung:after,
-      h1#header-waskannichmachen:after{
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
+
+      li.subtile .tileiconcontainer.assessment {
+        border: 1px dashed rgba(142, 184, 120, .75);
+        background-color: rgba(242, 254, 220, .5);
+      }
+
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+        filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
+      }
+
+      ul.tiles, ul.subtiles {
+        h1 {
+          background: linear-gradient(90deg, #fff 51%,
+                  rgba(240, 251, 255, .75) 70%,
+                  rgba(255, 255, 255, 0) 100%),
+          url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
+          background-position: right center;
+        }
+
+        h1:before {
+          content: url(/theme/boost_union_vorsprung/pix/typo/typo-mathematik-header-prefix.png);
+        }
+
+        h1:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
+          top: -33px;
+        }
+
+        h1#header-worumgehtes:after,
+        h1#header-wozuistdasgut:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-frage-cb.svg);
+        }
+
+        h1#header-wasmussichwissen:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-summary-cb.svg);
+        }
+
+        h1#header-achtung:after,
+        h1#header-waskannichmachen:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
+        }
       }
     }
   }
 }
 
-.vorsprung-chemie {
+.vorsprung.vorsprung-physik {
   &.format-tiles {
-    .alert-dark {
-      color: #333333 !important;
-      background-color: #b7e5dc !important;
-      border-color: #aed9d1 !important;
-    }
-    .alert-dark:before, .alert-blue:before {
-      content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
-      float: left;
-      width: 80px;
-      margin: 0 40px 0 10px;
-    }
-    li.subtile .tileiconcontainer.assessment {
-      border: 1px dashed rgba(142, 184, 120, .75);
-      background-color:  rgba(242, 254, 220, .5);
-    }
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
-      filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
-    }
-    ul.tiles, ul.subtiles {
-      h1 {
-        background: linear-gradient(90deg, #fff 51%,
-                rgba(242, 254, 220, .75) 70%,
-                rgba(255, 255, 255, 0) 100%),
-        url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
-        background-position: right center;
+    #page-content, .course-content {
+      .alert-dark:before, .alert-blue:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
+        float: left;
+        width: 80px;
+        margin: 0 40px 0 10px;
       }
 
-      h1:before {
-        content: url(/theme/boost_union_vorsprung/pix/typo/typo-chemie-header-prefix.png);
-      }
-      h1:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-neutral-cb.svg);
-        top: -43px;
-        right: -34px !important;
-      }
-      .dimmed h1:after {
-        right: 10px !important;
+      li.subtile .tileiconcontainer.assessment {
+        border: 1px dashed rgba(242, 124, 50, 0.85);
+        background-color: rgba(242, 125, 50, 0.15);
       }
 
-      h1#header-worumgehtes:after,
-      h1#header-wozuistdasgut:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-frage-cb.svg);
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+        filter: invert(76%) sepia(34) saturate(6000%) hue-rotate(0deg) brightness(90%) contrast(79%);
       }
-      h1#header-wasmussichwissen:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-summary-cb.svg);
+
+      ul.tiles, ul.subtiles {
+        h1 {
+          background: linear-gradient(90deg, #fff 51%,
+                  rgba(255, 246, 234, .75),
+                  rgba(255, 255, 255, 0) 100%),
+          url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
+          background-position: right center;
+        }
+
+        h1:before {
+          content: url(/theme/boost_union_vorsprung/pix/typo/typo-physik-header-prefix.png);
+        }
+
+        h1:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-neutral-cb.svg);
+          top: -45px;
+          right: -35px !important;
+        }
+
+        h1#header-worumgehtes:after,
+        h1#header-wozuistdasgut:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-frage-cb.svg);
+        }
+
+        h1#header-wasmussichwissen:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-summary-cb.svg);
+        }
+
+        h1#header-achtung:after,
+        h1#header-waskannichmachen:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
+        }
       }
-      h1#header-achtung:after,
-      h1#header-waskannichmachen:after {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
+    }
+  }
+}
+
+.vorsprung.vorsprung-chemie {
+  &.format-tiles {
+    #page-content, .course-content {
+      .alert-dark {
+        color: #333333 !important;
+        background-color: #b7e5dc !important;
+        border-color: #aed9d1 !important;
+      }
+
+      .alert-dark:before, .alert-blue:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
+        float: left;
+        width: 80px;
+        margin: 0 40px 0 10px;
+      }
+
+      li.subtile .tileiconcontainer.assessment {
+        border: 1px dashed rgba(142, 184, 120, .75);
+        background-color: rgba(242, 254, 220, .5);
+      }
+
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+        filter: invert(76%) sepia(18%) saturate(6969%) hue-rotate(15deg) brightness(90%) contrast(79%);
+      }
+
+      ul.tiles, ul.subtiles {
+        h1 {
+          background: linear-gradient(90deg, #fff 51%,
+                  rgba(242, 254, 220, .75) 70%,
+                  rgba(255, 255, 255, 0) 100%),
+          url(/theme/boost_union_vorsprung/pix/boxes/vsp-box-bg.jpg?v=8180613);
+          background-position: right center;
+        }
+
+        h1:before {
+          content: url(/theme/boost_union_vorsprung/pix/typo/typo-chemie-header-prefix.png);
+        }
+
+        h1:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-neutral-cb.svg);
+          top: -50px;
+        }
+
+        .dimmed h1:after {
+          right: 10px !important;
+        }
+
+        h1#header-worumgehtes:after,
+        h1#header-wozuistdasgut:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-frage-cb.svg);
+        }
+
+        h1#header-wasmussichwissen:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-summary-cb.svg);
+        }
+
+        h1#header-achtung:after,
+        h1#header-waskannichmachen:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
+        }
       }
     }
   }
 }
 
 
-.vorsprung-campus {
+.vorsprung.vorsprung-campus {
   &.format-tiles {
-    .alert-dark:before, .alert-blue:before {
-      content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
-      float: left;
-      width: 80px;
-      margin: 0 40px 0 10px;
-    }
-    li.subtile .tileiconcontainer.assessment {
-      border: 1px dashed rgba(242, 192, 120, .75);
-      background-color:  rgba(242, 194, 100, .25);
-    }
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
-    li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
-      filter: invert(92%) sepia(88%) saturate(4969%) hue-rotate(344deg) brightness(94%) contrast(99%);
-    }
-    ul.tiles, ul.subtiles {
-      h1:before {
-        content: url(/theme/boost_union_vorsprung/pix/typo/typo-primary-header-prefix.png);
+    #page-content, .course-content {
+      .alert-dark:before, .alert-blue:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
+        float: left;
+        width: 80px;
+        margin: 0 40px 0 10px;
       }
 
+      li.subtile .tileiconcontainer.assessment {
+        border: 1px dashed rgba(242, 192, 120, .75);
+        background-color: rgba(242, 194, 100, .25);
+      }
+
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .activityicon:not(.nofilter),
+      li.subtile .activityiconcontainer.assessment:not(.isbranded) .icon:not(.nofilter) {
+        filter: invert(92%) sepia(88%) saturate(4969%) hue-rotate(344deg) brightness(94%) contrast(99%);
+      }
+
+      ul.tiles, ul.subtiles {
+        h1:before {
+          content: url(/theme/boost_union_vorsprung/pix/typo/typo-primary-header-prefix.png);
+        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 999px) {
-  .format-tiles {
+  .vorsprung.format-tiles {
     .course-content, #page-content {
       ul.tiles, ul.subtiles{
         h1 {
@@ -978,105 +1022,123 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 
 @media screen and (max-width: 768px) {
-  .tertiary-navigation .row {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
+  .vorsprung {
 
-  .drawer.drawer-left.drawer-primary .drawerheader {
-    display: flex;
-    position: relative;
-    button {
-      position: absolute;
-      top: -7px;
-      right: -12px;
-      background-color: #fff;
+    .tertiary-navigation .row {
+      margin-right: -15px;
+      margin-left: -15px;
     }
-    img {
-      width: 100%;
-      padding-right: 20px;
-    }
-  }
-  .drawer.drawer-left {
-    .drawerheader {
+
+    .drawer.drawer-left.drawer-primary .drawerheader {
       display: flex;
       position: relative;
+
       button {
         position: absolute;
         top: -7px;
-        right: 15px;
+        right: -12px;
+        background-color: #fff;
+      }
+
+      img {
+        width: 100%;
+        padding-right: 20px;
+      }
+    }
+
+    .drawer.drawer-left {
+      .drawerheader {
+        display: flex;
+        position: relative;
+
+        button {
+          position: absolute;
+          top: -7px;
+          right: 15px;
+          background-color: #fff;
+        }
+      }
+
+      .drawercontent {
+        padding-bottom: 100px;
+      }
+    }
+
+    .drawer.drawer-right .drawerheader {
+      display: flex;
+      position: relative;
+
+      button {
+        position: absolute;
+        top: 2px;
+        left: -15px;
         background-color: #fff;
       }
     }
+
     .drawercontent {
-      padding-bottom: 100px;
+      height: 100%;
     }
-  }
-  .drawer.drawer-right .drawerheader {
-    display: flex;
-    position: relative;
-    button {
-      position: absolute;
-      top: 2px;
-      left: -15px;
-      background-color: #fff;
-    }
-  }
-  .drawercontent {
-    height: 100%;
-  }
-  .format-tiles {
-    .course-content, #page-content {
-      ul.tiles, ul.subtiles{
-        h1 {
-          font-size: 1.8rem !important;
-          width: calc(100% + 15px);
-          &:before{
-            left: -45px !important;
-            zoom: 40%;
+
+    &.format-tiles {
+      .course-content, #page-content {
+        ul.tiles, ul.subtiles {
+          h1 {
+            font-size: 1.8rem !important;
+
+            &:before {
+              left: -45px !important;
+              zoom: 40%;
+            }
           }
-        }
-        .dimmed h1 {
-          width: calc(100% + 21px);
-          &:before{
-            left: -48px !important;
+
+          .dimmed h1 {
+            &:before {
+              left: -48px !important;
+            }
           }
         }
       }
     }
-  }
-  .badge {
-    white-space: wrap;
-  }
-  #page #page-footer,
-  #page #footnote {
-    left: 0;
-    width: 100% !important;
-    [data-region=footer-container-popover] {
-      position: relative;
-      button {
-        position: absolute;
-        top: 50px;
+
+    .badge {
+      white-space: wrap;
+    }
+
+    #page #page-footer,
+    #page #footnote {
+      left: 0;
+      width: 100% !important;
+
+      [data-region=footer-container-popover] {
+        position: relative;
+
+        button {
+          position: absolute;
+          top: 50px;
+        }
       }
     }
   }
 }
 
 @media screen and (max-width: 680px) {
-  .format-tiles .course-content ul.subtiles li.activity.label, .format-tiles #page-content ul.subtiles li.activity.label {
+  .vorsprung.format-tiles .course-content ul.subtiles li.activity.label, .format-tiles #page-content ul.subtiles li.activity.label {
     left: 0px;
   }
 }
 
 @media screen and (max-width: 499px) {
-  #footnote{
-    flex-direction: column;
-    padding: 16px;
-    .container-fluid{
-      text-align: center;
-    }
-    .iconleiste img {
-      max-width: 90%;
+  .vorsprung{
+    #footnote{
+      flex-direction: column;
+      padding: 16px;
+      .container-fluid{
+        text-align: center;
+      }
+      .iconleiste img {
+        max-width: 90%;
+      }
     }
   }
 }
@@ -1093,10 +1155,10 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 
 
-.format-tiles.editing .course-content ul.tiles h1,
-.format-tiles.editing .course-content ul.subtiles h1,
-.format-tiles.editing #page-content ul.tiles h1,
-.format-tiles.editing #page-content ul.subtiles h1 {
+.vorsprung.format-tiles.editing .course-content ul.tiles h1,
+.vorsprung.format-tiles.editing .course-content ul.subtiles h1,
+.vorsprung.format-tiles.editing #page-content ul.tiles h1,
+.vorsprung.format-tiles.editing #page-content ul.subtiles h1 {
   width: calc(100% + 40px);
 }
 
