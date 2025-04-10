@@ -359,22 +359,6 @@ body {
       }
     }
 
-
-    .alert {
-      /*VORsprung: 94: Barrierefreie Textfarbe in den Warnkästen*/
-      &.alert-warning, &.alert-success {
-        color: #000; /* Der Text in allen Alert-Kästen soll schwarz sein */
-      }
-      border: 1px solid transparent;
-      &.avatar {
-        display: flex; /* Verwendet Flexbox, um die Elemente nebeneinander anzuordnen */
-        align-items: center; /* Richtet die Elemente vertikal aus */
-        justify-content: space-between; /* Stellt sicher, dass Text und Bild Platz dazwischen haben */
-        max-width: 100%; /* Maximale Breite des Containers anpassen */
-        margin: 20px auto; /* Zentriert den Container */
-      }
-    }
-
     .course-content, #page-content {
       .sectiontitle::after, .badge-info {
         background-color: var(--color-main);
@@ -401,6 +385,37 @@ body {
           margin: 0;
           max-width: unset;
           max-height: unset;
+        }
+      }
+
+
+      .alert {
+        /*VORsprung: 94: Barrierefreie Textfarbe in den Warnkästen*/
+        &.alert-warning, &.alert-success {
+          color: #000; /* Der Text in allen Alert-Kästen soll schwarz sein */
+        }
+        border: 1px solid transparent;
+        &.avatar {
+          display: flex; /* Verwendet Flexbox, um die Elemente nebeneinander anzuordnen */
+          align-items: center; /* Richtet die Elemente vertikal aus */
+          justify-content: space-between; /* Stellt sicher, dass Text und Bild Platz dazwischen haben */
+          max-width: 100%; /* Maximale Breite des Containers anpassen */
+          margin: 20px auto; /* Zentriert den Container */
+        }
+
+        &.alert-info, &.alert-dark, &.alert-blue, &.alert-danger {
+          &:before {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+          }
+          p {
+            display: block;
+            margin: 0 0 0 130px;
+            padding: 0;
+          }
         }
       }
 
@@ -735,6 +750,16 @@ body.limitedwidth #page.drawers .footer-popover {
         margin: 0 40px 0 10px;
       }
 
+      .alert-dark:before, .alert-blue:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
+      }
+      .alert-info:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
+      }
+      .alert-danger:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
+      }
+
       li.subtile .tileiconcontainer.assessment {
         border: 1px dashed #774075ac;
         background-color: #c740c520;
@@ -815,27 +840,12 @@ body.limitedwidth #page.drawers .footer-popover {
 
       .alert-dark:before, .alert-blue:before {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
-        float: left;
-        width: 80px;
-        margin: 0 40px 0 10px;
       }
-      .alert-info {
-        display: inline-block;
-        &:before {
-          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
-          float: left;
-          width: 80px;
-          margin: 0 40px 0 10px;
-        }
+      .alert-info:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
       }
-      .alert-danger{
-        display: inline-block;
-        &:before {
-          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
-          float: left;
-          width: 80px;
-          margin: 0 40px 0 10px;
-        }
+      .alert-danger:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
       }
 
       li.subtile .tileiconcontainer.assessment {
@@ -894,6 +904,16 @@ body.limitedwidth #page.drawers .footer-popover {
         margin: 0 40px 0 10px;
       }
 
+      .alert-dark:before, .alert-blue:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
+      }
+      .alert-info:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-neutral-cb.svg);
+      }
+      .alert-danger:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
+      }
+
       li.subtile .tileiconcontainer.assessment {
         border: 1px dashed rgba(242, 124, 50, 0.85);
         background-color: rgba(242, 125, 50, 0.15);
@@ -948,6 +968,16 @@ body.limitedwidth #page.drawers .footer-popover {
         color: #333333 !important;
         background-color: #b7e5dc !important;
         border-color: #aed9d1 !important;
+      }
+
+      .alert-dark:before, .alert-blue:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
+      }
+      .alert-info:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-neutral-cb.svg);
+      }
+      .alert-danger:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
       }
 
       .alert-dark:before, .alert-blue:before {
