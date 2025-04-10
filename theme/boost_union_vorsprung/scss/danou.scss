@@ -410,10 +410,16 @@ body {
             top: 50%;
             transform: translateY(-50%);
             display: block;
+            width: 80px;
           }
           p {
             display: block;
             margin: 0 0 0 130px;
+            padding: 0;
+          }
+          ul {
+            display: block;
+            margin: 0 0 0 150px;
             padding: 0;
           }
         }
