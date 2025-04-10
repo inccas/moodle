@@ -359,7 +359,12 @@ body {
       }
     }
 
+
     .alert {
+      /*VORsprung: 94: Barrierefreie Textfarbe in den Warnkästen*/
+      &.alert-warning, &.alert-success {
+        color: #000; /* Der Text in allen Alert-Kästen soll schwarz sein */
+      }
       border: 1px solid transparent;
       &.avatar {
         display: flex; /* Verwendet Flexbox, um die Elemente nebeneinander anzuordnen */
@@ -777,6 +782,7 @@ body.limitedwidth #page.drawers .footer-popover {
   }
 }
 
+
 .vorsprung.vorsprung-mathe {
   &.format-tiles {
     #page-content, .course-content {
@@ -813,19 +819,23 @@ body.limitedwidth #page.drawers .footer-popover {
         width: 80px;
         margin: 0 40px 0 10px;
       }
-
-      .alert-info:before {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
-        float: left;
-        width: 80px;
-        margin: 0 40px 0 10px;
+      .alert-info {
+        display: inline-block;
+        &:before {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
+          float: left;
+          width: 80px;
+          margin: 0 40px 0 10px;
+        }
       }
-
-      .alert-danger:before {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
-        float: left;
-        width: 80px;
-        margin: 0 40px 0 10px;
+      .alert-danger{
+        display: inline-block;
+        &:before {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
+          float: left;
+          width: 80px;
+          margin: 0 40px 0 10px;
+        }
       }
 
       li.subtile .tileiconcontainer.assessment {
