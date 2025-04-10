@@ -814,6 +814,20 @@ body.limitedwidth #page.drawers .footer-popover {
         margin: 0 40px 0 10px;
       }
 
+      .alert-info:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-neutral-cb.svg);
+        float: left;
+        width: 80px;
+        margin: 0 40px 0 10px;
+      }
+
+      .alert-danger:before {
+        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
+        float: left;
+        width: 80px;
+        margin: 0 40px 0 10px;
+      }
+
       li.subtile .tileiconcontainer.assessment {
         border: 1px dashed rgba(142, 184, 120, .75);
         background-color: rgba(242, 254, 220, .5);
