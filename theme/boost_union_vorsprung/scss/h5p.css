@@ -26,6 +26,7 @@
 
 
 /* VORsprung 93: H5P-Button-Farbe an Vorsprung-Farben anpassen*/
-.h5p-iframe-wrapper .h5p-joubelui-button {
+.h5p-iframe-wrapper .h5p-joubelui-button,
+.h5peditor .ui-dialog .h5p-joubelui-button, .h5peditor .h5p-joubelui-button, .h5p-joubelui-button{
     background: #00a0a2; /* Vorsprung-türkis */
 }
