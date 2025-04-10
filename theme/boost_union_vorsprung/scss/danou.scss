@@ -707,12 +707,12 @@ body.limitedwidth #page.drawers .footer-popover {
   max-width: unset !important;
 }
 
-/*VORsprung Bug 86 und 34: für alle farbig hinterlegten Alert-Kästen mit Avatar-Bild gilt*/
+/* VORsprung Bug 86 und 34: für alle farbig hinterlegten Alert-Kästen mit Avatar-Bild gilt*/
 .alert.alert-primary,
 .alert.alert-danger,
 .alert.alert-info {
   display: flex; /* Verwendet Flexbox, um die Elemente nebeneinander anzuordnen */
-  align-items: center; /* Richtet die Elemente vertikal aus */
+  flex-direction: column;
   justify-content: space-between; /* Stellt sicher, dass Text und Bild Platz dazwischen haben */
   max-width: 90%; /* Maximale Breite des Containers anpassen */
   margin: 20px auto; /* Zentriert den Container */
