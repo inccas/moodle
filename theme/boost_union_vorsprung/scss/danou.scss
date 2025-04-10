@@ -327,9 +327,6 @@ body {
     background-color: #ffffff;
   }
 
-  .alert {
-    border: 1px solid transparent;
-  }
 
   .dimmed {
     opacity: 0.7;
@@ -359,6 +356,17 @@ body {
         &:hover{
           background-color: #afafaf00;
         }
+      }
+    }
+
+    .alert {
+      border: 1px solid transparent;
+      &.avatar {
+        display: flex; /* Verwendet Flexbox, um die Elemente nebeneinander anzuordnen */
+        align-items: center; /* Richtet die Elemente vertikal aus */
+        justify-content: space-between; /* Stellt sicher, dass Text und Bild Platz dazwischen haben */
+        max-width: 100%; /* Maximale Breite des Containers anpassen */
+        margin: 20px auto; /* Zentriert den Container */
       }
     }
 
