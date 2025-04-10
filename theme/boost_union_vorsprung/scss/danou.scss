@@ -416,10 +416,39 @@ body {
             display: block;
             margin: 0 0 0 130px;
             padding: 0;
+            ul{
+              margin: 0;
+            }
           }
           ul {
             display: block;
             margin: 0 0 0 150px;
+            padding: 0;
+            p{
+              margin: 0;
+            }
+          }
+        }
+        #boxabschluss.alert.alert-dark {
+          &:before {
+            content: '';
+            width: 0px;
+          }
+          &:after {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+            width: 80px;          }
+          p {
+            display: block;
+            margin: 0 130px 0 0;
+            padding: 0;
+          }
+          ul {
+            display: block;
+            margin: 0 130px 0 0;
             padding: 0;
           }
         }
@@ -762,8 +791,31 @@ body.limitedwidth #page.drawers .footer-popover {
       .alert-info:before {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-neutral-cb.svg);
       }
-      .alert-danger:before {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
+      .alert-danger{
+        color: #333333 !important;
+        background-color: #ffcccc !important;
+        border-color: #f2c2c2 !important;
+        &:before {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-achtung-cb.svg);
+        }
+      }
+
+      .alert-warning, .environmenttable .warn {
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+      }
+
+      .alert-success, .environmenttable .ok {
+        color: #333333 !important;
+        background-color: #d5e29f !important;
+        border-color: #cad697 !important;
+      }
+
+      #boxabschluss.alert.alert-dark {
+        &:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-informatik-body.svg);
+        }
       }
 
       li.subtile .tileiconcontainer.assessment {
@@ -854,6 +906,12 @@ body.limitedwidth #page.drawers .footer-popover {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-achtung-cb.svg);
       }
 
+      #boxabschluss.alert.alert-dark {
+        &:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-mathematik-body.svg);
+        }
+      }
+
       li.subtile .tileiconcontainer.assessment {
         border: 1px dashed rgba(142, 184, 120, .75);
         background-color: rgba(242, 254, 220, .5);
@@ -920,6 +978,12 @@ body.limitedwidth #page.drawers .footer-popover {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-achtung-cb.svg);
       }
 
+      #boxabschluss.alert.alert-dark {
+        &:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-body.svg);
+        }
+      }
+
       li.subtile .tileiconcontainer.assessment {
         border: 1px dashed rgba(242, 124, 50, 0.85);
         background-color: rgba(242, 125, 50, 0.15);
@@ -979,18 +1043,19 @@ body.limitedwidth #page.drawers .footer-popover {
       .alert-dark:before, .alert-blue:before {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
       }
+
       .alert-info:before {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-neutral-cb.svg);
       }
+
       .alert-danger:before {
         content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-achtung-cb.svg);
       }
 
-      .alert-dark:before, .alert-blue:before {
-        content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
-        float: left;
-        width: 80px;
-        margin: 0 40px 0 10px;
+      #boxabschluss.alert.alert-dark {
+        &:after {
+          content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-chemie-body.svg);
+        }
       }
 
       li.subtile .tileiconcontainer.assessment {
