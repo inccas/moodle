@@ -411,7 +411,7 @@ body {
             display: block;
             width: 80px;
           }
-          p {
+          p, detail {
             display: block;
             margin: 0 0 0 130px;
             padding: 0;
@@ -426,6 +426,19 @@ body {
             p{
               margin: 0;
             }
+          }
+          h1, h2, h3 {
+            font-size: 1.5rem;
+            font-weight: bolder !important;
+            margin: 5px 0 10px 130px;
+            display: block;
+            padding: 0;
+          }
+          h2 {
+            font-size: 1.4rem;
+          }
+          h3 {
+            font-size: 1.3rem;
           }
         }
       }
