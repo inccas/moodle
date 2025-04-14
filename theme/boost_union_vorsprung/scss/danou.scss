@@ -1183,7 +1183,7 @@ body.limitedwidth #page.drawers .footer-popover {
     #page-content, .course-content {
 
       .alert-dark:before, .alert-blue:before {
-        content: url(/theme/boost_union_vorsprung/pix/static/Campus/campus_avatar.png);
+        content: url(/theme/boost_union_vorsprung/pix/static/Campus/campus_avatar_90.png);
       }
 
       .alert-info {
@@ -1197,13 +1197,13 @@ body.limitedwidth #page.drawers .footer-popover {
       }
 
       .alert-danger:before {
-        content: url(/theme/boost_union_vorsprung/pix/static/Campus/campus_avatar.png);
+        content: url(/theme/boost_union_vorsprung/pix/static/Campus/campus_avatar_90.png);
       }
 
       #boxabschluss.alert.alert-dark,
       #box-abschluss.alert.alert-dark {
         &:after {
-          content: url(/theme/boost_union_vorsprung/pix/static/Campus/campus_avatar.png);
+          content: url(/theme/boost_union_vorsprung/pix/static/Campus/campus_avatar_90.png);
         }
       }
       li.subtile .tileiconcontainer.assessment {
