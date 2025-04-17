@@ -23,12 +23,14 @@
 define(['jquery', 'popover'], function($) {
     return {
         init: function () {
-            require(['mod_bootstrapelements/fontawesome-iconpicker'], function() {
+/*
+            require(['mod_bootstrapelements/iconpicker'], function() {
 
                 $(function() {
                     $("#id_bootstrapicon").iconpicker({placement: "right", selectedCustomClass: "label label-success"});
                 });
             });
+*/
         }
 
     };
