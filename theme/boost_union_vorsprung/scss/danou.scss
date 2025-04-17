@@ -1181,6 +1181,7 @@ body.limitedwidth #page.drawers .footer-popover {
 
       .alert-dark:before, .alert-blue:before {
         content: url(/theme/boost_union_vorsprung/pix/static/Campus/campus_avatar_90.png);
+        left: 15px;
       }
 
       .alert-info {
@@ -1189,12 +1190,14 @@ body.limitedwidth #page.drawers .footer-popover {
         border-color: #adddf2 !important;
         &:before {
           content: url(/theme/boost_union_vorsprung/pix/static/Campus/Campus_Neutral_65er.png);
-
+          left: 10px;
+          top: 30%;
         }
       }
 
       .alert-danger:before {
         content: url(/theme/boost_union_vorsprung/pix/static/Campus/campus_avatar_90.png);
+        left: 15px;
       }
 
       #boxabschluss.alert.alert-dark,
