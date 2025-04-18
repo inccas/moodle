@@ -13,6 +13,10 @@ body {
 
 .vorsprung {
   #page-wrapper {
+    .nolink .MathJax {
+      display: block !important;
+      text-align: center;
+    }
     .section {
       .activity a.stealth, .activity a.stealth:hover {
         color: var(--color-main) !important;
