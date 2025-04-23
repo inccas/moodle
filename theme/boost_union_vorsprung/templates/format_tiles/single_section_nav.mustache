@@ -45,8 +45,6 @@
         }
 }}
 <div class="navigation-arrows">
-
-    <h2>single_section_nav.mustache</h2>
     {{#previous_tile_id}}
         <a class="navigation-arrow"
            href="{{{ config.wwwroot }}}/course/view.php?id={{courseid}}&section={{previous_tile_id}}&singlesec={{previous_tile_id}}">
@@ -82,7 +80,6 @@
             {{/is-rtl}}
         </span>
     {{/next_tile_id}}
-    <a class="navigation-arrow" href="{{{ config.wwwroot }}}/course/view.php?id={{courseid}}">
-        {{#pix}}number_{{tileid}}, core, {{#str}}home, format_tiles{{/str}}{{/pix}}
-    </a>
+
+    {{#pix}}number_{{tileid}}, core{{/pix}}
 </div>
