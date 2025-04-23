@@ -36,3 +36,7 @@
 .h5p-question-feedback-content, .h5p-question-feedback-content-text, .h5p-confirmation-dialog-header-text {
     color: #333333 !important;
 }
+
+.h5p-multi-media-choice .h5p-multi-media-choice-list-item:focus .h5p-multi-media-choice-enabled {
+    box-shadow: 0 0 4px 2px #e2b847 !important;
+}
