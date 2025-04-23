@@ -31,3 +31,8 @@
 .h5peditor .ui-dialog .h5p-joubelui-button, .h5peditor .h5p-joubelui-button, .h5p-joubelui-button{
     background: #00a0a2; /* Vorsprung-türkis */
 }
+
+/* VORsprung 93: H5P-Schriftfarbe in antrazith */
+.h5p-question-feedback-content, .h5p-question-feedback-content-text, .h5p-confirmation-dialog-header-text {
+    color: #333333 !important;
+}
