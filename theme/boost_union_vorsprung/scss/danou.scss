@@ -17,7 +17,6 @@ body {
       text-align: center;
       margin: 1em 0em;
       position: relative;
-      display: block !important;
       text-indent: 0;
       max-width: none;
       max-height: none;
@@ -1398,3 +1397,4 @@ body.limitedwidth #page.drawers .footer-popover {
 body.limitedwidth #page.drawers .main-inner {
   max-width: unset;
 }
+
