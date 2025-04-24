@@ -24,6 +24,11 @@ body {
       min-height: 0;
       width: 100%;
     }
+
+    a[target="_blank"]:after {
+      content: "⊕" !important;
+    }
+
     .section {
       .activity a.stealth, .activity a.stealth:hover {
         color: var(--color-main) !important;
