@@ -27,6 +27,9 @@ body {
 
     a[target="_blank"]:after {
       content: "⊕" !important;
+      font-size: 100%;
+      top: -6px;
+      position: relative;
     }
 
     .section {
