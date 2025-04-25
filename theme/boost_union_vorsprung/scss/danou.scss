@@ -1392,11 +1392,19 @@ body.limitedwidth #page.drawers .footer-popover {
 }
 
 
-.vorsprung.format-tiles.editing .course-content ul.tiles h1,
-.vorsprung.format-tiles.editing .course-content ul.subtiles h1,
-.vorsprung.format-tiles.editing #page-content ul.tiles h1,
-.vorsprung.format-tiles.editing #page-content ul.subtiles h1 {
+.vorsprung.format-tiles.editing .course-content ul.tiles .alert h1,
+.vorsprung.format-tiles.editing .course-content ul.subtiles .alert h1,
+.vorsprung.format-tiles.editing #page-content ul.tiles .alert h1,
+.vorsprung.format-tiles.editing #page-content ul.subtiles .alert h1 {
   background: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  color: #555 !important;
+  font-weight: 300 !important;
+  left: 0px;
+  height: unset;
 }
 
 body.limitedwidth #page.drawers .main-inner {
