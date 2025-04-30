@@ -129,12 +129,11 @@ body {
       box-shadow: 0 0 0 0.2rem rgba(38, 174, 176, 0.5) !important;
     }
 
-    .lernlandkarte {
+    .lernlandkarte, .lernlandkarte-xl  {
       width: 99%;
-      max-height: 35vh;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
       filter: drop-shadow(5px 5px 5px #666666);
+      overflow: hidden;
+      border-radius: 2rem;
       .llk {
         width: unset;
         max-width: unset;
@@ -144,6 +143,17 @@ body {
         padding: 0;
         -webkit-filter: none;
         filter: none;
+        max-height: 35vh;
+        img {
+          border-radius: 0rem !important;
+        }
+      }
+    }
+
+    .lernlandkarte-xl {
+      aspect-ratio: 1 / 1;
+      .llk {
+        max-height: 500px;
       }
     }
 
