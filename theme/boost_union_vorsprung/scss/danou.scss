@@ -129,6 +129,23 @@ body {
       box-shadow: 0 0 0 0.2rem rgba(38, 174, 176, 0.5) !important;
     }
 
+    .lernlandkarte {
+      width: 99%;
+      max-height: 35vh;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      filter: drop-shadow(5px 5px 5px #666666);
+      .llm {
+        width: unset;
+        max-width: unset;
+        height: unset;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        -webkit-filter: none;
+        filter: none;
+      }
+    }
 
     .carousel {
       .carousel-inner {
