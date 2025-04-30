@@ -119,7 +119,6 @@ body {
     }
   }
 
-
   // Footer elements
   #page {
 
@@ -242,6 +241,12 @@ body {
           padding: 0.5rem 0.5rem;
         }
 
+        #course-index {
+          .courseindex-section:first-of-type {
+            display: none;
+          }
+        }
+
         .courseindex-section {
           position: relative;
           display: block;
@@ -361,6 +366,15 @@ body {
   }
 
   &.format-tiles {
+    &.editing {
+      .course-content, #page-content {
+        ul.tiles, ul.subtiles {
+          h1{
+            width: calc(100% + 58px);
+          }
+        }
+      }
+    }
     .course-content ul.subtiles li.activity .activityname  {
       z-index: 2;
       background: transparent;
@@ -1088,7 +1102,6 @@ body.limitedwidth #page.drawers .footer-popover {
         h1:after {
           content: url(/theme/boost_union_vorsprung/pix/avatars/avatar-physik-neutral-cb.svg);
           top: -45px;
-          right: -35px !important;
         }
 
         h1#header-worumgehtes:after,
