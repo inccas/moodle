@@ -161,8 +161,8 @@ body {
     .que.stack .stackinputfeedback {
       border-radius: 0.5rem;
       &.loading {
-        background: none;
-        background-size: 80px;
+        background: #fff url([[pix:moodle|i/loading_small]]) no-repeat center right;
+        background-size: 60px;
         background-position-x: 95%;
       }
       &.loading::after{
