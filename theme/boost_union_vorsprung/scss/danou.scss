@@ -160,6 +160,17 @@ body {
     // Automatic Formular generation
     .que.stack .stackinputfeedback {
       border-radius: 0.5rem;
+      &.loading{
+        background: none;
+        background-size: 80px;
+        background-position-x: 95%;
+        &:after{
+            background: #fff url("/theme/image.php/boost_union_vorsprung/core/1746457364/i/loading_small") no-repeat center right;
+            background-size: 80px;
+            background-position-x: 95%;
+            animation: rotation 2s infinite linear;
+        }
+      }
       .displayequation {
         a img.texrender {
           max-height: 70px;
