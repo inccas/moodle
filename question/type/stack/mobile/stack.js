@@ -381,7 +381,11 @@ var result = {
                 validationDiv.innerHTML = extractScripts(results.message, scriptCommands);
                 // Run script commands.
                 for (var i = 0; i < scriptCommands.length; i++) {
-                    eval(scriptCommands[i]);
+                    console.log("Evaluating in stack.js: ", scriptCommands[i]); // Fehlerhaften Code anzeigen
+                    const script = document.createElement('script');
+                    script.textContent = scriptCommands[i];
+                    document.head.appendChild(script).remove();
+                    // eval(scriptCommands[i]);
                 }
                 removeAllClasses();
                 if (!results.message) {
