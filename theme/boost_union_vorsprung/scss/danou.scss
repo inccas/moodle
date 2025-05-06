@@ -14,6 +14,7 @@ body {
 .vorsprung {
   #page-wrapper {
     .nolink .MathJax {
+      display: block;
       text-align: center;
       margin: 1em 0em;
       position: relative;
@@ -186,7 +187,7 @@ body {
 
       .displayequation {
         a img.texrender {
-          max-height: 70px;
+          max-height: 50px;
           max-width: 65%;
           width: -webkit-fill-available;
         }
