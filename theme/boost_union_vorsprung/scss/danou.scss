@@ -22,8 +22,10 @@ body {
 
 .vorsprung {
   #page-wrapper {
-    .displayequation .nolink .MathJax {
-      display: inline !important;
+    .filter_mathjaxloader_equation, .displayequation {
+      .nolink .MathJax {
+        display: inline !important;
+      }
     }
     .nolink .MathJax {
       display: block;
