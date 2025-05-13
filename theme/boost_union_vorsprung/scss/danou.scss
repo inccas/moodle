@@ -9,6 +9,15 @@ body {
   color: #333;
   text-align: left;
   background-color: #fafcfc;
+
+  &.course-4143 {
+    .course-content .single-section .section-navigation.navigationtitle {
+      display: none !important;
+    }
+    .activity.modtype_subsection .activityiconcontainer.courseicon img {
+      filter: invert(32%) sepia(76%) saturate(778%) hue-rotate(184deg) brightness(94%) contrast(94%) !important;
+    }
+  }
 }
 
 .vorsprung {
