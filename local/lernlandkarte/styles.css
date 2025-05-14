@@ -47,6 +47,11 @@
     background-color: rgba(0,0,0,0.5);
     z-index: 10000;
 }
+
+.llkmodal:hover {
+    cursor: pointer;
+}
+
 .llkmodal > div:first-child {
     width: 90%;
     position: relative;
