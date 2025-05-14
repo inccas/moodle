@@ -200,10 +200,12 @@ class attempt {
     }
 
     /**
+     * Start a new attempt at a question in the current usage.
+     *
      * @param \question_usage_by_activity|null $quba usage to use. If null will continue using the same usage.
      */
     public function start_new_attempt_at_question(
-            \question_usage_by_activity $quba = null) {
+            \question_usage_by_activity|null $quba = null) {
         global $DB;
 
         if ($quba) {
@@ -250,8 +252,6 @@ class attempt {
      * After calling this method, don't try to do anything else. Just redirect.
      */
     public function discard_broken_attempt() {
-        global $DB;
-
         if (!empty($this->slot) && $this->slot > 1) {
             // The corrupt attempt is part of a usage with other previous attempts
             // that might be important. Therefore, just abandon the current
@@ -383,10 +383,10 @@ class attempt {
      * Finish the currently active attempt, so when we next call find_new_attempt(),
      * a new attempt at this question will be started.
      *
-     * @param array $simulatedpostdata for testing, simulated post data (e.g. from
+     * @param array|null $simulatedpostdata for testing, simulated post data (e.g. from
      *      $quba->get_simulated_post_data_for_questions_in_usage()).
      */
-    public function process_submitted_actions(array $simulatedpostdata = null) {
+    public function process_submitted_actions(array|null $simulatedpostdata = null) {
         global $DB;
 
         $this->quba->process_all_actions(null, $simulatedpostdata);
@@ -396,8 +396,8 @@ class attempt {
         attempt_storage::instance()->update_timemodified($this->quba->get_id());
 
         // Log the submit.
-        \filter_embedquestion\event\question_attempted::create(['context' => $this->embedlocation->context,
-                'objectid' => $this->current_question()->id])->trigger();
+        \filter_embedquestion\event\question_attempted::create(
+            ['context' => $this->embedlocation->context, 'objectid' => $this->current_question()->id])->trigger();
         $transaction->allow_commit();
     }
 
@@ -405,18 +405,17 @@ class attempt {
      * Log that the user is viewing the question.
      */
     public function log_view() {
-        \filter_embedquestion\event\question_viewed::create(['context' => $this->embedlocation->context,
-                'objectid' => $this->current_question()->id])->trigger();
+        \filter_embedquestion\event\question_viewed::create(
+            ['context' => $this->embedlocation->context, 'objectid' => $this->current_question()->id])->trigger();
     }
 
     /**
      * Render the currently active question, including the required form.
      *
-     * @param \filter_embedquestion\output\renderer instance of our renderer to use.
+     * @param \filter_embedquestion\output\renderer $renderer instance of our renderer to use.
      * @return string HTML to display.
      */
     public function render_question(\filter_embedquestion\output\renderer $renderer): string {
-
         // Work out the question number to display.
         if ($this->current_question()->length) {
             $displaynumber = "\u{00a0}"; // Non-breaking space.
@@ -430,17 +429,26 @@ class attempt {
         // If the question is finished, add a Start again button.
         if ($this->is_question_finished()) {
             $this->options->extrainfocontent = \html_writer::div(
-                    \html_writer::empty_tag('input', ['type' => 'submit', 'name' => 'restart',
-                            'value' => get_string('restart', 'filter_embedquestion'),
-                            'class' => 'btn btn-secondary', 'data-formchangechecker-non-submit' => 1])
+                    \html_writer::empty_tag('input', [
+                        'type' => 'submit',
+                        'name' => 'restart',
+                        'value' => get_string('restart', 'filter_embedquestion'),
+                        'class' => 'btn btn-secondary',
+                        'data-formchangechecker-non-submit' => 1,
+                    ])
                 );
         }
 
         // Show an 'Edit question' action to those with permissions.
+        $relevantcourseid = utils::get_relevant_courseid($this->embedlocation->context);
         if (question_has_capability_on($this->current_question(), 'edit')) {
-            $this->options->editquestionparams = ['returnurl' => $this->embedlocation->pageurl,
-                    'courseid' => utils::get_relevant_courseid($this->embedlocation->context)];
+            $this->options->editquestionparams =
+                ['returnurl' => $this->embedlocation->pageurl, 'courseid' => $relevantcourseid];
         }
+
+        // Show an 'Question bank' action to those with permissions.
+        $contexts = new \core_question\local\bank\question_edit_contexts(\context_course::instance($relevantcourseid));
+        $this->options->showquestionbank = $contexts->have_one_edit_tab_cap('questions');
 
         // Show a 'Fill with correct' action to those with permissions.
         if (question_has_capability_on($this->current_question(), 'use') &&
@@ -451,9 +459,12 @@ class attempt {
 
         // Start the question form.
         $output = '';
-        $output .= \html_writer::start_tag('form',
-                ['method' => 'post', 'action' => $this->get_action_url(),
-                'enctype' => 'multipart/form-data', 'id' => 'responseform']);
+        $output .= \html_writer::start_tag('form', [
+            'method' => 'post',
+            'action' => $this->get_action_url(),
+            'enctype' => 'multipart/form-data',
+            'id' => 'responseform',
+        ]);
         $output .= \html_writer::start_tag('div');
         $output .= \html_writer::empty_tag('input',
                 ['type' => 'hidden', 'name' => 'sesskey', 'value' => sesskey()]);
@@ -479,6 +490,27 @@ class attempt {
      */
     protected function current_question(): \question_definition {
         return $this->quba->get_question($this->slot);
+    }
+
+    /**
+     * Should the current attempt be re-started?
+     *
+     * @return bool true if it should.
+     */
+    public function should_switch_to_new_version(): bool {
+        if (!utils::has_question_versionning()) {
+            // Auto-restart is only relevant in Moodle 4.0+.
+            return false;
+        }
+
+        $question = $this->current_question();
+        if (!question_has_capability_on($question, 'edit')) {
+            // Only auto-restart for users who can edit the question.
+            return false;
+        }
+
+        // Need to auto-restart if this is not the latest version.
+        return !utils::is_latest_version($question);
     }
 
     /**

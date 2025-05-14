@@ -168,18 +168,21 @@ class utils {
 
         if (self::has_question_versionning()) {
             $question = $DB->get_record_sql('
-                    SELECT q.*, qbe.idnumber, qbe.questioncategoryid AS category,
-                           qv.id AS versionid, qv.version, qv.questionbankentryid
-                      FROM {question_bank_entries} qbe
-                      JOIN {question_versions} qv ON qv.questionbankentryid = qbe.id AND qv.version = (
-                                      SELECT MAX(version)
-                                        FROM {question_versions}
-                                       WHERE questionbankentryid = qbe.id AND status = :ready
-                                  )
-                      JOIN {question} q ON q.id = qv.questionid
-                     WHERE qbe.questioncategoryid = :category AND qbe.idnumber = :idnumber',
-                            ['ready' => question_version_status::QUESTION_STATUS_READY,
-                            'category' => $categoryid, 'idnumber' => $idnumber]);
+                SELECT q.*, qbe.idnumber, qbe.questioncategoryid AS category,
+                       qv.id AS versionid, qv.version, qv.questionbankentryid
+                  FROM {question_bank_entries} qbe
+                  JOIN {question_versions} qv ON qv.questionbankentryid = qbe.id AND qv.version = (
+                                  SELECT MAX(version)
+                                    FROM {question_versions}
+                                   WHERE questionbankentryid = qbe.id AND status = :ready
+                              )
+                  JOIN {question} q ON q.id = qv.questionid
+                 WHERE qbe.questioncategoryid = :category AND qbe.idnumber = :idnumber',
+                [
+                    'ready' => question_version_status::QUESTION_STATUS_READY,
+                    'category' => $categoryid, 'idnumber' => $idnumber,
+                ],
+            );
         } else {
             $question = $DB->get_record_select('question',
                     "category = ? AND idnumber = ? AND hidden = 0 AND parent = 0",
@@ -190,6 +193,30 @@ class utils {
             return null;
         }
         return $question;
+    }
+
+    /**
+     * Is a particular question the latest version of that question bank entry.
+     *
+     * This method can only be called if you have already verified that
+     * {@see has_question_versionning()} returns true.
+     *
+     * @param \question_definition $question the question.
+     * @return bool is this the latest ready version of this question?
+     */
+    public static function is_latest_version(\question_definition $question): bool {
+        global $DB;
+
+        $latestversion = $DB->get_field(
+            'question_versions',
+            'MAX(version)',
+            [
+                'questionbankentryid' => $question->questionbankentryid,
+                'status' => question_version_status::QUESTION_STATUS_READY,
+            ]
+        );
+
+        return $question->version == $latestversion;
     }
 
     /**
@@ -205,7 +232,8 @@ class utils {
      * @param int|null $userid (optional) if set, only count questions created by this user.
      * @return array category idnumber => Category name (question count).
      */
-    public static function get_categories_with_sharable_question_choices(\context $context, int $userid = null): array {
+    public static function get_categories_with_sharable_question_choices(\context $context,
+            int|null $userid = null): array {
         global $DB;
 
         if (self::has_question_versionning()) {
@@ -234,7 +262,7 @@ class utils {
                      WHERE qc.contextid = ?
                        AND qc.idnumber IS NOT NULL
 
-                  GROUP BY qc.id, qc.name
+                  GROUP BY qc.id, qc.name, qc.idnumber
                     HAVING COUNT(q.id) > 0
                   ORDER BY qc.name
                     ", $params);
@@ -261,7 +289,7 @@ class utils {
                      WHERE qc.contextid = ?
                        AND qc.idnumber IS NOT NULL
 
-                  GROUP BY qc.id, qc.name
+                  GROUP BY qc.id, qc.name, qc.idnumber
                     HAVING COUNT(q.id) > 0
                   ORDER BY qc.name
                     ", $params);
@@ -285,7 +313,7 @@ class utils {
      * @param int|null $userid (optional) if set, only count questions created by this user.
      * @return \stdClass[] question id => object with fields question id, name and idnumber.
      */
-    public static function get_sharable_question_ids(int $categoryid, int $userid = null): array {
+    public static function get_sharable_question_ids(int $categoryid, int|null $userid = null): array {
         global $DB;
 
         if (self::has_question_versionning()) {
@@ -353,7 +381,7 @@ class utils {
      * @param int|null $userid (optional) if set, only count questions created by this user.
      * @return array question idnumber => question name.
      */
-    public static function get_sharable_question_choices(int $categoryid, int $userid = null): array {
+    public static function get_sharable_question_choices(int $categoryid, int|null $userid = null): array {
         $questions = self::get_sharable_question_ids($categoryid, $userid);
 
         $choices = ['' => get_string('choosedots')];
@@ -401,5 +429,129 @@ class utils {
         }
 
         return ['' => get_string('forceno')] + $languages;
+    }
+
+    /** @var int Use to create unique iframe names. */
+    protected static $untitilediframecounter = 0;
+
+    /**
+     * Make a unique name, for anonymous iframes.
+     *
+     * @return string Iframe description.
+     */
+    public static function make_unique_iframe_description(): string {
+        self::$untitilediframecounter += 1;
+        return get_string('iframetitleauto', 'filter_embedquestion', self::$untitilediframecounter);
+    }
+
+    /**
+     * Get the URL of this question in the question bank.
+     *
+     * @param \question_definition $question
+     * @return \moodle_url
+     */
+    public static function get_question_bank_url(\question_definition $question): \moodle_url {
+        global $CFG, $DB;
+        // To get MAXIMUM_QUESTIONS_PER_PAGE.
+        require_once($CFG->dirroot . '/question/editlib.php');
+
+        $context = \context::instance_by_id($question->contextid);
+        if ($context->contextlevel != CONTEXT_COURSE) {
+            throw new \coding_exception('Unexpected. Only questions from the course question bank should be embedded.');
+        }
+
+        $latestquestionid = $DB->get_field_sql("
+                SELECT qv.questionid
+                 FROM {question_versions} qv
+                WHERE qv.questionbankentryid = ?
+                  AND qv.version = (
+                        SELECT MAX(v.version)
+                          FROM {question_versions} v
+                         WHERE v.questionbankentryid = ?
+                  )
+                ", [$question->questionbankentryid, $question->questionbankentryid]);
+
+        return new \moodle_url('/question/edit.php', [
+                'courseid' => $context->instanceid,
+                'cat' => $question->category . ',' . $question->contextid,
+                'qperpage' => MAXIMUM_QUESTIONS_PER_PAGE,
+                'lastchanged' => $latestquestionid,
+            ]);
+    }
+
+    /**
+     * For unit tests only, reset the counter between tests.
+     */
+    public static function unit_test_reset() {
+        self::$untitilediframecounter = 0;
+    }
+
+    /** @var string - Less than operator */
+    const OP_LT = "<";
+    /** @var string - equal operator */
+    const OP_E = "=";
+    /** @var string - greater than operator */
+    const OP_GT = ">";
+
+    /**
+     * Conveniently compare the current moodle version to a provided version in branch format. This function will
+     * inflate version numbers to a three digit number before comparing them. This way moodle minor versions greater
+     * than 9 can be correctly and easily compared.
+     *
+     * Examples:
+     *   utils::moodle_version_is("<", "39");
+     *   utils::moodle_version_is("<=", "310");
+     *   utils::moodle_version_is(">", "39");
+     *   utils::moodle_version_is(">=", "38");
+     *   utils::moodle_version_is("=", "41");
+     *
+     * CFG reference:
+     * $CFG->branch = "311", "310", "39", "38", ...
+     * $CFG->release = "3.11+ (Build: 20210604)", ...
+     * $CFG->version = "2021051700.04", ...
+     *
+     * @param string $operator for the comparison
+     * @param string $version to compare to
+     * @return boolean
+     */
+    public static function moodle_version_is(string $operator, string $version): bool {
+        global $CFG;
+
+        if (strlen($version) == 2) {
+            $version = $version[0]."0".$version[1];
+        }
+
+        $current = $CFG->branch;
+        if (strlen($current) == 2) {
+            $current = $current[0]."0".$current[1];
+        }
+
+        $from = intval($current);
+        $to = intval($version);
+        $ops = str_split($operator);
+
+        foreach ($ops as $op) {
+            switch ($op) {
+                case self::OP_LT:
+                    if ($from < $to) {
+                        return true;
+                    }
+                    break;
+                case self::OP_E:
+                    if ($from == $to) {
+                        return true;
+                    }
+                    break;
+                case self::OP_GT:
+                    if ($from > $to) {
+                        return true;
+                    }
+                    break;
+                default:
+                    throw new \coding_exception('invalid operator '.$op);
+            }
+        }
+
+        return false;
     }
 }

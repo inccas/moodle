@@ -19,13 +19,14 @@ namespace filter_embedquestion;
 /**
  * Unit tests for the util methods.
  *
- * @package    filter_embedquestion
- * @copyright  2018 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   filter_embedquestion
+ * @copyright 2018 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @covers    \filter_embedquestion\token
  */
-class token_test extends \advanced_testcase {
+final class token_test extends \advanced_testcase {
 
-    public function test_is_authorized_secret_token() {
+    public function test_is_authorized_secret_token(): void {
         $this->resetAfterTest();
 
         // First make a token, and check it.

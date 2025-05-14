@@ -42,13 +42,15 @@ $PAGE->set_pagelayout('embedded');
 $PAGE->requires->js_call_amd('filter_embedquestion/question', 'init');
 
 if (isguestuser()) {
+    $PAGE->set_url('/');
+    $PAGE->activityheader->disable();
     throw new moodle_exception('noguests', 'filter_embedquestion');
 }
 
 $options = new filter_embedquestion\question_options();
 $options->set_from_request();
 if ($options->forcedlanguage) {
-    \filter_embedquestion\custom_string_manager::force_page_language($options->forcedlanguage);
+    custom_string_manager::force_page_language($options->forcedlanguage);
 }
 
 // Process other parameters.
@@ -59,6 +61,7 @@ $embedid = new embed_id($categoryidnumber, $questionidnumber);
 $embedlocation = embed_location::make_from_url_params();
 
 $PAGE->set_url(utils::get_show_url($embedid, $embedlocation, $options));
+$PAGE->activityheader->disable();
 
 $token = required_param('token', PARAM_RAW);
 if ($token !== $PAGE->url->param('token')) {
@@ -98,6 +101,13 @@ try {
 
         throw new moodle_exception($message, 'filter_embedquestion', $nexturl, $a, $e);
     }
+}
+
+// If the user can edit questions, and the question has been edited since their attempt
+// started, start a new attempt.
+if ($attempt->should_switch_to_new_version()) {
+    $attempt->discard_broken_attempt();
+    redirect($PAGE->url);
 }
 
 // Process any actions from the buttons at the bottom of the form.
@@ -141,7 +151,7 @@ if (data_submitted() && confirm_sesskey()) {
 }
 
 // Log the view.
-// $attempt->log_view(); // This throws errors we can skip it... HACK DANOU  27.02.2025
+$attempt->log_view();
 
 // Start output.
 $title = get_string('iframetitle', 'filter_embedquestion');

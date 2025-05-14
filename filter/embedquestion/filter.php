@@ -15,14 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Question display options with helpers for use with filter_embedquestion.
+ * Compatibility shim for the filter_embedquestion class.
  *
- * @todo MDL-82708 delete this file as part of Moodle 6.0 development.
- * @deprecated This file is no longer required in Moodle 4.5+.
  * @package    filter_embedquestion
  * @copyright  2018 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-defined('MOODLE_INTERNAL') || die();
-
-debugging('This file is no longer required in Moodle 4.5+. Please do not include/require it.', DEBUG_DEVELOPER);
+// Compatibility so that Moodle pre-4.5 can still load the filter.
+class_alias(\filter_embedquestion\text_filter::class, \filter_embedquestion::class);

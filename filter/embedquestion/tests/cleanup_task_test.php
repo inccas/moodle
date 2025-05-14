@@ -21,13 +21,14 @@ use filter_embedquestion\task\cleanup_task;
 /**
  * Unit tests for the cleanup scheduled task.
  *
- * @package    filter_embedquestion
- * @copyright  2018 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   filter_embedquestion
+ * @copyright 2018 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @covers    \filter_embedquestion\task\cleanup_task
  */
-class cleanup_task_test extends \advanced_testcase {
+final class cleanup_task_test extends \advanced_testcase {
 
-    public function test_cleanup_task() {
+    public function test_cleanup_task(): void {
 
         $this->resetAfterTest();
 
