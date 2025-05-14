@@ -38,6 +38,8 @@ use filter_embedquestion\question_options;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class embed_options_form extends \moodleform {
+
+    #[\Override]
     public function definition() {
         global $PAGE;
 
@@ -67,10 +69,21 @@ class embed_options_form extends \moodleform {
         $mform->disabledIf('questionidnumber', 'categoryidnumber', 'eq', '');
         $PAGE->requires->js_call_amd('filter_embedquestion/questionid_choice_updater', 'init');
 
+        $mform->addElement('text', 'iframedescription', get_string('iframedescription', 'filter_embedquestion'),
+            ['size' => 100]);
+        $mform->setType('iframedescription', PARAM_TEXT);
+        $mform->addRule('iframedescription', get_string('iframedescriptionmaxlengthwarning', 'filter_embedquestion'),
+        'maxlength', 100, 'client');
+        $mform->addRule('iframedescription', get_string('iframedescriptionminlengthwarning', 'filter_embedquestion'),
+        'minlength', 3, 'client');
+        $mform->addHelpButton('iframedescription', 'iframedescription', 'filter_embedquestion');
+
         $mform->addElement('header', 'attemptheader', get_string('attemptoptions', 'filter_embedquestion'));
 
-        $behaviours = ['' => get_string('defaultx', 'filter_embedquestion',
-                \question_engine::get_behaviour_name($defaultoptions->behaviour))] + utils::behaviour_choices();
+        $behaviours = [
+                '' => get_string('defaultx', 'filter_embedquestion',
+                        \question_engine::get_behaviour_name($defaultoptions->behaviour)),
+            ] + utils::behaviour_choices();
         $mform->addElement('select', 'behaviour', get_string('howquestionbehaves', 'filter_embedquestion'),
                 $behaviours);
 
@@ -147,6 +160,7 @@ class embed_options_form extends \moodleform {
         return ['' => get_string('defaultx', 'filter_embedquestion', $options[$default])] + $options;
     }
 
+    #[\Override]
     public function definition_after_data() {
         parent::definition_after_data();
         $mform = $this->_form;
@@ -188,6 +202,7 @@ class embed_options_form extends \moodleform {
         }
     }
 
+    #[\Override]
     public function validation($data, $files) {
         $errors = parent::validation($data, $files);
         $context = $this->_customdata['context'];
@@ -224,6 +239,7 @@ class embed_options_form extends \moodleform {
         return $errors;
     }
 
+    #[\Override]
     public function get_data() {
         $data = parent::get_data();
 

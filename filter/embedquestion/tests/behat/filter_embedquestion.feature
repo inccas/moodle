@@ -30,6 +30,7 @@ Feature: Add an activity and embed a question inside that activity
     And I set the field "Question category" to "Test questions [embed] (1)"
     And I set the field "id_questionidnumber" to "First question"
     And I press "Embed question"
+    And ".filter_embedquestion-iframe[title=\"Embedded question 1\"]" "css_element" should exist
     And I switch to "filter_embedquestion-iframe" iframe
     And I click on "True" "radio" in the "The answer is true." "question"
     And I press "Check"
@@ -55,7 +56,9 @@ Feature: Add an activity and embed a question inside that activity
     When I am on the "Course 1" "filter_embedquestion > test" page logged in as teacher
     And I set the field "Question category" to "Test questions [embed] (4)"
     And I set the field "id_questionidnumber" to "Choose an embeddable question from this category randomly"
+    And I set the field "Iframe description" to "Embed question for behat testing"
     And I press "Embed question"
+    And ".filter_embedquestion-iframe[title=\"Embed question for behat testing\"]" "css_element" should exist
     And I switch to "filter_embedquestion-iframe" iframe
     And I click on "True" "radio" in the "The answer is true." "question"
     And I press "Check"
@@ -65,7 +68,7 @@ Feature: Add an activity and embed a question inside that activity
     And I click on "True" "radio" in the "The answer is true." "question"
 
   @javascript
-  Scenario: Links to and from the question bank
+  Scenario: Editing the embedded question, and saving, returns to where the embedded question is, showing the new version
     Given the following "questions" exist:
       | questioncategory | qtype     | name           | idnumber |
       | Test questions   | truefalse | First question | test1    |
@@ -75,6 +78,49 @@ Feature: Add an activity and embed a question inside that activity
     And I press "Embed question"
     And I switch to "filter_embedquestion-iframe" iframe
     And I follow "Edit question"
-    Then I should see "Editing a True/False question"
+    And I should see "Editing a True/False question"
+    And I set the field "Question text" to "Edited question text."
+    And I press "id_submitbutton"
+    # Because of the way the test page works, we need to re-select the question.
+    Then I should see "Generate the code to embed a question"
+    And I set the field "Question category" to "Test questions [embed] (1)"
+    And I set the field "id_questionidnumber" to "First question"
+    And I press "Embed question"
+    And I switch to "filter_embedquestion-iframe" iframe
+    And I should see "Edited question text."
+
+  @javascript
+  Scenario: Editing the embedded question, and cancelling, returns to where the embedded question is
+    Given the following "questions" exist:
+      | questioncategory | qtype     | name           | idnumber |
+      | Test questions   | truefalse | First question | test1    |
+    When I am on the "Course 1" "filter_embedquestion > test" page logged in as teacher
+    And I set the field "Question category" to "Test questions [embed] (1)"
+    And I set the field "id_questionidnumber" to "First question"
+    And I press "Embed question"
+    And I switch to "filter_embedquestion-iframe" iframe
+    And I follow "Edit question"
+    And I should see "Editing a True/False question"
     And I press "Cancel"
-    And I should see "Generate the code to embed a question"
+    # Because of the way the test page works, we need to re-select the question.
+    Then I should see "Generate the code to embed a question"
+    And I set the field "Question category" to "Test questions [embed] (1)"
+    And I set the field "id_questionidnumber" to "First question"
+    And I press "Embed question"
+    And I switch to "filter_embedquestion-iframe" iframe
+    And I should see "The answer is true."
+
+  @javascript
+  Scenario: Test display of Save button for embedded recordrtc question.
+    Given the qtype_recordrtc plugin is installed
+    When the following "questions" exist:
+      | questioncategory | qtype     | name                | idnumber | template |
+      | Test questions   | recordrtc | Record AV question  | test1    | audio    |
+    And I am on the "Course 1" "filter_embedquestion > test" page logged in as teacher
+    And I expand all fieldsets
+    And I set the field "Question category" to "Test questions [embed] (1)"
+    And I set the field "id_questionidnumber" to "Record AV question"
+    And I set the field "How the question behaves" to "Immediate feedback"
+    And I press "Embed question"
+    And I switch to "filter_embedquestion-iframe" iframe
+    And I should see "Save"

@@ -16,29 +16,32 @@
 
 namespace filter_embedquestion;
 
-defined('MOODLE_INTERNAL') || die();
-
-global $CFG;
-require_once($CFG->dirroot . '/filter/embedquestion/classes/text_filter.php');
-
 /**
- * Unit tests for \filter_embedquestion.
+ * Unit tests for filter_embedquestion.
  *
  * Test the delimiter parsing used by the embedquestion filter.
  *
- * @package    \filter_embedquestion
- * @copyright  2018 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   filter_embedquestion
+ * @copyright 2018 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @covers    \filter_embedquestion
  */
-class filter_test extends \advanced_testcase {
+final class filter_test extends \advanced_testcase {
+
+    public function setUp(): void {
+        parent::setUp();
+        utils::unit_test_reset();
+    }
 
     /**
-     * Data provider for {@link test_filter()}.
+     * Data provider for {@see test_filter()}.
      * @return array the test cases.
      */
-    public function get_cases_for_test_filter(): array {
-        $tokenerror = ['<div class="filter_embedquestion-error">',
-                'This embedded question is incorrectly configured.'];
+    public static function get_cases_for_test_filter(): array {
+        $tokenerror = [
+            '<div class="filter_embedquestion-error">',
+            'This embedded question is incorrectly configured.',
+        ];
 
         $cases = [
             'noembed' => ['Frog', 'Frog'],
@@ -46,35 +49,67 @@ class filter_test extends \advanced_testcase {
             'missingtoken' => ['{Q{cat/q|not-the-right-token}Q}', $tokenerror],
         ];
 
-        $title = get_string('title', 'filter_embedquestion');
+        $title = 'Embedded question 1';
 
         $requiredtoken = token::make_secret_token(new embed_id('cat', 'q'));
-        $expectedurl = new \moodle_url('/filter/embedquestion/showquestion.php', [
-                'catid' => 'cat', 'qid' => 'q', 'contextid' => '1', 'pageurl' => '/', 'pagetitle' => 'System',
-                'behaviour' => 'interactive', 'correctness' => '1', 'marks' => '2', 'markdp' => '2',
-                'feedback' => '1', 'generalfeedback' => '1', 'rightanswer' => '0', 'history' => '0']);
+        $expectedurl = new \moodle_url(
+            '/filter/embedquestion/showquestion.php',
+            [
+                'catid' => 'cat',
+                'qid' => 'q',
+                'contextid' => '1',
+                'pageurl' => '/',
+                'pagetitle' => 'System',
+                'behaviour' => 'interactive',
+                'correctness' => '1',
+                'marks' => '2',
+                'markdp' => '2',
+                'feedback' => '1',
+                'generalfeedback' => '1',
+                'rightanswer' => '0',
+                'history' => '0',
+            ]
+        );
         token::add_iframe_token_to_url($expectedurl);
-        $cases['defaultoptions'] = ['{Q{cat/q|' . $requiredtoken . '}Q}',
-                '<iframe
-    class="filter_embedquestion-iframe" allowfullscreen
+        $cases['defaultoptions'] = [
+            '{Q{cat/q|' . $requiredtoken . '}Q}',
+            '<iframe
+    class="filter_embedquestion-iframe" allowfullscreen loading="lazy"
     title="' . $title . '"
     src="' . $expectedurl . '"
-    id="cat/q"></iframe>'];
+    id="cat/q"></iframe>',
+        ];
 
         $requiredtoken = token::make_secret_token(new embed_id('A/V questions', '|<--- 100%'));
-        $expectedurl = new \moodle_url('/filter/embedquestion/showquestion.php', [
-                'catid' => 'A/V questions', 'qid' => '|<--- 100%', 'contextid' => '1', 'pageurl' => '/', 'pagetitle' => 'System',
-                'behaviour' => 'immediatefeedback', 'correctness' => '1', 'marks' => '10', 'markdp' => '3',
-                'feedback' => '1', 'generalfeedback' => '0', 'rightanswer' => '0', 'history' => '0', 'forcedlanguage' => 'en']);
+        $expectedurl = new \moodle_url(
+            '/filter/embedquestion/showquestion.php',
+            [
+                'catid' => 'A/V questions',
+                'qid' => '|<--- 100%',
+                'contextid' => '1',
+                'pageurl' => '/',
+                'pagetitle' => 'System',
+                'behaviour' => 'immediatefeedback',
+                'correctness' => '1',
+                'marks' => '10',
+                'markdp' => '3',
+                'feedback' => '1',
+                'generalfeedback' => '0',
+                'rightanswer' => '0',
+                'history' => '0',
+                'forcedlanguage' => 'en',
+            ]
+        );
         token::add_iframe_token_to_url($expectedurl);
         $cases['givenoptions'] = ['{Q{A%2FV questions/%7C&lt;--- 100%25|' .
                 'behaviour=immediatefeedback|marks=10|markdp=3|generalfeedback=0|forcedlanguage=en|' .
                 $requiredtoken . '}Q}',
                 '<iframe
-    class="filter_embedquestion-iframe" allowfullscreen
+    class="filter_embedquestion-iframe" allowfullscreen loading="lazy"
     title="' . $title . '"
     src="' . $expectedurl . '"
-    id="AVquestions/---100"></iframe>'];
+    id="AVquestions/---100"></iframe>',
+        ];
 
         return $cases;
     }
@@ -92,7 +127,7 @@ class filter_test extends \advanced_testcase {
         global $PAGE;
 
         $context = \context_course::instance(SITEID);
-        $filter = new \filter_embedquestion($context, []);
+        $filter = new \filter_embedquestion\text_filter($context, []);
         $PAGE->set_url('/');
         $filter->setup($PAGE, $context);
 
@@ -119,7 +154,7 @@ class filter_test extends \advanced_testcase {
 
         $embedid = new embed_id('cat', 'q');
         $context = \context_course::instance(SITEID);
-        $filter = new \filter_embedquestion($context, []);
+        $filter = new \filter_embedquestion\text_filter($context, []);
         $filter->setup($PAGE, $context);
 
         $actualoutput = $filter->filter('{Q{cat/q|' . token::make_secret_token($embedid) . '}Q}');

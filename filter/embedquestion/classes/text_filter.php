@@ -16,13 +16,8 @@
 
 namespace filter_embedquestion;
 
-use filter_embedquestion\embed_id;
-use filter_embedquestion\embed_location;
 use filter_embedquestion\output\embed_iframe;
 use filter_embedquestion\output\error_message;
-use filter_embedquestion\question_options;
-use filter_embedquestion\token;
-use filter_embedquestion\utils;
 
 /**
  * A Moodle text filter to embed questions from the bank in content.
@@ -31,7 +26,7 @@ use filter_embedquestion\utils;
  * @copyright 2018 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class text_filter extends \core_filters\text_filter {
+class text_filter extends \moodle_text_filter {
     /**
      * @var string Closing part of the embed token wrapper.
      */
@@ -56,6 +51,7 @@ class text_filter extends \core_filters\text_filter {
      */
     protected $page;
 
+    #[\Override]
     public function setup($page, $context) {
         $this->page = $page;
     }
@@ -71,7 +67,15 @@ class text_filter extends \core_filters\text_filter {
                 preg_quote(self::STRING_SUFFIX, '~') . '~';
     }
 
-    public function filter($text, array $options = []) {
+    /**
+     * Filter the text, replacing any {Q{...}Q} tokens with the appropriate HTML.
+     *
+     * @param string $text the text to filter.
+     * @param array $options any options for the filter.
+     *
+     * @return string the filtered text.
+     */
+    public function filter($text, array $options = []): string {
         return preg_replace_callback(self::get_filter_regexp(),
                 [$this, 'embed_question_callback'], $text);
     }
@@ -88,7 +92,7 @@ class text_filter extends \core_filters\text_filter {
     }
 
     /**
-     * Process the bit of the intput for embedding one question.
+     * Process the bit of the input for embedding one question.
      *
      * @param string $embedcode the contents of the {Q{...}Q} delimiters.
      *
@@ -113,10 +117,14 @@ class text_filter extends \core_filters\text_filter {
         $options = new question_options();
         $options->set_from_filter_options($params);
 
+        if (!$options->iframedescription) {
+            $options->iframedescription = utils::make_unique_iframe_description();
+        }
+
         $embedlocation = embed_location::make_from_page($this->page);
 
         $showquestionurl = utils::get_show_url($embedid, $embedlocation, $options);
-        return $this->renderer->render(new embed_iframe($showquestionurl));
+        return $this->renderer->render(new embed_iframe($showquestionurl, $options->iframedescription));
     }
 
     /**
@@ -127,7 +135,7 @@ class text_filter extends \core_filters\text_filter {
      *
      * @return string HTML for the error.
      */
-    protected function display_error(string $string, array $a = null): string {
+    protected function display_error(string $string, array|null $a = null): string {
         return $this->renderer->render(new error_message(
                 get_string($string, 'filter_embedquestion', $a)));
     }

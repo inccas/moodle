@@ -14,17 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 namespace filter_embedquestion;
+
+use report_embedquestion;
 
 /**
  * Unit tests for the code for attempting questions.
  *
- * @package    filter_embedquestion
- * @copyright  2019 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   filter_embedquestion
+ * @copyright 2019 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @covers    \filter_embedquestion\attempt
+ * @covers    \filter_embedquestion\attempt_storage
  */
-class attempt_test extends \advanced_testcase {
+final class attempt_test extends \advanced_testcase {
 
     public function test_start_new_attempt_at_question_will_select_an_unused_question(): void {
         global $DB, $USER;
@@ -269,20 +272,65 @@ class attempt_test extends \advanced_testcase {
         $renderer = $PAGE->get_renderer('filter_embedquestion');
         $html = $attempt->render_question($renderer);
 
-        // Verify that the edit question and fill with correct links are present.
-        $expectedregex = '~<div class="info"><h3 class="no">Question <span class="qno">[^<]+</span>' .
-                '</h3><div class="state">Not complete</div><div class="grade">Marked out of 1.00</div>' .
-                '<div class="editquestion"><a href="[^"]+">' .
-                '<i class="icon fa fa-cog fa-fw iconsmall"  title="Edit"[^>]*></i>Edit question</a></div>' .
-                '<div class="filter_embedquestion-fill-link">' .
-                '<button type="submit" name="fillwithcorrect" value="1" class="btn btn-link">' .
-                '<i class="icon fa fa-check fa-fw iconsmall" aria-hidden="true"  ></i>' .
-                '<span>Fill with correct</span></button></div></div>~';
-        if (method_exists($this, 'assertMatchesRegularExpression')) {
-            $this->assertMatchesRegularExpression($expectedregex, $html);
-        } else {
-            $this->assertRegExp($expectedregex, $html);
+        $previousattemptlink = '';
+        if (class_exists(report_embedquestion\attempt_summary_table::class)) {
+            $previousattemptlink = '<div class="link-wrapper-class"><a target="_top" href="[^"]+">' .
+                '<span>Previous attempts</span></a></div>';
         }
+        $icon = '<i class="icon fa fa-pen fa-fw iconsmall"  title="Edit"[^>]*></i>Edit question</a></div>';
+        if (utils::moodle_version_is("<=", "44")) {
+            $icon = '<i class="icon fa fa-cog fa-fw iconsmall"  title="Edit"[^>]*></i>Edit question</a></div>';
+        }
+
+        // Verify that the edit question, question bank link and fill with correct links are present.
+        $expectedregex = '~<div class="info"><h3 class="no">Question <span class="qno">[^<]+</span>' .
+            '</h3><div class="state">Not complete</div><div class="grade">Marked out of 1.00</div>' .
+            '<div class="editquestion"><a href="[^"]+">' .
+            $icon .
+            '(<span class="badge bg-primary text-light">v1 \(latest\)</span>)?' .
+            '<div class="filter_embedquestion-viewquestionbank">' .
+            '<a target="_top" href="[^"]+">' .
+            '<img class="icon iconsmall" alt="" aria-hidden="true" src="[^"]+" />' .
+            'Question bank</a></div>' .
+            '<div class="filter_embedquestion-fill-link">' .
+            '<button type="submit" name="fillwithcorrect" value="1" class="btn btn-link">' .
+            '<i class="icon fa fa-check fa-fw iconsmall" aria-hidden="true"  ></i>' .
+            '<span>Fill with correct</span></button></div></div>~';
+        $this->assertMatchesRegularExpression($expectedregex, $html);
+        // Create an authenticated user.
+        $user = $this->getDataGenerator()->create_user();
+        $this->setUser($user);
+        // Start an attempt in the way that showattempt.php would.
+        [$embedid, $context] = $generator->get_embed_id_and_context($q1);
+        $embedlocation = embed_location::make_for_test($context, $context->get_url(), 'Test embed location');
+        $options = new question_options();
+        $options->behaviour = 'immediatefeedback';
+        $attempt = new attempt($embedid, $embedlocation, $USER, $options);
+        $this->verify_attempt_valid($attempt);
+        $attempt->find_or_create_attempt();
+        $this->verify_attempt_valid($attempt);
+
+        $html = $attempt->render_question($renderer);
+        // Verify that the edit question, question bank link and fill with correct links are not present.
+        $expectedregex = '~<div class="info"><h3 class="no">Question <span class="qno">[^<]+</span>' .
+            '</h3><div class="state">Not complete</div><div class="grade">Marked out of 1.00</div>' .
+            '</div>~';
+        $this->assertMatchesRegularExpression($expectedregex, $html);
+
+        /** @var \core_question_generator $questiongenerator */
+        $questiongenerator = $this->getDataGenerator()->get_plugin_generator('core_question');
+        $attempt->start_new_attempt_at_question();
+        $postdata = $questiongenerator->get_simulated_post_data_for_questions_in_usage($attempt->get_question_usage(),
+            [1 => 'Sample answer'], true);
+        $attempt->process_submitted_actions($postdata);
+
+        // Verify that the Previous attempts link is displayed for the second attempt.
+        $html = $attempt->render_question($renderer);
+        $expectedregex = '~<div class="info"><h3 class="no">Question <span class="qno">[^<]+</span>' .
+            '</h3><div class="state">Not complete</div><div class="grade">Marked out of 1.00</div>' .
+            $previousattemptlink .
+            '</div>~';
+        $this->assertMatchesRegularExpression($expectedregex, $html);
     }
 
     /**
