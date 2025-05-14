@@ -22,52 +22,15 @@ body {
 
 .vorsprung {
   #page-wrapper {
-    
-      .filter_mathjaxloader_equation {
-        .displayequation > .nolink > .MathJax_Display {
-          display: block !important;
-        }
-      }
 
-      .filter_mathjaxloader_equation .displayequation > .nolink > .MathJax_Display {
+    .filter_mathjaxloader_equation {
+      .displayequation > .nolink > .MathJax_Display {
         display: block !important;
       }
-    
-    .danoudummy {
-      .nolink .MathJax {
-        display: block;
-        text-align: center;
-        margin: 1em 0em;
-        position: relative;
-        text-indent: 0;
-        max-width: none;
-        max-height: none;
-        min-width: 0;
-        min-height: 0;
-        width: 100%;
-        font-size: 120%;
-      }
+    }
 
-      .danoudummy .MathJax .math {
-        .mrow .texatom .mrow .mn {
-          /* Chemie Formeln, tiefstellen der Zahlen */
-          font-size: 70%;
-          position: relative;
-          top: 5px;
-        }
-
-       .danoudummy  span:first-of-type span:first-of-type {
-          /* Chemie Formeln, tiefstellen der Zahlen */
-          clip: unset !important;
-        }
-      }
-
-      .danoudummy  a[target="_blank"]:after {
-        content: "⊕" !important;
-        font-size: 100%;
-        top: -6px;
-        position: relative;
-      }
+    .filter_mathjaxloader_equation .displayequation > .nolink > .MathJax_Display {
+      display: block !important;
     }
 
     .section {
@@ -888,7 +851,7 @@ body {
       }
 
       .nolink .MathJax_Display {
-        display: inline !important; 
+        display: inline !important;
       }
     }
   }
