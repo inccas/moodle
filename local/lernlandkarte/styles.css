@@ -48,6 +48,11 @@
     z-index: 10000;
 }
 
+.llkmodal div:first-of-type {
+    cursor: default !important;
+}
+
+
 .llkmodal:hover {
     cursor: pointer;
 }
