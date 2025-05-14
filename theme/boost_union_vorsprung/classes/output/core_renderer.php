@@ -49,9 +49,10 @@ class core_renderer extends \theme_boost_union\output\core_renderer {
         global $COURSE,$USER;
 
         $this->page->add_body_class('vorsprung');
-
+        $mathekurs = false;
         // Let's check every course that is running this theme, weather it has any of our given titles in it.
-        if (stripos($COURSE->fullname,"Mathematik") !== false) {
+
+        if ((stripos($COURSE->fullname,"Mathematik") !== false) || (stripos($COURSE->fullname,"Mathe-ReImport") !== false)) {
             // We found the Mathematics course, so lets add a CSS class to the page
             $this->page->add_body_class('vorsprung-mathe');
             # $CFG->fullnamedisplay = " Mathematik-Mathematik";
