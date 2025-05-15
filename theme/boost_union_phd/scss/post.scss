@@ -1258,3 +1258,55 @@ body.pagelayout-login:not(.loginbackgroundimage) #footnote {
     }
   }
 }
+
+/* Datenschutzerklärung: ein-und ausklappbare Abschnitte */
+/* Accordion wrapper */
+.privacy-policy .c-accordion {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  /*padding-bottom: 1rem;*/
+}
+
+/* Accordion summary styling */
+.privacy-policy .c-accordion__summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.15rem;
+  cursor: pointer;
+  list-style: none; /* Hide native triangle */
+  outline: none;
+}
+
+/* Font Awesome icon */
+.privacy-policy .c-accordion__icon {
+  transition: transform 0.3s ease;
+  margin-left: 1rem;
+}
+
+/* Rotate icon when open */
+.privacy-policy .c-accordion[open] .c-accordion__icon {
+  transform: rotate(180deg);
+}
+
+/* Accordion content area */
+.privacy-policy .c-accordion__content {
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Abschnittsüberschriften und Icons in DAAD-Blau*/
+.privacy-policy .c-accordion__summary {
+  color: #0060af; /* Set text color */
+}
+
+.privacy-policy .c-accordion__icon,
+.privacy-policy h3,
+.privacy-policy h4,
+.privacy-policy h5,
+.privacy-policy h6 {
+  color: #0060af;
+}
+.privacy-policy h3, .privacy-policy h4, .privacy-policy h5 {
+  margin-top: 1.5em;
+}
