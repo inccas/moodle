@@ -30,10 +30,8 @@ body {
         }
       }
       .courseindex-section:has(.dimmed) {
-        background-color: #dd0000;
-        height: 30px;
+        display: none !important;
       }
-    }
     }
   }
   #page-wrapper {
