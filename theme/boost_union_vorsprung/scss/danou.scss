@@ -21,6 +21,12 @@ body {
 }
 
 .vorsprung {
+  &.userrole-student {
+    // Hiding the dimmed menu items for students
+    #courseindex-content .courseindex-section .courseindex-item.dimmed {
+      display: none !important;
+    }
+  }
   #page-wrapper {
 
     .filter_mathjaxloader_equation {
@@ -849,7 +855,7 @@ body {
         margin: 0 40px 0 10px;
         display: block;
       }
-      
+
     }
   }
 }
