@@ -23,8 +23,17 @@ body {
 .vorsprung {
   &.userrole-student {
     // Hiding the dimmed menu items for students
-    #courseindex-content .courseindex-section .courseindex-item.dimmed {
-      display: none !important;
+    #courseindex-content {
+      .courseindex-section {
+        .courseindex-item.dimmed {
+          display: none !important;
+        }
+      }
+      .courseindex-section:has(.dimmed) {
+        background-color: #dd0000;
+        height: 30px;
+      }
+    }
     }
   }
   #page-wrapper {
