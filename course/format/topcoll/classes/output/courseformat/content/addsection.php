@@ -25,6 +25,7 @@
  */
 
 namespace format_topcoll\output\courseformat\content;
+use stdClass;
 
 /**
  * Collapsed Topics
