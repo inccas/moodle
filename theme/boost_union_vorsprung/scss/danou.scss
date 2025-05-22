@@ -83,6 +83,12 @@ body {
       top: 60px;
     }
 
+    /* Bug 40 falscher fettdruck */
+
+    h6.card-title strong {
+       font-weight: 700 !important;
+    }
+
     /* Bug 62: Links vom Kasten unter "Ihre Aufträge" wird mehr Abstand hinzugefügt, damit "Ihre Aufträge" und "Alle Elemente" darunter linksbündig aneinander ausgerichtet sind  */
     .drawers div[role="main"] {
       margin-left: 19px;
