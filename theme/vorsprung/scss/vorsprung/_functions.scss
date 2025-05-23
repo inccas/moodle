@@ -1,0 +1,37 @@
+// stylelint-disable all
+
+@function staticimageurl($relpath: '') {
+  @if str-index($relpath, 'http') == 1 {
+    @error "staticimageurl: Relative path required.";
+  }
+  @if str-index($relpath, '/') == 1 {
+    $relpath: str-slice($relpath, 2);
+  }
+  @return "#{$images-dir}/#{$relpath}?v=#{random(10000000)}";
+}
+
+@function map-collect($maps...) {
+  $collection: ();
+
+  @each $map in $maps {
+    $collection: map-merge($collection, $map);
+  }
+  @return $collection;
+}
+
+@function map-subset($map, $keys) {
+  $collection: ();
+  @each $key in $keys {
+    $value: map-get($map, $key);
+    $collection: map-merge($collection, ($key: $value))
+  }
+  @return $collection;
+}
+
+@function vorsprung-color($key: "primary") {
+  @return map-get($vorsprung-colors, $key);
+}
+
+@function zap-color($key: "gray-fonts") {
+  @return map-get($zap-colors, $key);
+}

@@ -1,0 +1,50 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Main settings for leader boards
+
+    block_stash/local/leaderboard_settings/mainsettings
+}}
+<div class="container-fluid">
+
+    <div class="card mb-5">
+        <div class="card-body">
+            <h4 class="card-title">{{#str}}generalsettings, block_stash{{/str}}</h4>
+            <div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="block-stash-lbsetting custom-control-input" id="cS-leaderboard"
+                        data-courseid="{{courseid}}" {{#lbenabled}}checked="true"{{/lbenabled}}
+                    >
+                    <label class="custom-control-label" for="cS-leaderboard">{{#str}}leaderboard, block_stash{{/str}}</label>
+                </div>
+                <div class="custom-control custom-switch mt-2">
+                    <input type="checkbox" class="block-stash-lbgroups custom-control-input" id="cS-leaderboard-groups"
+                        data-courseid="{{courseid}}" {{#lbgroups}}checked="true"{{/lbgroups}}
+                    >
+                    <label class="custom-control-label" for="cS-leaderboard-groups">{{#str}}leaderboard_groups, block_stash{{/str}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block_stash_lb_cards {{^lbenabled}}invisible{{/lbenabled}}">
+    {{#boards}}
+        {{> block_stash/local/leaderboard_settings/leaderboard_cards}}
+    {{/boards}}
+    </div>
+
+</div>

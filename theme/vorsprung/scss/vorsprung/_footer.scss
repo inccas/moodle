@@ -1,0 +1,54 @@
+// stylelint-disable all
+
+#page-footer {
+  @include text-link($primary);
+  background-color: $footer-bg;
+
+  a {
+    text-decoration: none;
+    &[href='#'] {
+      color: black !important;
+      cursor: default;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .container .item-icons div {
+    display: inline-block;
+    margin-right: 1em;
+
+    &:not([class='logininfo']):not([class='homelink']) {
+      a::after {
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\f05a";
+        margin-left: 0.25rem;
+      }
+    }
+  }
+
+  img {
+    height: 4em;
+  }
+
+  .logininfo {
+    display: block!important;
+  }
+
+  .helplink .icon {
+    display: none;
+  }
+
+  .icon {
+    margin-left: 0;
+  }
+
+  .tool_usertours-resettourcontainer:empty {
+    display: none !important;
+  }
+}

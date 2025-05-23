@@ -1,0 +1,34 @@
+@import url(https://necolas.github.io/normalize.css/8.0.1/normalize.css);
+
+$vorsprung-color-names: ("primary", "secondary", "informatik");
+$zap-color-names: ("red-special");
+
+:root {
+  box-sizing: border-box;
+  @each $name, $color in map-subset($vorsprung-colors, $vorsprung-color-names) {
+    --tools-#{$name}: #{$color};
+  }
+  @each $name, $color in map-subset($zap-colors, $zap-color-names) {
+    --tools-#{$name}: #{$color};
+  }
+  --tools-media-bg-color: #{$media-bg-color};
+  --tools-media-border-color: #{$media-border-color};
+  --tools-font-sans: #{$font-family-sans-serif};
+  --tools-font-mono: #{$font-family-monospace};
+  font-family: var(--tools-font-sans);
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  color: var(--tools-primary);
+}
+
+
+#wrapper {
+  background-color: var(--tools-media-bg-color);
+  border: solid var(--tools-media-border-color) 4px;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
