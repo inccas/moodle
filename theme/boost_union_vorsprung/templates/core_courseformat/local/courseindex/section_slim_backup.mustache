@@ -1,0 +1,101 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template core_courseformat/local/courseindex/section
+
+    Displays a course index section entry.
+
+    Example context (json):
+    {
+        "title": "General",
+        "id": 23,
+        "uniqid": "0",
+        "number": 1,
+        "sectionurl": "#",
+        "indexcollapsed": 0,
+        "component": null,
+        "current": 1,
+        "visible": 1,
+        "hasrestrictions": 0,
+        "cms": [
+            {
+                "id": 10,
+                "name": "Glossary of characters",
+                "url": "#",
+                "visible": 1,
+                "isactive": 0
+            },
+            {
+                "id": 11,
+                "name": "World Cinema forum",
+                "url": "#",
+                "visible": 1,
+                "isactive": 0
+            },
+            {
+                "id": 12,
+                "name": "Announcements",
+                "url": "#",
+                "visible": 0,
+                "isactive": 1
+            }
+        ]
+    }
+}}
+<div
+    class="courseindex-section pageitem {{#current}}current {{/current}}{{#isactive}}pageitem {{/isactive}}{{#component}}delegated-section {{/component}}"
+    id="course-index-section-{{id}}"
+    data-for="section"
+    data-id="{{id}}"
+    data-number="{{number}}"
+    role="treeitem"
+    aria-owns="courseindexcollapse{{number}}"
+>
+
+    <div class="courseindex-item d-flex
+            {{^visible}}dimmed{{/visible}}
+            {{#hasrestrictions}}restrictions{{/hasrestrictions}}
+            courseindex-section-title"
+        id="courseindexsection{{number}}"
+        data-for="section_item"
+    >
+        <span class="folder-left">
+            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"></i>
+        </span>
+        <a href="{{{sectionurl}}}"
+            class="courseindex-link text-truncate"
+            data-action="togglecourseindexsection"
+            data-for="section_title"
+            tabindex="-1"
+        >
+            {{{title}}}
+        </a>
+        <span class="current-badge badge bg-primary text-white ms-2 px-2 rounded-pill">
+            {{highlighted}}
+        </span>
+        <span class="spacer"></span>
+        <span class="courseindex-locked ms-1" data-for="cm_name">
+            {{#pix}} t/locked, core {{/pix}}
+        </span>
+    </div>
+
+</div>
+{{#js}}
+require(['core_courseformat/local/courseindex/section'], function(component) {
+    component.init('course-index-section-{{id}}');
+});
+{{/js}}

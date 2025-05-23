@@ -217,15 +217,6 @@ final class stateactions_test extends \advanced_testcase {
         // Create and enrol user using given role.
         $this->set_test_user_by_role($course, $role);
 
-        // Some formats, like social, can create some initial activity.
-        $modninfo = course_modinfo::instance($course);
-        $cms = $modninfo->get_cms();
-        $count = 0;
-        foreach ($cms as $cm) {
-            $references["initialcm{$count}"] = $cm->id;
-            $count++;
-        }
-
         // Add some activities to the course. One visible and one hidden in both sections 1 and 2.
         $references["cm0"] = $this->create_activity($course->id, 'assign', 1, true);
         $references["cm1"] = $this->create_activity($course->id, 'book', 1, false);
@@ -280,7 +271,6 @@ final class stateactions_test extends \advanced_testcase {
             static::course_state_provider('weeks'),
             static::course_state_provider('topics'),
             static::course_state_provider('social'),
-            static::course_state_provider('singleactivity'),
             static::section_state_provider('weeks', 'admin'),
             static::section_state_provider('weeks', 'editingteacher'),
             static::section_state_provider('weeks', 'student'),
@@ -290,9 +280,6 @@ final class stateactions_test extends \advanced_testcase {
             static::section_state_provider('social', 'admin'),
             static::section_state_provider('social', 'editingteacher'),
             static::section_state_provider('social', 'student'),
-            static::section_state_provider('singleactivity', 'admin'),
-            static::section_state_provider('singleactivity', 'editingteacher'),
-            static::section_state_provider('singleactivity', 'student'),
             static::cm_state_provider('weeks', 'admin'),
             static::cm_state_provider('weeks', 'editingteacher'),
             static::cm_state_provider('weeks', 'student'),
@@ -302,9 +289,6 @@ final class stateactions_test extends \advanced_testcase {
             static::cm_state_provider('social', 'admin'),
             static::cm_state_provider('social', 'editingteacher'),
             static::cm_state_provider('social', 'student'),
-            static::cm_state_provider('singleactivity', 'admin'),
-            static::cm_state_provider('singleactivity', 'editingteacher'),
-            static::cm_state_provider('singleactivity', 'student'),
         );
     }
 
@@ -315,15 +299,7 @@ final class stateactions_test extends \advanced_testcase {
      * @return array the testing scenarios
      */
     public static function course_state_provider(string $format): array {
-        $expectedexception = ($format === 'singleactivity');
-
-        $cms = ['cm0', 'cm1', 'cm2', 'cm3'];
-        $studentcms = ['cm0'];
-        if ($format === 'social') {
-            $cms = ['initialcm0', 'cm0', 'cm1', 'cm2', 'cm3'];
-            $studentcms = ['initialcm0', 'cm0'];
-        }
-
+        $expectedexception = ($format === 'social');
         return [
             // Tests for course_state.
             "admin $format course_state" => [
@@ -336,7 +312,7 @@ final class stateactions_test extends \advanced_testcase {
                 'expectedresults' => [
                     'course' => ['course'],
                     'section' => ['section0', 'section1', 'section2', 'section3'],
-                    'cm' => $cms,
+                    'cm' => ['cm0', 'cm1', 'cm2', 'cm3'],
                 ],
                 'expectedexception' => $expectedexception,
             ],
@@ -350,7 +326,7 @@ final class stateactions_test extends \advanced_testcase {
                 'expectedresults' => [
                     'course' => ['course'],
                     'section' => ['section0', 'section1', 'section2', 'section3'],
-                    'cm' => $cms,
+                    'cm' => ['cm0', 'cm1', 'cm2', 'cm3'],
                 ],
                 'expectedexception' => $expectedexception,
             ],
@@ -364,7 +340,7 @@ final class stateactions_test extends \advanced_testcase {
                 'expectedresults' => [
                     'course' => ['course'],
                     'section' => ['section0', 'section1', 'section3'],
-                    'cm' => $studentcms,
+                    'cm' => ['cm0'],
                 ],
                 'expectedexception' => $expectedexception,
             ],
@@ -381,7 +357,7 @@ final class stateactions_test extends \advanced_testcase {
     public static function section_state_provider(string $format, string $role): array {
         // Social format will raise an exception and debug messages because it does not
         // use sections and it does not provide a renderer.
-        $expectedexception = ($format === 'singleactivity');
+        $expectedexception = ($format === 'social');
 
         // All sections and cms that the user can access to.
         $usersections = ['section0', 'section1', 'section2', 'section3'];
@@ -389,9 +365,6 @@ final class stateactions_test extends \advanced_testcase {
         if ($role == 'student') {
             $usersections = ['section0', 'section1', 'section3'];
             $usercms = ['cm0'];
-        }
-        if ($format === 'social') {
-            $usercms = ['initialcm0', ...$usercms];
         }
 
         return [
@@ -415,7 +388,7 @@ final class stateactions_test extends \advanced_testcase {
                 'expectedresults' => [
                     'course' => [],
                     'section' => array_intersect(['section0'], $usersections),
-                    'cm' => ($format == 'social') ? ['initialcm0'] : [],
+                    'cm' => [],
                 ],
                 'expectedexception' => $expectedexception,
             ],
@@ -517,9 +490,6 @@ final class stateactions_test extends \advanced_testcase {
             $usersections = ['section0', 'section1', 'section3'];
             $usercms = ['cm0'];
         }
-        if ($format === 'social') {
-            $usercms = ['initialcm0', ...$usercms];
-        }
 
         return [
             "$role $format cm_state no cms" => [
@@ -586,7 +556,7 @@ final class stateactions_test extends \advanced_testcase {
                     'section' => array_intersect(['section1', 'section2'], $usersections),
                     'cm' => array_intersect(['cm0'], $usercms),
                 ],
-                'expectedexception' => ($format === 'singleactivity'),
+                'expectedexception' => ($format === 'social'),
             ],
             "$role $format cm_state using targetcm" => [
                 'format' => $format,
@@ -1433,6 +1403,8 @@ final class stateactions_test extends \advanced_testcase {
         $this->resetAfterTest();
         $course = $this->create_course('topics', 4, []);
 
+        $manager = \core_plugin_manager::resolve_plugininfo_class('mod');
+        $manager::enable_plugin('subsection', 1);
         $subsection1 = $this->getDataGenerator()->create_module(
             'subsection', ['course' => $course, 'section' => 1, 'name' => 'subsection1']
         );
@@ -1619,6 +1591,9 @@ final class stateactions_test extends \advanced_testcase {
         $this->resetAfterTest();
         $this->setAdminUser();
 
+        $manager = \core_plugin_manager::resolve_plugininfo_class('mod');
+        $manager::enable_plugin('subsection', 1);
+
         $course = $this->getDataGenerator()->create_course();
         $subsection = $this->getDataGenerator()->create_module('subsection', ['course' => $course]);
         $otheractvity = $this->getDataGenerator()->create_module('forum', ['course' => $course]);
@@ -1697,6 +1672,9 @@ final class stateactions_test extends \advanced_testcase {
     public function test_filter_cms_with_section_delegate(): void {
         $this->resetAfterTest();
         $this->setAdminUser();
+
+        $manager = \core_plugin_manager::resolve_plugininfo_class('mod');
+        $manager::enable_plugin('subsection', 1);
 
         $course = $this->getDataGenerator()->create_course();
         $subsection = $this->getDataGenerator()->create_module('subsection', ['course' => $course]);

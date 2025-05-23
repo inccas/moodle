@@ -1,0 +1,18 @@
+.description-content-vorsprung {
+  padding-top: 0.1em;
+
+  .collapse {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@each $name, $color in $course-colors {
+  .path-calendar .maincalendar .calendarmonth ul li > a[title^="LE"][title$="#{$name}" i] {
+    color: map-get($vorsprung-colors, '#{$name}-text');
+    background-color: map-get($vorsprung-colors, '#{$name}-light');
+    span.calendar-circle {
+      display: none;
+    }
+  }
+}

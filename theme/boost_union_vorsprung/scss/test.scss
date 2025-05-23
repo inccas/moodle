@@ -1,0 +1,219 @@
+$color_1: #fff;
+$color_2: var(--color-main);
+$color_3: #333;
+$background-color_1: #FFFFFF;
+$background-color_2: red;
+$background-color_3: var(--color-main);
+$background-color_4: #000000;
+$background-color_5: var(--color-light);
+$background-color_6: #fff;
+$background-color_7: transparent;
+$border-color_1: var(--color-light);
+$border-top-color_1: var(--color-light);
+
+/*boost_vorsprung theme item selected in left hand menu*/
+&:root {
+    --tiles-base-color: var(--color-main);
+}
+.format-tiles {
+    .course-content {
+        ul.tiles {
+            .tile {
+                background-color: $background-color_1;
+                border: 1px solid #adb5bd;
+                border-radius: 0;
+                flex-basis: 260px;
+                max-width: 260px;
+                max-height: 175px;
+                background-color: $background-color_3 !important;
+                border: solid var(--color-main) 1px !important;
+                &:focus {
+                    outline: none;
+                }
+                .availabilityinfo {
+                    position: absolute;
+                }
+                .photo-tile-image {
+                    height: 105px;
+                    background-color: $background-color_6;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+                .photo-tile-text-wrapper {
+                    display: flex;
+                    align-items: center;
+                    height: 68px;
+                }
+                .photo-tile-text {
+                    position: inherit;
+                    h3 {
+                        display: block;
+                        position: relative;
+                        text-align: left;
+                        align-items: center;
+                        padding: 4px 10px;
+                        margin: 0;
+                        font-size: 1.2em;
+                        line-height: 20px;
+                        color: $color_1;
+                        background-color: $background-color_7;
+                    }
+                }
+            }
+            .tile_bar {
+                background-color: $background-color_1;
+                border: 1px solid #adb5bd;
+                border-radius: 0;
+            }
+        }
+        .single-section {
+            .navigation-arrows {
+                .navigation-arrow {
+                    &:hover {
+                        background-color: $background-color_5;
+                    }
+                }
+            }
+        }
+    }
+    ul.tiles {
+        .tile-clickable {
+            &:hover {
+                border: 1px solid #adb5bd !important;
+                border-radius: 0 !important;
+            }
+        }
+        .tile_bar.clickable {
+            &:hover {
+                border: 1px solid #adb5bd !important;
+                border-radius: 0 !important;
+            }
+        }
+        .tile-clickable.current {
+            &:hover {
+                border: 1px solid #adb5bd !important;
+                border-radius: 0 !important;
+            }
+        }
+        .tile.selected {
+            border-top-color: $border-top-color_1;
+        }
+        .current {
+            .sectiontitle {
+                &::after {
+                    background-color: $background-color_2;
+                }
+            }
+        }
+        .headerabovetiles {
+            button.selected {
+                background-color: $background-color_3;
+            }
+            button {
+                &:hover {
+                    border-color: $border-color_1;
+                }
+            }
+        }
+    }
+    ul.tiles#multi_section_tiles {
+        justify-content: center;
+    }
+    .tile {
+        a {
+            padding: 0;
+        }
+    }
+    .embed_cm_modal {
+        .modal-header {
+            background-color: $background-color_3;
+            background-color: $background-color_3;
+            color: $color_1;
+            h5 {
+                color: $color_1;
+            }
+            h4 {
+                color: $color_1;
+            }
+            .close {
+                color: $color_1;
+                opacity: 0.8;
+            }
+        }
+        .embed_file_button {
+            &:hover {
+                background-color: $background-color_5;
+            }
+        }
+    }
+    .nav-pills {
+        .nav-link.active {
+            background-color: $background-color_3;
+            color: $color_1;
+        }
+    }
+    a.nav-link {
+        color: $color_2;
+    }
+    .sectiontitle {
+        &::after {
+            background-color: $background-color_4;
+        }
+    }
+    .badge-info {
+        background-color: $background-color_4;
+    }
+    .filterbutton {
+        &:hover {
+            background-color: $background-color_5;
+            transition: all 0.1s ease-in-out;
+        }
+    }
+    .filterbutton.selected {
+        background-color: $background-color_5;
+    }
+    #buttonhidesec0 {
+        &:hover {
+            background-color: $background-color_5;
+        }
+    }
+    .progress-indic {
+        font-size: 75%;
+        float: right;
+        color: $color_1;
+        background-color: $background-color_3;
+        padding: 0 5px;
+    }
+    .availabilityinfo {
+        .badge {
+            display: inherit;
+            border-radius: 0;
+            font-weight: normal;
+        }
+    }
+}
+.headerabovetiles {
+    button {
+        &:active {
+            background-color: $background-color_3;
+        }
+        &:focus {
+            background-color: $background-color_3;
+        }
+    }
+}
+.nav-pills {
+    .show {
+        >.nav-link {
+            background-color: $background-color_3;
+            color: $color_1;
+        }
+    }
+}
+.sectionbutton {
+    &:hover {
+        background-color: $background-color_5;
+        transition: all 0.1s ease-in-out;
+    }
+}

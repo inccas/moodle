@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Zahlensysteme</title>
+	<style>
+		@import url('https://moodle.daad.de/theme/boost_union_vorsprung/scss/tools.css');
+
+
+		#wrapper {
+			background-color: var(--tools-media-bg-color);
+			border: solid var(--tools-media-border-color) 4px;
+			border-radius: 20px;
+			padding: 10px 20px;
+			max-width: 420px;
+		}
+
+		.biginput {
+			border-radius: 5px;
+			text-align: center;
+			background: var(--tools-media-bg-color);
+			border: 2px solid var(--tools-media-border-color);
+			font-size: 1.5rem;
+			margin: inherit;
+
+		}
+
+		.biginput:focus {
+			outline: none;
+			border-color: var(--tools-red-special);
+		}
+
+		.flex-container {
+			display: flex;
+			flex-flow: row wrap;
+			align-items: center;
+			justify-content: center;
+			font-size: 1rem;
+			margin: 0.5rem;
+		}
+
+		.rest {
+			font-family: var(--tools-font-mono);
+			background: var(--tools-secondary);
+			display: inline-block;
+			text-align: center;
+			width: 1.5rem;
+			height: 2rem;
+			font-weight: 500;
+			border-radius: 5px;
+		}
+
+		#number {
+			width: 7rem;
+		}
+
+
+		#radix {
+			width: 3rem;
+		}
+
+		#output {
+			font-family: var(--tools-font-mono);
+			font-size: 1.4rem;
+			font-weight: 500;
+			border-color: transparent;
+			border-radius: 5px;
+			text-align: center;
+			background: var(--tools-secondary);
+			margin: inherit;
+			padding: 0.2rem 0.5rem;
+		}
+
+		#explain {
+			font-size: 1.2rem;
+			position: relative;
+			border-color: transparent;
+			text-align: right;
+			background: transparent;
+			padding: 0.2rem;
+			margin: inherit;
+			line-height: 2.2rem;
+			max-width: 30rem;
+		}
+	</style>
+	<!--
+	<link href="style.css" rel="stylesheet" type="text/css" />
+    -->
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<h1> Zahlensysteme </h1>
+		</header>
+		<div class="flex-container">
+			Die Zahl
+			<input type="number" title="Das ist eine Zahl im Dezimalsystem" id="number" class="biginput"
+				onTouch="select()" onKeyDown="if(this.value.length==6 && event.keyCode!=8) return false;" value="10">
+			zur Basis
+			<input type="number" title="Basis zu der wir die Zahl umwandeln wollen" class="biginput" min=2 max=16
+				onKeyDown="if(this.value.length==2 && event.keyCode!=8) return false;" id="radix" value="2">
+			schreibt man
+			<div id="output"></div>,
+			denn
+			<div id="explain" title="eine Summe von Potenzen der Basis" onclick="toggle_powers()">
+			</div>
+		</div>
+	</div>
+
+	<script>
+		"use strict";
+
+		const [number, radix, output, explain] = ["number", "radix", "output", "explain"].map((id) =>
+			document.getElementById(id)
+		);
+
+		let calc_powers = false;
+		let callout_on = true;
+
+		const toggle_powers = () => {
+			calc_powers = !calc_powers;
+			callout_on = false;
+			update();
+		};
+
+		number.addEventListener("click", () => {
+			number.select();
+		});
+
+		radix.addEventListener("click", () => {
+			radix.select();
+		});
+
+		number.addEventListener("input", () => {
+			if (number.value == 0) number.value = 1;
+			update();
+		});
+
+		radix.addEventListener("input", () => {
+			if (radix.value < 2) radix.value = 2;
+			if (radix.value > 16) radix.value = 16;
+			update();
+		});
+
+		const nary = (i, radix) => {
+			if (i === 0) return "0";
+			const symbols = "0123456789ABCDEF".split("");
+			const nums = [];
+			while (i) {
+				const r = i % radix;
+				i = Math.floor(i / radix);
+				nums.push(symbols[r]);
+			}
+			return nums.reverse().join("");
+		};
+
+		const convert_nary = (i, radix) => {
+			const symbols = "0123456789ABCDEF".split("");
+			let out = "";
+			while (i) {
+				const r = i % radix;
+				const i_new = Math.floor(i / radix);
+				out += `${i} : ${radix} = ${i_new}, Rest <span class="rest"> ${symbols[r]} </span> <br>`;
+				i = i_new;
+			}
+			return out;
+		};
+
+		const update = function () {
+			const i = Number(number.value);
+			const r = Number(radix.value);
+			output.innerHTML = nary(i, r);
+			explain.innerHTML = convert_nary(i, r);
+		};
+
+		update();
+
+	</script>
+</body>
+
+</html>

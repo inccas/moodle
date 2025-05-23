@@ -14,28 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace mod_feedback;
+namespace mod_bigbluebuttonbn\task;
 
-use stdClass;
+use advanced_testcase;
 
 /**
- * Class manager for feedback
+ * Class containing the scheduled task for lti module.
  *
- * @package    mod_feedback
- * @copyright  2024 Mikel Martín <mikel@moodle.com>
+ * @package   mod_bigbluebuttonbn
+ * @copyright 2019 onwards, Blindside Networks Inc
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @covers \mod_bigbluebuttonbn\task\send_notification
+ * @coversDefaultClass \mod_bigbluebuttonbn\task\send_notification
  */
-class manager {
-
+final class send_notification_test extends advanced_testcase {
     /**
-     * Get the template record from the template id
+     * Test that the debug message is correctly output.
      *
-     * @param int $templateid
-     * @return stdClass
      */
-    public static function get_template_record(int $templateid): stdClass {
-        global $DB;
-
-        return $DB->get_record('feedback_template', ['id' => $templateid], '*', MUST_EXIST);
+    public function test_generate_message(): void {
+        $this->resetAfterTest();
+        $task = new send_notification();
+        $message = $task->generate_message();
+        $this->assertEquals("Attempted to run deprecated implementation of send_notification task.", $message);
     }
 }

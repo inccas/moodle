@@ -1,0 +1,42 @@
+/* stylelint-disable all */
+
+/* VORsprung Bug 93: gestrichelte Linie der Kästen in H5P-Aufgaben, die erscheint, wenn man über die Kästen hovered. Dieser Code funktioniert in der Konsole der Entwicklertools, hat aber keinen Effekt, wenn man ihn hier hinzufügt */
+.h5p-multi-media-choice .h5p-multi-media-choice-enabled:hover:not(.h5p-multi-media-choice-selected),
+.h5p-multi-media-choice-option.h5p-multi-media-choice-enabled.h5p-multi-media-choice-selected {
+    border-color: #e2b847; /* Vorsprung-Gelb */
+}
+
+/* VORsprung Bug 93 (Noch nicht getestet, da Code nicht erfasst bzw anscheinend überschrieben wird ): Farbe der Buttons Nach oben Nach unten in H5P-Aufgaben an die Vorsprung-Farben anpassen */
+/* Der Pfeil inaktiver und aktiver Buttons soll im Normalzustand Vorsprung-Türkis sein*/
+.h5p-sort-paragraphs button.h5p-sort-paragraphs-button.h5p-sort-paragraphs-disabled,
+.h5p-sort-paragraphs button.h5p-sort-paragraphs-button.h5p-sort-paragraphs-paragraph-button-down,
+.h5p-sort-paragraphs button.h5p-sort-paragraphs-button.h5p-sort-paragraphs-paragraph-button-up {
+    color: #00a0a2;
+}
+
+/* Bug 93 Buttons Vorschlag Danou */
+.h5p-joubelui-button:hover, .h5p-joubelui-button:focus {
+    background: #e2b847;  /* Vorsprung-Gelb */
+
+}
+
+/* Bug 93 ebenda */
+.h5p-multi-media-choice .h5p-multi-media-choice-selected {
+    border-color:  #00a0a2;
+}
+
+
+/* VORsprung 93: H5P-Button-Farbe an Vorsprung-Farben anpassen*/
+.h5p-iframe-wrapper .h5p-joubelui-button,
+.h5peditor .ui-dialog .h5p-joubelui-button, .h5peditor .h5p-joubelui-button, .h5p-joubelui-button{
+    background: #00a0a2; /* Vorsprung-türkis */
+}
+
+/* VORsprung 93: H5P-Schriftfarbe in antrazith */
+.h5p-question-feedback-content, .h5p-question-feedback-content-text, .h5p-confirmation-dialog-header-text {
+    color: #333333 !important;
+}
+
+.h5p-multi-media-choice .h5p-multi-media-choice-list-item:focus .h5p-multi-media-choice-enabled {
+    box-shadow: 0 0 4px 2px #e2b847 !important;
+}

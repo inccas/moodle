@@ -1,0 +1,183 @@
+<!-- 2014 by Bootstrapaholic.de -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kontaktformular</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/starter-template.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <img class="logo" src="img/dhoch3.png">
+    <div class="starter-template">
+        <div class="row">
+            <div id="message"></div>
+
+            <!-- Formular Beginn -->
+
+            <form role="form" id="frmContact">
+                <div class="col-md-6">
+                    <div class="form-group" id="frmGrpVorname">
+                        <label for="vorname" class="control-label">Vorname</label>
+                        <input type="text" id="vorname" class="form-control" placeholder="Ihr Vorname">
+                    </div>
+                    <div class="form-group" id="frmGrpNachname">
+                        <label for="nachname" class="control-label">Nachname</label>
+                        <input type="text" id="nachname" class="form-control" placeholder="Ihr Nachname">
+                    </div>
+                    <div class="form-group" id="frmGrpEmail">
+                        <label for="email" class="control-label">E-Mail Adresse</label>
+                        <input type="text" id="email" class="form-control"  placeholder="Ihre E-Mail Adresse">
+                    </div>
+					
+					 <div class="form-group" id="frmGrpModule">
+                        <label for="module" class="control-label">Module</label>
+                        <input type="text" id="module" class="form-control" placeholder="Die Module">
+                    </div>
+					
+                </div>
+				
+                <div class="col-md-6">
+                    <div class="form-group" id="frmGrpHochschule">
+                        <label for="hochschule" class="control-label">Hochschule</label>
+                        <input type="text" id="hochschule" placeholder="Ihre Hochschule" class="form-control">
+                    </div>
+                    <div class="form-group" id="frmGrpStadt">
+                        <label for="stadt" class="control-label">Stadt</label>
+                        <input type="text" id="stadt" placeholder="Ihre Stadt" class="form-control">
+                    </div>
+                    <div class="form-group" id="frmGrpLand">
+                        <label for="land" class="control-label">Land</label>
+                        <input type="text" id="land" placeholder="Ihr Land" class="form-control">
+                    </div>
+					
+                </div>
+                <div class="col-md-4 captchacode">
+                    <div class="form-group" id="frmGrpCaptcha">
+                        <label for="captcha" class="control-label">Sicherheitsfrage: Wie viel ist "2 + Drei"?</label>
+                        <input type="text" id="captcha" class="form-control" placeholder="Ergebnis der o.g. Rechenaufgabe">
+                    </div>
+
+                    <div class="form-group text-center">
+					    <label>Sie erhalten Ihre Anmeldedaten an Werktagen innerhalb von 48 Stunden</label>
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-lg btn-block">Absenden</button>
+                    </div>
+					 
+                </div>
+            </form>
+
+            <!-- Formular Ende -->
+
+        </div>
+    </div>
+
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    $( '#frmContact').submit( function() {
+        var formControl = true;
+
+        $( '#frmGrpVorname' ).removeClass( 'has-error' );
+        $( '#frmGrpNachname' ).removeClass( 'has-error' );
+        $( '#frmGrpEmail' ).removeClass( 'has-error' );
+		$( '#frmGrpModule' ).removeClass( 'has-error' );
+        $( '#frmGrpHochschule' ).removeClass( 'has-error' );
+        $( '#frmGrpStadt' ).removeClass( 'has-error' );
+        $( '#frmGrpLand' ).removeClass( 'has-error' );
+        $( '#frmGrpCaptcha' ).removeClass( 'has-error' );
+
+
+        var vorname = $( '#vorname' );
+        var nachname = $( '#nachname' );
+        var email = $( '#email' );
+		var module = $( '#module' );
+        var hochschule = $( '#hochschule' );
+        var stadt = $( '#stadt' );
+        var land = $( '#land' );
+        var captcha = $( '#captcha' );
+
+        if(vorname.val() == '') {
+            formControl = false;
+            $( '#frmGrpVorname' ).addClass( 'has-error' );
+        }
+
+        if(nachname.val() == '') {
+            formControl = false;
+            $( '#frmGrpNachname' ).addClass( 'has-error' );
+        }
+
+        if(hochschule.val() == '') {
+            formControl = false;
+            $( '#frmGrpHochschule' ).addClass( 'has-error' );
+        }
+
+        if(stadt.val() == '') {
+            formControl = false;
+            $( '#frmGrpStadt' ).addClass( 'has-error' );
+        }
+
+        if(land.val() == '') {
+            formControl = false;
+            $( '#frmGrpLand' ).addClass( 'has-error' );
+        }
+
+        if(validateEmail(email.val()) == false) {
+            formControl = false;
+            $( '#frmGrpEmail' ).addClass( 'has-error' );
+        }
+		
+		 if(module.val() == '') {
+            formControl = false;
+            $( '#frmGrpModule' ).addClass( 'has-error' );
+        }
+
+        if(captcha.val() != '5') {
+            formControl = false;
+            $( '#frmGrpCaptcha' ).addClass( 'has-error' );
+        }
+
+        if(formControl) {
+            $.ajax({
+                type: "POST",
+                url: "php/senden.php",
+                data: { vorname:vorname.val(),
+                        nachname:nachname.val(),
+                        email:email.val(),
+						module:module.val(),
+                        hochschule:hochschule.val(),
+                        stadt:stadt.val(),
+                        land:land.val()        
+                }
+
+            }).done(function(msg) {
+                $( '#message' ).addClass( 'alert' );
+                $( '#message' ).addClass( 'alert-success' );
+                $( '#message').html( msg );
+            });
+        }
+
+        return false;
+    } );
+</script>
+</body>
+</html>

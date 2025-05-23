@@ -15,23 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Upgrade script for tool_recyclebin.
+ * Upgrade code for the chat activity
  *
- * @package   tool_recyclebin
- * @copyright The Open University
+ * @package   mod_chat
+ * @copyright 2006 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-/**
- * Upgrade the plugin.
- *
- * @param int $oldversion
- * @return bool always true
- */
-function xmldb_tool_recyclebin_upgrade($oldversion) {
-    global $DB;
-
-    $dbman = $DB->get_manager();
+function xmldb_chat_upgrade($oldversion) {
+    // Automatically generated Moodle v4.1.0 release upgrade line.
+    // Put any upgrade step following this.
 
     // Automatically generated Moodle v4.2.0 release upgrade line.
     // Put any upgrade step following this.
@@ -44,19 +37,6 @@ function xmldb_tool_recyclebin_upgrade($oldversion) {
 
     // Automatically generated Moodle v4.5.0 release upgrade line.
     // Put any upgrade step following this.
-
-    if ($oldversion < 2024111500) {
-
-        // Changing precision of field fullname on table tool_recyclebin_category to (255).
-        $table = new xmldb_table('tool_recyclebin_category');
-        $field = new xmldb_field('fullname', XMLDB_TYPE_CHAR, '1333', null, XMLDB_NOTNULL, null, null, 'shortname');
-
-        // Launch change of precision for field fullname.
-        $dbman->change_field_precision($table, $field);
-
-        // Recyclebin savepoint reached.
-        upgrade_plugin_savepoint(true, 2024111500, 'tool', 'recyclebin');
-    }
 
     return true;
 }

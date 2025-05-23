@@ -1,50 +1,20 @@
 # core_reportbuilder (subsystem) Upgrade notes
 
-## 5.0dev
+## 4.5.1+
 
 ### Added
 
-- New `get_deprecated_tables` method in base entity, to be overridden when an entity no longer uses a table (due to column/filter re-factoring, etc) in order to avoid breaking third-party reports
-
-  For more information see [MDL-78118](https://tracker.moodle.org/browse/MDL-78118)
-- The base aggregation class has a new `column_groupby` method, to be implemented in aggregation types to determime whether report tables should group by the fields of the aggregated column
-
-  For more information see [MDL-83361](https://tracker.moodle.org/browse/MDL-83361)
-- There is a new `date` aggregation type, that can be applied in custom and system reports
-
-  For more information see [MDL-83361](https://tracker.moodle.org/browse/MDL-83361)
 - The `core_reportbuilder_testcase` class has been moved to new autoloaded `core_reportbuilder\tests\core_reportbuilder_testcase` location, affected tests no longer have to manually require `/reportbuilder/tests/helpers.php`
 
   For more information see [MDL-84000](https://tracker.moodle.org/browse/MDL-84000)
+
+## 4.5.1
 
 ### Changed
 
 - The `get_active_conditions` method of the base report class has a new `$checkavailable` parameter to determine whether to check the returned conditions availability
 
   For more information see [MDL-82809](https://tracker.moodle.org/browse/MDL-82809)
-- Report table instances no longer populate the `countsql` and `countparams` class properties. Instead calling code can access `totalrows` to obtain the same value, rather than manually counting via the prior properties
-
-  For more information see [MDL-83718](https://tracker.moodle.org/browse/MDL-83718)
-
-### Removed
-
-- The following deprecated report entity elements have been removed:
-
-  - `comment:context`
-  - `comment:contexturl`
-  - `enrolment:method` (plus enrolment formatter `enrolment_name` method)
-  - 'enrolment:role`
-  - `file:context`
-  - `file:contexturl`
-  - `instance:context` (tag)
-  - `instance:contexturl` (tag)
-
-  Use of the `context` table is also deprecated in the `file` and `instance` (tag) entities
-
-  For more information see [MDL-78118](https://tracker.moodle.org/browse/MDL-78118)
-- Final removal of support for `get_default_table_aliases` method. Entities must now implement `get_default_tables`, which is now abstract, to define the tables they use
-
-  For more information see [MDL-80430](https://tracker.moodle.org/browse/MDL-80430)
 
 ## 4.5
 

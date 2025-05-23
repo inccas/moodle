@@ -1,0 +1,29 @@
+.path-report-overviewstats .chartinfo,
+.path-admin-report-overviewstats .chartinfo
+{
+    margin-bottom:1em;
+}
+
+.path-report-overviewstats .chart-image,
+.path-admin-report-overviewstats .chart-image {
+    width: 100% !important;
+}
+
+.path-report-overviewstats ul.chartslist,
+.path-admin-report-overviewstats ul.chartslist {
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+}
+.path-report-overviewstats .chartslist li,
+.path-admin-report-overviewstats .chartslist li{
+    list-style: none;
+    background: #0f6cbf;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.path-report-overviewstats .chartslist li a,
+.path-admin-report-overviewstats .chartslist li a{
+    color: #f9f8fb;
+}

@@ -1,0 +1,29 @@
+#page-mod-poster-view #mod_poster-content {
+    clear: both;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#page-mod-poster-view #mod_poster-content .block.block_adminblock {
+    background-color: white;
+    border: none;
+}
+
+#page-mod-poster-view.editing #block-region-mod_poster-pre[data-droptarget="1"],
+#page-mod-poster-view.editing #block-region-mod_poster-post[data-droptarget="1"] {
+    border: 2px dashed #888;
+    padding: 5px;
+    margin-bottom: 5px;
+    min-height: 10em;
+}
+
+.section .poster .mod-indent-outer {
+    padding-left: 24px;
+    display: block;
+}
+
+/* Make sure the poster blocks content width to available. */
+.course-content .modtype_poster.activity .description .description-inner {
+    width: 100%;
+    margin-top: 15px;
+}

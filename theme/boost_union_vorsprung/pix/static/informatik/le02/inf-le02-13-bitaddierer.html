@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+
+<head>
+	<title>Binäraddition</title>
+	<meta charset="UTF-8" />
+	<style>
+		@import url('https://moodle.daad.de/theme/boost_union_vorsprung/scss/tools.css');
+
+		#wrapper {
+			max-width: 420px;
+		}
+
+		*,
+		*:before,
+		*:after {
+			box-sizing: inherit;
+		}
+
+		#addition-grid {
+			display: grid;
+			justify-content: center;
+			align-items: center;
+			grid-template-columns: repeat(5, 40px);
+			grid-template-rows: auto;
+		}
+
+		#addition-grid .line {
+			grid-column: span 5;
+		}
+
+		#addition-grid .carry {
+			min-height: 1.8rem;
+			background-color: transparent;
+			font-size: 1.4rem;
+			text-align: center;
+		}
+
+		#addition-grid .sum {
+			background-color: var(--tools-secondary);
+			border: 2px solid white;
+			;
+			cursor: default;
+			outline: none;
+			margin-bottom: 2rem;
+			border-radius: 5px;
+		}
+
+		#addition-grid hr {
+			border: 1px solid var(--tools-media-border-color) ;
+		}
+
+		#addition-grid>button {
+			cursor: pointer;
+			position: relative;
+			font-size: 2rem;
+			border: 1px, solid white;
+			margin-top: 0.5rem;
+			outline: none;
+			background-color: rbga(255, 255, 255, 0.75);
+			font-family: var(--tools-font-mono);
+			font-weight: 500;
+		}
+
+		#addition-grid>.data:hover {
+			background: #ced4da;
+			border: 2px solid var(--tools-primary);
+		}
+
+		p {
+			text-align: center;
+			font-size: 1.2rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<h1> Binäraddition </h1>
+		</header>
+		<p>Klicken Sie auf die Ziffern, um<br>das Ergebnis zu verändern:</p>
+
+		<div id="addition-grid">
+		</div>
+		<script>
+			"use strict";
+
+			// Variablen initialisieren
+			let carryDivs = "";
+			let aButtons = "";
+			let bButtons = "";
+			let sumButtons = '<button class="sum" id="sum4">0</button>';
+
+			// Elemente für die Binärzahlen und die Übertragszeile erstellen
+			for (let i = 3; i >= 0; i--) {
+				aButtons += `<button data-numbers class="data" id="a${i}">0</button>`;
+				bButtons += `<button data-numbers class="data" id="b${i}">0</button>`;
+				sumButtons += `<button class="sum" id="sum${i}">0</button>`;
+				carryDivs += `<div class="carry" id="c${i + 1}"></div>`;
+			}
+
+			// HTML-Code für das Additionsgrid aktualisieren
+			const additionGrid = document.getElementById("addition-grid");
+			additionGrid.innerHTML = `
+  <div></div>${aButtons}
+  <div></div>${bButtons}
+  ${carryDivs}<div></div>
+  <div class="line"><hr /></div>
+  ${sumButtons}
+`;
+
+			// Summe aktualisieren, wenn ein Nummern-Button geklickt wird
+			function updateSum() {
+				let carryOut = 0;
+
+				for (let i = 0; i < 4; i++) {
+					// Eingabezahlen und Übertrag holen
+					const a = Number(document.getElementById(`a${i}`).textContent);
+					const b = Number(document.getElementById(`b${i}`).textContent);
+					const carryIn = i > 0 ? Number(document.getElementById(`c${i}`).textContent) : 0;
+
+					// Summe und Carry berechnen
+					const sum = (a ^ b) ^ carryIn;
+					const carry = (a & b) | ((a ^ b) & carryIn);
+					carryOut = carry;
+
+					// Ergebnisse in das HTML schreiben
+					document.getElementById(`sum${i}`).textContent = sum;
+					document.getElementById(`c${i + 1}`).textContent = carry ? "1" : "";
+				}
+
+				// Carry für die höchstwertige Stelle schreiben
+				document.getElementById("sum4").textContent = carryOut;
+			}
+
+			// Event-Listener für numberButtons hinzufügen
+			const numberButtons = document.querySelectorAll('[data-numbers]');
+			numberButtons.forEach(button => {
+				button.addEventListener('click', () => {
+					// Zustand des Buttons umschalten und Summe aktualisieren
+					button.innerText = !Number(button.innerText) ? "1" : "0";
+					updateSum();
+				});
+			});
+
+		</script>
+	</div>
+
+</body>
+
+</html>

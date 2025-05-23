@@ -20,7 +20,7 @@ namespace core_admin\reportbuilder\datasource;
 
 use core\task\database_logger;
 use core_reportbuilder_generator;
-use core_reportbuilder\local\filters\{date, duration, number, select, text};
+use core_reportbuilder\local\filters\{boolean_select, date, duration, number, select, text};
 use core_reportbuilder\task\send_schedules;
 use core_reportbuilder\tests\core_reportbuilder_testcase;
 
@@ -136,12 +136,10 @@ final class task_logs_test extends core_reportbuilder_testcase {
                 'task_log:output_operator' => text::IS_EMPTY,
             ], false],
             'Filter result' => ['task_log:result', [
-                'task_log:result_operator' => select::EQUAL_TO,
-                'task_log:result_value' => 0,
+                'task_log:result_operator' => boolean_select::CHECKED,
             ], true],
             'Filter result (no match)' => ['task_log:result', [
-                'task_log:result_operator' => select::EQUAL_TO,
-                'task_log:result_value' => 1,
+                'task_log:result_operator' => boolean_select::NOT_CHECKED,
             ], false],
             'Filter time start' => ['task_log:timestart', [
                 'task_log:timestart_operator' => date::DATE_RANGE,

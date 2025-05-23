@@ -1,0 +1,46 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner px-1">
+    <div class="carousel-item active">
+      <h3>{{#str}}dropselect, tiny_stash{{/str}}</h3>
+
+      <!-- Add a tab for items and one for trades -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item tiny-stash-tabs" role="presentation">
+          <a class="nav-link active" id="item-tab" data-toggle="tab" data-tiny-stash href="#item" role="tab" aria-controls="items" aria-selected="true">{{#str}}locations, tiny_stash{{/str}}</a>
+        </li>
+        <li class="nav-item tiny-stash-tabs" role="presentation">
+          <a class="nav-link" id="trade-tab" data-toggle="tab" data-tiny-stash href="#trade" role="tab" aria-controls="trades" aria-selected="false">{{#str}}trades, tiny_stash{{/str}}</a>
+        </li>
+        <li class="nav-item tiny-stash-tabs" role="presentation">
+          <a class="nav-link" id="help-tab" data-toggle="tab" data-tiny-stash href="#help" role="tab" aria-controls="help" aria-selected="false">Help</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="item" role="tabpanel" aria-labelledby="item-tab">
+          {{> tiny_stash/local/tabs/locations-main}}
+        </div>
+        <div class="tab-pane fade" id="trade" role="tabpanel" aria-labelledby="trade-tab">
+          {{> tiny_stash/local/tabs/trades-main}}
+        </div>
+        <div class="tab-pane fade" id="help" role="tabpanel" aria-labelledby="help-tab">
+          {{> tiny_stash/local/tabs/help-main}}
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item tiny-stash-next-slide">
+    </div>
+    <div class="carousel-item tiny-stash-location">
+    </div>
+    <div class="carousel-item tiny-stash-trade">
+    </div>
+    <div class="carousel-item tiny-stash-help-item">
+      {{> tiny_stash/local/help/itemhelp}}
+    </div>
+    <div class="carousel-item tiny-stash-help-location">
+      {{> tiny_stash/local/help/locationhelp}}
+    </div>
+    <div class="carousel-item tiny-stash-help-trade">
+      {{> tiny_stash/local/help/tradehelp}}
+    </div>
+  </div>
+</div>

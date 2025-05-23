@@ -1,0 +1,597 @@
+// stylelint-disable all
+.cb {
+  position: relative;
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: $alert-margin-bottom;
+  border: $alert-border-width solid transparent;
+  @include border-radius($alert-border-radius);
+
+  h1 {
+    font-size: $font-size-base * 1.1 !important;
+    font-weight: $font-weight-bold !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  p {
+    margin-bottom: $headings-margin-bottom !important;
+  }
+
+  :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+@each $name in $course-names {
+  @each $cbname, $color, $bg-color, $border-color in $cb-colors {
+    .cb-#{$name}-#{$cbname} {
+      color: $color !important;
+      background-color: $bg-color !important;
+      border-color: $border-color !important;
+
+      h1 {
+        color: $color !important;
+      }
+
+      > div:first-child {
+        img {
+          @if $cbname == 'hinweis' {
+            content: url(staticimageurl('avatars/avatar-#{$name}-achtung-cb.svg'));
+          } @else if ($cbname == 'lernziele') {
+            content: url(staticimageurl('avatars/avatar-#{$name}-body.svg'));
+          } @else if ($cbname == 'aufgabe') {
+            content: url(staticimageurl('avatars/avatar-#{$name}-body-aufgabe.svg'));
+          } @else {
+            content: url(staticimageurl('avatars/avatar-#{$name}-neutral-cb.svg'));
+          }
+        }
+      }
+    }
+  }
+}
+
+.cb-avatar {
+  padding-left: 0 !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 5rem;
+
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 7.5em;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      position: absolute;
+      width: 5.5em;
+    }
+  }
+
+  > div:last-child {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    word-break: break-word;
+    word-wrap: break-word;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+.cb-abschluss {
+  color: #333333 !important;
+  background-color: var(teal-100) !important;
+  padding: $alert-padding-y $alert-padding-x;
+  border: $alert-border-width solid #aed9d1;
+  @include border-radius($alert-border-radius);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 5rem;
+
+  h1 {
+    color: #333333 !important;
+  }
+
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    word-break: break-word;
+    word-wrap: break-word;
+    margin: 0;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  > div:last-child {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 7.5em;
+    justify-content: center;
+    align-items: end;
+
+    img {
+      width: 5.5em;
+    }
+  }
+}
+
+@each $name in $course-names {
+  .cb-#{$name}-abschluss {
+    > div:last-child {
+      img {
+        content: url(staticimageurl('avatars/avatar-#{$name}-body.svg'));
+      }
+    }
+  }
+}
+
+.ch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 5rem;
+  margin: 1.5rem 0;
+  border-top-right-radius: $card-border-radius;
+  border-bottom-right-radius: $card-border-radius;
+  border: none;
+
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    word-break: break-word;
+    word-wrap: break-word;
+    margin: 0;
+
+    img {
+      position: relative;
+      width: 4rem;
+      top: -0.2rem;
+      margin-right: 0.2rem;
+    }
+
+    h1 {
+      position: relative;
+      text-indent: -4.3rem;
+      left: 0;
+      overflow: visible !important;
+      font-family: $font-family-sans-serif !important;
+      font-size: $h1-font-size !important;
+      font-weight: $headings-font-weight !important;
+      border: none !important;
+      color: $primary !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+
+  > div:last-child {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 6.5em;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      position: absolute;
+      width: 5.5em;
+    }
+  }
+}
+
+@each $name in $course-names {
+  @each $aname in $avatar-names {
+    .ch-#{$name}-#{$aname} {
+      background: linear-gradient(90deg, $white 51%, rgba(map-get($ch-colors, '#{$name}'), 0.75) 70%, rgba(255, 255, 255, 0) 100%),
+      url(staticimageurl('boxes/vsp-box-bg.jpg'));
+      background-position: right center;
+      background-size: initial;
+      background-repeat: no-repeat;
+
+      > div:first-child {
+        img {
+          content: url(staticimageurl('typo/typo-#{$name}-header-prefix.png'));
+        }
+      }
+
+      > div:last-child {
+        img {
+          content: url(staticimageurl('avatars/avatar-#{$name}-#{$aname}-cb.svg'));
+        }
+      }
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  &.alert-header {
+    position: relative;
+    padding: $alert-padding-y $alert-padding-x;
+    margin-bottom: $alert-margin-bottom;
+    border: $alert-border-width solid transparent;
+    @include border-radius($alert-border-radius);
+  }
+}
+
+@each $name in $course-names {
+  h1, h2, h3, h4, h5, h6 {
+    &.alert-header.alert-header-#{$name} {
+      background-color: map-get($vorsprung-colors, '#{$name}-light');
+    }
+  }
+}
+
+.ll {
+  li {
+    i.fa {
+      position: relative;
+      top: 0.1rem;
+      width: 1.5em;
+      font-size: 1.25em;
+    }
+
+    &.list-group-item {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.md-hint {
+  h1 {
+    visibility: hidden;
+  }
+
+  h1:after {
+    content: "Bitte Markdown statt HTML benutzen!";
+    visibility: visible;
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+  }
+}
+
+.ch.md-hint h1:after {
+  margin-left: 68px;
+}
+
+.cb.md-hint h1:after {
+  margin-left: 18px;
+}
+
+
+.que {
+  .formulation,
+  .outcome,
+  .comment,
+  .specificfeedback,
+  .generalfeedback,
+  .numpartscorrect,
+  .rightanswer,
+  .im-feedback,
+  .feedback,
+  p {
+    color: map-get($zap-colors, 'gray-fonts') !important;
+  }
+  code {
+    font-size: 0.9em !important;
+  }
+
+  .formulation {
+    background-color: map-get($zap-colors, 'blue-100') !important;
+    border-color: map-get($zap-colors, 'blue-200') !important;
+  }
+
+  .table-bordered {
+    border: 1px solid map-get($zap-colors, 'gray-400') !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid map-get($zap-colors, 'gray-400') !important;
+  }
+}
+
+#region-main {
+  background-color: #FFF !important;
+}
+.pagelayout-mydashboard #region-main {
+  background-color: transparent !important;
+}
+
+@media screen and (min-width: 1900px) {
+  body:not(.editing):not(.admin) {
+    #page-header {
+      width: 100%;
+    }
+    #page-header,
+    #region-main-box {
+      max-width: calc(80em + 360px)!important;
+      margin-left: auto!important;
+      margin-right: auto !important;
+    }
+    #region-main {
+      max-width: 80em!important;
+      margin-left: auto!important;
+      margin-right: auto !important;
+    }
+  }
+}
+
+.format-tiles {
+  &.editing {
+    .subtiles {
+      .activity .actions {
+        z-index: 1;
+      }
+    }
+  }
+
+  .subtiles {
+    width: 100% !important;
+
+    li.activity.label {
+      border: none;
+      padding: 10px 0;
+    }
+  }
+
+  .course-content {
+    li.section ul {
+      padding-left: 1.45rem;
+      padding-right: 0;
+    }
+
+    .section .activity:hover {
+      background-color: transparent;
+      color: #495057;
+      transition: all 0.5s ease-in-out;
+    }
+
+     .single-section .navigation-arrows {
+      display: flex;
+      align-items: center;
+
+      .navigation-arrow {
+        vertical-align: middle;
+
+        &:hover {
+          background-color: transparent !important;
+        }
+
+        i {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  li.activity.subtile {
+    transition: background-position 0.75s ease-in-out,
+    background-size 0.75s ease-in-out;
+    background-position: 65% 90%;
+    background-size: 25%;
+    border-top: $secondary .3em solid;
+    padding: 0;
+
+    .subtile_inner {
+      z-index: 1;
+    }
+
+    &:hover {
+      transition: background-size 1s ease-in-out,
+      background-position 1s ease-in-out;
+      background-position: 50% 90%;
+      background-size: 30%;
+    }
+
+    &:hover::after {
+      transition: opacity 1s ease-in-out;
+      opacity: 0;
+      content: "";
+    }
+
+    &::after {
+      transition: opacity 0.5s ease-in-out;
+      opacity: 0.5;
+      background-image: url('/theme/boost_union_vorsprung/pix/shapes/shape-rect-border-thick-gray300.svg'),
+      url('/theme/boost_union_vorsprung/pix/shapes/shape-circle-border-thin-gray200.svg');
+      background-size: 60% 60%, 120% 120%;
+      background-position: -4.45rem 7rem, 0 0;
+      background-repeat: no-repeat;
+      content: "";
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
+
+    .activitytype {
+      padding: 5px 5px 5px 10px;
+    }
+
+    .activitytitle {
+      font-size: $h4-font-size;
+      font-weight: $headings-font-weight;
+
+      a {
+        background-image: none;
+      }
+    }
+
+    &.book,
+    &.quiz,
+    &.assign,
+    &.page {
+      border-top-color: $secondary !important;
+    }
+  }
+}
+
+
+.course-28 {
+  ol.checklist li {
+    margin-bottom: 1em;
+  }
+}
+
+.path-course-view li.activity > div {
+  padding: 0;
+}
+
+.media-border {
+  background-color: $media-bg-color;
+  border: solid $media-border-color max(4px, 0.2vw);
+  border-radius: 20px;
+  padding: 1.5vw;
+}
+
+.carousel {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
+
+  li:empty {
+    height: 5px;
+    visibility: visible;
+  }
+  .carousel-inner {
+    height: 100%;
+  }
+
+  .carousel-item {
+    padding: 0 8%;
+    width: 100%;
+    height: 100%;
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .carousel-item-wrapper {
+    padding: 3% 0 3% 0;
+    p {
+      width: 100%;
+    }
+  }
+
+  .carousel-indicators li {
+    background-color: #00a0a2;
+  }
+
+  .carousel-control {
+    &-prev,
+    &-next {
+      width: 7%;
+    }
+
+    &-prev-icon,
+    &-next-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    &-prev-icon {
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='%23000' width='8' height='8' viewBox='0 0 8 8'><path d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/></svg>");
+    }
+
+    &-next-icon {
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='%23000' width='8' height='8' viewBox='0 0 8 8'><path d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/></svg>");
+    }
+  }
+}
+
+.course-accordion {
+  .btn-link:focus {
+    box-shadow: none;
+  }
+
+  button {
+    font-weight: bold;
+
+    p {
+      margin: 0 !important;
+    }
+  }
+
+  .card-header {
+    padding: 0 0.5rem;
+  }
+}
+.h5p-embed {
+  background-color: transparent !important;
+}
+
+.callout {
+  padding: 1em;
+  margin: 0.5em 0;
+  border: 1px solid $card-border-color;
+  border-radius: $card-border-radius;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: $black !important;
+  }
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.callout {
+  background-color: $card-bg;
+  border-left-width: 5px;
+}
+
+@each $name, $color in map-merge($theme-colors, $course-colors) {
+  .callout-#{$name} {
+    border-left-color: $color;
+  }
+}
+
+.x-scrollable {
+  display: block !important;
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+  width: 90vw !important;
+  max-width: 100% !important;
+  margin-bottom: 0.5em;
+  scrollbar-color: map-get($zap-colors, 'gray-400') $media-bg-color;
+
+  &::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: map-get($zap-colors, 'gray-400');
+    border: 2px solid $media-bg-color;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track:hover,
+  &::-webkit-scrollbar-track:active {
+    background-color: $media-bg-color;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-thumb:hover,
+  &::-webkit-scrollbar-thumb:active {
+    background-color: map-get($zap-colors, 'gray-400');
+  }
+}

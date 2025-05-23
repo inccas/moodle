@@ -1,0 +1,48 @@
+section {
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+}
+.section {
+  ul, ol {
+    &:not([class]) {
+      margin-top: 0 !important;
+      margin-bottom: 1rem !important;
+
+      ol, ul {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
+a:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: transparent !important;
+}
+
+[role="button"]:focus {
+  box-shadow: none !important;
+}
+
+#nav-drawer:focus-visible {
+  outline: 0 !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: $primary !important;
+}
+
+.block_sharing_cart {
+  div.card-text ul.tree {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  ul.tree li > div .instancename,
+  ul.tree li > div .instancename .no-overflow p {
+    text-align: start;
+    white-space: wrap!important;
+    overflow-wrap: anywhere;
+  }
+}
+

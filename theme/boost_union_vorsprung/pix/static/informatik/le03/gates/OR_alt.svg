@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110.46 56">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-2 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: #ffc200;
+      }
+
+      .cls-3, .cls-4 {
+        stroke: #333;
+        stroke-width: 3px;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        fill: #333;
+        font-family: Inter-SemiBold, Inter;
+        font-size: 24px;
+        font-variation-settings: 'wght' 600, 'slnt' 0;
+        font-weight: 600;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-7 {
+        mix-blend-mode: multiply;
+        opacity: .1;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g class="cls-2">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layout">
+        <g>
+          <path id="path6174" class="cls-4" d="m0,16.77h26"/>
+          <path id="path6174-2" data-name="path6174" class="cls-4" d="m0,40.81h26"/>
+          <path id="path6174-3" data-name="path6174" class="cls-4" d="m84.46,28h26"/>
+          <rect class="cls-3" x="26.85" y="1.5" width="56.73" height="53"/>
+          <rect class="cls-7" x="26.85" y="1.5" width="56.73" height="26.6"/>
+          <text class="cls-5" transform="translate(41.55 24.48)"><tspan class="cls-1" x="0" y="0">≥</tspan><tspan class="cls-6" x="15.07" y="0">1</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

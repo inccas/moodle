@@ -1,0 +1,94 @@
+diff --git a/lib/filestorage/zip_archive.php b/lib/filestorage/zip_archive.php
+index 17ef915..53121ba 100644
+--- a/lib/filestorage/zip_archive.php
++++ b/lib/filestorage/zip_archive.php
+@@ -29,6 +29,80 @@ defined('MOODLE_INTERNAL') || die();
+ 
+ require_once("$CFG->libdir/filestorage/file_archive.php");
+ 
++require_once("{$CFG->dirroot}/local/externalzip/lib.php");
++require_once("{$CFG->dirroot}/local/externalzip/externalzip_archive.php");
++
++/**
++ * Wrapper class that instantiates a phpzip_archive or an externalzip_archive,
++ * depending on user settings. This enables the local/externalzip plugin.
++ *
++ * @author Aaron Wells <aaronw@catalyst.net.nz>
++ */
++class zip_archive extends file_archive {
++
++    /* @var $archive file_archive */
++    private $archive = null;
++
++    /**
++     * The constructor simply creates an externalzip_archive or phpzip_archive
++     * depending on the config
++     */
++    public function __construct(){
++        switch (get_config('local_externalzip', 'ziphandler')) {
++            case LOCAL_EXTERNALZIP_EXT:
++                $this->archive = new externalzip_archive();
++                break;
++            default:
++                $this->archive = new phpzip_archive();
++        }
++    }
++
++    // All other functions are direct pass-throughs to the public functions
++    // of phpzip_archive and externalzip_archive
++    public function open($archivepathname, $mode=file_archive::CREATE, $encoding='utf-8') {
++        return $this->archive->open($archivepathname, $mode, $encoding);
++    }
++    public function close() {
++        return $this->archive->close();
++    }
++    public function get_stream($index) {
++        return $this->archive->get_stream($index);
++    }
++    public function get_info($index) {
++        return $this->archive->get_info($index);
++    }
++    public function list_files() {
++        return $this->archive->list_files();
++    }
++    public function count() {
++        return $this->archive->count();
++    }
++    public function add_file_from_pathname($localname, $pathname) {
++        return $this->archive->add_file_from_pathname($localname, $pathname);
++    }
++    public function add_file_from_string($localname, $contents) {
++        return $this->archive->add_file_from_string($localname, $contents);
++    }
++    public function add_directory($localname) {
++        return $this->archive->add_directory($localname);
++    }
++    public function current() {
++        return $this->archive->current();
++    }
++    public function key() {
++        return $this->archive->key();
++    }
++    public function next() {
++        return $this->archive->next();
++    }
++    public function rewind() {
++        return $this->archive->rewind();
++    }
++    public function valid() {
++        return $this->archive->valid();
++    }
++}
++
+ /**
+  * zip file archive class.
+  *
+@@ -37,7 +111,7 @@ require_once("$CFG->libdir/filestorage/file_archive.php");
+  * @copyright  2008 Petr Skoda (http://skodak.org)
+  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+  */
+-class zip_archive extends file_archive {
++class phpzip_archive extends file_archive {
+ 
+     /** Pathname of archive */
+     protected $archivepathname = null;

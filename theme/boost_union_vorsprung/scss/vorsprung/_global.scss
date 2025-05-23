@@ -1,0 +1,178 @@
+// stylelint-disable all
+
+@each $name in $course-names {
+  .text-#{$name} {
+    color: map-get($vorsprung-colors, #{$name}-text);
+  }
+  .bg-#{$name} {
+    background-color: map-get($vorsprung-colors, #{$name});
+  }
+  .bg-#{$name}-light {
+    background-color: map-get($vorsprung-colors, #{$name}-light);
+  }
+}
+
+@each $name, $color in $grays {
+  .bg-gray-#{$name} {
+    background-color: $color !important;
+  }
+}
+
+body.format-tiles .no-overflow,
+#region-main .no-overflow {
+  overflow: visible !important;
+}
+
+a, div, section, h1, h2, h3, h4, h5 {
+  scroll-margin-top: $scroll-margin-top;
+}
+
+.collapsible {
+  > a:first-of-type {
+    &[aria-expanded=true] .fa:before {
+      transform: rotate(90deg);
+    }
+    .fa:before {
+      display: inline-block;
+      transform: rotate(0deg);
+      transform-origin: 30% 50%;
+      transition: .25s transform ease;
+      content: "\f0da";
+    }
+    h1, h2,  h3, h4, h5, h6 {
+      font-size: $h6-font-size !important;
+    }
+  }
+  > div:first-of-type {
+    padding: 0.375rem 0.75rem 0.375rem 0.9rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    p:last-of-type {
+      margin: 0;
+    }
+  }
+}
+.collapsible-medium {
+  > a:first-of-type {
+    h1, h2,  h3, h4, h5, h6 {
+      font-size: $h5-font-size !important;
+    }
+  }
+  > div:first-of-type {
+    padding-left: 1rem;
+  }
+}
+.collapsible-large {
+  > a:first-of-type {
+    h1, h2,  h3, h4, h5, h6 {
+      font-size: $h4-font-size !important;
+    }
+  }
+  > div:first-of-type {
+    padding-left: 1.2rem;
+  }
+}
+.collapsible-h3 {
+  > a:first-of-type {
+    h1, h2,  h3, h4, h5, h6 {
+      font-size: $h3-font-size !important;
+    }
+  }
+  > div:first-of-type {
+    padding-left: 1.3rem;
+  }
+}
+.collapsible-h2 {
+  > a:first-of-type {
+    h1, h2,  h3, h4, h5, h6 {
+      font-size: $h2-font-size !important;
+    }
+  }
+  > div:first-of-type {
+    padding-left: 1.4rem;
+  }
+}
+.collapsible-h1 {
+  > a:first-of-type {
+    h1, h2,  h3, h4, h5, h6 {
+      font-size: $h1-font-size !important;
+    }
+  }
+  > div:first-of-type {
+    padding-left: 1.6rem;
+  }
+}
+
+code[class*="language-"],
+pre[class*="language-"],
+:not(pre) > code {
+  font-family: JetBrainsMono, monospace !important;
+  font-feature-settings: "liga" 0;
+  font-variant-ligatures: none;
+  color: map-get($vorsprung-colors, 'informatik') !important;
+  background-color: transparent !important;
+}
+
+pre[class*="language-"] {
+  background-color: $media-bg-color !important;
+}
+
+.vorsprung-label {
+  font-weight: bold;
+}
+.vorsprung-label:before {
+  color: $secondary;
+  content: "VOR";
+}
+.vorsprung-label:after {
+  color: $primary;
+  content: "SPRUNG";
+}
+
+.eupopup-body {
+  font-size: $font-size-sm;
+  a {
+    font-weight: bold;
+  }
+  ul {
+    margin: 5px 0 !important;
+  }
+}
+.eupopup-button {
+  color: $secondary !important;
+  font-size: $font-size-sm;
+}
+.policy {
+  max-height: calc(80vh - 3.5em) !important;
+  p:last-of-type{
+    padding-bottom: 2em;
+  }
+}
+
+/* Additional by Rainer Schweigert - INCCAS Gbr. */
+
+/*
+div.above-tiles-buttons.text-right .btn-group,
+div#abovetiles .progress-indic {
+  display:none;
+}
+
+div[id^="courseindexsection"] {
+a.courseindex-chevron,
+ul.courseindex-sectioncontent {
+
+}}
+*/
+/* Additional by Dominik Cuber - CubesITes */
+/*
+.format-tiles li.activity .tileiconcontainer {
+  z-index: 1;
+  position: relative;
+}
+
+.format-tiles li.activity.subtile .activityname {
+  background-color: transparent;
+  z-index: 1;
+}
+*/

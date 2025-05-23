@@ -1,0 +1,53 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Drop snippet builder.
+}}
+<div id="tiny-stash-snippet-ui-{{uniqid}}" class="tiny-stash-snippet-ui pt-3">
+    <div style="display: flex">
+        <div style="flex: 2">
+            <div>
+                <label for="label-displaytype-{{uniqid}}">{{#str}}appearance, block_stash{{/str}}</label>
+                <div>
+                    <select name="displaytype" id="label-displaytype-{{uniqid}}" class="form-control tiny-stash-appearance">
+                        <option value="text">{{#str}}text, block_stash{{/str}}</option>
+                        <option value="image">{{#str}}image, block_stash{{/str}}</option>
+                        <option value="imageandbutton" selected>{{#str}}imageandbutton, block_stash{{/str}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="snippet-label d-none pt-3">
+                <label for="label-label-{{uniqid}}">{{#str}}text, block_stash{{/str}}</label>
+                <div>
+                    <input type="text" name="label" class="form-control" id="label-label-{{uniqid}}" value="{{#str}}pickup, tiny_stash{{/str}}">
+                </div>
+            </div>
+
+            <div class="snippet-actiontext pt-3">
+                <label for="label-actiontext-{{uniqid}}">{{#str}}buttontext, block_stash{{/str}}</label>
+                <div>
+                    <input type="text" name="actiontext" class="form-control" id="label-actiontext-{{uniqid}}" value="{{#str}}pickup, tiny_stash{{/str}}" />
+                </div>
+            </div>
+
+        </div>
+        <div class="pt-2" style="flex: 1; display: flex; justify-content: center;">
+            <div class="preview"></div>
+        </div>
+    </div>
+</div>

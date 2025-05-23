@@ -1,0 +1,9 @@
+<div>
+    <select id="location-select" class="tiny-stash-item-select form-control">
+        <option selected>{{#str}}choose, tiny_stash{{/str}}</option>
+        {{#items}}
+            <option data-hash="{{hashcode}}" data-type="item" data-id="{{itemid}}">{{name}} ({{location}})</option>
+        {{/items}}
+    </select>
+</div>
+

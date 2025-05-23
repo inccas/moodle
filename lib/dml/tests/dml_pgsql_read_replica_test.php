@@ -30,10 +30,10 @@ use xmldb_table;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once(__DIR__.'/fixtures/read_replica_moodle_database_mock_pgsql.php');
+require_once(__DIR__.'/fixtures/read_slave_moodle_database_mock_pgsql.php');
 
 /**
- * DML pgsql_native_moodle_database read replica specific tests
+ * DML pgsql_native_moodle_database read slave specific tests
  *
  * @package    core
  * @category   dml
@@ -41,14 +41,14 @@ require_once(__DIR__.'/fixtures/read_replica_moodle_database_mock_pgsql.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers     \pgsql_native_moodle_database
  */
-final class dml_pgsql_read_replica_test extends \advanced_testcase {
+final class dml_pgsql_read_slave_test extends \advanced_testcase {
     /**
      * Test correct database handles are used for cursors
      *
      * @return void
      */
     public function test_cursors(): void {
-        $DB = new read_replica_moodle_database_mock_pgsql();
+        $DB = new read_slave_moodle_database_mock_pgsql();
 
         // Declare a cursor on a table that has not been written to.
         list($sql, $params, $type) = $DB->fix_sql_params("SELECT * FROM {table}");
@@ -96,14 +96,14 @@ final class dml_pgsql_read_replica_test extends \advanced_testcase {
      * @return void
      */
     public function test_read_pg_table(): void {
-        $DB = new read_replica_moodle_database_mock_pgsql();
+        $DB = new read_slave_moodle_database_mock_pgsql();
 
-        $this->assertEquals(0, $DB->perf_get_reads_replica());
+        $this->assertEquals(0, $DB->perf_get_reads_slave());
 
         $DB->query_start('SELECT pg_whatever(1)', null, SQL_QUERY_SELECT);
         $this->assertTrue($DB->db_handle_is_ro());
         $DB->query_end(null);
-        $this->assertEquals(1, $DB->perf_get_reads_replica());
+        $this->assertEquals(1, $DB->perf_get_reads_slave());
     }
 
     /**
@@ -113,15 +113,15 @@ final class dml_pgsql_read_replica_test extends \advanced_testcase {
      * @return void
      */
     public function test_read_pg_lock_table(): void {
-        $DB = new read_replica_moodle_database_mock_pgsql();
+        $DB = new read_slave_moodle_database_mock_pgsql();
 
-        $this->assertEquals(0, $DB->perf_get_reads_replica());
+        $this->assertEquals(0, $DB->perf_get_reads_slave());
 
         foreach (['pg_try_advisory_lock', 'pg_advisory_unlock'] as $fn) {
             $DB->query_start("SELECT $fn(1)", null, SQL_QUERY_SELECT);
             $this->assertTrue($DB->db_handle_is_rw());
             $DB->query_end(null);
-            $this->assertEquals(0, $DB->perf_get_reads_replica());
+            $this->assertEquals(0, $DB->perf_get_reads_slave());
         }
     }
 
@@ -154,29 +154,29 @@ final class dml_pgsql_read_replica_test extends \advanced_testcase {
         $db2->connect($cfg->dbhost, $cfg->dbuser, $cfg->dbpass, $cfg->dbname, $cfg->prefix, $cfg->dboptions);
 
         $reads = $db2->perf_get_reads();
-        $readsprimary = $reads - $db2->perf_get_reads_replica();
+        $readsprimary = $reads - $db2->perf_get_reads_slave();
 
         // Readonly handle queries.
 
         $db2->get_server_info();
         $this->assertGreaterThan($reads, $reads = $db2->perf_get_reads());
-        $this->assertGreaterThan($readsprimary, $readsprimary = $reads - $db2->perf_get_reads_replica());
+        $this->assertGreaterThan($readsprimary, $readsprimary = $reads - $db2->perf_get_reads_slave());
 
         $db2->setup_is_unicodedb();
         $this->assertGreaterThan($reads, $reads = $db2->perf_get_reads());
-        $this->assertEquals($readsprimary, $reads - $db2->perf_get_reads_replica());
+        $this->assertEquals($readsprimary, $reads - $db2->perf_get_reads_slave());
 
         $db2->get_tables();
         $this->assertGreaterThan($reads, $reads = $db2->perf_get_reads());
-        $this->assertEquals($readsprimary, $reads - $db2->perf_get_reads_replica());
+        $this->assertEquals($readsprimary, $reads - $db2->perf_get_reads_slave());
 
         $db2->get_indexes('course');
         $this->assertGreaterThan($reads, $reads = $db2->perf_get_reads());
-        $this->assertEquals($readsprimary, $reads - $db2->perf_get_reads_replica());
+        $this->assertEquals($readsprimary, $reads - $db2->perf_get_reads_slave());
 
         $db2->get_columns('course');
         $this->assertGreaterThan($reads, $reads = $db2->perf_get_reads());
-        $this->assertEquals($readsprimary, $reads - $db2->perf_get_reads_replica());
+        $this->assertEquals($readsprimary, $reads - $db2->perf_get_reads_slave());
 
         // Readwrite handle queries.
 
@@ -188,7 +188,7 @@ final class dml_pgsql_read_replica_test extends \advanced_testcase {
         $dbman->create_table($table);
         $db2->get_columns($tablename);
         $this->assertGreaterThan($reads, $reads = $db2->perf_get_reads());
-        $this->assertGreaterThan($readsprimary, $reads - $db2->perf_get_reads_replica());
+        $this->assertGreaterThan($readsprimary, $reads - $db2->perf_get_reads_slave());
     }
 
     /**
@@ -233,11 +233,11 @@ final class dml_pgsql_read_replica_test extends \advanced_testcase {
         // We need to go through the creation proces twice.
         // create_temp_table() performs some reads before the temp table is created.
         // First time around those reads should go to ro ...
-        $reads = $db2->perf_get_reads_replica();
+        $reads = $db2->perf_get_reads_slave();
 
         $db2->get_columns('silly_test_table');
         $db2->get_records('silly_test_table');
-        $this->assertEquals($reads, $db2->perf_get_reads_replica());
+        $this->assertEquals($reads, $db2->perf_get_reads_slave());
 
         $table2 = new xmldb_table('silly_test_table2');
         $table2->add_field('id', XMLDB_TYPE_INTEGER, 10, null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
@@ -248,7 +248,7 @@ final class dml_pgsql_read_replica_test extends \advanced_testcase {
         // ... but once the first temp table is created no more ro reads should occur.
         $db2->get_columns('silly_test_table2');
         $db2->get_records('silly_test_table2');
-        $this->assertEquals($reads, $db2->perf_get_reads_replica());
+        $this->assertEquals($reads, $db2->perf_get_reads_slave());
 
         // Make database driver happy.
         $dbman->drop_table($table2);
@@ -260,14 +260,12 @@ final class dml_pgsql_read_replica_test extends \advanced_testcase {
      *
      * @return void
      */
-    public function test_real_readreplica_connect_fail(): void {
+    public function test_real_readslave_connect_fail(): void {
         global $DB;
 
         if ($DB->get_dbfamily() != 'postgres') {
             $this->markTestSkipped('Not postgres');
         }
-
-        $invalidhost = 'host.that.is.not';
 
         // Open second connection.
         $cfg = $DB->export_dbconfig();
@@ -275,31 +273,12 @@ final class dml_pgsql_read_replica_test extends \advanced_testcase {
             $cfg->dboptions = array();
         }
         $cfg->dboptions['readonly'] = [
-            'instance' => [$invalidhost],
+            'instance' => ['host.that.is.not'],
             'connecttimeout' => 1
         ];
 
-        $this->resetDebugging();
         $db2 = moodle_database::get_driver_instance($cfg->dbtype, $cfg->dblibrary);
         $db2->connect($cfg->dbhost, $cfg->dbuser, $cfg->dbpass, $cfg->dbname, $cfg->prefix, $cfg->dboptions);
-        $this->assertNotEmpty($db2->get_records('user'));
-
-        $debugging = array_map(function ($d) {
-            return $d->message;
-        }, $this->getDebuggingMessages());
-        $this->resetDebugging();
-        $this->assertCount(2, $debugging);
-        // Attempt to connect to the non-existent replica host will fail.
-        // Note: The expected regex pattern is a bit generic because the actual error message may vary between operating systems.
-        $this->assertMatchesRegularExpression(
-            sprintf(
-                '/%s%s/',
-                preg_quote("Readonly db connection failed for host {$invalidhost}: "),
-                '.*'
-            ),
-            $debugging[0]
-        );
-        // Attempt to connect to the existing DB host will succeed.
-        $this->assertEquals("Readwrite db connection succeeded for host {$cfg->dbhost}", $debugging[1]);
+        $this->assertTrue(count($db2->get_records('user')) > 0);
     }
 }

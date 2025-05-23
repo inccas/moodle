@@ -135,6 +135,20 @@ class filter_manager {
         if (!is_readable($path)) {
             return null;
         }
+        /*
+        echo("filtername<pre>");
+        print_r($filtername);
+        echo("</pre>");
+        echo("filterclass<pre>");
+        print_r($filterclass);
+        echo("</pre>");
+        echo("context<pre>");
+        print_r($context);
+        echo("</pre>");
+        echo("localconfig<pre>");
+        print_r($localconfig);
+        echo("</pre>");
+        */
         include_once($path);
 
         $filterclassname = 'filter_' . $filtername;

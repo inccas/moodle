@@ -1,0 +1,87 @@
+.llk {
+    position: relative;
+    /*width: 75vw;*/
+    width: 85%;
+    /*max-width: 60em;*/
+    height: fit-content;
+    overflow: hidden;
+    margin: 2em auto;
+    padding: 0;
+    cursor: move;
+    -webkit-filter: drop-shadow(5px 5px 5px #666666);
+    filter: drop-shadow(5px 5px 5px #666666);
+}
+.llk img {
+    width: 100%;
+    height: auto;
+}
+.llk div:first-of-type {
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background-color: #F8F8F8;
+    border: 0;
+    border-radius: 50%;
+}
+.llk div:first-of-type svg {
+    position: relative;
+    top: -3px;
+    box-sizing: initial;
+}
+#shortcodeWrapper {
+    overflow-x: auto;
+}
+.llkmodal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10000;
+}
+
+.llkmodal div:first-of-type {
+    cursor: default !important;
+}
+
+
+.llkmodal:hover {
+    cursor: pointer;
+}
+
+.llkmodal > div:first-child {
+    width: 90%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.llkmodal span {
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background-color: #F8F8F8;
+    border: 0;
+    border-radius: 50%;
+}
+.llkmodal span svg {
+    position: relative;
+    top: -3px;
+    /*height: 2em;*/
+}
+.llkmodal img {
+    width: 100%;
+    height: auto;
+}

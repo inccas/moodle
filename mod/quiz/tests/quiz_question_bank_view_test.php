@@ -50,7 +50,8 @@ final class quiz_question_bank_view_test extends \advanced_testcase {
 
         // Create a question in the default category.
         $contexts = new question_edit_contexts($context);
-        $cat = question_get_default_category($context->id, true);
+        question_make_default_categories($contexts->all());
+        $cat = question_get_default_category($context->id);
         $questiondata = $questiongenerator->create_question('numerical', null,
                 ['name' => 'Example question', 'category' => $cat->id]);
 
@@ -68,7 +69,7 @@ final class quiz_question_bank_view_test extends \advanced_testcase {
             'qbshowtext' => false,
             'tabname' => 'editq'
         ];
-        $extraparams = ['cmid' => $cm->id, 'quizcmid' => $cm->id];
+        $extraparams = ['cmid' => $cm->id];
         $view = new custom_view($contexts, new \moodle_url('/'), $course, $cm, $params, $extraparams);
         ob_start();
         $view->display();
@@ -96,8 +97,9 @@ final class quiz_question_bank_view_test extends \advanced_testcase {
 
         // Create a question in the default category.
         $contexts = new question_edit_contexts($context);
+        question_make_default_categories($contexts->all());
         $cm = get_coursemodule_from_instance('quiz', $quiz->id);
-        $cat = question_get_default_category($context->id, true);
+        $cat = question_get_default_category($context->id);
 
         // Create three questions.
         $questiongenerator->create_question('numerical', null,
@@ -119,7 +121,7 @@ final class quiz_question_bank_view_test extends \advanced_testcase {
         ];
 
         // Load the question bank view.
-        $view = new custom_view($contexts, new \moodle_url('/'), $course, $cm, $params, ['quizcmid' => $cm->id]);
+        $view = new custom_view($contexts, new \moodle_url('/'), $course, $cm, $params, ['cmid' => $cm->id]);
         ob_start();
         $view->display();
         $html = ob_get_clean();
@@ -134,7 +136,7 @@ final class quiz_question_bank_view_test extends \advanced_testcase {
         $params['qperpage'] = 2;
 
         // Reload the question bank view on page 3.
-        $view = new custom_view($contexts, new \moodle_url('/'), $course, $cm, $params, ['quizcmid' => $cm->id]);
+        $view = new custom_view($contexts, new \moodle_url('/'), $course, $cm, $params, ['cmid' => $cm->id]);
         ob_start();
         $view->display();
         $html = ob_get_clean();
@@ -157,8 +159,9 @@ final class quiz_question_bank_view_test extends \advanced_testcase {
         // Move question 3 to a new category.
         question_move_questions_to_category([$question3->id], $newquestioncat->id);
         // Load the question bank view from the new category.
-        $params['cat'] = $newquestioncat->id . ',' . $newquestioncat->contextid;
-        $view = new custom_view($contexts, new \moodle_url('/'), $course, $cm, $params, ['quizcmid' => $cm->id]);
+        $params['cat'] = $newquestioncat->id . ',' . $newcontext->id;
+        $view = new custom_view(new question_edit_contexts($newcontext),
+            new \moodle_url('/'), $course, $cm, $params, ['cmid' => $cm->id]);
         ob_start();
         $view->display();
         $html = ob_get_clean();

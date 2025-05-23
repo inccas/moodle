@@ -1,0 +1,195 @@
+// stylelint-disable all
+$root-dir: '/theme/boost_union_vorsprung';
+$images-dir: '#{$root-dir}/pix';
+$fonts-dir: '#{$root-dir}/fonts';
+$blue: #0f6cbf;
+$purple: #613d7c;
+$red: #ca3120;
+$green: #357a32;
+$cyan: #008196;
+
+$vorsprung-colors: (
+        "primary": #00a0a2,
+        "secondary": #e2b847,
+        "physik": #d58139,
+        "physik-light": #f0d2b8,
+        "physik-text": #38200b,
+        "chemie": #d1d75b,
+        "chemie-light": #e8ebae,
+        "chemie-text": #505314,
+        "mathematik": #00577a,
+        "mathematik-light": #ade7ff,
+        "mathematik-text": #003347,
+        "informatik": #774075,
+        "informatik-light": #e6d2e6,
+        "informatik-text": #361d35,
+);
+
+$ch-colors: (
+        "physik": #fff6ea,
+        "chemie": #f2fedc,
+        "mathematik": #f0fbff,
+        "informatik": #fff5ff,
+);
+
+$zap-colors: (
+        "blue-100": #b6e9ff,
+        "blue-200": #adddf2,
+        "blue-300": #29abe2,
+        "blue-400": #269fd2,
+        "blue-500": #0085ba,
+        "blue-600": #0077a7,
+        "blue-700": #006299,
+        "blue-800": #005889,
+        "brown-100": #ffd5b3,
+        "brown-200": #f2caaa,
+        "brown-300": #ffb273,
+        "brown-400": #eda56b,
+        "brown-500": #ff9933,
+        "brown-600": #e5892e,
+        "brown-700": #cc7629,
+        "brown-800": #b76a25,
+        "gray-100": #cccccc,
+        "gray-200": #c2c2c2,
+        "gray-300": #999999,
+        "gray-400": #8e8e8e,
+        "gray-500": #666666,
+        "gray-600": #5c5c5c,
+        "gray-700": #333333,
+        "gray-800": #191919,
+        "green-100": #d5e29f,
+        "green-200": #cad697,
+        "green-300": #a3c149,
+        "green-400": #97b344,
+        "green-500": #579f6a,
+        "green-600": #4e8f5f,
+        "green-700": #467c46,
+        "green-800": #3f6f3f,
+        "purple-100": #ffe6f7,
+        "purple-200": #f2daea,
+        "purple-300": #e5b5d4,
+        "purple-400": #d5a8c5,
+        "purple-500": #bd7dcc,
+        "purple-600": #aa70b7,
+        "purple-700": #7e5fa8,
+        "purple-800": #715597,
+        "red-100": #ffcccc,
+        "red-200": #f2c2c2,
+        "red-300": #f69997,
+        "red-400": #e58e8c,
+        "red-500": #ff4d4d,
+        "red-600": #e54545,
+        "red-700": #cc3b3b,
+        "red-800": #b73535,
+        "teal-100": #b7e5dc,
+        "teal-200": #aed9d1,
+        "teal-300": #82cdbe,
+        "teal-400": #79bfb1,
+        "teal-500": #099fa1,
+        "teal-600": #088f91,
+        "teal-700": #077272,
+        "teal-800": #066666,
+        "yellow-100": #ffe9b3,
+        "yellow-200": #f2ddaa,
+        "yellow-300": #ffd766,
+        "yellow-400": #edc85f,
+        "yellow-500": #ffc200,
+        "yellow-600": #e5ae00,
+        "yellow-700": #e0a500,
+        "yellow-800": #c99400,
+        "gray-fonts": #333333,
+        "yellow-special": #f5e600,
+        "red-special": #ff4d84,
+);
+
+$cb-colors: (
+        (definition, map-get($zap-colors, 'gray-fonts'), map-get($zap-colors, 'green-100'), map-get($zap-colors, 'green-200')),
+        (satz, map-get($zap-colors, 'gray-fonts'), map-get($zap-colors, 'blue-100'), map-get($zap-colors, 'blue-200')),
+        (beispiel, map-get($zap-colors, 'gray-fonts'), map-get($zap-colors, 'yellow-100'), map-get($zap-colors, 'yellow-200')),
+        (hinweis, map-get($zap-colors, 'gray-fonts'), map-get($zap-colors, 'red-100'), map-get($zap-colors, 'red-200')),
+        (lernziele, map-get($zap-colors, 'gray-fonts'), map-get($zap-colors, 'teal-100'), map-get($zap-colors, 'teal-200')),
+        (aufgabe, map-get($zap-colors, 'gray-fonts'), map-get($zap-colors, 'brown-100'), map-get($zap-colors, 'brown-200'))
+);
+
+$primary: map-get($vorsprung-colors, 'primary');
+$secondary: map-get($vorsprung-colors, 'secondary');
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #ebf7f8;
+$dark: #005d5e;
+
+$media-bg-color: #f8f8f8;
+$media-border-color: #dcdcdc;
+
+$info-outline: #1f7e9a;
+$warning-outline: #a6670e;
+
+$enable-rounded: true;
+$enable-responsive-font-sizes: true;
+
+$body-color: map-get($zap-colors, 'gray-fonts');
+$body-bg: #fafcfc;
+$drawer-bg: darken($body-bg, 5%);
+$footer-bg: darken($body-bg, 10%);
+
+$font-family-sans-serif: Inter, system-ui,
+-apple-system,
+"Segoe UI",
+Roboto,
+"Helvetica Neue", Arial,
+"Noto Sans",
+"Liberation Sans",
+sans-serif,
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: JetBrainsMono, SFMono-Regular, Menlo, Monaco, Consolas,
+"Liberation Mono",
+"Courier New", monospace;
+
+$font-size-base: 0.9375rem;
+
+$fa-font-path: '#{$fonts-dir}/FontAwesome';
+$fa-version: "4.7.0" !default;
+
+$avatar-names: ("neutral", "frage", "achtung", "summary");
+$course-names: ("physik", "chemie", "mathematik", "informatik");
+$course-colors: map-subset($vorsprung-colors, $course-names);
+
+$course-ids: (
+                ("physik", (18, 27)),
+                ("chemie", (19)),
+                ("mathematik", (3983, 3983)),
+                //("mathematik", (16, 3983)),
+                ("informatik", (3982)),
+);
+
+$scroll-margin-top: 2em;
+
+
+// Carousel
+$white: #FFFFFF;
+$carousel-control-color:             $white !default;
+$carousel-control-width:             15% !default;
+$carousel-control-opacity:           .5 !default;
+$carousel-control-hover-opacity:     .9 !default;
+$carousel-control-transition:        opacity .15s ease !default;
+
+$carousel-indicator-width:           30px !default;
+$carousel-indicator-height:          3px !default;
+$carousel-indicator-hit-area-height: 10px !default;
+$carousel-indicator-spacer:          3px !default;
+$carousel-indicator-active-bg:       $white !default;
+$carousel-indicator-transition:      opacity .6s ease !default;
+
+$carousel-caption-width:             70% !default;
+$carousel-caption-color:             $white !default;
+
+$carousel-control-icon-width:        20px !default;
+
+$carousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' width='8' height='8' viewBox='0 0 8 8'><path d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/></svg>") !default;
+$carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' width='8' height='8' viewBox='0 0 8 8'><path d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/></svg>") !default;
+
+$carousel-transition-duration:       .6s !default;
+$carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
+

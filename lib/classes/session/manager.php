@@ -631,6 +631,11 @@ class manager {
         // Regenerate session id and delete old session,
         // this helps prevent session fixation attacks from the same domain.
 
+        // CORE HACK DANOU : This Security functions runs into many problems with our version.
+        // already from moodle 4.3 and before.
+        // Therefore I had to deactivate it to further progess with my coding.
+
+        /*
         $sid = session_id();
         session_regenerate_id(true);
         self::destroy($sid);
@@ -639,8 +644,10 @@ class manager {
         // Let enrol plugins deal with new enrolments if necessary.
         enrol_check_plugins($user);
 
+        */
         // Setup $USER object.
         self::set_user($user);
+
     }
 
     /**
@@ -804,7 +811,7 @@ class manager {
                     $error .= ': ' . implode(',', array_keys($value));
                 }
             }
-            debugging($error);
+           # debugging($error);
         }
     }
 

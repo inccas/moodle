@@ -1,0 +1,88 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_vorsprung/login
+
+    Login page template
+
+    Example context (json):
+    {
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "Login page",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Headers keep HTML validators happy</h1>"
+        }
+    }
+}}
+{{> theme_boost_union_vorsprung/head }}
+
+<body {{{ bodyattributes }}}>
+{{> core/local/toast/wrapper}}
+
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+
+    <div id="page" class="container-fluid mt-0">
+        <div id="page-content" class="row">
+            <div id="region-main-box" class="col-12">
+                <section id="region-main" class="col-12" aria-label="{{#str}}content{{/str}}">
+                    {{{ output.course_content_header }}}
+                    {{{ output.main_content }}}
+                    {{{ output.course_content_footer }}}
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer id="page-footer" class="py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-sm-4 col-12">
+                    <a href="https://www.auswaertiges-amt.de/de" target="_blank"><img class="ml-1 mr-1 my-1" src="/theme/boost_union_vorsprung/pix/logos/aa-logo.svg"></a>
+                    <a href="https://www.daad.de/de/" target="_blank">
+                        <img class="d-inline-block d-sm-none d-lg-inline-block ml-1 mr-1 my-1" src="/theme/boost_union_vorsprung/pix/logos/daad-logo.svg">
+                        <img class="d-none d-sm-inline-block d-lg-none ml-1 mr-1 my-1" src="/theme/boost_union_vorsprung/pix/logos/daad-logo-no-text.svg">
+                    </a>
+                </div>
+                <div class="col-lg-7 col-sm-8 col-12 pt-2 pt-sm-0 item-icons">
+                    {{{ output.login_info }}}
+
+                    {{# output.page_doc_link }}
+                        <div class="helplink">{{{ output.page_doc_link }}}</div>
+                    {{/ output.page_doc_link }}
+                    {{{ output.home_link }}}
+
+                    {{{ output.standard_footer_html }}}
+                    {{{ output.standard_end_of_body_html }}}
+                    <div class="tool_usertours-resettourcontainer"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</div>
+
+</body>
+</html>
+{{#js}}
+M.util.js_pending('theme_boost_union_vorsprung/loader');
+require(['theme_boost_union_vorsprung/loader'], function() {
+  M.util.js_complete('theme_boost_union_vorsprung/loader');
+});
+{{/js}}

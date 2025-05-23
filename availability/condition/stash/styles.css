@@ -1,0 +1,11 @@
+.availability-item .availability_stash label {
+    display: inline-block;
+}
+.availability-item .availability_stash .quantity {
+    width: 4em;
+}
+.availability-item .availability_stash label,
+.availability-item .availability_stash select,
+.availability-item .availability_stash input {
+    margin-bottom: 0;
+}

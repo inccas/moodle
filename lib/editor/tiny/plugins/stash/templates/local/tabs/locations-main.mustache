@@ -1,0 +1,51 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Locations section of the tabbed interface.
+}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">{{#str}}itemsandlocation, tiny_stash{{/str}}</span>
+    <div class="d-flex flex-row ml-auto">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerItems" aria-controls="navbarTogglerItems" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <h4>{{#str}}items, tiny_stash{{/str}}</h4> -->
+        <div class="collapse navbar-collapse" id="navbarTogglerItems">
+            <div class="navbar-nav mr-auto">
+            </div>
+            <div class="btn-group" role="group" aria-label="{{#str}}additemsandlocation, tiny_stash{{/str}}">
+                <button class="btn btn-outline-primary tiny-stash-add-item" data-location="location">{{#str}}additem, tiny_stash{{/str}}</button>
+                <button class="btn btn-outline-primary tiny-stash-add-drop" {{#itemempty}}disabled{{/itemempty}}>{{#str}}addlocation, tiny_stash{{/str}}</button>
+            </div>
+        </div>
+    </div>
+</nav>
+{{#itemempty}}
+<div class="tiny-stash-zero-state zero-state text-center my-6">
+<h3>{{#str}}noitems, tiny_stash{{/str}}</h3>
+<p>{{#str}}createitems, tiny_stash{{/str}}</p>
+</div>
+{{/itemempty}}
+{{#dropempty}}
+<div class="tiny-stash-zero-state zero-state text-center my-6">
+<h3>{{#str}}locationneeded, tiny_stash{{/str}}</h3>
+<p>{{#str}}nolocations, tiny_stash{{/str}}</p>
+</div>
+{{/dropempty}}
+{{#normal}}
+{{> tiny_stash/local/tabs/drop-form}}
+{{/normal}}

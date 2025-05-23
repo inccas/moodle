@@ -1,0 +1,33 @@
+From LIVE:
+
+
+MathJax URL
+filter_mathjaxloader | httpsurl
+
+https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js
+
+
+
+MathJax Konfiguration
+filter_mathjaxloader | mathjaxconfig:
+
+MathJax.Hub.Config({
+    config: ["Accessible.js", "Safe.js"],
+    errorSettings: { message: ["!"] },
+    skipStartupTypeset: true,
+    messageStyle: "none",
+     tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true
+    },
+     TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js", "noErrors.js", "noUndefined.js"]
+  }
+});
+
+
+Weitere Gleichungsbegrenzer
+filter_mathjaxloader | additionaldelimiters
+
+\(,\),\[,\],$,$$

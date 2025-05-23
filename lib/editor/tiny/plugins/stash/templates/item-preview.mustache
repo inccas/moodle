@@ -1,0 +1,12 @@
+<div class="block-stash-item tiny-stash-preview" contenteditable="false">
+    {{#image}}
+        <div class="item-image" style="background-image: url('{{{image}}}')"></div>
+        {{#text}}
+            <div class="item-action">
+                <button class="btn btn-secondary tiny-stash-button-preview" disabled="true">{{text}}</button>
+            </div>
+        {{/text}}
+    {{/image}}
+    {{^image}}{{#text}}<a href="#">{{text}}</a>{{/text}}{{/image}}
+    {{#shortcode}}<div class="tiny-stash-shortcode" style="display: none;">{{shortcode}}</div>{{/shortcode}}
+</div>
